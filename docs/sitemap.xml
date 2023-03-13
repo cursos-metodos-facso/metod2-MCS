@@ -1,87 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://encuestas-sociales.netlify.app/assignment/index.html</loc>
-    <lastmod>2022-11-21T23:03:26.590Z</lastmod>
+    <loc>https://metod1-mcs.netlify.app/assignment/index.html</loc>
+    <lastmod>2023-03-13T14:06:24.520Z</lastmod>
   </url>
   <url>
-    <loc>https://encuestas-sociales.netlify.app/content/01-content.html</loc>
-    <lastmod>2022-11-21T23:03:27.114Z</lastmod>
+    <loc>https://metod1-mcs.netlify.app/content/01-content.html</loc>
+    <lastmod>2023-03-13T14:06:25.119Z</lastmod>
   </url>
   <url>
-    <loc>https://encuestas-sociales.netlify.app/content/02-content.html</loc>
-    <lastmod>2022-11-21T23:03:27.638Z</lastmod>
+    <loc>https://metod1-mcs.netlify.app/content/index.html</loc>
+    <lastmod>2023-03-13T14:06:25.626Z</lastmod>
   </url>
   <url>
-    <loc>https://encuestas-sociales.netlify.app/content/03-content.html</loc>
-    <lastmod>2022-11-21T23:03:28.070Z</lastmod>
+    <loc>https://metod1-mcs.netlify.app/index.html</loc>
+    <lastmod>2023-03-13T14:06:26.156Z</lastmod>
   </url>
   <url>
-    <loc>https://encuestas-sociales.netlify.app/content/04-content.html</loc>
-    <lastmod>2022-11-21T23:03:28.454Z</lastmod>
+    <loc>https://metod1-mcs.netlify.app/resource/01-resource.html</loc>
+    <lastmod>2023-03-13T14:06:26.693Z</lastmod>
   </url>
   <url>
-    <loc>https://encuestas-sociales.netlify.app/content/05-content.html</loc>
-    <lastmod>2022-11-21T23:03:28.914Z</lastmod>
+    <loc>https://metod1-mcs.netlify.app/resource/index.html</loc>
+    <lastmod>2023-03-13T14:06:27.162Z</lastmod>
   </url>
   <url>
-    <loc>https://encuestas-sociales.netlify.app/content/08-content.html</loc>
-    <lastmod>2022-11-21T23:03:29.342Z</lastmod>
+    <loc>https://metod1-mcs.netlify.app/schedule.html</loc>
+    <lastmod>2023-03-13T14:06:27.783Z</lastmod>
   </url>
   <url>
-    <loc>https://encuestas-sociales.netlify.app/content/09-content.html</loc>
-    <lastmod>2022-11-21T23:03:29.774Z</lastmod>
+    <loc>https://metod1-mcs.netlify.app/syllabus.html</loc>
+    <lastmod>2023-03-13T14:06:28.480Z</lastmod>
   </url>
   <url>
-    <loc>https://encuestas-sociales.netlify.app/content/10-content.html</loc>
-    <lastmod>2022-11-21T23:03:30.214Z</lastmod>
-  </url>
-  <url>
-    <loc>https://encuestas-sociales.netlify.app/content/11-content.html</loc>
-    <lastmod>2022-11-21T23:03:30.650Z</lastmod>
-  </url>
-  <url>
-    <loc>https://encuestas-sociales.netlify.app/content/index.html</loc>
-    <lastmod>2022-11-21T23:03:31.094Z</lastmod>
-  </url>
-  <url>
-    <loc>https://encuestas-sociales.netlify.app/index.html</loc>
-    <lastmod>2022-11-21T23:07:55.208Z</lastmod>
-  </url>
-  <url>
-    <loc>https://encuestas-sociales.netlify.app/resource/01-resource.html</loc>
-    <lastmod>2022-11-21T23:03:32.062Z</lastmod>
-  </url>
-  <url>
-    <loc>https://encuestas-sociales.netlify.app/resource/02-resource.html</loc>
-    <lastmod>2022-11-21T23:03:32.610Z</lastmod>
-  </url>
-  <url>
-    <loc>https://encuestas-sociales.netlify.app/resource/03-resource.html</loc>
-    <lastmod>2022-11-21T23:07:53.944Z</lastmod>
-  </url>
-  <url>
-    <loc>https://encuestas-sociales.netlify.app/resource/04-resource.html</loc>
-    <lastmod>2022-11-21T23:03:35.594Z</lastmod>
-  </url>
-  <url>
-    <loc>https://encuestas-sociales.netlify.app/resource/05-resource.html</loc>
-    <lastmod>2022-11-21T23:03:36.842Z</lastmod>
-  </url>
-  <url>
-    <loc>https://encuestas-sociales.netlify.app/resource/index.html</loc>
-    <lastmod>2022-11-21T23:07:59.696Z</lastmod>
-  </url>
-  <url>
-    <loc>https://encuestas-sociales.netlify.app/schedule.html</loc>
-    <lastmod>2022-11-21T23:03:38.222Z</lastmod>
-  </url>
-  <url>
-    <loc>https://encuestas-sociales.netlify.app/syllabus.html</loc>
-    <lastmod>2022-11-21T23:03:38.986Z</lastmod>
-  </url>
-  <url>
-    <loc>https://encuestas-sociales.netlify.app/trabajos.html</loc>
-    <lastmod>2022-11-21T23:03:39.758Z</lastmod>
+    <loc>https://metod1-mcs.netlify.app/trabajos.html</loc>
+    <lastmod>2023-03-13T14:06:29.075Z</lastmod>
   </url>
 </urlset>

@@ -1,5 +1,5 @@
 ---
-title: "Ejemplos encuestas"
+title: "Ejemplos bases de datos"
 date: "2022-08-18"
 lang: es
 ---

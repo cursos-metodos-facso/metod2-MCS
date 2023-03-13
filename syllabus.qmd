@@ -35,55 +35,114 @@ library(pander)
 
 ## Resumen
 
-Este seminario de profundización metodológica está dirigido a quienes tengan interés en adquirir herramientas que les permitan responder de manera adecuada a las demandas actuales de diseño y análisis de encuestas, así como también analizar crítica y propositivamente proyectos de encuestas sociales desarrollados en el país y también a nivel internacional. 
+Este curso busca dar un primer acercamiento a la investigación social cuantitativa, abarcando desde aspectos iniciales básicos de estadística descriptiva y visualización de datos, hasta análisis e interpretación de modelos explicativos de investigación social. Asimismo, se busca que los y las estudiantes logren familiarizarse con el uso de Rstudio para el análisis de datos sociales.
 
-El seminario cuenta con dos partes: diseño y análisis. La sección de diseño cubre temas como cuestionarios, muestreo, aplicación y documentación. Esta sección se evaluará con un reporte donde se analice la calidad de alguna encuesta realizada recientemente a nivel nacional, identificando aspectos críticos y sugerencias de mejora. En la segunda parte se trabajará con herramientas de visualización de datos, generación de reportes y presentación de resultados, lo que sera evaluado mediante un documento de reporte de alguna encuesta de interés.
-
-La metodología incluye clases lectivas, presentaciones de invitados, y presentación de trabajos grupales.
+La metodología incluye clases lectivas y trabajo práctico en R.
 
 
 ## Objetivo general
 
-Las encuestas son utilizadas ampliamente como instrumento de investigación en la academia, el sector público y el sector privado. Dado que en general se identifica a la sociología como la disciplina más cercana al diseño y análisis de este instrumento, este curso consiste en un espacio de formación en la lógica de investigación por encuestas, sus objetivos, alcances, alternativas de diseño, análisis y reporte.
+Al finalizar el curso, el/la estudiante podrá elaborar y analizar diseños de investigación social de carácter cuantitativo, así como describir cuantitativamente un conjunto de datos utilizando el lenguaje R.
 
 
-## Resultados de Aprendizaje
+## Objetivos específicos
 
-- Manejar herramientas de análisis y reporte de resultados
+Al concluir el curso lo/as estudiantes deberán haber alcanzado los siguientes resultados de aprendizaje:
 
-- Conocer e implementar protocolos de análisis de datos
 
-- Desarrollar instrumentos de medición como preguntas, escalas y cuestionarios
+- Conocer las etapas de un diseño de investigación social cuantitativa y sus principales elementos
+
+
+- Formular diseños de investigación social cuantitativa
+
+
+- Conocer y aplicar instrumentos de medición y tipos de estudios cuantitativos
+- Interpretar y analizar los elementos centrales de una base de datos con información social
+
+
+- Aplicar e interpretar técnicas de estadística descriptiva según las distintas características de los datos
+
+
+- Aplicar e interpretar técnicas de estadística correlacional e inferencia estadística para variables con distinta unidad de medida
+
+
+- Aplicar e interpretar técnicas de regresión lineal y logística para variables numéricas y variables categóricas
+
 
 
 ## Saberes / contenidos
 
-### A. Diseño
+### Módulo 1: Estadística descriptiva
 
-- Encuestas, investigación de mercados y opinión pública
--Desarrollo de estudios de encuestas: financiamiento, actores, ética, planificación y productos principales
-- Aplicación / terreno: formas de administración, métodos mixtos, incentivos
-- Diseño de cuestionarios
-- Diseño muestral y representatividad
-- Reporte técnico y libro de códigos
 
-### B. Análisis
+1.1  Elementos básicos de la investigación social
 
-- El reporte de resultados
-- Construcción de índices compuestos y análisis factorial
-- Visualización de datos
-- Ponderadores y factores de expansión
-- Reportes dinámicos con RMarkdown
-- Documentos de presentación
+- Etapas de la investigación Social
+
+- Tipos de diseños
+
+- Diseño de instrumentos de medición
+
+- Bases de datos: datos de corte transversal, series de tiempo, cohortes, panel o longitudinal
+
+
+1.2 Operacionalización y análisis de datos
+
+- Operacionalización y niveles de medición
+
+- Tidy data: unir, dividir, filtrar y ordenar datos en R
+
+- Recodificación de variables: descriptivos básicos, casos perdidos, etiquetamiento de variables
+
+- Agrupación de datos y construcción de variables a partir de datos existentes
+
+- Construcción de índices y validez de escalas
+
+
+1.3 Visualización de datos en R
+
+- Tablas descriptivas y tablas de contingencia
+
+- ggplot2: gráficos de barra, de caja, dispersión e histograma
+
+
+### Módulo 2: Inferencia y estadística correlacional
+
+2.1 Inferencia estadística
+
+2.2 Pruebas de hipótesis
+
+2.3 Correlación
+
+
+### Módulo 3: Regresión lineal y regresión logística
+
+3.1 Regresión lineal de mínimos cuadrados
+
+- Aspectos centrales y supuestos de la regresión MCO
+
+- Interpretación de coeficientes (variables cuantitativas y cualitativas) y efectos de interacción 
+
+- Representación gráfica de coeficientes de regresión lineal
+
+
+3.2 Regresión logística binaria
+
+- Aspectos básicos de la regresión logística
+
+- Tipos de coeficientes e interpretación
+
+- Representación gráfica (cálculo de probabilidades predichas) 
+
 
 
 ## Metodología
 
-El curso se organiza en sesiones semanales, con una parte lectiva seguida de una práctica. En la parte lectiva se transmiten y discuten los conceptos centrales del diseño y análisis de encuestas. En la parte práctica se aplicarán los conceptos transmitidos en la parte lectiva, además de resolver dudas en el avance de los trabajos de investigación
+El curso se organiza en sesiones semanales, con una parte lectiva seguida de una práctica. En la parte lectiva se transmiten y discuten los conceptos centrales de la investigación cuantitativa. En la parte práctica se aplicarán los conceptos transmitidos en la parte lectiva, además de resolver dudas en el avance de los trabajos de investigación
 
 ## Evaluación
 
-La evaluación consistirá en la elaboración de dos reportes: uno de diseño (50%) y uno de análisis (50%) un reporte en el formato de artículo de investigación.  Este 50% de cada reporte se divide en trabajo escrito (30%), presentación (10%) e informe de corrección cruzada (10%).
+La evaluación consistirá en 
 
 ## Requisitos de aprobación
 
@@ -92,5 +151,5 @@ La evaluación consistirá en la elaboración de dos reportes: uno de diseño (5
 
 ## Palabras Clave 
 
-- Encuestas sociales, medición, cuestionarios, análisis de datos, tablas, gráficos, visualización, reproducibilidad, reportes dinámicos
+- Estadística, investigación cuantitativa, manipulación de datos, visualización de datos, interpretación de coeficientes
 

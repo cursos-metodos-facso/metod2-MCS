@@ -5,7 +5,7 @@ toc: false
 page-layout: full
 ---
 
-Los dos componentes centrales del curso son las clases teóricas y las actividades prácticas. Las **clases** se realizarán los días **Jueves  14:30 a 16:30** en sala **43**
+Los dos componentes centrales del curso son las clases teóricas y las actividades prácticas. Las **clases** se realizarán los días **Viernes  09:00 a 10:50** en sala **129**
 
 
 - [**Clases**]() (<i class="fas fa-chalkboard-teacher"></i> ): Lecturas, documentos de presentación y video (en caso que la sesión sea grabada)
@@ -18,32 +18,36 @@ Los dos componentes centrales del curso son las clases teóricas y las actividad
 
 | |<i class="fas fa-chalkboard-teacher"></i>  Clases  |  <i class="fas fa-user-edit"></i>  Prácticas y evaluaciones | <i class="fas fa-book-reader"></i> Lecturas y material adicional
 -----|----|-----------|-----------
-<font color="orange"> **Agosto** </font> |   |   |
-Jueves 18 | [**1. Presentación e introducción**](/content/01-content.html)  |   | - Leer detalladamente [programa del curso](syllabus.html)
+<font color="orange"> **Marzo** </font> |   |   |
+Viernes 17 | [**1. Presentación e introducción**](/content/01-content.html)  |   | - Leer detalladamente [programa del curso](syllabus.html)
 
-### UNIDAD 1: DISEÑO
+### UNIDAD 1: Estadística descriptiva
 
 |||
 -----|-----|-----------|-----------
-Jueves 25 | [**2.Encuestas: tipos, características e implementación **](/content/02-content.html)   |  [Ficha de Encuesta](02-content.html#actividad-ficha-de-encuestas)  | - [Lecturas](01-content.html#lecturas) <br> - [Font & Pasadas, cap.1: ¿Qué es una encuesta y qué no es una encuesta?](files/lecturas/Font&Pasadas2016LasEncuestasdeOpinion.pdf) <br>- [Font & Pasadas, cap.2: ¿Para qué sirve una encuesta?](files/lecturas/Font&Pasadas2016LasEncuestasdeOpinion.pdf) <br>- [Fowler Cap 1: Introduction](files/lecturas/Fowler2013Survey Research Methods.pdf)
-<font color="orange"> **Septiembre** </font> |   |   |
-Jueves 1 | [**3. Medición, instrumentos y estándares**](/content/03-content.html)  |   | - [RatSWD Quality standards for the design of measurement instruments](files/lecturas/RatSWD_WP_245.pdf)
-Jueves 8 | [**4. Preguntas, cuestionarios y aplicación**](/content/04-content.html)  |   | [- Czaja & Blair (2005) Cap. 4- Questionnaire Design, Writing the questions](files/lecturas/Czaja&Blair2005Designing-Surveys.pdf)
-Jueves 15 | RECESO  |   |
-Jueves 22 | [**5. Diseño de cuestionarios**](/content/05-content.html)  |   | - [Czaja & Blair (2005) Cap. 5 Organizing the questions <br> - Czaja & Blair (2005) Cap. 6  Testing  the questions](files/lecturas/Czaja&Blair2005Designing-Surveys.pdf)
-Jueves 29 | [**6. Asesorías grupales**]()  | - Entrega 1: Diseño de instrumento de medición  |- [Czaja & Blair (2005) Cap. 7 Designing the sample <br> - Czaja & Blair (2005) Cap. 8  Selecting a sample](files/lecturas/Czaja&Blair2005Designing-Surveys.pdf)
-<font color="orange"> **Octubre** </font> |   |   |
-Jueves 6 | [**7. Presentación informe 1**]()  |   |
+Viernes 24 | [**2.Operacionalización de variables **](/content/02-content.html)   |    | - [Lecturas](01-content.html#lecturas) <br> - [Wickham & Grolemund, (2017). R for Data Science. Visualize, model, transform, tidy and import data. cap. 1 Introducción](https://es.r4ds.hadley.nz/introducci%C3%B3n.html) <br>- 
+Viernes 31 | [**3. Visualización de datos**](/content/03-content.html)  |   | - [Wickham & Grolemund, (2017). R for Data Science. Visualize, model, transform, tidy and import data. cap. 2 Explorar](https://es.r4ds.hadley.nz/explorar-introduccion.html)
+<font color="orange"> **Abril** </font> |   |   |
+Viernes 07 | Viernes santo  |   |
+Viernes 14 | 1° semana presencial  |   |
+Viernes 21 | Evaluación  |   |
 
-### UNIDAD 2: ANÁLISIS
+### UNIDAD 2: Estadística Correlacional
 
-|||
------|---------|-----------|-----------
-Jueves 13 | [**8. Flujo de trabajo reproducible**](/content/08-content.html)  |   | - [IPO](https://lisa-coes.com/ipo-repro/)
-Jueves 20 | [**9. Reportes dinámicos**](/content/09-content.html)  |   |
-Jueves 27 | [**Semana de recolección de datos**]()  |   |
-<font color="orange"> **Noviembre** </font> |   |   |
-Jueves 3 | RECESO  |   |
-Jueves 10 | [**10. Análisis de baterías e índices** ](/content/10-content.html)  |   |
-Jueves 17 | [**11. Análisis factorial **](/content/11-content.html)  |   |
-Jueves 24 | [**14. Presentación final**]()  | - Entrega informe 2: Análisis y reporte (Lunes 28) - detalles en pestaña Trabajos |
+Viernes 28 | [**4. Introducción a la inferencia estadística**](/content/03-content.html)  |   | 
+<font color="orange"> **Mayo** </font> |   |   |
+Viernes 05 | 1° semana de pausa reflexiva  |   |
+Viernes 12 | [**5. Prueba de hipótesis**](/content/03-content.html)  |   | 
+Viernes 19 | [**6. Correlación**](/content/03-content.html)  |   | 
+Viernes 26 | 2° semana presencial  |   |
+<font color="orange"> **Junio** </font> |   |   |
+Viernes 02 | Evaluación  |   |
+
+### UNIDAD 3: Regresión lineal y regresión logística
+Viernes 09 | 2° semana de pausa reflexiva  |   |
+Viernes 16 | [**7. Regresión lineal de mínimos cuadrados; aspectos básicos y supuestos**](/content/03-content.html)  |   | 
+Viernes 23 | [**8. Interpretación de coeficientes y representación gráfica**](/content/03-content.html)  |   | 
+Viernes 30 | [**8. Regresión logística binaria: interpretación de coeficientes, cálculo de probabilidades y representación gráfica**](/content/03-content.html)  |   | 
+<font color="orange"> **Julio** </font> |   |   |
+Viernes 07 | 3° semana presencial  |   |
+Viernes 14 | Evaluación  |   |

@@ -22,9 +22,9 @@ bibliography: files/bib/references.bib
 csl: files/bib/chicago-author-date.csl
 
 website:
-  title: "Encuestas Sociales"
-  site-url: "https://encuestas-sociales.netlify.app"
-  description-meta: "Diseño, análisis, reporte y visualización de encuestas sociales"
+  title: "Metodología I - MCS"
+  site-url: "https://metod1-mcs.netlify.app"
+  description: "Magister en Ciencias Sociales, mención en Sociología de la Modernización"
   favicon: "/files/icon-513.png"
 
   twitter-card:
