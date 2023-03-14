@@ -117,8 +117,23 @@ Introducción a R y RStudio
 * Conocer y explicar grupos de personas de manera general, no individuos por sí solos
 
 ---
+class: roja, center, middle
 
+# Datos y Variables
 
+---
+.large[##.yellow[Datos]] y variables
+
+* Los datos miden al menos una *característica* de a los menos una *unidad*  en a lo menos *un punto en el tiempo*
+
+--
+ + Ejemplo: La esperanza de vida en Chile el 2017 fue de 79,9 años
+
+   - Característica (variable) : esperanza de vida
+
+   - Unidad: Años
+
+   - Punto en el tiempo: 2017
 
 
 ---
