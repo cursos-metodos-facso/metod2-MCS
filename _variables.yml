@@ -9,7 +9,7 @@ instructor:
   github: https://github.com/Kevin-carrasco/metod1-MCS
   office: "Departamento de Sociología FACSO - sala 328"
   contact_policy: >-
-    A través de Slack o correo
+    A través de correo
   appointment_url: kevin.carrasco@ug.uchile.cl
 
 
@@ -17,7 +17,7 @@ course:
   number: "MCS7113"
   semester: "Primer Semestre 2023"
   days: "Viernes"
-  time: "09:00-10:50 PM"
+  time: "09:00-10:50 AM"
   location: "Sala 119. Primer piso edificio nuevo FACSO"
   dates: "Marzo 17–Julio  07, 2023"
   github: "https://github.com/Kevin-carrasco/metod1-MCS"

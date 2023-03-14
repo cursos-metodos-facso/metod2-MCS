@@ -19,35 +19,40 @@ Los dos componentes centrales del curso son las clases teóricas y las actividad
 | |<i class="fas fa-chalkboard-teacher"></i>  Clases  |  <i class="fas fa-user-edit"></i>  Prácticas y evaluaciones | <i class="fas fa-book-reader"></i> Lecturas y material adicional
 -----|----|-----------|-----------
 <font color="orange"> **Marzo** </font> |   |   |
-Viernes 17 | [**1. Presentación e introducción**](/content/01-content.html)  |   | - Leer detalladamente [programa del curso](syllabus.html)
+Viernes 17 | [**1. Presentación e introducción**](/content/01-content.html)  | -  | - Leer detalladamente [programa del curso](syllabus.html)
 
 ### UNIDAD 1: Estadística descriptiva
 
 |||
------|-----|-----------|-----------
-Viernes 24 | [**2.Operacionalización de variables **](/content/02-content.html)   |    | - [Lecturas](01-content.html#lecturas) <br> - [Wickham & Grolemund, (2017). R for Data Science. Visualize, model, transform, tidy and import data. cap. 1 Introducción](https://es.r4ds.hadley.nz/introducci%C3%B3n.html) <br>- 
-Viernes 31 | [**3. Visualización de datos**](/content/03-content.html)  |   | - [Wickham & Grolemund, (2017). R for Data Science. Visualize, model, transform, tidy and import data. cap. 2 Explorar](https://es.r4ds.hadley.nz/explorar-introduccion.html)
+-----|----|-----------|-----------
+Viernes 24 | [**2.Operacionalización de variables **](/content/02-content.html)   |  -  | - [Wickham & Grolemund, (2017). cap. 1 Introducción](https://es.r4ds.hadley.nz/introducci%C3%B3n.html) <br>
+Viernes 31 | [**3. Visualización de datos**](/content/03-content.html)  | -  | - [Wickham & Grolemund, (2017). cap. 2 Explorar](https://es.r4ds.hadley.nz/explorar-introduccion.html)
 <font color="orange"> **Abril** </font> |   |   |
 Viernes 07 | Viernes santo  |   |
 Viernes 14 | 1° semana presencial  |   |
-Viernes 21 | Evaluación  |   |
+Viernes 21 |   | Evaluación  |  |
 
 ### UNIDAD 2: Estadística Correlacional
 
-Viernes 28 | [**4. Introducción a la inferencia estadística**](/content/03-content.html)  |   | 
+|||
+-----|----|-----------|-----------
+Viernes 28 | [**4. Introducción a la inferencia estadística**](/content/03-content.html)  |   |
 <font color="orange"> **Mayo** </font> |   |   |
 Viernes 05 | 1° semana de pausa reflexiva  |   |
 Viernes 12 | [**5. Prueba de hipótesis**](/content/03-content.html)  |   | 
 Viernes 19 | [**6. Correlación**](/content/03-content.html)  |   | 
 Viernes 26 | 2° semana presencial  |   |
 <font color="orange"> **Junio** </font> |   |   |
-Viernes 02 | Evaluación  |   |
+Viernes 02 |  | Evaluación  |  |
 
 ### UNIDAD 3: Regresión lineal y regresión logística
+
+|||
+-----|----|-----------|-----------
 Viernes 09 | 2° semana de pausa reflexiva  |   |
 Viernes 16 | [**7. Regresión lineal de mínimos cuadrados; aspectos básicos y supuestos**](/content/03-content.html)  |   | 
 Viernes 23 | [**8. Interpretación de coeficientes y representación gráfica**](/content/03-content.html)  |   | 
 Viernes 30 | [**8. Regresión logística binaria: interpretación de coeficientes, cálculo de probabilidades y representación gráfica**](/content/03-content.html)  |   | 
 <font color="orange"> **Julio** </font> |   |   |
 Viernes 07 | 3° semana presencial  |   |
-Viernes 14 | Evaluación  |   |
+Viernes 14 |   | Evaluación  |  |

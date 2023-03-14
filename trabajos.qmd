@@ -5,64 +5,34 @@ lang: es
 
 ## Evaluación
 
-La evaluación consistirá en la elaboración de dos reportes: uno de diseño (50%) y uno de análisis (50%).  Este 50% de cada reporte se divide en trabajo escrito (30%), presentación (10%) e informe de corrección cruzada (10%).
+La evaluación consistirá en la elaboración de reportes de investigación enfocados en reproducibilidad de la investigación social.
 
-Los reportes son elaborados en grupos de máximo 3 integrantes.
+Los reportes son elaborados en grupos de manera individual.
 
 ## Reporte 1
 
-- Seleccionar tema de interés general (ej: migración, género, clase social, pueblos originarios, uso del tiempo, bienestar, etc.)
-- Definir objeto de estudio: este objeto debe tener una definición y también una justificación breve de su relevancia. La definición debe basarse idealmente en literatratura pertinente y actualizada (app. 1 página). En esta sección también se espera que se mencione qué instrumentos han sido utilizados para medir este concepto en encuestas.
-- Definir población objetivo
-- Operacionalización: ya que solo hay un objeto de estudio principal, y la definición está en la sección anterior, la tabla de operacionalización tiene dos columnas: dimensiones e indicadores.
-- Preguntas: en base a las dimensiones e indicadores, describir las preguntas que existen en otras encuestas, comentar si es necesario adaptarlas o crear nuevas preguntas para cubrir apropiadamente todos los indicadores identificados. No todas las preguntas necesariamente irán en el instrumento final, depende de consideraciones de espacio y de la evaluación de su calidad.
-- Hipótesis: listar brevemente las posibles hipótesis para el análisis. En estas hipótesis usualmente el concepto central de estudio será la variable dependiente. Para las independientes no es necesario realizar el ejercicio de operacionalización que se realizó con el objeto de estudio. Si se considera relevante proponer alguna forma de medición/pregunta para estas variables dependientes se puede especificar en esta sección.
+- Seleccionar una de las investigaciones propuestas
+- Descargar la base de datos utilizada en la investigación
+- Operacionalización: Manipulación de datos para obtener las mismas variables utilizadas en la investigación
+- Visualización de datos: Elaboración de tablas y/o gráficos, en el contexto de un reporte científico de investigación, que intente reproducir o profundizar los principales hallazgos de la investigación
+
 
 Entrega:
 
-- Jueves 29 de Septiembre a través de UCursos, sección tareas [Actualizado: lunes 3 de Octubre]
-- Formato Tradicional: archivo .pdf en tamaño carta o A4, letra Times New Roman, tamaño 12, interlineado 1,5, márgenes normales (2,5 cm superior e inferior, 3 cm derecho e izquierdo).
+- Jueves 21 de Marzo a través de UCursos, sección tareas
+- Formato Tradicional: archivo .pdf en tamaño carta o A4, letra Times New Roman, tamaño 12, interlineado 1,5, márgenes normales (2,5 cm superior e inferior, 3 cm derecho e izquierdo). Se considerará positivamente la entrega de reportes elaborados en RMarkdown
 - no más de 10 páginas
-- incluir referencias de la literatura / encuestas revisadas
+- incluir referencias de la literatura / bases de datos revisadas
 - atrasos, 0,5 por día de atraso.
 
-## Reporte 2 (final)
-
-- contiene dos partes:
-
-  - la primera es el informe 1 (diseño de instrumento de medición) con las correcciones correspondientes y siguendo la pauta original
-
-  - la segunda es un análisis descriptivo de los items correspondientes al módulo, eventual construcción de índices y análisis factorial, y cruces con variables de interés. Para ello deben basarse principalmente en las sesiones 10 y 11. Esta sección debe tener como máximo 10 páginas.
-
-- Entrega: lunes 28 de Noviembre (hasta las 23:59). Formato y otros: como en la entrega anterior.
+## Reporte 2
 
 
 
 
-## Presentación de trabajos
-
-- *Reporte 1*. Presentación breve (max. 10 min), considerar los siguientes contenidos (puede ser 1 por slide):
-
-  - Objeto de estudio
-  - Operacionalización
-  - Diseño y propuesta de preguntas a incluir en la encuesta
-  - Hipótesis de trabajo para guiar el análisis
-
-- *Reporte 2*. Presentación breve (max. 10 min), considerar los siguientes contenidos:
-  - Análisis descriptivo general del módulo
-  - Gráficos de distribución univariados
-  - Construcción de índices
-  - Cruces bivariados / correlaciones con variables de interés (por ej: de caracterización)
+## Reporte 3
 
 
-- Criterios a evaluar:
-
-  - Manejo del tiempo
-  - Claridad en la transmisión de los contenidos
-  - Estructura apropiada
-  - Calidad del apoyo audiovisual
-  - Aplicación de conceptos aprendidos en el curso
-  - Respuestas a comentarios/preguntas
 
 
 
