@@ -1,0 +1,15 @@
+---
+title: "Presentación"
+date: "2023-03-17"
+lang: es
+---
+
+## Documento de presentación
+ 
+<iframe src=/slides/01-clase1/01-clase1.html height="550" width=100% allowfullscreen="true">
+</iframe> 
+
+
+## Lecturas
+
+[R for Data Science](https://es.r4ds.hadley.nz/introducci%C3%B3n.html)
