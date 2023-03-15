@@ -67,8 +67,10 @@ website:
             - content/index.qmd
         - section: "Sesiones"
           contents:
-            - text: "1: Presentación"
+            - text: "00: Presentación"
               file: content/01-content.qmd
+            - text: "01: Sesión 1"
+              file: content/02-content.qmd
 
     - title: "Recursos"
       style: "docked"
@@ -77,6 +79,8 @@ website:
       contents:
         - text: "Descripción"
           file: resource/index.qmd
+        - text: "Práctica 1"
+          file: resource/01-resource.qmd
 
 
   page-footer:

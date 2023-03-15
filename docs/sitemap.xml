@@ -2,42 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://metod1-mcs.netlify.app/assignment/index.html</loc>
-    <lastmod>2023-03-14T17:43:40.710Z</lastmod>
+    <lastmod>2023-03-15T15:41:37.425Z</lastmod>
   </url>
   <url>
     <loc>https://metod1-mcs.netlify.app/content/01-content.html</loc>
-    <lastmod>2023-03-14T17:43:41.744Z</lastmod>
+    <lastmod>2023-03-15T15:41:37.949Z</lastmod>
   </url>
   <url>
     <loc>https://metod1-mcs.netlify.app/content/02-content.html</loc>
-    <lastmod>2023-03-14T17:43:43.139Z</lastmod>
+    <lastmod>2023-03-15T15:41:38.450Z</lastmod>
   </url>
   <url>
     <loc>https://metod1-mcs.netlify.app/content/index.html</loc>
-    <lastmod>2023-03-14T17:43:44.513Z</lastmod>
+    <lastmod>2023-03-15T15:41:39.363Z</lastmod>
   </url>
   <url>
     <loc>https://metod1-mcs.netlify.app/index.html</loc>
-    <lastmod>2023-03-14T17:43:45.906Z</lastmod>
+    <lastmod>2023-03-15T15:41:39.988Z</lastmod>
+  </url>
+  <url>
+    <loc>https://metod1-mcs.netlify.app/resource/01-resource - copia.html</loc>
+    <lastmod>2023-03-15T15:41:40.506Z</lastmod>
   </url>
   <url>
     <loc>https://metod1-mcs.netlify.app/resource/01-resource.html</loc>
-    <lastmod>2023-03-14T17:43:47.906Z</lastmod>
+    <lastmod>2023-03-15T15:42:02.759Z</lastmod>
   </url>
   <url>
     <loc>https://metod1-mcs.netlify.app/resource/index.html</loc>
-    <lastmod>2023-03-14T17:43:48.459Z</lastmod>
+    <lastmod>2023-03-15T15:41:46.753Z</lastmod>
   </url>
   <url>
     <loc>https://metod1-mcs.netlify.app/schedule.html</loc>
-    <lastmod>2023-03-14T17:43:49.181Z</lastmod>
+    <lastmod>2023-03-15T15:41:47.340Z</lastmod>
   </url>
   <url>
     <loc>https://metod1-mcs.netlify.app/syllabus.html</loc>
-    <lastmod>2023-03-14T17:43:50.059Z</lastmod>
+    <lastmod>2023-03-15T15:41:48.020Z</lastmod>
   </url>
   <url>
     <loc>https://metod1-mcs.netlify.app/trabajos.html</loc>
-    <lastmod>2023-03-14T17:43:50.794Z</lastmod>
+    <lastmod>2023-03-15T15:41:48.593Z</lastmod>
   </url>
 </urlset>

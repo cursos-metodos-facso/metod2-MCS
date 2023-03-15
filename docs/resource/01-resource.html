@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Metodología I - MCS - Ejemplos bases de datos</title>
+<title>Metodología I - MCS - Práctica 1. Preparación de datos en R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -62,13 +125,15 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Metodología I - MCS - Ejemplos bases de datos">
+<meta property="og:title" content="Metodología I - MCS - Práctica 1. Preparación de datos en R">
+<meta property="og:description" content="Metodología I - Magíster en Ciencias Sociales">
 <meta property="og:image" content="https://metod1-mcs.netlify.app/files/social-image-f22.png">
 <meta property="og:site-name" content="Metodología I - MCS">
 <meta property="og:locale" content="en_US">
 <meta property="og:image:height" content="500">
 <meta property="og:image:width" content="500">
-<meta name="twitter:title" content="Metodología I - MCS - Ejemplos bases de datos">
+<meta name="twitter:title" content="Metodología I - MCS - Práctica 1. Preparación de datos en R">
+<meta name="twitter:description" content="Metodología I - Magíster en Ciencias Sociales">
 <meta name="twitter:image" content="https://metod1-mcs.netlify.app/files/social-image-f22.png">
 <meta name="twitter:creator" content="@juankcastillo">
 <meta name="twitter:site" content="@juankcastillo">
@@ -77,7 +142,7 @@ ul.task-list li input[type="checkbox"] {
 <meta name="twitter:image-width" content="500">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -110,7 +175,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Trabajos</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../resource/index.html">
+    <a class="nav-link active" href="../resource/index.html" aria-current="page">
  <span class="menu-text">Recursos</span></a>
   </li>  
   <li class="nav-item compact">
@@ -123,20 +188,54 @@ ul.task-list li input[type="checkbox"] {
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Práctica 1. Preparación de datos en R</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resource/index.html" class="sidebar-item-text sidebar-link">Descripción</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resource/01-resource.html" class="sidebar-item-text sidebar-link active">Práctica 1</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">En esta página</h2>
    
   <ul>
-  <li><a href="#algunas-instituciones-internacionales" id="toc-algunas-instituciones-internacionales" class="nav-link active" data-scroll-target="#algunas-instituciones-internacionales">Algunas instituciones internacionales</a></li>
-  <li><a href="#ejemplos-de-encuestas-actuales---nacional" id="toc-ejemplos-de-encuestas-actuales---nacional" class="nav-link" data-scroll-target="#ejemplos-de-encuestas-actuales---nacional">Ejemplos de encuestas actuales - Nacional</a></li>
-  <li><a href="#ejemplo-encuestas-internacionales" id="toc-ejemplo-encuestas-internacionales" class="nav-link" data-scroll-target="#ejemplo-encuestas-internacionales">Ejemplo encuestas internacionales</a></li>
-  <li><a href="#comparativas" id="toc-comparativas" class="nav-link" data-scroll-target="#comparativas">Comparativas</a></li>
+  <li><a href="#presentación" id="toc-presentación" class="nav-link active" data-scroll-target="#presentación">Presentación</a>
+  <ul class="collapse">
+  <li><a href="#objetivos-de-la-práctica" id="toc-objetivos-de-la-práctica" class="nav-link" data-scroll-target="#objetivos-de-la-práctica">Objetivos de la práctica</a></li>
+  <li><a href="#r-y-rstudio" id="toc-r-y-rstudio" class="nav-link" data-scroll-target="#r-y-rstudio">R y Rstudio</a>
+  <ul class="collapse">
+  <li><a href="#guía-de-instalación" id="toc-guía-de-instalación" class="nav-link" data-scroll-target="#guía-de-instalación">Guía de instalación</a></li>
+  </ul></li>
+  <li><a href="#primeros-pasos" id="toc-primeros-pasos" class="nav-link" data-scroll-target="#primeros-pasos">Primeros pasos</a>
+  <ul class="collapse">
+  <li><a href="#ejemplos" id="toc-ejemplos" class="nav-link" data-scroll-target="#ejemplos">0. Ejemplos</a></li>
+  <li><a href="#librerías-principales-de-r-a-utilizar" id="toc-librerías-principales-de-r-a-utilizar" class="nav-link" data-scroll-target="#librerías-principales-de-r-a-utilizar">1. Librerías principales (de R) a utilizar</a></li>
+  <li><a href="#cargar-base-de-datos" id="toc-cargar-base-de-datos" class="nav-link" data-scroll-target="#cargar-base-de-datos">2. Cargar base de datos</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -145,7 +244,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Ejemplos bases de datos</h1>
+<h1 class="title d-none d-lg-block">Práctica 1. Preparación de datos en R</h1>
+<p class="subtitle lead">Metodología I - Magíster en Ciencias Sociales</p>
 </div>
 
 
@@ -156,7 +256,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Fecha de publicación</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">18 de agosto de 2022</p>
+      <p class="date">17 de marzo de 2023</p>
     </div>
   </div>
   
@@ -166,45 +266,209 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="algunas-instituciones-internacionales" class="level2">
-<h2 class="anchored" data-anchor-id="algunas-instituciones-internacionales">Algunas instituciones internacionales</h2>
+<section id="presentación" class="level1">
+<h1>Presentación</h1>
+<section id="objetivos-de-la-práctica" class="level2">
+<h2 class="anchored" data-anchor-id="objetivos-de-la-práctica">Objetivos de la práctica</h2>
+<p>Esta práctica tiene dos objetivos: 1) Generar un primer acercamiento al uso de R y Rstudio, conociendo su interfaz y sus principales funcionalidades y 2) revisar algunos procedimientos básicos de la preparación de datos con R, que son necesarios para luego poder aplicar los contenidos más específicos de este curso.</p>
+</section>
+<section id="r-y-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="r-y-rstudio">R y Rstudio</h2>
+<section id="guía-de-instalación" class="level3">
+<h3 class="anchored" data-anchor-id="guía-de-instalación">Guía de instalación</h3>
+<ol type="1">
+<li><p>Acceder a la página de <a href="https://posit.co/">posit</a>, desarrollador del software desde octubre de 2022. Link directo a la descarga <a href="https://posit.co/download/rstudio-desktop/">acá</a>.</p></li>
+<li><p>Instalar R y Rstudio</p></li>
+</ol>
+<p><img src="images/installR1.png" class="img-fluid"></p>
+<ol type="a">
+<li>Descargar R</li>
+</ol>
 <ul>
-<li><p><a href="https://ropercenter.cornell.edu/">Roper Center</a></p></li>
-<li><p><a href="https://www.icpsr.umich.edu/web/pages/">ICPSR</a></p></li>
-<li><p><a href="https://www.gesis.org/en/home">GESIS</a></p></li>
-<li><p><a href="https://esraeurope.org/">ESRA</a></p></li>
+<li>Seleccionamos sistema operativo según corresponda</li>
+</ul>
+<p><img src="images/installR2.png" class="img-fluid"></p>
+<ul>
+<li>Descargar R por primera vez y seguir instrucciones. En esta oportunidad trabajaremos con la última versión de R 4.2.2 <img src="images/installR3.png" class="img-fluid"></li>
+</ul>
+<ol start="2" type="a">
+<li>Descargar RStudio</li>
+</ol>
+<ul>
+<li>Descarga directa en la página de inicio</li>
+</ul>
+<ol start="3" type="a">
+<li>Instalar ambos archivos siguiendo las instrucciones de instalación</li>
+</ol>
+<ol start="3" type="1">
+<li>Abrir RStudio. Se debería ver similar a esto:</li>
+</ol>
+<p><img src="images/installR4.png" class="img-fluid"></p>
+<ol start="4" type="1">
+<li>Recomendaciones generales:</li>
+</ol>
+<ul>
+<li><p>evitar uso de tilde, ñ, espacios y mayúsculas tanto en carpetas y archivos, así como también en los nombres de las variables</p></li>
+<li><p>al momento de hacer consultas sobre problemas en la ejecución del código, adjuntar la siguiente información:</p></li>
+</ul>
+<ol type="1">
+<li><p>Código completo hasta que se produce el problema</p></li>
+<li><p>Indicar línea del código donde se produce el problema</p></li>
+<li><p>Adjuntar el resultado del output de la información de la sesión (sessionInfo())</p></li>
+</ol>
+</section>
+</section>
+<section id="primeros-pasos" class="level2">
+<h2 class="anchored" data-anchor-id="primeros-pasos">Primeros pasos</h2>
+<p>En primer lugar vamos a abrir un archivo de R (<em>script</em>). Esto se puede hacer manualmente con File -&gt; new file -&gt; R script o directamente con ctrl + shift + N</p>
+<p>Esta es nuestra hoja de código, que utilizaremos para procesar bases de datos, modificar variables y crear tablas y gráficos.</p>
+<section id="ejemplos" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplos">0. Ejemplos</h3>
+<p>R puede ser una calculadora</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">+</span> <span class="dv">5</span> <span class="co"># ¿cuánto es 10 + 5?</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">*</span> <span class="dv">5</span> <span class="co"># ¿cuánto es 10 * 5?</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 50</code></pre>
+</div>
+</div>
+<p>Se pueden crear objetos y asignarles valores</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">28</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">8</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>a <span class="sc">+</span> b</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 36</code></pre>
+</div>
+</div>
+<p>O asignar operaciones a un objeto</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> a <span class="sc">+</span> b</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Sin embargo, la mayor parte del tiempo usamos funciones que ya existen en R</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">28</span>,<span class="dv">8</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 36</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">10.14536</span>) <span class="co">#aproximar</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+</div>
+<p>Y muchas de estas funciones que utilizamos en R están contenidas en librerías o paquetes (packages)</p>
+</section>
+<section id="librerías-principales-de-r-a-utilizar" class="level3">
+<h3 class="anchored" data-anchor-id="librerías-principales-de-r-a-utilizar">1. Librerías principales (de R) a utilizar</h3>
+<p>La lógica de R es instalar librerías (solo 1 vez, con <code>install.packages("librería")</code>), y luego cargarlas cada vez que es necesario usarlas (con <code>library(librería)</code>). El problema de esto es que a veces no se sabe claramente qué librerías están instaladas y cuales no, lo que va a arrojar error al cargarlas. Y, como sucede en R, existe una librería para solucionar este problema que se llama <code>pacman</code> (package manager). Lo que hace <code>pacman</code> es cargar la librería, y si no está instalada, la instala y la carga:</p>
+<p>Para utilizar la primera vez (si es que no está instalada):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"pacman"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Y en adelante, las librerías se cargan así <span class="sidenote"> pacman::p_load(libreria1,libreria2,libreriaX) </span>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(dplyr, guaguas)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Para esta sesión las librerías que vamos a utilizar son:</p>
+<ul>
+<li><p><code>dplyr</code>: ajuste general de datos</p></li>
+<li><p><code>guaguas</code>: Paquete que contiene los datos de nombres de guaguas (bebés) registrados en Chile entre 1920 y 2021 según el Registro Civil e Identificación</p></li>
 </ul>
 </section>
-<section id="ejemplos-de-encuestas-actuales---nacional" class="level2">
-<h2 class="anchored" data-anchor-id="ejemplos-de-encuestas-actuales---nacional">Ejemplos de encuestas actuales - Nacional</h2>
-<ul>
-<li><p><a href="https://www.cepchile.cl/encuestaCEP">Encuestas CEP</a></p></li>
-<li><p><a href="http://observatorio.ministeriodesarrollosocial.gob.cl/encuesta-casen">CASEN</a></p></li>
-<li><p><a href="https://www.ine.cl/">Encuestas INE</a>]</p></li>
-<li><p><a href="https://www.ine.cl/estadisticas/sociales/genero/uso-del-tiempo">ENUT</a></p></li>
-<li><p><a href="https://www.estudiospnud.cl/">Estudios PNUD</a></p></li>
-<li><p><a href="">ELSOC</a></p></li>
-</ul>
-</section>
-<section id="ejemplo-encuestas-internacionales" class="level2">
-<h2 class="anchored" data-anchor-id="ejemplo-encuestas-internacionales">Ejemplo encuestas internacionales</h2>
-<ul>
-<li><p><a href="https://gss.norc.org/">GSS</a></p></li>
-<li><p><a href="https://www.diw.de/en/diw_01.c.615551.en/research_infrastructure__socio-economic_panel__soep.html">SOEP</a></p></li>
-<li><p><a href="https://www.bsa.natcen.ac.uk/">British Social Attitudes</a>]</p></li>
-</ul>
-</section>
-<section id="comparativas" class="level2">
-<h2 class="anchored" data-anchor-id="comparativas">Comparativas</h2>
-<ul>
-<li><p><a href="https://www.worldvaluessurvey.org/wvs.jsp">World Values Survey</a></p></li>
-<li><p><a href="https://issp.org/">ISSP</a></p></li>
-<li><p><a href="https://www.europeansocialsurvey.org/">ESS</a></p></li>
-<li><p><a href="https://www.vanderbilt.edu/lapop/index.php/">LAPOP</a></p></li>
-<li><p><a href="https://www.latinobarometro.org/lat.jsp">Latinobarómetro</a></p></li>
-</ul>
+<section id="cargar-base-de-datos" class="level3">
+<h3 class="anchored" data-anchor-id="cargar-base-de-datos">2. Cargar base de datos</h3>
+<p><strong>Ajustar espacio de trabajo</strong></p>
+<p>Previo a la carga de nuestra base de datos, se recomienda ejecutar los siguientes comandos:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())       <span class="co"># borrar todos los objetos en el espacio de trabajo</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>) <span class="co"># valores sin notación científica</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>La función <code>rm(list=ls())</code> permite comenzar con un espacio de trabajo (environment) vacío y sin otros objetos. Así también, la función <code>options(scipen=999)</code> desactiva la notación científica, es decir, veremos los valores numéricos con todos sus decimales.</p>
+<p><strong>Datos</strong></p>
+<p>Cargamos la base de datos desde el paquete (para otras bases de datos se deben importar de otra forma, esto es solo como ejemplo)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>base <span class="ot">&lt;-</span> guaguas</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Conocemos las dimensiones de la base de datos</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(base)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 858782      5</code></pre>
+</div>
+</div>
+<p>Son 858782 casos y 5 variables. Los nombres de estas variables son:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(base)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "anio"       "nombre"     "sexo"       "n"          "proporcion"</code></pre>
+</div>
+</div>
+<p>Y la base se ve así:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(base)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 5
+   anio nombre sexo      n proporcion
+  &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;
+1  1920 María  F      2130     0.104 
+2  1920 José   M       984     0.0483
+3  1920 Juan   M       636     0.0312
+4  1920 Luis   M       631     0.0310
+5  1920 Rosa   F       426     0.0209
+6  1920 Ana    F       340     0.0167</code></pre>
+</div>
+</div>
+<p>Ahora probemos algunas funciones para seguir explorando la base</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(base<span class="sc">$</span>sexo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+     F      I      M 
+531038    318 327426 </code></pre>
+</div>
+</div>
+<p>Podemos ver la cantidad de nombres “F” (femenino) y “M” (masculino) inscritos entre 1920 y 2021.</p>
+<p>Pueden buscar sus nombres y probar, utilizamos la funcion <em>filter</em> del paquete <em>dplyr</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(base, nombre<span class="sc">==</span><span class="st">"Kevin"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 63 × 5
+    anio nombre sexo      n proporcion
+   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;
+ 1  1931 Kevin  M         1 0.0000120 
+ 2  1963 Kevin  M         1 0.0000035 
+ 3  1964 Kevin  M         1 0.00000344
+ 4  1967 Kevin  M         4 0.0000131 
+ 5  1970 Kevin  M         6 0.0000210 
+ 6  1971 Kevin  M         3 0.00000936
+ 7  1972 Kevin  M         3 0.00000945
+ 8  1973 Kevin  M         2 0.00000633
+ 9  1974 Kevin  M         5 0.0000163 
+10  1976 Kevin  M         2 0.00000724
+# … with 53 more rows
+# ℹ Use `print(n = ...)` to see more rows</code></pre>
+</div>
+</div>
+<p>E incluso pueden ver la cantidad de personas con su nombre, en el mismo año que ustedes nacieron</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">filter</span>(base, nombre<span class="sc">==</span><span class="st">"Kevin"</span> <span class="sc">&amp;</span> anio<span class="sc">==</span><span class="dv">1996</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(d<span class="sc">$</span>n)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1312</code></pre>
+</div>
+</div>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->

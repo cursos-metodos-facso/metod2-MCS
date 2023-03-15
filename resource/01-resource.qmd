@@ -1,52 +1,186 @@
 ---
-title: "Ejemplos bases de datos"
-date: "2022-08-18"
+title: "Práctica 1. Preparación de datos en R"
+subtitle: "Metodología I - Magíster en Ciencias Sociales"
+linktitle: "Práctica 1: Preparación datos"
+date: "2023-03-17"
 lang: es
 ---
 
-## Algunas instituciones internacionales 
+# Presentación
 
-- [Roper Center](https://ropercenter.cornell.edu/)
+## Objetivos de la práctica
 
-- [ICPSR](https://www.icpsr.umich.edu/web/pages/)
+Esta práctica tiene dos objetivos: 1) Generar un primer acercamiento al uso de R y Rstudio, conociendo su interfaz y sus principales funcionalidades y 2) revisar algunos procedimientos básicos de la preparación de datos con R, que son necesarios para luego poder aplicar los contenidos más específicos de este curso.
 
-- [GESIS](https://www.gesis.org/en/home)
+## R y Rstudio
 
-- [ESRA](https://esraeurope.org/)
+### Guía de instalación
 
+1. Acceder a la página de [posit](https://posit.co/), desarrollador del software desde octubre de 2022. Link directo a la descarga [acá](https://posit.co/download/rstudio-desktop/).
 
-## Ejemplos de encuestas actuales - Nacional
+2. Instalar R y Rstudio
 
-- [Encuestas CEP](https://www.cepchile.cl/encuestaCEP)
+![](images/installR1.png)
 
-- [CASEN](http://observatorio.ministeriodesarrollosocial.gob.cl/encuesta-casen)
-
-- [Encuestas INE](https://www.ine.cl/)]
-
-- [ENUT](https://www.ine.cl/estadisticas/sociales/genero/uso-del-tiempo)
-
-- [Estudios PNUD](https://www.estudiospnud.cl/)
-
-- [ELSOC]()
-
-
-## Ejemplo encuestas internacionales
-
-- [GSS](https://gss.norc.org/)
-
-- [SOEP](https://www.diw.de/en/diw_01.c.615551.en/research_infrastructure__socio-economic_panel__soep.html)
-
-- [British Social Attitudes](https://www.bsa.natcen.ac.uk/)]
+  a) Descargar R 
+    
+  - Seleccionamos sistema operativo según corresponda
+    
+  ![](images/installR2.png)
+    
+  - Descargar R por primera vez y seguir instrucciones. En esta oportunidad trabajaremos con la última versión de R 4.2.2
+  ![](images/installR3.png)
 
 
-## Comparativas
+  b) Descargar RStudio
+    
+  - Descarga directa en la página de inicio
+    
+  c) Instalar ambos archivos siguiendo las instrucciones de instalación
 
-- [World Values Survey](https://www.worldvaluessurvey.org/wvs.jsp)
+3. Abrir RStudio. Se debería ver similar a esto:
 
-- [ISSP](https://issp.org/)
+![](images/installR4.png)
 
-- [ESS](https://www.europeansocialsurvey.org/)
+4. Recomendaciones generales:
 
-- [LAPOP](https://www.vanderbilt.edu/lapop/index.php/)
+- evitar uso de tilde, ñ, espacios y mayúsculas tanto en carpetas y archivos, así como también en los nombres de las variables
 
-- [Latinobarómetro](https://www.latinobarometro.org/lat.jsp)
+- al momento de hacer consultas sobre problemas en la ejecución del código, adjuntar la siguiente información:
+
+1. Código completo hasta que se produce el problema
+
+2. Indicar línea del código donde se produce el problema
+
+3. Adjuntar el resultado del output de la información de la sesión (sessionInfo())
+
+## Primeros pasos
+
+En primer lugar vamos a abrir un archivo de R (*script*). Esto se puede hacer manualmente con File -> new file -> R script o directamente con ctrl + shift + N
+
+Esta es nuestra hoja de código, que utilizaremos para procesar bases de datos, modificar variables y crear tablas y gráficos.
+
+### 0. Ejemplos
+
+R puede ser una calculadora
+
+```{r}
+10 + 5 # ¿cuánto es 10 + 5?
+```
+
+```{r}
+10 * 5 # ¿cuánto es 10 * 5?
+```
+
+Se pueden crear objetos y asignarles valores
+
+```{r}
+a <- 28
+b <- 8
+
+a + b
+```
+
+O asignar operaciones a un objeto
+
+```{r}
+c <- a + b
+```
+
+Sin embargo, la mayor parte del tiempo usamos funciones que ya existen en R
+
+```{r}
+sum(28,8)
+```
+```{r}
+round(10.14536) #aproximar
+```
+
+Y muchas de estas funciones que utilizamos en R están contenidas en librerías o paquetes (packages)
+
+### 1. Librerías principales (de R) a utilizar
+
+La lógica de R es instalar librerías (solo 1 vez, con `install.packages("librería")`), y luego cargarlas cada vez que es necesario usarlas (con `library(librería)`). El problema de esto es que a veces no se sabe claramente qué librerías están instaladas y cuales no, lo que va a arrojar error al cargarlas. Y, como sucede en R, existe una librería para solucionar este problema que se llama `pacman` (package manager). Lo que hace `pacman` es cargar la librería, y si no está instalada, la instala y la carga:
+
+
+Para utilizar la primera vez (si es que no está instalada):
+
+```{r eval=FALSE}
+install.packages("pacman")
+```
+
+Y en adelante, las librerías se cargan así <span class="sidenote"> pacman::p_load(libreria1,libreria2,libreriaX) </span>:
+
+
+```{r}
+pacman::p_load(dplyr, guaguas)
+```
+
+
+Para esta sesión las librerías que vamos a utilizar son:
+
+- `dplyr`: ajuste general de datos
+
+- `guaguas`: Paquete que contiene los datos de nombres de guaguas (bebés) registrados en Chile entre 1920 y 2021 según el Registro Civil e Identificación
+
+### 2. Cargar base de datos
+
+**Ajustar espacio de trabajo**
+
+Previo a la carga de nuestra base de datos, se recomienda ejecutar los siguientes comandos:
+
+```{r}
+rm(list=ls())       # borrar todos los objetos en el espacio de trabajo
+options(scipen=999) # valores sin notación científica
+```
+
+La función `rm(list=ls())` permite comenzar con un espacio de trabajo (environment) vacío y sin otros objetos. Así también, la función `options(scipen=999)` desactiva la notación científica, es decir, veremos los valores numéricos con todos sus decimales.
+
+**Datos**
+
+Cargamos la base de datos desde el paquete (para otras bases de datos se deben importar de otra forma, esto es solo como ejemplo)
+
+```{r}
+base <- guaguas
+```
+
+Conocemos las dimensiones de la base de datos
+
+```{r}
+dim(base)
+```
+
+Son 858782 casos y 5 variables. Los nombres de estas variables son:
+
+```{r}
+names(base)
+```
+
+Y la base se ve así:
+
+```{r}
+head(base)
+```
+
+Ahora probemos algunas funciones para seguir explorando la base
+
+```{r}
+table(base$sexo)
+```
+
+Podemos ver la cantidad de nombres "F" (femenino), "M" (masculino) e "I" (indefinido) inscritos entre 1920 y 2021.
+
+Pueden buscar sus nombres y probar, utilizamos la funcion *filter* del paquete *dplyr*
+
+```{r}
+filter(base, nombre=="Kevin")
+```
+
+E incluso pueden ver la cantidad de personas con su nombre, en el mismo año que ustedes nacieron
+
+```{r}
+d <- filter(base, nombre=="Kevin" & anio==1996)
+sum(d$n)
+```
+
+
