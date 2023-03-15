@@ -5,9 +5,11 @@ lang: es
 ---
 
 ## Documento de presentación
- 
+
+
 <iframe src=/slides/01-clase1/01-clase1.html height="550" width=100% allowfullscreen="true">
 </iframe> 
+
 
 
 ## Lecturas
