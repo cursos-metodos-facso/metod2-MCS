@@ -235,7 +235,7 @@ Introducción a R y RStudio
 
 
 .center[
-![:scale 79%](http://wiki.imbiv.unc.edu.ar/images/Curva_de_aprendizaje.png)
+![:scale 79%](../../files/img/Curva_de_aprendizaje.png)
 ]
 
 .small[.right[fuente: [Guía de campo de R](http://wiki.imbiv.unc.edu.ar/index.php/Gu%C3%ADa_de_campo_de_R)]
