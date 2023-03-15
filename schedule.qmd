@@ -19,7 +19,7 @@ Los dos componentes centrales del curso son las clases teóricas y las actividad
 | |<i class="fas fa-chalkboard-teacher"></i>  Clases  |  <i class="fas fa-user-edit"></i>  Prácticas y evaluaciones | <i class="fas fa-book-reader"></i> Lecturas y material adicional
 -----|----|-----------|-----------
 <font color="orange"> **Marzo** </font> |   |   |
-Viernes 17 | [**1. Presentación e introducción**](/content/01-content.html)  | -  | - Leer detalladamente [programa del curso](syllabus.html)
+Viernes 17 | [**00. Presentación**](/content/01-content.html) e [**01. introducción**](/content/02-content.html)  | [**1. Aproximación inicial a R**](/resource/01-resource.html)  | - Leer detalladamente [programa del curso](syllabus.html)
 
 ### UNIDAD 1: Estadística descriptiva
 

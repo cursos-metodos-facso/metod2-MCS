@@ -1,5 +1,5 @@
 ---
-title: "Práctica 1. Preparación de datos en R"
+title: "Práctica 1. Aproximación inicial a R"
 subtitle: "Metodología I - Magíster en Ciencias Sociales"
 linktitle: "Práctica 1: Preparación datos"
 date: "2023-03-17"
