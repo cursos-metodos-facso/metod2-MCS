@@ -63,9 +63,9 @@ About macros.js: permite escalar las imágenes como [scale 50%](path to image), 
 
 .pull-left[
 # Metodología I
-## **Juan Carlos Castillo** (oficina 325)
-## **Pablo Perez Ahumada** (oficina 319)
-## **Kevin Carrasco** (oficina 328)
+## **Juan Carlos Castillo**
+## **Pablo Perez Ahumada**
+## **Kevin Carrasco**
 ## Sociología FACSO - UChile
 ## 1er Sem 2023 
 ## [.green[metod1-mcs.netlify.com]](https://metod1-mcs.netlify.com)
@@ -123,16 +123,16 @@ class: inverse, bottom, right, animated, slideInRight
 <br>
 <br>
 
-# .center[**metod1-mcs.netlify.app**]
+# .center[[**metod1-mcs.netlify.app**](https://metod1-mcs.netlify.app/)]
 
 ---
 class: front
 
 .pull-left[
 # Metodología I
-## **Juan Carlos Castillo** (oficina 325)
-## **Pablo Perez Ahumada** (oficina 319)
-## **Kevin Carrasco** (oficina 328)
+## **Juan Carlos Castillo**
+## **Pablo Perez Ahumada**
+## **Kevin Carrasco**
 ## Sociología FACSO - UChile
 ## 1er Sem 2023 
 ## [.green[metod1-mcs.netlify.com]](https://metod1-mcs.netlify.com)
