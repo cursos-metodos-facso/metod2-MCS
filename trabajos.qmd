@@ -42,7 +42,7 @@ Es posible utilizar un estudio distinto a los propuestos y que se acerque a sus 
 
 Entrega:
 
-- Jueves 21 de Marzo a través de UCursos, sección tareas
+- Viernes 21 de Abril a través de UCursos, sección tareas
 - Formato Tradicional: archivo .pdf en tamaño carta o A4, letra Times New Roman, tamaño 12, interlineado 1,5, márgenes normales (2,5 cm superior e inferior, 3 cm derecho e izquierdo). Se considerará positivamente la entrega de reportes elaborados en RMarkdown
 - no más de 10 páginas
 - incluir referencias de la literatura / bases de datos revisadas

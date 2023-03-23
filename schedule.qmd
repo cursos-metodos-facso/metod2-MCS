@@ -25,7 +25,7 @@ Viernes 17 | [**00. Presentación**](/content/01-content.html) e [**01. introduc
 
 |||
 -----|----|-----------|-----------
-Viernes 24 | [**2.Operacionalización de variables **](/content/02-content.html)   |  -  | - [Wickham & Grolemund, (2017). cap. 1 Introducción](https://es.r4ds.hadley.nz/introducci%C3%B3n.html) <br>
+Viernes 24 | [**2.Operacionalización de variables **](/content/03-content.html)   |  [**2.Operacionalización de variables**](/resource/02-resource.html) | - [Wickham & Grolemund, (2017). cap. 1 Introducción](https://es.r4ds.hadley.nz/introducci%C3%B3n.html) <br>
 Viernes 31 | [**3. Visualización de datos**](/content/03-content.html)  | -  | - [Wickham & Grolemund, (2017). cap. 2 Explorar](https://es.r4ds.hadley.nz/explorar-introduccion.html)
 <font color="orange"> **Abril** </font> |   |   |
 Viernes 07 | Viernes santo  |   |

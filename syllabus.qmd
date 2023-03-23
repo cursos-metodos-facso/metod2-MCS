@@ -134,6 +134,20 @@ Al concluir el curso lo/as estudiantes deberán haber alcanzado los siguientes r
 
 - Representación gráfica (cálculo de probabilidades predichas) 
 
+## Bibliografía
+
+Wickham, Hadley & Grolemund, Garrett (2017). R for Data Science. Visualize, model, transform, tidy and import data. / Versión en español disponible [acá](https://es.r4ds.hadley.nz/)
+
+[Moore, D. S., & Comas, J. (2010). Estadística aplicada básica. Barcelona: Antoni Bosch.](resource/moore2010.pdf)
+
+[Wooldridge, J. M. (2008). Introducción a la econometría: un enfoque moderno. Paraninfo Cengage Learning.](wooldridge2008)
+
+[Camarero, et al (2017) Regresión Logística: Fundamentos y aplicación a la investigación sociológica.](https://www2.uned.es/socioestadistica/Multivariante/Odd_Ratio_LogitV2.pdf)
+
+Hair, Joseph F., et al. (2004). Análisis multivariante. 5ta ed. Madrid: Prentice Hall.
+
+[Charte, Francisco (2014). Análisis exploratorio y Visualización de datos con R.](http://www.fcharte.com/libros/ExploraVisualizaConR-Fcharte.pdf)
+
 
 
 ## Metodología
