@@ -8,13 +8,9 @@ lang: es
 
 # Presentación
 
-## Objetivos de la práctica
-
-# Presentación
-
 ## Objetivo de la práctica
 
-El desarrollo de esta guía tiene por objetivo revisar algunos procedimientos básicos de la preparación de datos con R, que son necesarios para luego poder aplicar los contenidos más específicos de este curso.
+El desarrollo de esta guía tiene por objetivo revisar algunos procedimientos básicos de la preparación de datos con R, que son necesarios para luego poder analizar e interpretar los datos.
 
 Por temas de orden y reproducibilidad, en este curso vamos a separar en **dos momentos** el trabajo con datos, y dos archivos de código correspondientes:
 
@@ -26,7 +22,9 @@ Por temas de orden y reproducibilidad, en este curso vamos a separar en **dos mo
 
 ![](images/produccion.png)
 
-Tanto la preparación como el análisis (que son parte del concepto más general de procesamiento) quedan registrados cada en un _archivo de código_. Los detalles de este tipo de archivos se pueden revisar [aquí](/class/#codigoR). <span class="sidenote">**Archivo de código R**: archivo con extensión .R donde se almacena el código de análisis. Para generarlo desde RStudio: _File > New File > R Script_ (o ctrl+shift+N), y para grabarlo  _File > Save (o ctrl+s)_, y darle nombre la primera vez (recordar: sin tilde ni ñ, y evitar espacios) </span>
+Tanto la preparación como el análisis (que son parte del concepto más general de procesamiento) quedan registrados cada uno en un _archivo de código_.
+
+<span class="sidenote">**Archivo de código R**: archivo con extensión .R donde se almacena el código de análisis. Para generarlo desde RStudio: _File > New File > R Script_ (o ctrl+shift+N), y para grabarlo  _File > Save (o ctrl+s)_, y darle nombre la primera vez (recordar: sin tilde ni ñ, y evitar espacios) </span>
 
 El documento de **código de preparación** posee 5 partes, más una sección de identificación inicial:
 
@@ -36,26 +34,28 @@ El documento de **código de preparación** posee 5 partes, más una sección de
 3. Selección de variables a utilizar
 4. Procesamiento de variables: en este punto, por cada variable se realiza lo siguiente:
     a. Descriptivo básico
-    b. Recodificación: (datos perdidos y valores (en caso de ser necesario)
+    b. Recodificación: datos perdidos y valores (en caso de ser necesario)
     c. Etiquetamiento: de variable y valores (en caso de ser necesario)
     e. Otros ajustes
-
 
 5. Generación de base de datos preparada para el análisis.
 
 Al final de esta práctica la idea es que cada un_ elabore y entienda su propio documento de preparación de datos.
 
-En el ejemplo vamos a procesar variables de meritocracia y estatus (objetivo y subjetivo) utilizando los datos de la encuesta [ELSOC](https://coes.cl/encuesta-panel/) .
+En el ejemplo vamos a procesar variables de confianza en instituciones políticas y variables de caracterización sociodemográfica utilizando los datos de la encuesta [Latinobarómetro](https://www.latinobarometro.org/lat.jsp) .
 
 ## Antecedentes de los datos a utilizar
 
-El Estudio Longitudinal Social de Chile (ELSOC) es una encuesta desarrollada para analizar longitudinalmente la evolución del conflicto y cohesión en la sociedad chilena.
+Latinobarómetro es un estudio de opinión pública que aplica anualmente alrededor de 20.000 entrevistas en 18 países de América Latina representando a más de 600 millones de habitantes
 
-Uno de los módulos de **ELSOC** es "Desigualdad y Legitimidad". Este módulo busca estudiar las percepciones y atribuciones asociadas a las desigualdades sociales. Se ve motivado por el interés de comprender cómo las personas perciben, legitiman y reproducen las diferencias de ingresos, estatus y poder presentes en el Chile contemporáneo.
+  "Los gobiernos latinoamericanos, que venían en declive junto con sus democracias desde inicios de la década de 2010, como reflejan los datos de Latinobarómetro, llegaron a fines de 2018 al annus horribilis con la caída de Nicaragua y Venezuela desde su condición de democracias para entrar en la categoría de autocracias y dictadura. 
 
-El presente ejercicio tiene por objetivo el procesar los datos para obtener las variables relevantes para el estudio de la **Percepción de Meritocracia**, entendida como el grado en que los individuos consideran que su sociedad cumple con los principios de una meritocracia, es decir, que funciona como un sistema que asigna recompensas en función del esfuerzo y las habilidades. Para ello, junto con variables de meritocracia, consideraremos también variables de estatus (educación y estatus subjetivo), y variables de caracterización sociodemográfica (sexo y edad).
+  De los hiperpresidentes de la primera década del siglo con altos niveles de crecimiento en todos los países y altos niveles de aprobación, la región pasó en la segunda década a los subpresidentes, con una baja en aprobación de gobierno a la mitad, en menos de 10 años. Este rechazo al desempeño de las elites gobernantes, indica su fracaso a fines de 2019 en varios países de la región." (Latinobarómetro, informe 2021, p. 7)
 
-# Preparación de datos ELSOC 2016
+
+El presente ejercicio tiene por objetivo el procesar los datos para obtener las variables relevantes para el estudio de la **Confianza en instituciones políticas**, entendida como el grado en que los individuos confian en distintas instituciones políticas a nivel nacional, como el gobierno, la justicia, los partidos políticos, etc. Para ello, junto con variables de confianza, consideraremos también variables de estatus (educación), y variables de caracterización sociodemográfica (sexo y edad).
+
+# Preparación de datos Latinobarómetro 2020
 
 ## 1. Librerías principales (de R) a utilizar en el análisis{#librerias}
 
@@ -72,7 +72,7 @@ Y en adelante, las librerías se cargan así <span class="sidenote"> pacman::p_l
 
 
 ```{r}
-pacman::p_load(dplyr, sjmisc, car, sjlabelled, stargazer)
+pacman::p_load(dplyr, sjmisc, car, sjlabelled, stargazer, haven)
 ```
 
 
@@ -99,62 +99,90 @@ La función `rm(list=ls())` permite comenzar con un espacio de trabajo (environm
 
 **Datos**
 
-Las bases de datos se pueden cargar de un archivo local o en línea. Para este caso utilizaremos un archivo en línea que viene en formato RData: **ELSOC_W01_v3.10.RData**. <span class="sidenote">**Abrir bases de datos en otros formatos**: Los formatos mas comunes en que se almacenan las bases de datos son .dta (Stata) y .sav (Spss). Para abrir desde R utlilizamos la librería `haven` y sus funciones read_dta y read_sav según corresponda. Ej: `datos <- read_dta("base_casen.dta")`. Recordar antes instalar/cargar la librería: `pacman::p_load(haven)`   </span>
+Las bases de datos se pueden cargar de un archivo local o en línea. Para este caso utilizaremos un archivo en línea que viene en formato RData: **latinobarometro2020.RData**. <span class="sidenote">**Abrir bases de datos en otros formatos**: Los formatos mas comunes en que se almacenan las bases de datos son .dta (Stata),  .sav (Spss) y RData (R). Para abrir desde R utlilizamos la librería `haven` y sus funciones read_dta y read_sav según corresponda. Ej: `datos <- read_dta("base_casen.dta")`. Recordar antes instalar/cargar la librería: `pacman::p_load(haven)`   </span>
 
-```{r eval=TRUE}
+```{r eval=FALSE, }
 #cargamos la base de datos desde internet
-load(url("https://multivariada.netlify.com/assignment/data/original/ELSOC_W01_v3.10.RData"))
+load(url("https://github.com/Kevin-carrasco/metod1-MCS/raw/main/files/data/external_data/latinobarometro2020.RData"))
 ```
+
+o de manera local:
+
+```{r}
+latinobarometro2020 <- read_dta("../files/data/external_data/latinobarometro2020.dta", encoding = "UTF-8")
+```
+
 
 La base de datos aparece como un objeto en nuestro espacio de trabajo, con el nombre original con la que fue guardada (elsoc_2016):
 
 ![](images/basecargada.png)
 
-Realizamos un chequeo básico de la lectura de datos: nombres de las variables y tamaño de la base en términos de casos y variables (en este ejemplo, `r dim(elsoc_2016)[1]` casos y `r dim(elsoc_2016)[2]` variables).
+Realizamos un chequeo básico de la lectura de datos: nombres de las variables y tamaño de la base en términos de casos y variables (en este ejemplo, `r dim(latinobarometro2020)[1]` casos y `r dim(latinobarometro2020)[2]` variables).
 
 ```{r}
-dim(elsoc_2016) # dimension de la base
+dim(latinobarometro2020) # dimension de la base
 ```
 Y si se quiere revisar en formato de planilla de datos:
 
 ```{r}
-View(elsoc_2016)
+View(latinobarometro2020)
 ```
 
 ## 3. Selección de variables a utilizar
 
 Este paso consiste en crear un subset reducido de datos que contenga solo las variables de interés. Para ello:
 
-1. Se identifica el nombre de las variables que registran la información de preguntas o items del instrumento: esto aparece en el libro de códigos y/o en el cuestionario, o también se puede hacer buscando en la base de datos mediante alguna palabra clave asociada a la pregunta. Por ejemplo, si queremos buscar variables asociadas a educación, utilizamos la función `find_var` (de `sjmisc`, librería que cargamos en el paso 1), que nos entrega nombre de la variable en columna var.name. Por ejemplo, si buscamos alguna variable asociada al concepto _esfuerzo_:
+1. Se identifica el nombre de las variables que registran la información de preguntas o items del instrumento: esto aparece en el libro de códigos y/o en el cuestionario, o también se puede hacer buscando en la base de datos mediante alguna palabra clave asociada a la pregunta. Por ejemplo, si queremos buscar variables asociadas a educación, utilizamos la función `find_var` (de `sjmisc`, librería que cargamos en el paso 1), que nos entrega nombre de la variable en columna var.name. Por ejemplo, si buscamos alguna variable asociada al concepto _Confianza_:
 
 ```{r}
-find_var(data = elsoc_2016,"esfuerzo")
+find_var(data = latinobarometro2020,"Confianza")
 ```
 
-Nos informa que esta variable es la `c18_09`.
+Nos informa que hay una serie de variables relacionadas con confianza interpersonal y con instituciones. Probemos con la variable `p13st_e`.
 
 
-Mediante la función `select` de `dplyr`, seleccionamos cada una de nuestras variables de interés y creamos una nueva base con el nombre `proc_elsoc`, donde "proc" hace referencia a base procesada:
+Mediante la función `select` de `dplyr`, seleccionamos cada una de nuestras variables de interés y creamos una nueva base con el nombre `proc_data`, donde "proc" hace referencia a base procesada:
 
 ```{r}
-proc_elsoc <- elsoc_2016 %>% select(c18_09, # percepción meritocracia esfuerzo
-                          c18_10, # percepción meritocracia talento
-                          d01_01, # estatus social subjetivo
-                          m01,    # nivel educacional
-                          m0_sexo,# sexo
-                          m0_edad)# edad
+proc_data <- latinobarometro2020 %>% select(p13st_e, # Confianza en el Gobierno
+                          p13st_d, # Confianza en el congreso
+                          p13st_f, # Confianza en el Poder Judicial
+                          p13st_g, # Confianza en los partidos políticos
+                          reeduc_1,# nivel educacional
+                          sexo,# sexo
+                          edad,# edad
+                          idenpa) # pais 
 
 # Comprobar
-names(proc_elsoc)
+names(proc_data)
 ```
 
 Mediante el comando `get_label` obtenemos el atributo label de las variables.
 
 ```{r}
-sjlabelled::get_label(proc_elsoc)
+sjlabelled::get_label(proc_data)
 ```
 
-Podemos ver que son muy largas, por lo tanto, es necesario cambiarlas por etiquetas más cortas.
+Podemos ver que son largas o con códigos poco informativos, por lo tanto, es necesario cambiarlas por etiquetas más cortas y de fácil identificación.
+
+```{r echo=FALSE}
+load(url("https://github.com/Kevin-carrasco/metod1-MCS/raw/main/files/data/external_data/latinobarometro2020.RData"))
+proc_data <- latinobarometro2020 %>% select(p13st_e, # Confianza en el Gobierno
+                          p13st_d, # Confianza en el congreso
+                          p13st_f, # Confianza en el Poder Judicial
+                          p13st_g, # Confianza en los partidos políticos
+                          reeduc_1,# nivel educacional
+                          sexo,# sexo
+                          edad,# edad
+                          idenpa) # pais 
+```
+
+
+Para facilitar el análisis, vamos a filtrar la base de datos para quedarnos solo con los casos de Chile. Para esto utilizamos la función `filter` de `dplyr`. Si revisamos el libro de códigos, el identificador de Chile es 152
+
+```{r}
+proc_data <- proc_data %>% dplyr::filter(idenpa==152)
+```
 
 ## 4. Procesamiento de variables
 
@@ -167,71 +195,102 @@ d. Otros ajustes
 
 Y se recomienda también un descriptivo final para revisar que el procesamiento de cada variable está ok.
 
-### 4.1 Percepción de meritocracia
+### 4.1 Confianza en el Gobierno
 
-En ELSOC, las variables que permiten medir la percepción de las personas con respecto al funcionamiento de la meritocracia en Chile son las siguientes:
+En Latinobarómetro, lass variables que permiten medir la Confianza en instituciones políticas en Chile son las siguientes:
 
-* [`c18_09`]: "Grado de acuerdo: Las personas son recompensadas por sus esfuerzos" (1 = Totalmente en desacuerdo; 5 = Totalmente de acuerdo)
-* [`c18_10`]: "Grado de acuerdo: Las personas son recompensadas por su inteligencia" (1 = Totalmente en desacuerdo; 5 = Totalmente de acuerdo)
+* [`p13st_e`]: "P13ST.E Confianza en el Gobierno" (1 = Mucha; 4 = Ninguna)
+* [`p13st_d`]: "P13ST.D Confianza en el Congreso" (1 = Mucha; 4 = Ninguna)
+* [`p13st_f`]: "P13ST.F Confianza en el Poder Judicial" (1 = Mucha; 4 = Ninguna)
+* [`p13st_g`]: "P13ST.G Confianza en los Partidos Políticos" (1 = Mucha; 4 = Ninguna) 
 
 _a. Descriptivo_
 
 Para los descriptivos se utilizará la función `frq`, de la librería `sjmisc`:
 
 ```{r}
-frq(proc_elsoc$c18_09)
-frq(proc_elsoc$c18_10)
+frq(proc_data$p13st_e)
 ```
 
-En ambas variables vemos valores asociados a la opción "No responde" (-999) y "No sabe" (-888), que corresponde definirlos como casos perdidos (en el caso de R, como casos NA). El resto de los valores y etiquetas se encuentran en orden, así que en la recodificiación solo nos haremos cargo de los casos perdidos.
+En esta variable vemos valores asociados a la opción "No contesta" (-2) y "No sabe" (-1), que corresponde definirlos como casos perdidos (en el caso de R, como casos NA). El resto de los valores y etiquetas se encuentran en un orden contraintuitivo (mayor valor indica menos confianza), así que en la recodificiación nos haremos cargo de los casos perdidos y de reordenar las categorías.
 
 _b. Recodificación_
 
 Para recodificar utilizamos la función `recode`, de la librería `car`
 
 ```{r}
-proc_elsoc$c18_09 <- recode(proc_elsoc$c18_09, "c(-888,-999)=NA")
-proc_elsoc$c18_10 <- recode(proc_elsoc$c18_10, "c(-888,-999)=NA")
+proc_data$p13st_e <- recode(proc_data$p13st_e, "c(-2,-1)=NA")
+proc_data$p13st_d <- recode(proc_data$p13st_d, "c(-2,-1)=NA")
+proc_data$p13st_f <- recode(proc_data$p13st_f, "c(-2,-1)=NA")
+proc_data$p13st_g <- recode(proc_data$p13st_g, "c(-2,-1)=NA")
+```
+
+**nota**: con la función `set_na` de la librería `sjmisc` podemos recodificar toda la base de datos con un solo código, pero debemos estar completamente segur-s de que estos valores no tienen otra categoría asociada en otra variable.
+
+```{r eval=FALSE}
+proc_data <- proc_data %>% set_na(., na = c(-2, -1))
+```
+
+Para reordenar las categorías volvemos a utilizar la función `recode`, de la librería `car`
+
+```{r}
+proc_data$p13st_e <- recode(proc_data$p13st_e, "1=3; 2=2; 3=1; 4=0")
+proc_data$p13st_d <- recode(proc_data$p13st_d, "1=3; 2=2; 3=1; 4=0")
+proc_data$p13st_f <- recode(proc_data$p13st_f, "1=3; 2=2; 3=1; 4=0")
+proc_data$p13st_g <- recode(proc_data$p13st_g, "1=3; 2=2; 3=1; 4=0")
 ```
 
 _c - Etiquetado_
 
-Vamos a dar un nombre más sustantivo a las variables  con la función `rename`, de la librería `dplyr`:
+Vamos a dar un nombre más sustantivo a las variables con la función `rename`, de la librería `dplyr`:
 
 ```{r}
-proc_elsoc <- proc_elsoc %>% rename("mesfuerzo"=c18_09, # meritocracia esfuerzo
-                                    "mtalento" =c18_10) # meritocracia talento
+proc_data <- proc_data %>% rename("conf_gob"=p13st_e, # Confianza en el gobierno
+                                  "conf_cong"=p13st_d, # Confianza en el congreso
+                                  "conf_jud"=p13st_f, # Confianza en el Poder Judicial
+                                  "conf_partpol"=p13st_g) # Confianza en los partidos políticos 
 
 ```
 
-Además de cambiar el nombre, queremos cambiar la etiqueta de la variable.
+**nota**: recodificación más rápida si estamos segur-s de todos los valores
 
-```{r}
-get_label(proc_elsoc$mesfuerzo)
-proc_elsoc$mesfuerzo <- set_label(x = proc_elsoc$mesfuerzo,label = "Recompensa: esfuerzo")
-
-get_label(proc_elsoc$mtalento)
-proc_elsoc$mtalento  <- set_label(x = proc_elsoc$mtalento, label = "Recompensa: talento")
+```{r eval=FALSE}
+proc_data <- proc_data %>% mutate_at(vars(starts_with("conf")), ~(4-.))
 ```
 
+Además de cambiar el nombre, queremos cambiar las etiquetas de las variables.
+
+```{r}
+proc_data$conf_gob <- set_label(x = proc_data$conf_gob,label = "Confianza: Gobierno")
+get_label(proc_data$conf_gob)
+
+proc_data$conf_cong  <- set_label(x = proc_data$conf_cong, label = "Confianza: Congreso")
+get_label(proc_data$conf_cong)
+
+proc_data$conf_jud  <- set_label(x = proc_data$conf_jud, label = "Confianza: Poder judicial")
+get_label(proc_data$conf_jud)
+
+proc_data$conf_partpol  <- set_label(x = proc_data$conf_partpol, label = "Confianza: Partidos politicos")
+get_label(proc_data$conf_partpol)
+```
 
 _d. Otros ajustes_
 
-Para este caso vamos a crear una variable que sea el promedio de los dos items de meritocracia.
+Para este caso vamos a crear una variable que sea la suma de los cuatro items de confianza.
 
 ```{r}
-proc_elsoc$pmerit <- (proc_elsoc$mesfuerzo+proc_elsoc$mtalento)/2
-summary(proc_elsoc$pmerit)
+proc_data$conf_inst <- (proc_data$conf_gob+proc_data$conf_cong+proc_data$conf_jud+proc_data$conf_partpol)
+summary(proc_data$conf_inst)
 ```
 
 ```{r}
-get_label(proc_elsoc$pmerit)
+get_label(proc_data$conf_inst)
 ```
 
-Vemos que todavía tiene la etiqueta de la variable "Recompensa: esfuerzo"
+Vemos que una etiqueta de la variable anterior.
 
 ```{r}
-proc_elsoc$pmerit  <- set_label(x = proc_elsoc$pmerit, label = "Meritocracia promedio")
+proc_data$conf_inst  <- set_label(x = proc_data$conf_inst, label = "Confianza en instituciones")
 ```
 
 
@@ -240,134 +299,120 @@ _Revisión final_
 Nuevamente un descriptivo de cada variable para confirmar que el procesamiento está ok:
 
 ```{r}
-frq(proc_elsoc$mesfuerzo)
-frq(proc_elsoc$mtalento)
-frq(proc_elsoc$pmerit)
+frq(proc_data$conf_gob)
+frq(proc_data$conf_cong)
+frq(proc_data$conf_inst)
 ```
 
-<div class="alert alert-info">
-**Sobre generación de índices**: en este caso aplicamos un promedio simple de dos items, pero hay ciertas consideraciones adicionales a tener cuando existen casos perdidos y también cuando son más de 2 items. Para esto, revisar la guía adicional sobre [índices y transformación de variables
-](/assignment/11-code/)
-</div>
+Vemos que los valores (labels) de cada categoría de las primeras variables que recodificamos no se corresponden con el nuevo valor. Para re-etiquetar valores usamos la función `set_labels`, de la librería `sjlabelled`
 
+```{r}
+proc_data$conf_gob <- set_labels(proc_data$conf_gob,
+            labels=c( "Ninguna"=0,
+                      "Poca"=1,
+                      "Algo"=2,
+                      "Mucha"=3))
 
+proc_data$conf_cong <- set_labels(proc_data$conf_cong,
+            labels=c( "Ninguna"=0,
+                      "Poca"=1,
+                      "Algo"=2,
+                      "Mucha"=3))
+
+proc_data$conf_jud <- set_labels(proc_data$conf_jud,
+            labels=c( "Ninguna"=0,
+                      "Poca"=1,
+                      "Algo"=2,
+                      "Mucha"=3))
+
+proc_data$conf_partpol <- set_labels(proc_data$conf_partpol,
+            labels=c( "Ninguna"=0,
+                      "Poca"=1,
+                      "Algo"=2,
+                      "Mucha"=3))
+```
+
+y volvemos a revisar
+
+```{r}
+frq(proc_data$conf_gob)
+frq(proc_data$conf_cong)
+```
 
 #### 4.2. Educación
 
-* [`m01`] = ¿Cuál es su nivel educacional? Indique el tipo de estudio actual (si estudia actualmente) o el último tipo aprobado (si no estudia actualmente).
+* [`reeduc_1`] = REEDUC.1 Nivel de estudios alcanzado - Entrevistado (recodificado)
 
 _a. Descriptivo_
 
 ```{r}
-frq(proc_elsoc$m01)
+frq(proc_data$reeduc_1)
 ```
 
 _b. Recodificación_
 
-- Datos perdidos:
-
-```{r}
-proc_elsoc$m01 <- recode(proc_elsoc$m01, "c(-888,-999)=NA")
-```
+- Vemos que no hay datos perdidos
 
 - Valores
 
-**Recodificación de acuerdo a las categorías [CINE 2011 (UNESCO)](http://uis.unesco.org/sites/default/files/documents/isced-2011-sp.pdf)**
+Para hacer más fácil el análisis, recodificamos en tres categorías (en este caso decisión arbitraria. Se debería tener una razón teórica para recodificar)
 
 ```
-1.  Sin	estudios                                = [CINE 0   ] =  1
-2.  Educacion Basica o Preparatoria incompleta  = [CINE 0   ] =  1
-3.  Educacion Basica o Preparatoria completa    = [CINE 1,2 ] =  2
-4.  Educacion Media o Humanidades incompleta    = [CINE 3   ] =  3
-5.  Educacion Media o Humanidades completa      = [CINE 3   ] =  3
-6.  Tecnico Superior incompleta                 = [CINE 5   ] =  4
-7.  Tecnico Superior completa                   = [CINE 5   ] =  4
-8.  Universitaria incompleta                    = [CINE 6   ] =  5
-9.  Universitaria completa                      = [CINE 6   ] =  6
-10. Estudios de posgrado (magister o doctorado) = [CINE 7, 8] =  6
+1.  Analfabeto                                =   Educacion basica    =   1
+2   Básica incompleta                         =   Educacion basica    =   1
+3.  Básica completa                           =   Educacion basica    =   1
+4.  Secundaria, media, técnica incompleta     =   Educacion media     =   2
+5.  Secundaria, media, técnica completa       =   Educacion media     =   2
+6.  Superior incompleta                       =   Educacion superior  =   3
+7.  Superior completa                         =   Educacion superior  =   3
+
 ```
 ```{r}
 # recodificacion usando funcion 'recode' de la libreria car
-proc_elsoc$m01 <- car::recode(proc_elsoc$m01, "c(1,2)=1; c(3)=2;c(4,5)=3;c(6,7)=4;c(8,9,10)=5")
+proc_data$reeduc_1 <- car::recode(proc_data$reeduc_1, "c(1,2,3)=1; c(4,5)=2; c(6,7)=3")
 ```
 
 Comprobar con un nuevo descriptivo:
 
 ```{r}
-frq(proc_elsoc$m01)
+frq(proc_data$reeduc_1)
 ```
 
-Se observa que los valores coinciden con la recodificación (los casos se acumulan entre las categorías 1 y 5), pero las etiquetas ahora no coinciden; se soluciona en el siguiente paso.
-
+Se observa que los valores coinciden con la recodificación (los casos se acumulan entre las categorías 1 y 3), pero las etiquetas ahora no coinciden; se soluciona en el siguiente paso.
 
 _c. Etiquetado_
 
 Para re-etiquetar valores usamos la función `set_labels`, de la librería `sjlabelled`
 
 ```{r}
-proc_elsoc$m01 <- set_labels(proc_elsoc$m01,
-            labels=c( "Primaria incompleta menos"=1,
-                      "Primaria y secundaria baja"=2,
-                      "Secundaria alta"=3,
-                      "Terciaria ciclo corto"=4,
-                      "Terciaria y Postgrado"=5))
+proc_data$reeduc_1 <- set_labels(proc_data$reeduc_1,
+            labels=c( "Educacion basica"=1,
+                      "Educacion media"=2,
+                      "Educacion superior"=3))
 ```
 
 Luego renombramos la variable con un nombre más sustantivo
 
 ```{r}
-proc_elsoc <- rename(proc_elsoc,"edcine"=m01)
+proc_data <- rename(proc_data,"educacion"=reeduc_1)
 ```
 
 Además de cambiar el nombre, queremos cambiar la etiqueta de la variable.
 
 ```{r}
-get_label(proc_elsoc$edcine)
-proc_elsoc$edcine <- set_label(x = proc_elsoc$edcine,label = "Educación")
+get_label(proc_data$educacion)
+proc_data$educacion <- set_label(x = proc_data$educacion,label = "Educación")
 ```
 
 
-### 4.3. Estatus subjetivo
+### 4.3. Sexo
 
-_a. Descriptivo_
-
-* [`d01_01`]: "Estatus Social Subjetivo: Donde se ubicaria ud. en la sociedad chilena" (0 = el nivel mas bajo; 10 = el nivel mas alto)
-
-
-```{r, results='hold'}
-frq(proc_elsoc$d01_01)
-summary(proc_elsoc$d01_01)
-```
-
-_b. Recodificación_
-
-```{r}
-proc_elsoc$d01_01 <- recode(proc_elsoc$d01_01, "c(-888,-999)=NA")
-```
-
-_c. Etiquetado_
-
-- Cambio de nombre de variable a etiqueta más sustantiva ess (estatus social subjetivo)
-
-```{r}
-proc_elsoc <- proc_elsoc %>% rename("ess"=d01_01) # estatus social subjetivo
-```
-
-Además de cambiar el nombre, queremos cambiar la etiqueta de la variable.
-
-```{r}
-get_label(proc_elsoc$ess)
-proc_elsoc$ess <- set_label(x = proc_elsoc$ess,label = "Estatus Social Subjetivo")
-```
-
-### 4.4. Sexo
-
-* [`m0_sexo`]	=	Indicar el sexo del entrevistado.
+* [`sexo`]	=	SEXO Sexo
 
 _a. Descriptivo_
 
 ```{r}
-frq(proc_elsoc$m0_sexo)
+frq(proc_data$sexo)
 ```
 
 _b. Recodificación_
@@ -375,7 +420,7 @@ _b. Recodificación_
 En general esta variable no tiene problemas de casos perdidos ni de etiquetas, pero de todas maneras vamos a hacer un cambio de acuerdo a convenciones en análisis de datos, donde por lo general hombres tienen valor 0 y mujeres 1:
 
 ```{r}
-proc_elsoc$m0_sexo <- car::recode(proc_elsoc$m0_sexo, "1=0;2=1")
+proc_data$sexo <- car::recode(proc_data$sexo, "1=0;2=1")
 ```
 
 _c. Etiquetado_
@@ -383,69 +428,57 @@ _c. Etiquetado_
 Y ahora cambiamos las etiquetas de acuerdo a la recodificación anterior:
 
 ```{r}
-proc_elsoc$m0_sexo <- set_labels(proc_elsoc$m0_sexo,
+proc_data$sexo <- set_labels(proc_data$sexo,
             labels=c( "Hombre"=0,
                       "Mujer"=1))
 ```
 
 
-También el nombre de la variable a algo más simple:
+También queremos cambiar la etiqueta de la variable.
 
 ```{r}
-proc_elsoc <- rename(proc_elsoc,"sexo"=m0_sexo)
-```
-
-Además de cambiar el nombre, queremos cambiar la etiqueta de la variable.
-
-```{r}
-get_label(proc_elsoc$sexo)
-proc_elsoc$sexo <- set_label(x = proc_elsoc$sexo,label = "Sexo")
+get_label(proc_data$sexo)
+proc_data$sexo <- set_label(x = proc_data$sexo,label = "Sexo")
 ```
 
 Revisar con un nuevo descriptivo:
 
 ```{r}
-frq(proc_elsoc$sexo)
+frq(proc_data$sexo)
 ```
 
-### 4.5 Edad
+### 4.4 Edad
 
-* [`m0_edad`]	=	¿Cuáles su edad? (años cumplidos).
+* [`edad`]	=	EDAD Edad.
 
 
 _a. Descriptivo_
 
 ```{r}
-frq(proc_elsoc$m0_edad)
+frq(proc_data$edad)
 ```
 
 _b. Recodificación_: no es necesario en este caso
 
 _c. Etiquetado_
 
-Cambio del nombre de la variable a algo más simple:
+Cambio la etiqueta de la variable.
 
 ```{r}
-proc_elsoc <- rename(proc_elsoc,"edad"=m0_edad)
-```
-
-Además de cambiar el nombre, queremos cambiar la etiqueta de la variable.
-
-```{r}
-get_label(proc_elsoc$edad)
-proc_elsoc$edad <- set_label(x = proc_elsoc$edad,label = "Edad")
+get_label(proc_data$edad)
+proc_data$edad <- set_label(x = proc_data$edad,label = "Edad")
 ```
 
 ## 5. Generación de base de datos procesada para el análisis
 
 Antes de guardar la base procesada, revisamos nuevamente todas las variables con una tabla descriptiva general mediante la función `stargazer` (de la librería homónima)
 
-Primero vamos a reformatear el objeto proc_elsoc como base de datos (as.data.frame), paso necesario para que sea reconocido como tal por `stargazer`
+Primero vamos a reformatear el objeto proc_data como base de datos (as.data.frame), paso necesario para que sea reconocido como tal por `stargazer`
 
 
 ```{r}
-proc_elsoc <-as.data.frame(proc_elsoc)
-stargazer(proc_elsoc, type="text")
+proc_data <-as.data.frame(proc_data)
+stargazer(proc_data, type="text")
 ```
 <div class="alert alert-info">
 Si se desea modificar las columnas que aparecen en la tabla se puede ocupar la opción `summary.stat`, donde se pueden especificar:
@@ -468,14 +501,14 @@ Por ejemplo, si quiero una tabla solo con promedio, n, sd y p75: `stargazer(data
 El comando para guardar es `save`:
 
 ```{r eval=FALSE}
-save(proc_elsoc,file = "[ruta hacia carpeta local en su computador]/ELSOC_ess_merit2016.RData")
+save(proc_data,file = "[ruta hacia carpeta local en su computador]/ELSOC_ess_merit2016.RData")
 ```
 
 En este caso, seguimos una estructura de carpetas de datos, separando en una carpeta los datos originales, y en otra (proc) los datos procesados:
 
 
 ```{r eval=FALSE}
-save(proc_elsoc,file = "files/data/ELSOC_ess_merit2016.RData")
+save(proc_data,file = "files/data/latinobarometro_proc.RData")
 ```
 
 <div class="alert alert-info">
@@ -491,3 +524,26 @@ save(proc_elsoc,file = "files/data/ELSOC_ess_merit2016.RData")
 
 
 <div>
+
+
+## Descriptivos básicos de las variables
+
+Podemos conocer ciertas medidas de tendencia central utilizando algunas funciones de `dplyr`
+
+### Media por grupos
+
+```{r}
+proc_data %>% dplyr::group_by(sexo) %>% summarise(mean(conf_inst, na.rm=TRUE))
+```
+
+```{r}
+proc_data %>% dplyr::group_by(educacion) %>% summarise(mean(conf_inst, na.rm=TRUE))
+```
+
+### Representación
+
+```{r}
+library(sjPlot)
+sjt.xtab(proc_data$educacion, proc_data$conf_inst, encoding = "UTF-8")
+```
+
