@@ -231,8 +231,19 @@ Visualización de datos en R
 ---
 ## Tipos de tablas y tipos de gráficos
 
-Ejemplo tabla de frecuencias:
+Ejemplo tabla de descriptiva:
 
+```{r echo=FALSE}
+load(url("https://github.com/Kevin-carrasco/metod1-MCS/raw/main/files/data/latinobarometro_proc.RData"))
+pacman::p_load(dplyr, stargazer, ggplot2, summarytools, kableExtra)
+proc_data <- as.data.frame(proc_data)
+```
+
+```{r}
+sjmisc::descr(proc_data,
+      show = c("label","range", "mean", "sd", "NA.prc", "n"))%>%
+      kbl(format = "markdown")
+```
 
 
 ---
