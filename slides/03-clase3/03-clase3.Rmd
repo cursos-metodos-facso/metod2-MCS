@@ -289,14 +289,8 @@ sjPlot::sjt.xtab(proc_data$conf_gob, proc_data$sexo)
 
 Ejemplo gráfico de barras:
 
-```{r}
-sjPlot::plot_frq(proc_data$conf_inst,
-                 title = "Confianza en instituciones",
-                 type = "bar",
-                 axis.title = "Confianza en institucines",
-                 geom.colors = "coral") +
-  theme_bw()
-```
+![:scale 40%](../../files/img/graph1.png)
+
 
 
 ---
@@ -304,11 +298,8 @@ sjPlot::plot_frq(proc_data$conf_inst,
 
 Ejemplo gráfico de barras condicionado:
 
-```{r}
-proc_data$sexo <- as_factor(proc_data$sexo)
-ggplot(proc_data, aes(x = conf_inst, fill = sexo)) + 
-  geom_bar()
-```
+
+![:scale 40%](../../files/img/graph3.png)
 
 
 ---
@@ -316,11 +307,7 @@ ggplot(proc_data, aes(x = conf_inst, fill = sexo)) +
 
 Ejemplo Histograma:
 
-```{r}
-ggplot(proc_data, aes(x = as.numeric(edad))) +
-   geom_histogram(binwidth=0.6, colour="black", fill="yellow") +
-  theme_bw()
-```
+![:scale 40%](../../files/img/graph4.png)
 
 
 ---
@@ -328,10 +315,7 @@ ggplot(proc_data, aes(x = as.numeric(edad))) +
 
 .small[Ejemplo gráfico de cajas:]
 
-```{r}
-plot_grpfrq(proc_data$edad, proc_data$sexo,
-            type = "box")
-```
+![:scale 40%](../../files/img/graph.png)
 
 ---
 

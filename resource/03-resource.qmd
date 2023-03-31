@@ -222,8 +222,14 @@ proc_data %>% # se especifica la base de datos
 Esta asociación también se puede representar de manera más simple con un gráfico, en este caso de cajas o boxplot mediante la función `plot_grpfrq` de `sjPlot`:[sjPlot::plot_grpfrq]{.sidenote}
 
 ```{r warning=FALSE}
-plot_grpfrq(proc_data$conf_inst,proc_data$educacion,
+graph <- plot_grpfrq(proc_data$conf_inst,proc_data$educacion,
             type = "box")
+
+graph
+
+# y lo podemos guardar:
+
+ggsave(graph, file="files/img/graph.png")
 ```
 
 De manera alternativa, podemos seguir explorando nuestros datos con otros gráficos
@@ -242,20 +248,26 @@ graph1
 
 # y lo podemos guardar:
 
-ggsave(graph1, file="../../files/img/graph1.png")
+ggsave(graph1, file="files/img/graph1.png")
 
 ```
 
 Para varias variables univariadas:
 
 ```{r}
-sjPlot::plot_stackfrq(dplyr::select(proc_data, conf_gob,
+graph2 <- sjPlot::plot_stackfrq(dplyr::select(proc_data, conf_gob,
                                  conf_cong,
                                  conf_jud,
                                  conf_partpol),
                                  geom.colors = c("coral", "cadetblue"),
                                  title = "Confianza en instituciones políticas") +
   theme(legend.position="bottom")
+
+graph2
+
+# Guardamos
+
+ggsave(graph2, file="files/img/graph2.png")
 ```
 
 
@@ -264,21 +276,35 @@ Para asociación de dos variables:
 ```{r}
 proc_data$sexo <- as_factor(proc_data$sexo)
 
-proc_data %>% ggplot(aes(x = conf_inst, fill = sexo)) + 
+graph3 <- proc_data %>% ggplot(aes(x = conf_inst, fill = sexo)) + 
   geom_bar() +
   xlab("Confianza en instituciones") +
   ylab("Cantidad") + 
   labs(fill="Sexo")+
   scale_fill_discrete(labels = c('Hombre','Mujer'))
+
+graph3
+
+# Guardamos
+
+ggsave(graph3, file="files/img/graph3.png")
 ```
 
 Para variables continuas
 
 ```{r}
-ggplot(proc_data, aes(x = as.numeric(edad))) +
+graph4 <- ggplot(proc_data, aes(x = as.numeric(edad))) +
   geom_histogram(binwidth=0.6, colour="black", fill="yellow") +
   theme_bw() +
   xlab("Edad") +
   ylab("Cantidad")
+
+graph4 
+
+
+
+# Guardamos
+
+ggsave(graph4, file="files/img/graph4.png")
 ```
 
