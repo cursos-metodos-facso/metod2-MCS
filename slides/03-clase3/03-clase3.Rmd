@@ -228,64 +228,121 @@ Visualización de datos en R
 | Gráfico     	| Barras                          	| Histograma / boxplot      | Gráfico de barras condicionado            | Histograma, box plot condicionado             	|
 ]
 
----
-## Tipos de tablas y tipos de gráficos
-
-Ejemplo tabla de descriptiva:
-
-```{r echo=FALSE}
-load(url("https://github.com/Kevin-carrasco/metod1-MCS/raw/main/files/data/latinobarometro_proc.RData"))
-pacman::p_load(dplyr, stargazer, ggplot2, summarytools, kableExtra)
-proc_data <- as.data.frame(proc_data)
-```
-
-```{r}
-sjmisc::descr(proc_data,
-      show = c("label","range", "mean", "sd", "NA.prc", "n"))%>%
-      kbl(format = "markdown")
-```
 
 
----
-## Tipos de tablas y tipos de gráficos
-
-Ejemplo tabla de contingencia:
-
----
-## Tipos de tablas y tipos de gráficos
-
-Ejemplo gráfico de barras:
-
----
-## Tipos de tablas y tipos de gráficos
-
-Ejemplo gráfico de barras condicionado:
-
----
-## Tipos de tablas y tipos de gráficos
-
-Ejemplo Histograma:
-
----
-## Tipos de tablas y tipos de gráficos
-
-Ejemplo gráfico de cajas:
-
---
-
-... pero ojo! esto también avanza muy rápido
-
----
-## Tipos de tablas y tipos de gráficos
-
-Ejemplo gráfico alternativo de twitter:
 
 ---
 ## Tipos de tablas y tipos de gráficos
 
 Importancia de buenos gráficos
 
-* grafico piñera; grafico aprobación presidencial; grafico ejes distintos; grafico ejes escalas pequeñas.
+
+![:scale 70%](../../files/img/pinera.jpg)
+
+---
+## Tipos de tablas y tipos de gráficos
+
+Importancia de buenos gráficos
+
+![:scale 70%](../../files/img/aprob_pres.jpg)
+
+---
+## Tipos de tablas y tipos de gráficos
+
+Importancia de buenos gráficos
+
+![:scale 50%](../../files/img/bad_graph.png)
+
+---
+## Tipos de tablas y tipos de gráficos
+
+.small[
+Ejemplo tabla de descriptiva:
+]
+
+```{r echo=FALSE}
+load(url("https://github.com/Kevin-carrasco/metod1-MCS/raw/main/files/data/latinobarometro_proc.RData"))
+pacman::p_load(dplyr, stargazer, ggplot2, summarytools, kableExtra, sjPlot)
+proc_data <- as.data.frame(proc_data)
+```
+
+.small[
+```{r}
+sjmisc::descr(proc_data,
+      show = c("label","range", "mean", "sd", "n"))%>%
+      kbl(format = "markdown")
+```
+]
+
+
+---
+## Tipos de tablas y tipos de gráficos
+
+.small[Ejemplo tabla de contingencia:]
+
+```{r}
+sjPlot::sjt.xtab(proc_data$conf_gob, proc_data$sexo)
+```
+
+---
+## Tipos de tablas y tipos de gráficos
+
+Ejemplo gráfico de barras:
+
+```{r}
+sjPlot::plot_frq(proc_data$conf_inst,
+                 title = "Confianza en instituciones",
+                 type = "bar",
+                 axis.title = "Confianza en institucines",
+                 geom.colors = "coral") +
+  theme_bw()
+```
+
+
+---
+## Tipos de tablas y tipos de gráficos
+
+Ejemplo gráfico de barras condicionado:
+
+```{r}
+proc_data$sexo <- as_factor(proc_data$sexo)
+ggplot(proc_data, aes(x = conf_inst, fill = sexo)) + 
+  geom_bar()
+```
+
+
+---
+## Tipos de tablas y tipos de gráficos
+
+Ejemplo Histograma:
+
+```{r}
+ggplot(proc_data, aes(x = as.numeric(edad))) +
+   geom_histogram(binwidth=0.6, colour="black", fill="yellow") +
+  theme_bw()
+```
+
+
+---
+## Tipos de tablas y tipos de gráficos
+
+.small[Ejemplo gráfico de cajas:]
+
+```{r}
+plot_grpfrq(proc_data$edad, proc_data$sexo,
+            type = "box")
+```
+
+---
+
+... pero ojo! esto también avanza muy rápido
+
+---
+## Tipos de tablas y tipos de gráficos
+
+Ejemplo gráfico alternativo de [twitter](https://twitter.com/RosanaFerrero/status/1635536429957758977):
+
+![:scale 60%](../../files/img/alternative_boxplot.png)
 
 ---
 class: inverse, bottom, right

@@ -73,6 +73,8 @@ website:
               file: content/02-content.qmd
             - text: "02: Sesión 2"
               file: content/03-content.qmd
+            - text: "03: Sesión 3"
+              file: content/04-content.qmd
 
     - title: "Recursos"
       style: "docked"
@@ -85,6 +87,8 @@ website:
           file: resource/01-resource.qmd
         - text: "Práctica 2"
           file: resource/02-resource.qmd
+        - text: "Práctica 3"
+          file: resource/03-resource.qmd
 
 
   page-footer:
