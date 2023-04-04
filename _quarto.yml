@@ -87,6 +87,8 @@ website:
           file: resource/01-resource.qmd
         - text: "Práctica 2"
           file: resource/02-resource.qmd
+        - text: "Práctica 2.2"
+          file: resource/02-2-resource.qmd
         - text: "Práctica 3"
           file: resource/03-resource.qmd
 
