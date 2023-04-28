@@ -75,6 +75,8 @@ website:
               file: content/03-content.qmd
             - text: "03: Sesión 3"
               file: content/04-content.qmd
+            - text: "04: Sesión 4"
+              file: content/05-content.qmd              
 
     - title: "Recursos"
       style: "docked"

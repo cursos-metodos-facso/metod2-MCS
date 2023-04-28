@@ -135,7 +135,7 @@ Esta tercera opción nos ofrece una tabla aún más detallada, con gráficos par
 Se específica de la siguiente manera:
 
 ```{r}
-dfSummary(proc_data, plain.ascii = FALSE)
+summarytools::dfSummary(proc_data, plain.ascii = FALSE)
 ```
 
 Es muy ancha para visualizar bien en la consola de R, pero en su versión más definitiva de publicación se verá así:
