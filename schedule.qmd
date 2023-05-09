@@ -5,7 +5,7 @@ toc: false
 page-layout: full
 ---
 
-Los dos componentes centrales del curso son las clases teóricas y las actividades prácticas. Las **clases** se realizarán los días **Viernes  09:00 a 10:50** en sala **129**
+Los dos componentes centrales del curso son las clases teóricas y las actividades prácticas. Las **clases** se realizarán los días **Viernes  09:00 a 10:50** en sala **329**
 
 
 - [**Clases**]() (<i class="fas fa-chalkboard-teacher"></i> ): Lecturas, documentos de presentación y video (en caso que la sesión sea grabada)
@@ -42,17 +42,17 @@ Viernes 05 | 1° semana de pausa reflexiva  |   |
 Viernes 12 | [**5. Prueba de hipótesis**](/content/06-content.html)  |   | 
 Viernes 19 | [**6. Correlación**](/content/07-content.html)  |   | 
 Viernes 26 | 2° semana presencial  |   |
-<font color="orange"> **Junio** </font> |   |   |
-Viernes 02 |  | Evaluación  |  |
 
 ### UNIDAD 3: Regresión lineal y regresión logística
 
 |||
 -----|----|-----------|-----------
+<font color="orange"> **Junio** </font> |   |   |
+Viernes 02 | [**7. Regresión lineal de mínimos cuadrados**]() | |  |
 Viernes 09 | 2° semana de pausa reflexiva  |   |
-Viernes 16 | [**7. Regresión lineal de mínimos cuadrados; aspectos básicos y supuestos**]()  |   | 
-Viernes 23 | [**8. Interpretación de coeficientes y representación gráfica**]()  |   | 
-Viernes 30 | [**8. Regresión logística binaria: interpretación de coeficientes, cálculo de probabilidades y representación gráfica**]()  |   | 
+Viernes 16 | [**8. Regresión logística binaria: interpretación de coeficientes y cálculo de probabilidades]()  |   | 
+Viernes 23 | [**9. Estimación y visualización de regresiones en R**]()  |   | 
+Viernes 30 | [**10. Supuestos de regresión**]()   |   | 
 <font color="orange"> **Julio** </font> |   |   |
 Viernes 07 | 3° semana presencial  |   |
 Viernes 14 |   | Evaluación  |  |
