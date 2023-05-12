@@ -2,15 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://metod1-mcs.netlify.app/index.html</loc>
-    <lastmod>2023-04-28T11:08:02.975Z</lastmod>
+    <lastmod>2023-05-12T12:46:27.252Z</lastmod>
   </url>
   <url>
     <loc>https://metod1-mcs.netlify.app/content/05-content.html</loc>
-    <lastmod>2023-04-28T11:08:09.531Z</lastmod>
+    <lastmod>2023-05-12T12:51:31.241Z</lastmod>
   </url>
   <url>
     <loc>https://metod1-mcs.netlify.app/content/index.html</loc>
-    <lastmod>2023-04-28T11:08:06.175Z</lastmod>
+    <lastmod>2023-05-12T12:54:00.352Z</lastmod>
   </url>
   <url>
     <loc>https://metod1-mcs.netlify.app/resource/index.html</loc>
@@ -18,7 +18,7 @@
   </url>
   <url>
     <loc>https://metod1-mcs.netlify.app/schedule.html</loc>
-    <lastmod>2023-04-28T11:07:58.415Z</lastmod>
+    <lastmod>2023-05-12T12:54:07.087Z</lastmod>
   </url>
   <url>
     <loc>https://metod1-mcs.netlify.app/syllabus.html</loc>
@@ -35,5 +35,25 @@
   <url>
     <loc>https://metod1-mcs.netlify.app/resource/03-resource.html</loc>
     <lastmod>2023-04-28T11:39:29.003Z</lastmod>
+  </url>
+  <url>
+    <loc>https://metod1-mcs.netlify.app/content/06-content.html</loc>
+    <lastmod>2023-05-12T12:52:23.218Z</lastmod>
+  </url>
+  <url>
+    <loc>https://metod1-mcs.netlify.app/content/01-content.html</loc>
+    <lastmod>2023-05-12T12:49:51.134Z</lastmod>
+  </url>
+  <url>
+    <loc>https://metod1-mcs.netlify.app/content/02-content.html</loc>
+    <lastmod>2023-05-12T12:49:54.992Z</lastmod>
+  </url>
+  <url>
+    <loc>https://metod1-mcs.netlify.app/content/03-content.html</loc>
+    <lastmod>2023-05-12T12:49:58.694Z</lastmod>
+  </url>
+  <url>
+    <loc>https://metod1-mcs.netlify.app/content/04-content.html</loc>
+    <lastmod>2023-05-12T12:50:02.136Z</lastmod>
   </url>
 </urlset>
