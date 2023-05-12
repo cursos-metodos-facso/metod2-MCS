@@ -68,12 +68,20 @@ class: inverse, bottom, right, animated, slideInRight
 
 
 ---
+
+.pull-left-narrow[
 # Inferencia
+]
 
 
-¿En qué medida se pueden relacionar resultados que se encuentran en un .green[(sub)conjunto de unidades] con lo que ocurre .red[en general]?
+.pull-right-wide[
+¿En qué medida se pueden relacionar resultados que se encuentran en un .green[(sub)conjunto de unidades] con lo que ocurre .red[en general]?]
 
+--
+
+.pull-right-wide[
 Ej: si en un subconjunto de la población encuentro que el promedio de matemáticas es mayor en mujeres que en hombres ¿es esto un .orange[reflejo] de lo que ocurre en general, o se debe solo al .red[azar]? ¿se puede .green[extrapolar] a la poblacion?
+]
 
 ???
 
@@ -124,8 +132,6 @@ error
 --
 
 - Un concepto central es la probabilidad de **ERROR**
-
-
 
 
 ---
@@ -223,7 +229,11 @@ error
 - Basados en el **teorema del límite central**, en muestras mayores a 30 la desviación estándar de los promedios (error estándar) equivale a:
 
 `$$\sigma_{\bar{X}}=SE(error estándar)=\frac{s}{\sqrt{N}}$$`
+---
+class: inverse middle center
 
+# ¿Para qué nos sirve el 
+#.red[error estándar]?
 
 ---
 # Error, rangos y probabilidad
@@ -246,6 +256,10 @@ error
 
 
 .pull-left[
+.center[![:scale 85%](https://multivariada.netlify.app/slides/images/normal.png)]]
+
+
+.pull-right[
 .medium[
 
 - Por ejemplo, `\(\bar{x}\)` +/- 2 SE abarca aproximadamente el 95% de los valores probables
@@ -256,8 +270,6 @@ error
 
 ]
 ]
-.pull-right[
-.center[![:scale 85%](https://multivariada.netlify.app/slides/images/normal.png)]]
 
 ---
 class: roja, bottom, right, slideInRight
@@ -289,28 +301,32 @@ Si las diferencias se refieren a un constructo operacionalizado en forma de .red
 ]
 
 ---
-class: inverse middle center
+class: inverse center
 
-### En términos de investigación (con pretensión de generalización), no es relevante que dos promedios son distintos en una muestra, sino en la población
+### En términos de investigación (con pretensión de generalización), no es relevante que dos promedios sean distintos en una .red[muestra], sino en la .yellow[población]
 
 --
 
 ### La probabilidad de encontrar diferencias en la población se asocia al concepto de .orange[significación estadística]
 
-
-
 ---
-class: middle
-
 .pull-left-narrow[
 # Inferencia y significación estadística
 ]
 
 .pull-right-wide[
 - ¿Con qué nivel de **probabilidad** estamos dispuest_s a aceptar que las diferencias (entre promedios) son distintas de 0?
+]
 
+--
+
+.pull-right-wide[
 - Por convención, una probabilidad de error (o valor *p*) de menos de 0.05 (1 de 20 veces)
+]
 
+--
+
+.pull-right-wide[
 - Esto significa una probabilidad de acierto/nivel de confianza de 95% (2 SE)
 ]
 ---
@@ -318,7 +334,10 @@ class: middle
 .center[![:scale 70%](https://multivariada.netlify.app/slides/images/inferencia1.png)]
 
 
+---
+class: inverse right bottom
 
+# Inferencia e hipótesis
 
 ---
 class: middle
@@ -421,7 +440,7 @@ En consecuencia tenemos un `\(\alpha = 0.05\)` y `\(gl = 300 -1 - 1 = 298\)`
 .pull-left[
 # Valor crítico de T y "colas" de la curva
 .middle[
-![:scale 120%](imagen4.png)
+![:scale 120%](https://multivariada.netlify.app/slides/07-inferencia/imagen4.png)
 ]]
 
 .pull-right[

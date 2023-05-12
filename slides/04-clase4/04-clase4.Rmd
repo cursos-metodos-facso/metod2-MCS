@@ -460,7 +460,7 @@ En consecuencia tenemos un $\alpha = 0.05$ y $gl = 300 -1 - 1 = 298$
 .pull-left[
 # Valor crítico de T y "colas" de la curva
 .middle[
-![:scale 120%](imagen4.png)
+![:scale 120%](https://multivariada.netlify.app/slides/07-inferencia/imagen4.png)
 ]]
 
 .pull-right[
