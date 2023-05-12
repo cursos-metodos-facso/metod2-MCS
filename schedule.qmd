@@ -39,8 +39,8 @@ Viernes 21 |   | Evaluación  |  |
 Viernes 28 | [**4. Introducción a la inferencia estadística**](/content/05-content.html)  |   |
 <font color="orange"> **Mayo** </font> |   |   |
 Viernes 05 | 1° semana de pausa reflexiva  |   |
-Viernes 12 | [**5. Prueba de hipótesis**](/content/06-content.html)  |   | 
-Viernes 19 | [**6. Correlación**](/content/07-content.html)  |   | 
+Viernes 12 | [**5. Correlación**](/content/06-content.html)  |   | 
+Viernes 19 | [**6. Índices y análisis factorial**](/content/07-content.html)  |   | 
 Viernes 26 | 2° semana presencial  |   |
 
 ### UNIDAD 3: Regresión lineal y regresión logística
