@@ -1,0 +1,18 @@
+---
+title: "Presentación"
+date: "2023-05-19"
+lang: es
+---
+
+## Documento de presentación
+
+
+<iframe src=/slides/06-clase6/06-clase6.html height="550" width=100% allowfullscreen="true">
+</iframe> 
+
+
+
+## Lecturas
+
+
+[Brown (2015)The Common Factor Model and Exploratory Factor Analysis](https://encuestas-sociales.netlify.app//files/lecturas/brown2015-EFA.pdf)
