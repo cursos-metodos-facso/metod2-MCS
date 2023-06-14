@@ -66,13 +66,12 @@ Rúbrica de evaluación:
 
 
 
-## Reporte 2
+## Entrega final
 
+Pauta de evaluación:
 
-
-
-## Reporte 3
-
+<iframe src=/resource/PautaTF.pdf height="550" width=100% allowfullscreen="true">
+</iframe> 
 
 
 

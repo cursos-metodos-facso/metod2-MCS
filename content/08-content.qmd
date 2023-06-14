@@ -10,8 +10,6 @@ lang: es
 <iframe src=/slides/07-clase7/Semana1.pdf height="550" width=100% allowfullscreen="true">
 </iframe> 
 
-<iframe src=/resource/Semana1.pdf height="550" width=100% allowfullscreen="true">
-</iframe> 
 
 ## Lecturas
 
