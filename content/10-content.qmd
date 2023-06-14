@@ -1,0 +1,17 @@
+---
+title: "Presentación"
+date: "2023-06-16"
+lang: es
+---
+
+## Documento de presentación
+
+
+<iframe src=/slides/09-clase9/Semana3.pdf height="550" width=100% allowfullscreen="true">
+</iframe> 
+
+
+
+
+## Lecturas
+

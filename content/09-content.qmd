@@ -1,0 +1,18 @@
+---
+title: "Presentación"
+date: "2023-06-09"
+lang: es
+---
+
+## Documento de presentación
+
+
+<iframe src=/slides/08-clase8/Semana2.pdf height="550" width=100% allowfullscreen="true">
+</iframe> 
+
+
+
+
+## Lecturas
+
+
