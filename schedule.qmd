@@ -51,8 +51,8 @@ Viernes 26 | 2° semana presencial  |   |
 Viernes 02 | [**7. Regresión lineal de mínimos cuadrados**]() | |  |
 Viernes 09 | 2° semana de pausa reflexiva  |   |
 Viernes 16 | [**8. Regresión logística binaria: interpretación de coeficientes y cálculo de probabilidades]()  |   | 
-Viernes 23 | [**9. Estimación y visualización de regresiones en R**]()  |   | 
-Viernes 30 | [**10. Supuestos de regresión**]()   |   | 
+Viernes 23 | [**10. Análisis factorial y regresión lineal en R**](https://metod1-mcs.netlify.app/content/11-content.html)  |   | 
+Viernes 30 | [**11. Supuestos de regresión y valores predichos**](https://metod1-mcs.netlify.app/content/12-content.html)   |   | 
 <font color="orange"> **Julio** </font> |   |   |
 Viernes 07 | 3° semana presencial  |   |
 Viernes 14 |   | Evaluación  |  |
