@@ -87,6 +87,8 @@ website:
               file: content/09-content.qmd
             - text: "09: Sesión 9"
               file: content/10-content.qmd
+            - text: "10: Sesión 10"
+              file: content/11-content.qmd
     - title: "Recursos"
       style: "docked"
       search: false

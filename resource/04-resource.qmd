@@ -27,7 +27,8 @@ Por temas de orden y reproducibilidad, en este curso hemos separado en **dos mom
 ### Librerías
 
 ```{r}
-pacman::p_load(ggpubr, #graficos
+pacman::p_load(dplyr,
+  ggpubr, #graficos
                stargazer, # Reporte
                texreg,
                ggplot2,
@@ -48,9 +49,16 @@ GPArotation) # rotación
 
 Lectura de datos
 
-```{r}
+```{r eval=FALSE}
 load("files/data/latinobarometro_pract4.RData")
 ```
+
+o directo de la página
+
+```{r}
+load(url("https://github.com/Kevin-carrasco/metod1-MCS/raw/main/files/data/latinobarometro_pract4.RData"))
+```
+
 
 ## Exploración de datos
 
@@ -225,6 +233,7 @@ Los puntajes factoriales son "estimaciones" (predicciones) de puntajes en los fa
 
 ```{r}
 fac_ml <- fa(r = confianza, nfactors = 3, fm= "ml", scores="regression")
+fac_ml # ojo que ML2 es el factor 1; ML1=factor 3 y ML3=factor 2 de la tabla que da sjPlot
 proc_data <- cbind(proc_data, fac_ml$scores)
 head(proc_data)
 ```
@@ -236,9 +245,9 @@ summary(proc_data$ML3)
 ```
 cambiar nombre de los factores a uno más intuitivo
 ```{r}
-proc_data <- proc_data %>% rename("inst_civiles"=ML1, # Instituciones civiles para referirnos a FFAA, policías e iglesia
-                                  "inst_politicas"=ML2, # Instituciones políticas para referirnos a poder judicial y legislativo
-                                  "inst_ejecutivo"=ML3) # Instituciones ejecutivo para referirnos a gobierno y presidente
+proc_data <- proc_data %>% rename("inst_civiles"=ML2, # Instituciones civiles para referirnos a FFAA, policías e iglesia
+                                  "inst_politicas"=ML3, # Instituciones políticas para referirnos a poder judicial y legislativo
+                                  "inst_ejecutivo"=ML1) # Instituciones ejecutivo para referirnos a gobierno y presidente
 ```
 
 
@@ -261,7 +270,7 @@ stargazer(list(reg1, reg2, reg3, reg4, reg5), type="text")
 ```
 
 ### Mejor tabla
-```{r}
+```{r results='asis'}
 htmlreg(list(reg1, reg2, reg3, reg4, reg5), # Para ver en R se debe cambiar la función htmlreg por screenreg
         custom.model.names = c("Modelo 1",
                                "Modelo 2",
@@ -274,13 +283,19 @@ htmlreg(list(reg1, reg2, reg3, reg4, reg5), # Para ver en R se debe cambiar la f
                               "Conf. Inst civiles",
                               "Conf. Inst políticas", 
                               "Conf. Inst ejecutivo", 
-                              "Sexo <br> <i>(Ref. Hombre)</i>", 
+                              "Mujer <br> <i>(Ref. Hombre)</i>", 
                               "Ed. media <br> <i>(Ref. Ed. básica)</i>", 
                               "Ed. superior <br> <i>(Ref. Ed. básica)</i>", 
                               "Edad"),
         caption = "Apoyo a gobierno autoritario",
         caption.above = TRUE)
 ```
+
+"El Modelo 1 indica que por cada unidad que aumenta la confianza en las instituciones civiles, el apoyo a un gobierno autoritario aumenta en 0.36 unidades, con un 99.9% de significación estadística.
+
+Al incluir más predictores, en el Modelo 5 se puede observar que por cada unidad que aumenta la confianza en las instituciones civiles, el apoyo a un gobierno autoritario aumenta en 0.28 unidades, relación que mantiene su significación estadística al controlar por el resto de las variables.
+
+El R2 ajustado del Modelo 5 es de 0.15, por lo que este modelo logra explicar un 15% de la variación de la variable dependiente (porcentaje de las variables independientes que se asocia a la variable dependiente)"
 
 ### Visualizar en un gráfico
 

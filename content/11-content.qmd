@@ -1,0 +1,18 @@
+---
+title: "Presentación"
+date: "2023-06-23"
+lang: es
+---
+
+## Documento de presentación
+
+
+<iframe src=/slides/10-clase10/10-clase10.html height="550" width=100% allowfullscreen="true">
+</iframe> 
+
+
+
+## Lecturas
+
+
+[Práctica en R](https://metod1-mcs.netlify.app/resource/04-resource.html)

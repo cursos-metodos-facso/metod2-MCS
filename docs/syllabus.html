@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Metodología I - MCS - Programa</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href=".//files/icon-513.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar"
+  }
+}</script>
+
+
+<meta property="og:title" content="Metodología I - MCS - Programa">
+<meta property="og:description" content="Este curso busca dar un primer acercamiento a la investigación social cuantitativa, abarcando desde aspectos iniciales básicos de estadística descriptiva y visualización de datos, hasta análisis e…">
+<meta property="og:image" content="https://metod1-mcs.netlify.app/files/social-image-f22.png">
+<meta property="og:site-name" content="Metodología I - MCS">
+<meta property="og:locale" content="en_US">
+<meta property="og:image:height" content="500">
+<meta property="og:image:width" content="500">
+<meta name="twitter:title" content="Metodología I - MCS - Programa">
+<meta name="twitter:description" content="Este curso busca dar un primer acercamiento a la investigación social cuantitativa, abarcando desde aspectos iniciales básicos de estadística descriptiva y visualización de datos, hasta análisis e…">
+<meta name="twitter:image" content="https://metod1-mcs.netlify.app/files/social-image-f22.png">
+<meta name="twitter:creator" content="@juankcastillo">
+<meta name="twitter:site" content="@juankcastillo">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image-height" content="500">
+<meta name="twitter:image-width" content="500">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Metodología I - MCS</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./syllabus.html" aria-current="page">
+ <span class="menu-text">Programa</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./schedule.html">
+ <span class="menu-text">Planificación</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./content/index.html">
+ <span class="menu-text">Contenidos</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./trabajos.html">
+ <span class="menu-text">Trabajos</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./resource/index.html">
+ <span class="menu-text">Recursos</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.slack.com"><i class="bi bi-slack" role="img" aria-label="Slack">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#resumen" id="toc-resumen" class="nav-link active" data-scroll-target="#resumen">Resumen</a></li>
+  <li><a href="#objetivo-general" id="toc-objetivo-general" class="nav-link" data-scroll-target="#objetivo-general">Objetivo general</a></li>
+  <li><a href="#objetivos-específicos" id="toc-objetivos-específicos" class="nav-link" data-scroll-target="#objetivos-específicos">Objetivos específicos</a></li>
+  <li><a href="#saberes-contenidos" id="toc-saberes-contenidos" class="nav-link" data-scroll-target="#saberes-contenidos">Saberes / contenidos</a>
+  <ul class="collapse">
+  <li><a href="#módulo-1-estadística-descriptiva" id="toc-módulo-1-estadística-descriptiva" class="nav-link" data-scroll-target="#módulo-1-estadística-descriptiva">Módulo 1: Estadística descriptiva</a></li>
+  <li><a href="#módulo-2-inferencia-y-estadística-correlacional" id="toc-módulo-2-inferencia-y-estadística-correlacional" class="nav-link" data-scroll-target="#módulo-2-inferencia-y-estadística-correlacional">Módulo 2: Inferencia y estadística correlacional</a></li>
+  <li><a href="#módulo-3-regresión-lineal-y-regresión-logística" id="toc-módulo-3-regresión-lineal-y-regresión-logística" class="nav-link" data-scroll-target="#módulo-3-regresión-lineal-y-regresión-logística">Módulo 3: Regresión lineal y regresión logística</a></li>
+  </ul></li>
+  <li><a href="#bibliografía" id="toc-bibliografía" class="nav-link" data-scroll-target="#bibliografía">Bibliografía</a></li>
+  <li><a href="#metodología" id="toc-metodología" class="nav-link" data-scroll-target="#metodología">Metodología</a></li>
+  <li><a href="#evaluación" id="toc-evaluación" class="nav-link" data-scroll-target="#evaluación">Evaluación</a></li>
+  <li><a href="#requisitos-de-aprobación" id="toc-requisitos-de-aprobación" class="nav-link" data-scroll-target="#requisitos-de-aprobación">Requisitos de aprobación</a></li>
+  <li><a href="#palabras-clave" id="toc-palabras-clave" class="nav-link" data-scroll-target="#palabras-clave">Palabras Clave</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Programa</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="grid course-details course-details-smaller">
+<section id="profesor" class="level3 g-col-6">
+<h3 class="anchored" data-anchor-id="profesor">Profesor</h3>
+<ul>
+<li><i class="fa-solid fa-user" aria-hidden="true"></i> &nbsp; <a href="https://www.jc-castillo.com">Juan Carlos Castillo, Pablo Perez Ahumada &amp; Kevin Carrasco</a></li>
+<li><i class="fa-solid fa-university" aria-hidden="true"></i> &nbsp; Departamento de Sociología FACSO - sala 328</li>
+<li><i class="fa-solid fa-envelope" aria-hidden="true"></i> &nbsp; <a href="mailto:juancastillov@uchile.cl, pabloperez@uchile.cl, kevin.carrasco@ug.uchile.cl">juancastillov@uchile.cl, pabloperez@uchile.cl, kevin.carrasco@ug.uchile.cl</a></li>
+<li><i class="fa-brands fa-twitter" aria-hidden="true"></i> &nbsp; <a href="https://www.twitter.com/juankcastillo, pablo_perez_a, kevincarrascoq1">juankcastillo, pablo_perez_a, kevincarrascoq1</a></li>
+<li><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> &nbsp; <a href="kevin.carrasco@ug.uchile.cl">Schedule an appointment</a></li>
+</ul>
+</section>
+<section id="información-del-curso" class="level3 g-col-6">
+<h3 class="anchored" data-anchor-id="información-del-curso">Información del curso</h3>
+<ul>
+<li><i class="fa-solid fa-calendar" aria-hidden="true"></i> &nbsp; Viernes</li>
+<li><i class="fa-solid fa-calendar-alt" aria-hidden="true"></i> &nbsp; Marzo 17–Julio 07, 2023</li>
+<li><i class="fa-solid fa-clock" aria-hidden="true"></i> &nbsp; 09:00-10:50 AM</li>
+<li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> &nbsp; Sala 119. Primer piso edificio nuevo FACSO</li>
+<li><i class="fa-brands fa-slack" aria-hidden="true"></i> &nbsp; <a href="">Slack</a></li>
+</ul>
+</section>
+</div>
+<section id="resumen" class="level2">
+<h2 class="anchored" data-anchor-id="resumen">Resumen</h2>
+<p>Este curso busca dar un primer acercamiento a la investigación social cuantitativa, abarcando desde aspectos iniciales básicos de estadística descriptiva y visualización de datos, hasta análisis e interpretación de modelos explicativos de investigación social. Asimismo, se busca que los y las estudiantes logren familiarizarse con el uso de Rstudio para el análisis de datos sociales.</p>
+<p>La metodología incluye clases lectivas y trabajo práctico en R.</p>
+</section>
+<section id="objetivo-general" class="level2">
+<h2 class="anchored" data-anchor-id="objetivo-general">Objetivo general</h2>
+<p>Al finalizar el curso, el/la estudiante podrá elaborar y analizar diseños de investigación social de carácter cuantitativo, así como describir cuantitativamente un conjunto de datos utilizando el lenguaje R.</p>
+</section>
+<section id="objetivos-específicos" class="level2">
+<h2 class="anchored" data-anchor-id="objetivos-específicos">Objetivos específicos</h2>
+<p>Al concluir el curso lo/as estudiantes deberán haber alcanzado los siguientes resultados de aprendizaje:</p>
+<ul>
+<li><p>Conocer las etapas de un diseño de investigación social cuantitativa y sus principales elementos</p></li>
+<li><p>Formular diseños de investigación social cuantitativa</p></li>
+<li><p>Conocer y aplicar instrumentos de medición y tipos de estudios cuantitativos</p></li>
+<li><p>Interpretar y analizar los elementos centrales de una base de datos con información social</p></li>
+<li><p>Aplicar e interpretar técnicas de estadística descriptiva según las distintas características de los datos</p></li>
+<li><p>Aplicar e interpretar técnicas de estadística correlacional e inferencia estadística para variables con distinta unidad de medida</p></li>
+<li><p>Aplicar e interpretar técnicas de regresión lineal y logística para variables numéricas y variables categóricas</p></li>
+</ul>
+</section>
+<section id="saberes-contenidos" class="level2">
+<h2 class="anchored" data-anchor-id="saberes-contenidos">Saberes / contenidos</h2>
+<section id="módulo-1-estadística-descriptiva" class="level3">
+<h3 class="anchored" data-anchor-id="módulo-1-estadística-descriptiva">Módulo 1: Estadística descriptiva</h3>
+<p>1.1 Elementos básicos de la investigación social</p>
+<ul>
+<li><p>Etapas de la investigación Social</p></li>
+<li><p>Tipos de diseños</p></li>
+<li><p>Diseño de instrumentos de medición</p></li>
+<li><p>Bases de datos: datos de corte transversal, series de tiempo, cohortes, panel o longitudinal</p></li>
+</ul>
+<p>1.2 Operacionalización y análisis de datos</p>
+<ul>
+<li><p>Operacionalización y niveles de medición</p></li>
+<li><p>Tidy data: unir, dividir, filtrar y ordenar datos en R</p></li>
+<li><p>Recodificación de variables: descriptivos básicos, casos perdidos, etiquetamiento de variables</p></li>
+<li><p>Agrupación de datos y construcción de variables a partir de datos existentes</p></li>
+<li><p>Construcción de índices y validez de escalas</p></li>
+</ul>
+<p>1.3 Visualización de datos en R</p>
+<ul>
+<li><p>Tablas descriptivas y tablas de contingencia</p></li>
+<li><p>ggplot2: gráficos de barra, de caja, dispersión e histograma</p></li>
+</ul>
+</section>
+<section id="módulo-2-inferencia-y-estadística-correlacional" class="level3">
+<h3 class="anchored" data-anchor-id="módulo-2-inferencia-y-estadística-correlacional">Módulo 2: Inferencia y estadística correlacional</h3>
+<p>2.1 Inferencia estadística</p>
+<p>2.2 Pruebas de hipótesis</p>
+<p>2.3 Correlación</p>
+</section>
+<section id="módulo-3-regresión-lineal-y-regresión-logística" class="level3">
+<h3 class="anchored" data-anchor-id="módulo-3-regresión-lineal-y-regresión-logística">Módulo 3: Regresión lineal y regresión logística</h3>
+<p>3.1 Regresión lineal de mínimos cuadrados</p>
+<ul>
+<li><p>Aspectos centrales y supuestos de la regresión MCO</p></li>
+<li><p>Interpretación de coeficientes (variables cuantitativas y cualitativas) y efectos de interacción</p></li>
+<li><p>Representación gráfica de coeficientes de regresión lineal</p></li>
+</ul>
+<p>3.2 Regresión logística binaria</p>
+<ul>
+<li><p>Aspectos básicos de la regresión logística</p></li>
+<li><p>Tipos de coeficientes e interpretación</p></li>
+<li><p>Representación gráfica (cálculo de probabilidades predichas)</p></li>
+</ul>
+</section>
+</section>
+<section id="bibliografía" class="level2">
+<h2 class="anchored" data-anchor-id="bibliografía">Bibliografía</h2>
+<p>Wickham, Hadley &amp; Grolemund, Garrett (2017). R for Data Science. Visualize, model, transform, tidy and import data. / Versión en español disponible <a href="https://es.r4ds.hadley.nz/">acá</a></p>
+<p><a href="resource/moore2010.pdf">Moore, D. S., &amp; Comas, J. (2010). Estadística aplicada básica. Barcelona: Antoni Bosch.</a></p>
+<p><a href="wooldridge2008">Wooldridge, J. M. (2008). Introducción a la econometría: un enfoque moderno. Paraninfo Cengage Learning.</a></p>
+<p><a href="https://www2.uned.es/socioestadistica/Multivariante/Odd_Ratio_LogitV2.pdf">Camarero, et al (2017) Regresión Logística: Fundamentos y aplicación a la investigación sociológica.</a></p>
+<p>Hair, Joseph F., et al.&nbsp;(2004). Análisis multivariante. 5ta ed.&nbsp;Madrid: Prentice Hall.</p>
+<p><a href="http://www.fcharte.com/libros/ExploraVisualizaConR-Fcharte.pdf">Charte, Francisco (2014). Análisis exploratorio y Visualización de datos con R.</a></p>
+</section>
+<section id="metodología" class="level2">
+<h2 class="anchored" data-anchor-id="metodología">Metodología</h2>
+<p>El curso se organiza en sesiones semanales, con una parte lectiva seguida de una práctica. En la parte lectiva se transmiten y discuten los conceptos centrales de la investigación cuantitativa. En la parte práctica se aplicarán los conceptos transmitidos en la parte lectiva, además de resolver dudas en el avance de los trabajos de investigación</p>
+</section>
+<section id="evaluación" class="level2">
+<h2 class="anchored" data-anchor-id="evaluación">Evaluación</h2>
+<p>La evaluación consistirá en</p>
+</section>
+<section id="requisitos-de-aprobación" class="level2">
+<h2 class="anchored" data-anchor-id="requisitos-de-aprobación">Requisitos de aprobación</h2>
+<ul>
+<li>Nota mínima de aprobación: 4,0 (en escala de 1 a 7).</li>
+</ul>
+</section>
+<section id="palabras-clave" class="level2">
+<h2 class="anchored" data-anchor-id="palabras-clave">Palabras Clave</h2>
+<ul>
+<li>Estadística, investigación cuantitativa, manipulación de datos, visualización de datos, interpretación de coeficientes</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Content <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> 2023 by <a href="https://www.jc-castillo.com">Juan Castillo</a> <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-by" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-nc" aria-hidden="true"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></div>   
+    <div class="nav-footer-right">Made with <i class="fa-brands fa-r-project" aria-hidden="true"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://github.com/Kevin-carrasco/metod1-MCS">View the source at <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a></div>
+  </div>
+</footer>
+
+
+
+</body></html>
