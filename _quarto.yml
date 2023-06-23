@@ -102,6 +102,8 @@ website:
           file: resource/02-2-resource.qmd
         - text: "Práctica 3"
           file: resource/03-resource.qmd
+        - text: "Práctica 4"
+          file: resource/04-resource.qmd
 
 
   page-footer:

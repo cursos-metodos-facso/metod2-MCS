@@ -1,0 +1,306 @@
+---
+title: "Práctica 4 Correlación y Regresión"
+subtitle: "Metodología I - Magíster en Ciencias Sociales"
+linktitle: "Práctica 4: Correlación y Regresión"
+date: "2023-06-23"
+lang: es
+---
+
+# Presentación
+
+El informe “Chile: la sombra de Pinochet”, en su medición de febrero de 2023, arrojó que un 36% de los encuestados considera que las Fuerzas Armadas “tenían razón para dar el golpe de Estado”, mientras que un 42% responde que “nunca hay razón”. Fuente: [El Mostrador](https://www.elmostrador.cl/noticias/2023/05/31/marta-lagos-y-el-36-de-apoyo-a-pinochet-es-un-fracaso-cultural-gigante-para-la-izquierda/)
+
+¿Qué factores podrían influir en que las personas apoyen en mayor medida un gobierno autoritario?
+
+## Objetivo de la práctica
+
+El desarrollo de esta guía tiene por objetivo revisar algunos procedimientos para la estimación de correlaciones y regresiones con R, que son necesarios para luego poder analizar e interpretar estas relaciones.
+
+Por temas de orden y reproducibilidad, en este curso hemos separado en **dos momentos** el trabajo con datos, y dos archivos de código correspondientes:
+
+  - **Preparación**: disponible [acá](https://github.com/Kevin-carrasco/metod1-MCS/raw/main/resource/prep_practica4.R).
+
+  - **Análisis**: este documento
+  
+## Librerías y datos
+
+### Librerías
+
+```{r}
+pacman::p_load(ggpubr, #graficos
+               stargazer, # Reporte
+               texreg,
+               ggplot2,
+               gridExtra, #unir graficos
+sjPlot, sjmisc, # reporte y gráficos
+sjlabelled, # etiquetas
+corrplot, # grafico correlaciones
+xtable, # Reporte
+summarytools, #reporte
+Hmisc, # varias funciones
+psych, # fa y principal factors
+psy, # scree plot function
+nFactors, # parallel
+GPArotation) # rotación
+```
+
+### Datos
+
+Lectura de datos
+
+```{r}
+load("files/data/latinobarometro_pract4.RData")
+```
+
+## Exploración de datos
+
+### Descriptivos
+
+```{r}
+view(dfSummary(proc_data,
+               plain.ascii = FALSE,
+               style = "grid",
+               tmp.img.dir = "/tmp",
+               graph.magnif = 0.75,
+               headings = F,  # encabezado
+               varnumbers = F, # num variable
+               labels.col = T, # etiquetas
+               na.col = T,    # missing
+               graph.col = F, # plot
+               valid.col = T, # n valido
+               col.widths = c(1000,10,10,10,10,10)), method="render")
+```
+
+```{r}
+proc_data %>% 
+  select(conf_fa, conf_pol, conf_iglesia, conf_gob, conf_cong, conf_jud, conf_partpol, conf_presi) %>%
+  plot_stackfrq(sort.frq = "first.desc", geom.colors = "OrRd") + theme(legend.position="bottom")
+```
+
+## Análisis de correlaciones
+
+```{r}
+corMat  <- proc_data %>% 
+  select(conf_fa, conf_pol, conf_iglesia, conf_gob, conf_cong, conf_jud, conf_partpol, conf_presi) %>%
+  cor(use = "complete.obs")  # estimar matriz pearson
+options(digits=2)
+corMat
+```
+
+### Reporte en tabla
+```{r}
+proc_data %>% 
+  select(conf_fa, conf_pol, conf_iglesia, conf_gob, conf_cong, conf_jud, conf_partpol, conf_presi) %>%
+  tab_corr(triangle = "lower")
+```
+
+### Reporte en gráfico
+```{r}
+corrplot(corMat, type="lower")
+```
+
+### Reporte en gráfico (mejor)
+```{r}
+M=corMat
+diag(M) = NA
+rownames(M) <- c("A. Confianza: Fuerzas armadas",
+                         "B. Confianza: Policías",
+                         "C. Confianza: Iglesia",
+                         "D. Confianza: Gobierno",
+                         "E. Confianza: Congreso",
+                         "F. Confianza: Poder judicial",
+                         "G. Confianza: Part. políticos",
+                         "H. Confianza: Presidente")
+colnames(M) <-c("(A)", "(B)","(C)", "(D)", "(E)", "(F)", "(G)", "(H)")
+
+corrplot::corrplot(M,
+  method = "color",
+  addCoef.col = "#000390",
+  type = "upper",
+  tl.col = "black",
+  col=colorRampPalette(c("white","#0068DC"))(12),
+  bg = "white",
+  na.label = "-")
+```
+
+## Análisis factorial exploratorio
+
+¿Qué se puede deducir de la matriz de correlaciones en relación a la estructura subyacente en términos de variables latentes? No hay claridad de grupos de indicadores asociados entre sí.
+
+### Test de adecuación de matriz para AFE
+
+KMO (Kaiser, Meyer, Olkin Measure of Sampling Adequacy):
+
+* Varía entre 0 y 1. Contrasta si las correlaciones parciales entre las variables son pequeñas
+
+* Valores pequeños (menores a 0.5) indican que los datos no serían adecuados para AFE, ya que las correlaciones entre pares de variables no pueden ser explicadas por otras variables.
+
+```{r}
+KMO(corMat)
+```
+
+En este caso las correlaciones son altas, por lo que los datos sí son adecuados para AFE.
+
+### Nivel de correlaciones de la matriz: test de esfericidad de Barlett
+
+Se utiliza para evluar la hipótesis que la matriz de correlaciones es una matriz identidad (diagonal 1 y bajo la diagonal 0)
+
+* Se busca significación (p < 0.05) ya que se espera que las variables estén correlacionadas
+
+```{r}
+cortest.bartlett(corMat, n = 1200)
+```
+
+En este caso el valor p es 0, así que hay significación estadística
+
+### Selección de número de factores
+```{r}
+confianza <- proc_data %>% 
+  select(conf_fa, conf_pol, conf_iglesia, conf_gob, conf_cong, conf_jud, conf_partpol, conf_presi)
+scree.plot(confianza)
+```
+
+```{r}
+fa.parallel(corMat, n.obs=1200)
+```
+
+```{r}
+library(nFactors)
+ev <- eigen(corMat) # get eigenvalues
+ap <- parallel(subject=1200,var=8,
+  rep=100,cent=.05)
+nS <- nScree(x=ev$values, aparallel=ap$eigen$qevpea)
+plotnScree(nS)
+```
+
+### Extracción
+
+ejes principales
+```{r}
+fac_pa <- fa(r = confianza, nfactors = 3, fm= "pa")
+#summary(fac_pa)
+fac_pa
+```
+
+Maximum likelihood
+
+Maximiza la posibilidad de que los parámetros reproduzcan los datos observados
+
+```{r}
+fac_ml <- fa(r = confianza, nfactors = 3, fm= "ml")
+summary(fac_ml)
+```
+
+### Rotación
+
+Varimax (ortogonal)
+```{r}
+fac_ml_var <- fa(r = confianza, nfactors = 3, fm= "ml", rotate="varimax") # ortogonal
+fac_ml_var
+```
+
+Promax (oblicua)
+```{r}
+fac_ml_pro <- fa(r = confianza, nfactors = 3, fm= "ml", rotate="promax")
+fac_ml_pro
+```
+
+### Casi automático con sjPlot
+
+```{r}
+tab_fa(confianza, rotation = "varimax",show.comm = TRUE, title = "Análisis factorial confianza instituciones")
+```
+
+Luego de realizar el Análisis factorial exploratorio existen varias alternativas sobre los pasos a seguir. Por ejemplo, es posible estimar un promedio simple entre cada una de las variables de los factores. Otra opción es estimar **puntajes factoriales**.
+
+### Puntajes factoriales
+
+Los puntajes factoriales son "estimaciones" (predicciones) de puntajes en los factores para cada observación en los datos.
+
+* Estos puntajes pueden utilizarse en análisis posteriores
+
+* Se pueden calcular puntajes para cada observación en cada factor utilizando un método de regresión
+
+* Estas nuevas variables se estandarizan con media 0 y desviación estándar 1
+
+```{r}
+fac_ml <- fa(r = confianza, nfactors = 3, fm= "ml", scores="regression")
+proc_data <- cbind(proc_data, fac_ml$scores)
+head(proc_data)
+```
+
+```{r}
+summary(proc_data$ML1)
+summary(proc_data$ML2)
+summary(proc_data$ML3)
+```
+cambiar nombre de los factores a uno más intuitivo
+```{r}
+proc_data <- proc_data %>% rename("inst_civiles"=ML1, # Instituciones civiles para referirnos a FFAA, policías e iglesia
+                                  "inst_politicas"=ML2, # Instituciones políticas para referirnos a poder judicial y legislativo
+                                  "inst_ejecutivo"=ML3) # Instituciones ejecutivo para referirnos a gobierno y presidente
+```
+
+
+# Regresión lineal múltiple
+
+La regresión lineal múltiple incorpora dos o más predictores en un modelo. En este ejemplo, lo que queremos estimar es la influencia de la confianza en instituciones sobre el apoyo a un gobierno autoritario.
+
+Por lo tanto, nuestra variable independiente es **Apoyo a gobierno autoritario**, que refiere a el grado de acuerdo con la variable "No me importaría que un gobierno no democrático llegara al poder si resuelve los problemas"
+
+```{r}
+proc_data <- na.omit(proc_data)
+
+reg1 <- lm(apoyo_autoritarismo ~ inst_civiles, data=proc_data)
+reg2 <- lm(apoyo_autoritarismo ~ inst_politicas, data=proc_data)
+reg3 <- lm(apoyo_autoritarismo ~ inst_ejecutivo, data=proc_data)
+reg4 <- lm(apoyo_autoritarismo ~ inst_civiles + inst_politicas + inst_ejecutivo, data=proc_data)
+reg5 <- lm(apoyo_autoritarismo ~ inst_civiles + inst_politicas + inst_ejecutivo + sexo + educacion + edad, data=proc_data)
+
+stargazer(list(reg1, reg2, reg3, reg4, reg5), type="text")
+```
+
+### Mejor tabla
+```{r}
+htmlreg(list(reg1, reg2, reg3, reg4, reg5), # Para ver en R se debe cambiar la función htmlreg por screenreg
+        custom.model.names = c("Modelo 1",
+                               "Modelo 2",
+                               "Modelo 3",
+                               "Modelo 4",
+                               "Modelo 5"),
+        doctype = FALSE,
+        custom.note = "*** p < 0.001; ** p < 0.01; * p < 0.05",
+        custom.coef.names = c("Intercepto", 
+                              "Conf. Inst civiles",
+                              "Conf. Inst políticas", 
+                              "Conf. Inst ejecutivo", 
+                              "Sexo <br> <i>(Ref. Hombre)</i>", 
+                              "Ed. media <br> <i>(Ref. Ed. básica)</i>", 
+                              "Ed. superior <br> <i>(Ref. Ed. básica)</i>", 
+                              "Edad"),
+        caption = "Apoyo a gobierno autoritario",
+        caption.above = TRUE)
+```
+
+### Visualizar en un gráfico
+
+```{r}
+plot_model(reg5, 
+            title = "", #quitar titulo
+            show.values = TRUE, #mostrar valor de efectos
+            dot.size = 1.3, #tamaño circulos
+            line.size = 1, #tamaño CI
+            value.size = 3.5, #tamaño valor efectoss
+            spacing = .7, #espacio entre efectos
+            vline.color = "black", # linea roja en punto neutro (0)
+            axis.labels = rev(c("Conf. Inst civiles",
+                              "Conf. Inst políticas", 
+                              "Conf. Inst ejecutivo", 
+                              "Mujer", 
+                              "Ed. media", 
+                              "Ed. superior", 
+                              "Edad")), #con rev porque automatico los tira en otro orden
+            show.legend = FALSE) + # variables dependientes
+  theme_bw(base_size = 16)
+```
+

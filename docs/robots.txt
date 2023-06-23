@@ -1,1 +1,0 @@
-Sitemap: https://metod1-mcs.netlify.app/sitemap.xml
