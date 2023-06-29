@@ -1,0 +1,3561 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Metodología I - MCS - Práctica 6 Regresión logística y Probabilidades predichas</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="..//files/icon-513.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<meta property="og:title" content="Metodología I - MCS - Práctica 6 Regresión logística y Probabilidades predichas">
+<meta property="og:description" content="Metodología I - Magíster en Ciencias Sociales">
+<meta property="og:image" content="https://metod1-mcs.netlify.app/files/social-image-f22.png">
+<meta property="og:site-name" content="Metodología I - MCS">
+<meta property="og:locale" content="en_US">
+<meta property="og:image:height" content="500">
+<meta property="og:image:width" content="500">
+<meta name="twitter:title" content="Metodología I - MCS - Práctica 6 Regresión logística y Probabilidades predichas">
+<meta name="twitter:description" content="Metodología I - Magíster en Ciencias Sociales">
+<meta name="twitter:image" content="https://metod1-mcs.netlify.app/files/social-image-f22.png">
+<meta name="twitter:creator" content="@juankcastillo">
+<meta name="twitter:site" content="@juankcastillo">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image-height" content="500">
+<meta name="twitter:image-width" content="500">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Metodología I - MCS</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html">
+ <span class="menu-text">Programa</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../schedule.html">
+ <span class="menu-text">Planificación</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../content/index.html">
+ <span class="menu-text">Contenidos</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../trabajos.html">
+ <span class="menu-text">Trabajos</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../resource/index.html">
+ <span class="menu-text">Recursos</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.slack.com"><i class="bi bi-slack" role="img" aria-label="Slack">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#presentación" id="toc-presentación" class="nav-link active" data-scroll-target="#presentación">Presentación</a></li>
+  <li><a href="#objetivo" id="toc-objetivo" class="nav-link" data-scroll-target="#objetivo">Objetivo</a></li>
+  <li><a href="#librerías" id="toc-librerías" class="nav-link" data-scroll-target="#librerías">Librerías</a></li>
+  <li><a href="#datos" id="toc-datos" class="nav-link" data-scroll-target="#datos">Datos</a>
+  <ul class="collapse">
+  <li><a href="#explorar-datos" id="toc-explorar-datos" class="nav-link" data-scroll-target="#explorar-datos">Explorar datos</a></li>
+  </ul></li>
+  <li><a href="#regresiones-logísticas" id="toc-regresiones-logísticas" class="nav-link" data-scroll-target="#regresiones-logísticas">Regresiones logísticas</a>
+  <ul class="collapse">
+  <li><a href="#tabla-de-contingencia-bivariado-sindicalización-participación-en-marchas" id="toc-tabla-de-contingencia-bivariado-sindicalización-participación-en-marchas" class="nav-link" data-scroll-target="#tabla-de-contingencia-bivariado-sindicalización-participación-en-marchas">Tabla de contingencia bivariado: sindicalización / participación en marchas</a>
+  <ul class="collapse">
+  <li><a href="#odds" id="toc-odds" class="nav-link" data-scroll-target="#odds">Odds</a></li>
+  <li><a href="#odds-ratios-razones-de-chances" id="toc-odds-ratios-razones-de-chances" class="nav-link" data-scroll-target="#odds-ratios-razones-de-chances">Odds ratios (razones de chances)</a></li>
+  </ul></li>
+  <li><a href="#logit" id="toc-logit" class="nav-link" data-scroll-target="#logit">Logit</a></li>
+  <li><a href="#modelo-de-probabilidad-lineal" id="toc-modelo-de-probabilidad-lineal" class="nav-link" data-scroll-target="#modelo-de-probabilidad-lineal">Modelo de probabilidad lineal</a></li>
+  <li><a href="#modelo-de-regresión-logística" id="toc-modelo-de-regresión-logística" class="nav-link" data-scroll-target="#modelo-de-regresión-logística">Modelo de regresión logística</a>
+  <ul class="collapse">
+  <li><a href="#problemas-de-interpretación" id="toc-problemas-de-interpretación" class="nav-link" data-scroll-target="#problemas-de-interpretación">Problemas de interpretación</a></li>
+  </ul></li>
+  <li><a href="#estimación-de-odds-ratios" id="toc-estimación-de-odds-ratios" class="nav-link" data-scroll-target="#estimación-de-odds-ratios">Estimación de odds ratios</a></li>
+  <li><a href="#cálculo-de-probabilidades-predichas" id="toc-cálculo-de-probabilidades-predichas" class="nav-link" data-scroll-target="#cálculo-de-probabilidades-predichas">Cálculo de probabilidades predichas</a></li>
+  <li><a href="#cálculo-de-probabilidades-predichas-en-r" id="toc-cálculo-de-probabilidades-predichas-en-r" class="nav-link" data-scroll-target="#cálculo-de-probabilidades-predichas-en-r">Cálculo de probabilidades predichas en R</a></li>
+  <li><a href="#bondad-de-ajuste-comando-de-paquete-lmtest" id="toc-bondad-de-ajuste-comando-de-paquete-lmtest" class="nav-link" data-scroll-target="#bondad-de-ajuste-comando-de-paquete-lmtest">Bondad de ajuste (comando de paquete lmtest)</a></li>
+  <li><a href="#efectos-de-interacción" id="toc-efectos-de-interacción" class="nav-link" data-scroll-target="#efectos-de-interacción">Efectos de interacción</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Práctica 6 Regresión logística y Probabilidades predichas</h1>
+<p class="subtitle lead">Metodología I - Magíster en Ciencias Sociales</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de publicación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">23 de junio de 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="presentación" class="level1">
+<h1>Presentación</h1>
+<p>La Encuesta Mundial de Valores (EMV) o World Values Survey <a href="https://www.worldvaluessurvey.org/wvs.jsp">WVS</a> es un proyecto global de investigación social que explora los valores y opiniones de la gente, cómo estos cambian con el tiempo, y su impacto social y político. Desde 1981 una red mundial de científicos sociales y politólogos llevan a cabo esta investigación, haciendo encuestas nacionales representativas en casi 100 países. La WVS es la única fuente de datos empíricos sobre actitudes y valores humanos que abarca a la mayoría de la población mundial (casi el 90%).</p>
+</section>
+<section id="objetivo" class="level1">
+<h1>Objetivo</h1>
+<p>En el ejemplo de esta práctica, que utiliza solo casos para Chile entre 2005 y 2022, se intentará responder la pregunta ¿existe una relación entre la afiliación a sindicatos y la participación en marchas?</p>
+<p>Debido a la naturaleza de la variable dependiente participación en marchas (si/no), el objetivo de esta práctica es estimar modelos de regresión logística binaria.</p>
+</section>
+<section id="librerías" class="level1">
+<h1>Librerías</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyr,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>               dplyr,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>               sjPlot,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>               sjmisc,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>               psych,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>               texreg,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>               haven,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>               ggplot2,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>               lmtest,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>               DescTools)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="datos" class="level1">
+<h1>Datos</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>WVS_2005_2022_Chl<span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="at">file =</span> <span class="st">"../files/data/WVS_2005_2022_Chl.rds"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Cargamos la base de datos desde internet</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">"https://github.com/Kevin-carrasco/metod1-MCS/raw/main/files/data/WVS_2005_2022_Chl.RData"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="explorar-datos" class="level2">
+<h2 class="anchored" data-anchor-id="explorar-datos">Explorar datos</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(WVS_2005_2022_Chl) <span class="co">#con comando de paquete haven</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Unionized      demonstr_dummy   petition_dummy       Wave    
+ Min.   :0.0000   Min.   :0.0000   Min.   :0.0000   Wave 5:373  
+ 1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.0000   Wave 6:516  
+ Median :0.0000   Median :0.0000   Median :0.0000   Wave 7:568  
+ Mean   :0.1984   Mean   :0.2073   Mean   :0.1846               
+ 3rd Qu.:0.0000   3rd Qu.:0.0000   3rd Qu.:0.0000               
+ Max.   :1.0000   Max.   :1.0000   Max.   :1.0000               
+                                                                
+           pol_pos     pol_pos_left    politicization civic_involvement
+ left          :360   Min.   :0.0000   Min.   :0.00   Min.   :0.0000   
+ center        :509   1st Qu.:0.0000   1st Qu.:1.00   1st Qu.:0.0000   
+ right         :215   Median :0.0000   Median :2.00   Median :0.0000   
+ Not identified:  0   Mean   :0.2471   Mean   :1.95   Mean   :0.6905   
+ NA's          :373   3rd Qu.:0.0000   3rd Qu.:3.00   3rd Qu.:1.0000   
+                      Max.   :1.0000   Max.   :6.00   Max.   :3.0000   
+                                                                       
+      X003       age         Female       Educ    private_sector  
+ Min.   :18.00   1:128   Min.   :0.0000   1:123   Min.   :0.0000  
+ 1st Qu.:31.00   2:341   1st Qu.:0.0000   2:924   1st Qu.:1.0000  
+ Median :41.00   3:400   Median :0.0000   3:410   Median :1.0000  
+ Mean   :41.44   4:352   Mean   :0.4084           Mean   :0.8593  
+ 3rd Qu.:50.00   5:188   3rd Qu.:1.0000           3rd Qu.:1.0000  
+ Max.   :80.00   6: 48   Max.   :1.0000           Max.   :1.0000  
+                                                                  
+    gvt_resp         tax_rich        unempl_aid      state_inc_eq   
+ Min.   : 1.000   Min.   : 1.000   Min.   : 1.000   Min.   : 1.000  
+ 1st Qu.: 5.000   1st Qu.: 5.000   1st Qu.: 5.000   1st Qu.: 5.000  
+ Median : 6.000   Median : 7.000   Median : 7.000   Median : 7.000  
+ Mean   : 6.457   Mean   : 6.446   Mean   : 7.103   Mean   : 6.689  
+ 3rd Qu.: 9.000   3rd Qu.: 9.000   3rd Qu.:10.000   3rd Qu.: 9.000  
+ Max.   :10.000   Max.   :10.000   Max.   :10.000   Max.   :10.000  
+ NA's   :16       NA's   :87       NA's   :62       NA's   :439     </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(WVS_2005_2022_Chl) <span class="co">#con comando de paquete psych</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                  vars    n  mean    sd median trimmed   mad min max range
+Unionized            1 1457  0.20  0.40      0    0.12  0.00   0   1     1
+demonstr_dummy       2 1457  0.21  0.41      0    0.13  0.00   0   1     1
+petition_dummy       3 1457  0.18  0.39      0    0.11  0.00   0   1     1
+Wave*                4 1457  2.13  0.79      2    2.17  1.48   1   3     2
+pol_pos*             5 1084  1.87  0.72      2    1.83  1.48   1   3     2
+pol_pos_left         6 1457  0.25  0.43      0    0.18  0.00   0   1     1
+politicization       7 1457  1.95  1.61      2    1.81  1.48   0   6     6
+civic_involvement    8 1457  0.69  0.98      0    0.49  0.00   0   3     3
+X003                 9 1457 41.44 12.25     41   41.13 13.34  18  80    62
+age*                10 1457  3.19  1.27      3    3.18  1.48   1   6     5
+Female              11 1457  0.41  0.49      0    0.39  0.00   0   1     1
+Educ*               12 1457  2.20  0.57      2    2.23  0.00   1   3     2
+private_sector      13 1457  0.86  0.35      1    0.95  0.00   0   1     1
+gvt_resp            14 1441  6.46  2.58      6    6.61  2.97   1  10     9
+tax_rich            15 1370  6.45  2.72      7    6.64  2.97   1  10     9
+unempl_aid          16 1395  7.10  2.53      7    7.37  2.97   1  10     9
+state_inc_eq        17 1018  6.69  2.60      7    6.90  2.97   1  10     9
+                   skew kurtosis   se
+Unionized          1.51     0.28 0.01
+demonstr_dummy     1.44     0.08 0.01
+petition_dummy     1.62     0.64 0.01
+Wave*             -0.24    -1.37 0.02
+pol_pos*           0.20    -1.04 0.02
+pol_pos_left       1.17    -0.63 0.01
+politicization     0.56    -0.43 0.04
+civic_involvement  1.31     0.51 0.03
+X003               0.21    -0.63 0.32
+age*               0.15    -0.66 0.03
+Female             0.37    -1.86 0.01
+Educ*             -0.02    -0.28 0.01
+private_sector    -2.06     2.26 0.01
+gvt_resp          -0.32    -0.71 0.07
+tax_rich          -0.34    -0.81 0.07
+unempl_aid        -0.62    -0.43 0.07
+state_inc_eq      -0.40    -0.61 0.08</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="regresiones-logísticas" class="level1">
+<h1>Regresiones logísticas</h1>
+<p>El punto de partida es transformación de los coeficientes 𝛽 en coeficientes logit:</p>
+<ul>
+<li><p>Se conoce como “logit” a la transformación logarítmica de los odds (traducidos comúnmente como “chances”)</p></li>
+<li><p>¿Qué son los odds? Una razón de probabilidades</p></li>
+<li><p>Por lo tanto, para estimar probabilidades a través de una regresión logística hay que seguir estos pasos:</p>
+<ol type="1">
+<li>Estimar los odds o razón de probabilidades</li>
+<li>Estimar odds ratios (razones entre odds)</li>
+<li>Aplicar una transformación logarítmica a esos odds ratios para obtener coeficientes logit</li>
+<li>Calcular las probabilidades</li>
+</ol></li>
+</ul>
+<section id="tabla-de-contingencia-bivariado-sindicalización-participación-en-marchas" class="level2">
+<h2 class="anchored" data-anchor-id="tabla-de-contingencia-bivariado-sindicalización-participación-en-marchas">Tabla de contingencia bivariado: sindicalización / participación en marchas</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>WVS_2005_2022_Chl <span class="ot">&lt;-</span> WVS_2005_2022_Chl <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Unionized =</span> <span class="fu">labelled</span>(.<span class="sc">$</span>Unionized,<span class="fu">c</span>(<span class="st">"No"</span><span class="ot">=</span><span class="dv">0</span>,<span class="st">"Sí"</span><span class="ot">=</span><span class="dv">1</span>)),</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">demonstr_dummy =</span> <span class="fu">labelled</span>(.<span class="sc">$</span>demonstr_dummy,<span class="fu">c</span>(<span class="st">"No"</span><span class="ot">=</span><span class="dv">0</span>,<span class="st">"Sí"</span><span class="ot">=</span><span class="dv">1</span>)))</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>WVS_2005_2022_Chl <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(WVS_2005_2022_Chl) <span class="co">#para que la base quede como data frame (necesario para las figuras)</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(WVS_2005_2022_Chl<span class="sc">$</span>Unionized)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>x &lt;numeric&gt; 
+# total N=1457 valid N=1457 mean=0.20 sd=0.40
+
+Value | Label |    N | Raw % | Valid % | Cum. %
+-----------------------------------------------
+    0 |    No | 1168 | 80.16 |   80.16 |  80.16
+    1 |    Sí |  289 | 19.84 |   19.84 | 100.00
+ &lt;NA&gt; |  &lt;NA&gt; |    0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(WVS_2005_2022_Chl<span class="sc">$</span>demonstr_dummy)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>x &lt;integer&gt; 
+# total N=1457 valid N=1457 mean=0.21 sd=0.41
+
+Value | Label |    N | Raw % | Valid % | Cum. %
+-----------------------------------------------
+    0 |    No | 1155 | 79.27 |   79.27 |  79.27
+    1 |    Sí |  302 | 20.73 |   20.73 | 100.00
+ &lt;NA&gt; |  &lt;NA&gt; |    0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">tab_xtab</span>(<span class="at">var.col =</span> WVS_2005_2022_Chl<span class="sc">$</span>Unionized, </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">var.row =</span> WVS_2005_2022_Chl<span class="sc">$</span>demonstr_dummy, </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">title =</span> <span class="st">"Participación en marchas según afiliación sindical"</span>, </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">show.col.prc =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">value.labels =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">encoding =</span> <span class="st">"UTF-8"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: `valueLables` needs to be a `list`-object.</code></pre>
+</div>
+<div class="cell-output-display">
+
+<table style="border-collapse:collapse; border:none;">
+<caption style="font-weight: bold; text-align:left;">Participación en marchas según afiliación sindical</caption>
+ <tbody><tr>
+ <th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; border-bottom:1px solid;" rowspan="2">demonstr_dummy</th>
+ <th style="border-top:double; text-align:center; font-style:italic; font-weight:normal;" colspan="2">Unionized</th>
+ <th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; font-weight:bolder; font-style:italic; border-bottom:1px solid; " rowspan="2">Total</th>
+ </tr>
+ 
+<tr>
+ <td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">No</td>
+ <td style="border-bottom:1px solid; text-align:center; padding:0.2cm;">Sí</td>
+ </tr>
+ 
+<tr> 
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">No</td>
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">941</span><br><span style="color:#339933;">80.6&nbsp;%</span></td>
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">214</span><br><span style="color:#339933;">74&nbsp;%</span></td>
+<td style="padding:0.2cm; text-align:center;  "><span style="color:black;">1155</span><br><span style="color:#339933;">79.3&nbsp;%</span></td> 
+</tr>
+ 
+<tr> 
+<td style="padding:0.2cm;  text-align:left; vertical-align:middle;">Sí</td>
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">227</span><br><span style="color:#339933;">19.4&nbsp;%</span></td>
+<td style="padding:0.2cm; text-align:center; "><span style="color:black;">75</span><br><span style="color:#339933;">26&nbsp;%</span></td>
+<td style="padding:0.2cm; text-align:center;  "><span style="color:black;">302</span><br><span style="color:#339933;">20.7&nbsp;%</span></td> 
+</tr>
+ 
+<tr> 
+<td style="padding:0.2cm;  border-bottom:double; font-weight:bolder; font-style:italic; text-align:left; vertical-align:middle;">Total</td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;"><span style="color:black;">1168</span><br><span style="color:#339933;">100&nbsp;%</span></td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;"><span style="color:black;">289</span><br><span style="color:#339933;">100&nbsp;%</span></td>
+<td style="padding:0.2cm; text-align:center;   border-bottom:double;"><span style="color:black;">1457</span><br><span style="color:#339933;">100&nbsp;%</span></td> 
+</tr>
+<tr><td style="text-align:right; font-size:0.9em; font-style:italic; padding:0.2cm;" colspan="4">χ<sup>2</sup>=5.598 · df=1 · φ=0.064 · p=0.018</td> 
+</tr>
+ 
+</tbody></table>
+</div>
+</div>
+<section id="odds" class="level3">
+<h3 class="anchored" data-anchor-id="odds">Odds</h3>
+<p><span class="math display">\[Odds_{participar} = \frac{0.207}{0.793} = 0.26\]</span></p>
+<p>Las chances de participar en una marcha son de 0,26, respecto a las chances de no participar</p>
+<ul>
+<li><p>En otras palabras: por cada 1 persona, hay sólo 0,26 personas que participan en marchas.</p></li>
+<li><p>O más intuitivamente, por cada 100 personas, hay sólo 26 personas que participan</p></li>
+</ul>
+<p>¿Cambian las chances de participar según se esté afiliado/a a un sindicato</p>
+<p><span class="math display">\[Odds_{sindical} = \frac{0.26}{0.74} = 0.35\]</span></p>
+<p><span class="math display">\[Odds_{no.sindical} = \frac{0.194}{0.806} = 0.24\]</span></p>
+<p>¿Cómo se interpretan los odds?</p>
+<ul>
+<li><p>Valores bajo 1 indican que las chances de que ocurra un evento son negativas</p></li>
+<li><p>Valores iguales a 1 indican chances iguales</p></li>
+<li><p>Valores sobre 1 indican chances positivas</p></li>
+</ul>
+</section>
+<section id="odds-ratios-razones-de-chances" class="level3">
+<h3 class="anchored" data-anchor-id="odds-ratios-razones-de-chances">Odds ratios (razones de chances)</h3>
+<ul>
+<li><p>Cálculo que permite reflejar asociación entre dos variables dicotómicas, a partir de una comparación entre chances</p></li>
+<li><p>Siguiendo con el ejemplo anterior, ¿tienen los/as sindicalizados más chances de participar en marchas que quienes no están sindicalizados/as?</p></li>
+</ul>
+<p><span class="math display">\[OR = \frac{P_{sindical}/(1-P_{sindical})}{P_{no.sindical}/(1-P_{no.sindical})}\]</span></p>
+<p><span class="math display">\[OR = \frac{0.26/0.74}{0.194/0.806} = \frac{0.35}{0.24} = 1.46\]</span></p>
+<p>Las chances de participar en marchas de los/as sindicalizados/as son 1,5 veces más que las de quienes no están sindicalizados/as</p>
+<ul>
+<li><p>Implicancias:</p>
+<ol type="1">
+<li>El odds ratio o razones de chances es útil porque nos permite expresar en un número la relación entre dos variables categóricas</li>
+<li>En las regresiones logísticas, el odds ratio es la primera manera de aproximarnos a relación entre variables</li>
+<li>Sin embargo, falta un paso más necesario para construir modelos de regresión logística</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="logit" class="level2">
+<h2 class="anchored" data-anchor-id="logit">Logit</h2>
+<ul>
+<li><p>Es una unidad de medida de la relación entre dos variables (VD: dicotómica), que en regresión logística se calcula a partir del logaritmo natural de los odds</p></li>
+<li><p>Esta transformación logarítmica es la base de la estimación de parámetros en la regresión logística:</p></li>
+</ul>
+<p>La mejor combinación lineal de predictores no se obtiene a través de MCO, sino a través del procedimiento de máxima verosimilitud</p>
+<ul>
+<li>A diferencia de los odds ratio, los coeficientes logit tienen valores que van de –a +</li>
+</ul>
+</section>
+<section id="modelo-de-probabilidad-lineal" class="level2">
+<h2 class="anchored" data-anchor-id="modelo-de-probabilidad-lineal">Modelo de probabilidad lineal</h2>
+<p>Primero, solo para comparación, estimamos un modelo de probabilidad lineal.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>m1mpl <span class="ot">&lt;-</span> <span class="fu">lm</span>(demonstr_dummy <span class="sc">~</span> Unionized <span class="sc">+</span> Wave, <span class="at">data =</span> WVS_2005_2022_Chl)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">htmlreg</span>(m1mpl,</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">custom.model.names =</span> <span class="st">"Modelo de Prob Lineal"</span>,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">digits =</span> <span class="dv">3</span>, </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">stars =</span> <span class="fu">c</span>(<span class="fl">0.001</span>, <span class="fl">0.01</span>, <span class="fl">0.05</span>, <span class="fl">0.1</span>),<span class="at">symbol =</span> <span class="st">"†"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<table class="texreg" style="margin: 10px auto;border-collapse: collapse;border-spacing: 0px;caption-side: bottom;color: #000000;border-top: 2px solid #000000;">
+<caption>
+Statistical models
+</caption>
+<thead>
+<tr>
+<th style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</th>
+<th style="padding-left: 5px;padding-right: 5px;">
+Modelo de Prob Lineal
+</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-top: 1px solid #000000;">
+<td style="padding-left: 5px;padding-right: 5px;">
+(Intercept)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.167<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.022)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Unionized
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.072<sup>**</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.027)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+WaveWave 6
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.079<sup>**</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.027)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+WaveWave 7
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.005
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.027)
+</td>
+</tr>
+<tr style="border-top: 1px solid #000000;">
+<td style="padding-left: 5px;padding-right: 5px;">
+R<sup>2</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.013
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Adj. R<sup>2</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.011
+</td>
+</tr>
+<tr style="border-bottom: 2px solid #000000;">
+<td style="padding-left: 5px;padding-right: 5px;">
+Num. obs.
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1457
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="font-size: 0.8em;" colspan="2">
+<sup>***</sup>p &lt; 0.001; <sup>**</sup>p &lt; 0.01; <sup>*</sup>p &lt; 0.05; <sup>†</sup>p &lt; 0.1
+</td>
+</tr>
+</tfoot>
+
+</table>
+</section>
+<section id="modelo-de-regresión-logística" class="level2">
+<h2 class="anchored" data-anchor-id="modelo-de-regresión-logística">Modelo de regresión logística</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>m0log <span class="ot">&lt;-</span> <span class="fu">glm</span>(demonstr_dummy<span class="sc">~</span> Unionized, <span class="at">data =</span> WVS_2005_2022_Chl, <span class="at">family =</span> <span class="st">"binomial"</span>(<span class="at">link =</span> <span class="st">"logit"</span>))</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>m1log <span class="ot">&lt;-</span> <span class="fu">glm</span>(demonstr_dummy<span class="sc">~</span> Unionized <span class="sc">+</span> Wave, <span class="at">data =</span> WVS_2005_2022_Chl, <span class="at">family =</span> <span class="st">"binomial"</span>(<span class="at">link =</span> <span class="st">"logit"</span>))</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">#nota: "logit" viene por defecto en la opción "binomial", por eso no es necesario </span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">#incluirla explícitamente en el código (tal como lo hago en los modelos sgtes)</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>m2log <span class="ot">&lt;-</span> <span class="fu">glm</span>(demonstr_dummy<span class="sc">~</span> Unionized <span class="sc">+</span> Female <span class="sc">+</span> X003 <span class="sc">+</span> Educ <span class="sc">+</span> private_sector <span class="sc">+</span> Wave, <span class="at">data =</span> WVS_2005_2022_Chl,<span class="at">family =</span> <span class="st">"binomial"</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>m3log <span class="ot">&lt;-</span> <span class="fu">glm</span>(demonstr_dummy<span class="sc">~</span> Unionized <span class="sc">+</span> Female <span class="sc">+</span> X003 <span class="sc">+</span> Educ <span class="sc">+</span> private_sector <span class="sc">+</span> politicization <span class="sc">+</span> Wave, <span class="at">data =</span> WVS_2005_2022_Chl,<span class="at">family =</span> <span class="st">"binomial"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">htmlreg</span>(<span class="fu">list</span>(m1mpl, m1log,m2log,m3log),</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">custom.model.names =</span> <span class="fu">c</span>(<span class="st">"M1 (m prob lineal)"</span>,<span class="st">"M1 (log odds)"</span>,<span class="st">"M2 (log odds)"</span>,<span class="st">"M3 (log odds)"</span>),</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">digits =</span> <span class="dv">3</span>, </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">stars =</span> <span class="fu">c</span>(<span class="fl">0.001</span>, <span class="fl">0.01</span>, <span class="fl">0.05</span>, <span class="fl">0.1</span>),<span class="at">symbol =</span> <span class="st">"†"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<table class="texreg" style="margin: 10px auto;border-collapse: collapse;border-spacing: 0px;caption-side: bottom;color: #000000;border-top: 2px solid #000000;">
+<caption>
+Statistical models
+</caption>
+<thead>
+<tr>
+<th style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</th>
+<th style="padding-left: 5px;padding-right: 5px;">
+M1 (m prob lineal)
+</th>
+<th style="padding-left: 5px;padding-right: 5px;">
+M1 (log odds)
+</th>
+<th style="padding-left: 5px;padding-right: 5px;">
+M2 (log odds)
+</th>
+<th style="padding-left: 5px;padding-right: 5px;">
+M3 (log odds)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-top: 1px solid #000000;">
+<td style="padding-left: 5px;padding-right: 5px;">
+(Intercept)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.167<sup>***</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-1.601<sup>***</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-1.023<sup>*</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-1.379<sup>**</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.022)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.140)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.424)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.437)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Unionized
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.072<sup>**</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.418<sup>**</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.390<sup>*</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.312<sup>†</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.027)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.155)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.157)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.161)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+WaveWave 6
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.079<sup>**</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.470<sup>**</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.498<sup>**</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.496<sup>**</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.027)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.168)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.171)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.174)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+WaveWave 7
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.005
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.031
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.102
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.121
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.027)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.174)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.181)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.184)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Female
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.020
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.100
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.136)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.139)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+X003
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.007
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.012<sup>*</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.006)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.006)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Educ2
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.042
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.053
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.268)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.272)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Educ3
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.521<sup>†</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.259
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.283)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.289)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+private_sector
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.516<sup>**</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.445<sup>*</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.175)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.180)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+politicization
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.282<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.042)
+</td>
+</tr>
+<tr style="border-top: 1px solid #000000;">
+<td style="padding-left: 5px;padding-right: 5px;">
+R<sup>2</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.013
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Adj. R<sup>2</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.011
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Num. obs.
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1457
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1457
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1457
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1457
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+AIC
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1475.887
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1460.059
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1415.850
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+BIC
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1497.024
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1507.616
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1468.691
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Log Likelihood
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-733.944
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-721.030
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-697.925
+</td>
+</tr>
+<tr style="border-bottom: 2px solid #000000;">
+<td style="padding-left: 5px;padding-right: 5px;">
+Deviance
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1467.887
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1442.059
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1395.850
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="font-size: 0.8em;" colspan="5">
+<sup>***</sup>p &lt; 0.001; <sup>**</sup>p &lt; 0.01; <sup>*</sup>p &lt; 0.05; <sup>†</sup>p &lt; 0.1
+</td>
+</tr>
+</tfoot>
+
+</table>
+<p>En el Modelo 1 (M1), el log-odds de participación en marchas para afiliados a sindicatos aumenta en 0.418 en comparación con los no sindicalizados (p&lt;0.01). Este resultado mantiene su significación estadística en el Modelo 2 y baja su significación a p&lt;0.1 en el Modelo 3, al controlar por las demás variables independientes.</p>
+<p>En el Modelo 2, En comparación a los/as trabajadores/as del sector público (categoría de referencia), el log-odds de participación en marchas para los/as del sector privado disminuye en 0,52 (p &lt; 0,01), manteniendo el resto de variables constantes.</p>
+<p>En el Modelo 3, por cada unidad de aumento en la escala de politización, el log-odds de participación en marchas aumenta en 0,28 (p &lt; 0,001), manteniendo el resto de las variables constantes.</p>
+<section id="problemas-de-interpretación" class="level3">
+<h3 class="anchored" data-anchor-id="problemas-de-interpretación">Problemas de interpretación</h3>
+<p>A pesar de sus ventajas, los coeficientes logit son difíciles de interpretar:</p>
+<ul>
+<li><p>Los coef. logit son el resultado de una transformación de la escala original</p></li>
+<li><p>Ellos no muestran directamente probabilidades</p></li>
+<li><p>Entonces: Volver a la escala original de <strong>odds ratio</strong> mediante la <strong>exponenciación de los coeficientes</strong> (la función exponencial es la inversa del logaritmo)</p></li>
+</ul>
+<p><span class="math display">\[logit_x = log(odds)\]</span></p>
+<p><span class="math display">\[e^{logit} = odds_x\]</span></p>
+<p><span class="math display">\[e^{0.39} = odds_x = 1.477\]</span></p>
+<p>Las chances (odds) de participar en marchas de los/as sindicalizados/as son 1,5 veces más que las de quienes no están sindicalizados/as, controlando por las otras variables incluidas en el modelo</p>
+</section>
+</section>
+<section id="estimación-de-odds-ratios" class="level2">
+<h2 class="anchored" data-anchor-id="estimación-de-odds-ratios">Estimación de odds ratios</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(m1log)) <span class="co">#comando básico</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(Intercept)   Unionized  WaveWave 6  WaveWave 7 
+  0.2016888   1.5185264   1.5996549   0.9694021 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Cálculo de OR para cada modelo</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>m0log_OR <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">coef</span>(m0log))</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>m1log_OR <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">coef</span>(m1log))</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>m2log_OR <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">coef</span>(m2log))</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>m3log_OR <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">coef</span>(m3log))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="do">##Odds ratios en tabla de texreg</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">htmlreg</span>(<span class="fu">list</span>(m1log,m2log,m3log), </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">override.coef =</span> <span class="fu">list</span>(m1log_OR,m2log_OR,m3log_OR), <span class="co"># Sobreescribir coeficientes</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">custom.model.names =</span> <span class="fu">c</span>(<span class="st">"m1 (OR)"</span>,<span class="st">"m2 (OR)"</span>,<span class="st">"m3 (OR)"</span>),</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">digits =</span> <span class="dv">3</span>, </span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">stars =</span> <span class="fu">c</span>(<span class="fl">0.001</span>, <span class="fl">0.01</span>, <span class="fl">0.05</span>, <span class="fl">0.1</span>),<span class="at">symbol =</span> <span class="st">"†"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<table class="texreg" style="margin: 10px auto;border-collapse: collapse;border-spacing: 0px;caption-side: bottom;color: #000000;border-top: 2px solid #000000;">
+<caption>
+Statistical models
+</caption>
+<thead>
+<tr>
+<th style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</th>
+<th style="padding-left: 5px;padding-right: 5px;">
+m1 (OR)
+</th>
+<th style="padding-left: 5px;padding-right: 5px;">
+m2 (OR)
+</th>
+<th style="padding-left: 5px;padding-right: 5px;">
+m3 (OR)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-top: 1px solid #000000;">
+<td style="padding-left: 5px;padding-right: 5px;">
+(Intercept)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.202<sup>***</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.359<sup>*</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.252<sup>**</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.140)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.424)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.437)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Unionized
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1.519<sup>**</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1.477<sup>*</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1.366<sup>†</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.155)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.157)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.161)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+WaveWave 6
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1.600<sup>**</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1.646<sup>**</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1.642<sup>**</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.168)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.171)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.174)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+WaveWave 7
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.969
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.903
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.886
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.174)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.181)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.184)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Female
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.980
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1.106
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.136)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.139)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+X003
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.993
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.988<sup>*</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.006)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.006)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Educ2
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1.042
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.949
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.268)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.272)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Educ3
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1.684<sup>†</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1.296
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.283)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.289)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+private_sector
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.597<sup>**</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.641<sup>*</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.175)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.180)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+politicization
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1.326<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.042)
+</td>
+</tr>
+<tr style="border-top: 1px solid #000000;">
+<td style="padding-left: 5px;padding-right: 5px;">
+AIC
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1475.887
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1460.059
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1415.850
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+BIC
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1497.024
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1507.616
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1468.691
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Log Likelihood
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-733.944
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-721.030
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-697.925
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Deviance
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1467.887
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1442.059
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1395.850
+</td>
+</tr>
+<tr style="border-bottom: 2px solid #000000;">
+<td style="padding-left: 5px;padding-right: 5px;">
+Num. obs.
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1457
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1457
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1457
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="font-size: 0.8em;" colspan="4">
+<sup>***</sup>p &lt; 0.001; <sup>**</sup>p &lt; 0.01; <sup>*</sup>p &lt; 0.05; <sup>†</sup>p &lt; 0.1
+</td>
+</tr>
+</tfoot>
+
+</table>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Nota: errores estándares en esta tabla NO tienen  sentido (no están calculados a partir de OR, sino de log odds)</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Es mejor no reportarlos si solo se van a presentar odds ratios</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Sin embargo, los coeficientes de un modelo de reg. logística (log-odds u odds-ratios) no son comparables con los coeficientes de otro modelo</p>
+</section>
+<section id="cálculo-de-probabilidades-predichas" class="level2">
+<h2 class="anchored" data-anchor-id="cálculo-de-probabilidades-predichas">Cálculo de probabilidades predichas</h2>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tabla básica: sólo sindicalizacion como vble independ</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">htmlreg</span>(m0log,</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">custom.model.names =</span> <span class="fu">c</span>(<span class="st">"m0 (log odds)"</span>),</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">digits =</span> <span class="dv">3</span>, </span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">stars =</span> <span class="fu">c</span>(<span class="fl">0.001</span>, <span class="fl">0.01</span>, <span class="fl">0.05</span>, <span class="fl">0.1</span>),<span class="at">symbol =</span> <span class="st">"†"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<table class="texreg" style="margin: 10px auto;border-collapse: collapse;border-spacing: 0px;caption-side: bottom;color: #000000;border-top: 2px solid #000000;">
+<caption>
+Statistical models
+</caption>
+<thead>
+<tr>
+<th style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</th>
+<th style="padding-left: 5px;padding-right: 5px;">
+m0 (log odds)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-top: 1px solid #000000;">
+<td style="padding-left: 5px;padding-right: 5px;">
+(Intercept)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-1.422<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.074)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Unionized
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.374<sup>*</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.153)
+</td>
+</tr>
+<tr style="border-top: 1px solid #000000;">
+<td style="padding-left: 5px;padding-right: 5px;">
+AIC
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1485.340
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+BIC
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1495.908
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Log Likelihood
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-740.670
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Deviance
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1481.340
+</td>
+</tr>
+<tr style="border-bottom: 2px solid #000000;">
+<td style="padding-left: 5px;padding-right: 5px;">
+Num. obs.
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1457
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="font-size: 0.8em;" colspan="2">
+<sup>***</sup>p &lt; 0.001; <sup>**</sup>p &lt; 0.01; <sup>*</sup>p &lt; 0.05; <sup>†</sup>p &lt; 0.1
+</td>
+</tr>
+</tfoot>
+
+</table>
+<p>A partir de este modelo se pueden predecir log-odds y, más importante aún, probabilidades para personas con distintos atributos controlados en el modelo (ej., sindicalizadas o no)</p>
+<p><span class="math display">\[logit(prob.marcha) = 𝛼+ 𝛽_1X_1 \]</span></p>
+<p><span class="math display">\[logit(prob.marcha)_{sindical} = -1.422 + (0.374 * Unionized=1) = -1.048 \]</span></p>
+<p><span class="math display">\[logit(prob.marcha)_{no.sindical} = -1.422 + (0.374 * Unionized=0) = -1.422 \]</span></p>
+<p>Este “puntaje predicho” (log-odds) no tiene interpretación, por lo que hay que pasarlo a Odds</p>
+<p><span class="math display">\[Odds_x = e^{𝛼+𝛽_jX_j}\]</span></p>
+<p><span class="math display">\[Odds_{sindicalizados} = e^{-1.048} = 0.35\]</span></p>
+<p><span class="math display">\[Odds_{no.sindicalizados} = e^{-1.422} = 0.24\]</span></p>
+<p>Finalmente, habiendo calculado los odds para cada tipo de persona se pueden calcular sus probabilidades predichas</p>
+<p><span class="math display">\[p = \frac{e^{𝛼+𝛽_jX_j}}{1+e^{𝛼+𝛽_jX_j}} = \frac{odds_{xj}}{1+odds_{xj}}\]</span></p>
+<p><span class="math display">\[p_{sindicalizados} = \frac{0.35}{1+0.35} = \frac{0.35}{1.35} = 0.26\]</span></p>
+<p><span class="math display">\[p_{no.sindicalizados} = \frac{0.24}{1+0.24} = \frac{0.24}{1.24} = 0.19\]</span></p>
+<p>La probabilidad de que un/a sindicalizado participe en marchas es del 26%, mientras que la probabilidad de que alguien que no esté sindicalizado/a es del 19%</p>
+</section>
+<section id="cálculo-de-probabilidades-predichas-en-r" class="level2">
+<h2 class="anchored" data-anchor-id="cálculo-de-probabilidades-predichas-en-r">Cálculo de probabilidades predichas en R</h2>
+<ul>
+<li><p>Paquete ggeffects de R: últil para estimar probabilidades predichas a partir de modelos de regresión logísticas</p></li>
+<li><p>Combinado con ggplot2, se pueden generar gráficos que muestran de modo más intuitivo la relación entre variables</p></li>
+</ul>
+<p>Gráfico de probabilidades predichas para sindicalizados/as y no sindicalizados/as</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>FigSind_1_Prob <span class="ot">&lt;-</span> ggeffects<span class="sc">::</span><span class="fu">ggpredict</span>(m3log, <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">"Unionized"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>predicted)) <span class="sc">+</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>, <span class="at">color=</span><span class="st">"grey"</span>, <span class="at">fill=</span><span class="st">"grey"</span>)<span class="sc">+</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> conf.low, <span class="at">ymax =</span> conf.high), <span class="at">width=</span>.<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Sindicalización"</span>, <span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> <span class="st">""</span>) <span class="sc">+</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>), </span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">0</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">12</span>),</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">10</span>)) <span class="sc">+</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">name =</span> <span class="st">""</span>,</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Non-union members"</span>, <span class="st">"Union members"</span>)) <span class="sc">+</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.35</span>), </span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="fl">0.35</span>, <span class="at">by =</span> <span class="fl">0.05</span>),</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>(<span class="at">accuracy =</span> 1L))</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>FigSind_1_Prob</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="06-resource_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Gráfico de probabilidades predichas para variable politización</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>FigPolit_1_Prob<span class="ot">&lt;-</span> ggeffects<span class="sc">::</span><span class="fu">ggpredict</span>(m3log, <span class="at">terms=</span><span class="st">"politicization"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">mapping=</span><span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y=</span>predicted)) <span class="sc">+</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Politización"</span>, <span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> <span class="st">""</span>)<span class="sc">+</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()<span class="sc">+</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> conf.low, <span class="at">ymax =</span> conf.high), <span class="at">alpha =</span> .<span class="dv">2</span>, <span class="at">fill =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>), </span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">0</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">10</span>))<span class="sc">+</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">6</span>, <span class="at">by =</span> <span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.6</span>), <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="fl">0.6</span>, <span class="at">by =</span> <span class="fl">0.1</span>),</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>(<span class="at">accuracy =</span> 1L))</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>FigPolit_1_Prob</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using method = 'loess' and formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="06-resource_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="bondad-de-ajuste-comando-de-paquete-lmtest" class="level2">
+<h2 class="anchored" data-anchor-id="bondad-de-ajuste-comando-de-paquete-lmtest">Bondad de ajuste (comando de paquete lmtest)</h2>
+<ul>
+<li>Razón de verosimilitudes</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m1log, m2log, <span class="at">test =</span> <span class="st">"Chisq"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Deviance Table
+
+Model 1: demonstr_dummy ~ Unionized + Wave
+Model 2: demonstr_dummy ~ Unionized + Female + X003 + Educ + private_sector + 
+    Wave
+  Resid. Df Resid. Dev Df Deviance  Pr(&gt;Chi)    
+1      1453     1467.9                          
+2      1448     1442.1  5   25.828 9.635e-05 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(m2log, m3log, <span class="at">test =</span> <span class="st">"Chisq"</span>) </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Deviance Table
+
+Model 1: demonstr_dummy ~ Unionized + Female + X003 + Educ + private_sector + 
+    Wave
+Model 2: demonstr_dummy ~ Unionized + Female + X003 + Educ + private_sector + 
+    politicization + Wave
+  Resid. Df Resid. Dev Df Deviance  Pr(&gt;Chi)    
+1      1448     1442.1                          
+2      1447     1395.8  1    46.21 1.063e-11 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lrtest</span>(m1log, m2log) <span class="co">#likelihood ratio test / Prueba de razón de verosimilitud (comparación m1-m2)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Likelihood ratio test
+
+Model 1: demonstr_dummy ~ Unionized + Wave
+Model 2: demonstr_dummy ~ Unionized + Female + X003 + Educ + private_sector + 
+    Wave
+  #Df  LogLik Df  Chisq Pr(&gt;Chisq)    
+1   4 -733.94                         
+2   9 -721.03  5 25.828  9.635e-05 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lrtest</span>(m2log, m3log) <span class="co">#likelihood ratio test / Prueba de razón de verosimilitud (comparación m2-m3)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Likelihood ratio test
+
+Model 1: demonstr_dummy ~ Unionized + Female + X003 + Educ + private_sector + 
+    Wave
+Model 2: demonstr_dummy ~ Unionized + Female + X003 + Educ + private_sector + 
+    politicization + Wave
+  #Df  LogLik Df Chisq Pr(&gt;Chisq)    
+1   9 -721.03                        
+2  10 -697.92  1 46.21  1.063e-11 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<ul>
+<li>Pseudo R2 (McFadden)</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>m1log_R2<span class="ot">&lt;-</span>DescTools<span class="sc">::</span><span class="fu">PseudoR2</span>(m1log)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>m2log_R2<span class="ot">&lt;-</span>DescTools<span class="sc">::</span><span class="fu">PseudoR2</span>(m2log)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>m3log_R2<span class="ot">&lt;-</span>DescTools<span class="sc">::</span><span class="fu">PseudoR2</span>(m3log)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Misma tabla, en log odds, con Pseudo R2</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">htmlreg</span>(<span class="fu">list</span>(m1log,m2log,m3log),</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">custom.model.names =</span> <span class="fu">c</span>(<span class="st">"m1 (log odds)"</span>,<span class="st">"m2 (log odds)"</span>,<span class="st">"m3 (log odds)"</span>),</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">custom.gof.rows=</span><span class="fu">list</span>(<span class="st">"Pseudo R2"</span> <span class="ot">=</span> <span class="fu">c</span>(m1log_R2, m2log_R2,m3log_R2)),</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">digits =</span> <span class="dv">3</span>, </span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">stars =</span> <span class="fu">c</span>(<span class="fl">0.001</span>, <span class="fl">0.01</span>, <span class="fl">0.05</span>, <span class="fl">0.1</span>),<span class="at">symbol =</span> <span class="st">"†"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<table class="texreg" style="margin: 10px auto;border-collapse: collapse;border-spacing: 0px;caption-side: bottom;color: #000000;border-top: 2px solid #000000;">
+<caption>
+Statistical models
+</caption>
+<thead>
+<tr>
+<th style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</th>
+<th style="padding-left: 5px;padding-right: 5px;">
+m1 (log odds)
+</th>
+<th style="padding-left: 5px;padding-right: 5px;">
+m2 (log odds)
+</th>
+<th style="padding-left: 5px;padding-right: 5px;">
+m3 (log odds)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-top: 1px solid #000000;">
+<td style="padding-left: 5px;padding-right: 5px;">
+(Intercept)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-1.601<sup>***</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-1.023<sup>*</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-1.379<sup>**</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.140)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.424)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.437)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Unionized
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.418<sup>**</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.390<sup>*</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.312<sup>†</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.155)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.157)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.161)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+WaveWave 6
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.470<sup>**</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.498<sup>**</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.496<sup>**</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.168)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.171)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.174)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+WaveWave 7
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.031
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.102
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.121
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.174)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.181)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.184)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Female
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.020
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.100
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.136)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.139)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+X003
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.007
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.012<sup>*</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.006)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.006)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Educ2
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.042
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.053
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.268)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.272)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Educ3
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.521<sup>†</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.259
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.283)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.289)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+private_sector
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.516<sup>**</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.445<sup>*</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.175)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.180)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+politicization
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.282<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.042)
+</td>
+</tr>
+<tr style="border-top: 1px solid #000000;">
+<td style="padding-left: 5px;padding-right: 5px;">
+Pseudo R2
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.013
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.030
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.061
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+AIC
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1475.887
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1460.059
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1415.850
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+BIC
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1497.024
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1507.616
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1468.691
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Log Likelihood
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-733.944
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-721.030
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-697.925
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Deviance
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1467.887
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1442.059
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1395.850
+</td>
+</tr>
+<tr style="border-bottom: 2px solid #000000;">
+<td style="padding-left: 5px;padding-right: 5px;">
+Num. obs.
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1457
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1457
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1457
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="font-size: 0.8em;" colspan="4">
+<sup>***</sup>p &lt; 0.001; <sup>**</sup>p &lt; 0.01; <sup>*</sup>p &lt; 0.05; <sup>†</sup>p &lt; 0.1
+</td>
+</tr>
+</tfoot>
+
+</table>
+</section>
+<section id="efectos-de-interacción" class="level2">
+<h2 class="anchored" data-anchor-id="efectos-de-interacción">Efectos de interacción</h2>
+<p>sindicalizacion - sector privado</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>m3<span class="fl">.1</span>log <span class="ot">&lt;-</span> <span class="fu">glm</span>(demonstr_dummy<span class="sc">~</span> Unionized <span class="sc">+</span> Female <span class="sc">+</span> X003 <span class="sc">+</span> Educ <span class="sc">+</span> private_sector <span class="sc">+</span> politicization <span class="sc">+</span> Wave <span class="sc">+</span> Unionized<span class="sc">*</span>private_sector, </span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">data =</span> WVS_2005_2022_Chl,<span class="at">family =</span> <span class="st">"binomial"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">htmlreg</span>(<span class="fu">list</span>(m1log,m2log,m3log,m3<span class="fl">.1</span>log),</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">custom.model.names =</span> <span class="fu">c</span>(<span class="st">"M1 (log odds)"</span>,<span class="st">"M2 (log odds)"</span>,<span class="st">"M3 (log odds)"</span>,</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"M3.1 (log odds)"</span>),</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">digits =</span> <span class="dv">3</span>, </span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">stars =</span> <span class="fu">c</span>(<span class="fl">0.001</span>, <span class="fl">0.01</span>, <span class="fl">0.05</span>, <span class="fl">0.1</span>),<span class="at">symbol =</span> <span class="st">"†"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<table class="texreg" style="margin: 10px auto;border-collapse: collapse;border-spacing: 0px;caption-side: bottom;color: #000000;border-top: 2px solid #000000;">
+<caption>
+Statistical models
+</caption>
+<thead>
+<tr>
+<th style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</th>
+<th style="padding-left: 5px;padding-right: 5px;">
+M1 (log odds)
+</th>
+<th style="padding-left: 5px;padding-right: 5px;">
+M2 (log odds)
+</th>
+<th style="padding-left: 5px;padding-right: 5px;">
+M3 (log odds)
+</th>
+<th style="padding-left: 5px;padding-right: 5px;">
+M3.1 (log odds)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-top: 1px solid #000000;">
+<td style="padding-left: 5px;padding-right: 5px;">
+(Intercept)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-1.601<sup>***</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-1.023<sup>*</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-1.379<sup>**</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-1.452<sup>**</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.140)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.424)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.437)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.447)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Unionized
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.418<sup>**</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.390<sup>*</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.312<sup>†</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.569
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.155)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.157)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.161)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.353)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+WaveWave 6
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.470<sup>**</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.498<sup>**</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.496<sup>**</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.496<sup>**</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.168)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.171)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.174)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.174)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+WaveWave 7
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.031
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.102
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.121
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.122
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.174)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.181)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.184)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.184)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Female
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.020
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.100
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.094
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.136)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.139)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.140)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+X003
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.007
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.012<sup>*</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.012<sup>*</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.006)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.006)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.006)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Educ2
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.042
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.053
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.044
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.268)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.272)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.272)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Educ3
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.521<sup>†</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.259
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.259
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.283)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.289)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.289)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+private_sector
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.516<sup>**</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.445<sup>*</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.360<sup>†</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.175)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.180)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.210)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+politicization
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.282<sup>***</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.281<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.042)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.042)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Unionized:private_sector
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.324
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.397)
+</td>
+</tr>
+<tr style="border-top: 1px solid #000000;">
+<td style="padding-left: 5px;padding-right: 5px;">
+AIC
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1475.887
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1460.059
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1415.850
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1417.185
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+BIC
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1497.024
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1507.616
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1468.691
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1475.310
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Log Likelihood
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-733.944
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-721.030
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-697.925
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-697.592
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Deviance
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1467.887
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1442.059
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1395.850
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1395.185
+</td>
+</tr>
+<tr style="border-bottom: 2px solid #000000;">
+<td style="padding-left: 5px;padding-right: 5px;">
+Num. obs.
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1457
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1457
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1457
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1457
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="font-size: 0.8em;" colspan="5">
+<sup>***</sup>p &lt; 0.001; <sup>**</sup>p &lt; 0.01; <sup>*</sup>p &lt; 0.05; <sup>†</sup>p &lt; 0.1
+</td>
+</tr>
+</tfoot>
+
+</table>
+<ul>
+<li>La interacción también se puede graficar según probabilidades predichas</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ojo que la relación sindicalización x sector privado no es significativa</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>FigSindSector_int<span class="ot">&lt;-</span>ggeffects<span class="sc">::</span><span class="fu">ggpredict</span>(m3<span class="fl">.1</span>log, <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">"Unionized"</span>, <span class="st">"private_sector"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>predicted, <span class="at">shape =</span> group, <span class="at">color =</span> group)) <span class="sc">+</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group=</span>group,<span class="at">linetype =</span> group),<span class="at">position =</span> <span class="fu">position_dodge</span>(.<span class="dv">1</span>)) <span class="sc">+</span> </span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.5</span>,<span class="at">position =</span> <span class="fu">position_dodge</span>(.<span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">name =</span> <span class="st">""</span>, <span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No sindicalizados/as"</span>, <span class="st">"Sindicalizados/as"</span>)) <span class="sc">+</span> </span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_discrete</span>(<span class="at">name =</span> <span class="st">"Sector de empleo"</span>,</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>                       <span class="at">limits =</span> <span class="fu">c</span>(<span class="st">"0"</span>, <span class="st">"1"</span>),</span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>                       <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Público"</span>, <span class="st">"Privado"</span>)) <span class="sc">+</span></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">name =</span> <span class="st">"Sector de empleo"</span>,</span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>                     <span class="at">limits =</span> <span class="fu">c</span>(<span class="st">"0"</span>, <span class="st">"1"</span>),</span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Público"</span>, <span class="st">"Privado"</span>),</span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>                     <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"black"</span>, <span class="st">"black"</span>)) <span class="sc">+</span></span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_linetype_manual</span>(<span class="at">name =</span> <span class="st">"Sector de empleo"</span>,</span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a>                        <span class="at">limits =</span> <span class="fu">c</span>(<span class="st">"0"</span>, <span class="st">"1"</span>),</span>
+<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a>                        <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Público"</span>, <span class="st">"Privado"</span>),</span>
+<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a>                        <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"solid"</span>, <span class="st">"dashed"</span>)) <span class="sc">+</span></span>
+<span id="cb39-18"><a href="#cb39-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.40</span>), <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="fl">0.40</span>, <span class="at">by =</span> <span class="fl">0.05</span>),</span>
+<span id="cb39-19"><a href="#cb39-19" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>(<span class="at">accuracy =</span> 1L)) <span class="sc">+</span></span>
+<span id="cb39-20"><a href="#cb39-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb39-21"><a href="#cb39-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">""</span>, <span class="at">y =</span> <span class="st">""</span>) <span class="sc">+</span> </span>
+<span id="cb39-22"><a href="#cb39-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">11</span>),</span>
+<span id="cb39-23"><a href="#cb39-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">11</span>))</span>
+<span id="cb39-24"><a href="#cb39-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-25"><a href="#cb39-25" aria-hidden="true" tabindex="-1"></a>FigSindSector_int</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="06-resource_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<ul>
+<li>Sector de empleo - politización</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>m3<span class="fl">.2</span>log <span class="ot">&lt;-</span> <span class="fu">glm</span>(demonstr_dummy<span class="sc">~</span> Unionized <span class="sc">+</span> Female <span class="sc">+</span> X003 <span class="sc">+</span> Educ <span class="sc">+</span> private_sector </span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>               <span class="sc">+</span> politicization <span class="sc">+</span> Wave <span class="sc">+</span> private_sector<span class="sc">*</span>politicization,</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">data =</span> WVS_2005_2022_Chl,<span class="at">family =</span> <span class="st">"binomial"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">htmlreg</span>(<span class="fu">list</span>(m1log,m2log,m3log,m3<span class="fl">.1</span>log,m3<span class="fl">.2</span>log),</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">custom.model.names =</span> <span class="fu">c</span>(<span class="st">"M1 (log odds)"</span>,<span class="st">"M2 (log odds)"</span>,<span class="st">"M3 (log odds)"</span>,</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"M3.1 (log odds)"</span>,<span class="st">"M3.2 (log odds)"</span>),</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">digits =</span> <span class="dv">3</span>, </span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">stars =</span> <span class="fu">c</span>(<span class="fl">0.001</span>, <span class="fl">0.01</span>, <span class="fl">0.05</span>, <span class="fl">0.1</span>),<span class="at">symbol =</span> <span class="st">"†"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<table class="texreg" style="margin: 10px auto;border-collapse: collapse;border-spacing: 0px;caption-side: bottom;color: #000000;border-top: 2px solid #000000;">
+<caption>
+Statistical models
+</caption>
+<thead>
+<tr>
+<th style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</th>
+<th style="padding-left: 5px;padding-right: 5px;">
+M1 (log odds)
+</th>
+<th style="padding-left: 5px;padding-right: 5px;">
+M2 (log odds)
+</th>
+<th style="padding-left: 5px;padding-right: 5px;">
+M3 (log odds)
+</th>
+<th style="padding-left: 5px;padding-right: 5px;">
+M3.1 (log odds)
+</th>
+<th style="padding-left: 5px;padding-right: 5px;">
+M3.2 (log odds)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-top: 1px solid #000000;">
+<td style="padding-left: 5px;padding-right: 5px;">
+(Intercept)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-1.601<sup>***</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-1.023<sup>*</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-1.379<sup>**</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-1.452<sup>**</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-1.416<sup>**</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.140)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.424)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.437)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.447)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.480)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Unionized
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.418<sup>**</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.390<sup>*</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.312<sup>†</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.569
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.310<sup>†</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.155)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.157)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.161)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.353)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.161)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+WaveWave 6
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.470<sup>**</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.498<sup>**</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.496<sup>**</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.496<sup>**</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.495<sup>**</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.168)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.171)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.174)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.174)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.174)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+WaveWave 7
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.031
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.102
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.121
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.122
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.122
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.174)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.181)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.184)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.184)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.184)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Female
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.020
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.100
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.094
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.100
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.136)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.139)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.140)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.139)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+X003
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.007
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.012<sup>*</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.012<sup>*</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.012<sup>*</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.006)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.006)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.006)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.006)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Educ2
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.042
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.053
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.044
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.053
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.268)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.272)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.272)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.272)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Educ3
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.521<sup>†</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.259
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.259
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.258
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.283)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.289)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.289)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.289)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+private_sector
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.516<sup>**</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.445<sup>*</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.360<sup>†</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.396
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.175)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.180)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.210)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.315)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+politicization
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.282<sup>***</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.281<sup>***</sup>
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+0.298<sup>**</sup>
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.042)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.042)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.093)
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Unionized:private_sector
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.324
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.397)
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+private_sector:politicization
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-0.019
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+&nbsp;
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+(0.103)
+</td>
+</tr>
+<tr style="border-top: 1px solid #000000;">
+<td style="padding-left: 5px;padding-right: 5px;">
+AIC
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1475.887
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1460.059
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1415.850
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1417.185
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1417.814
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+BIC
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1497.024
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1507.616
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1468.691
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1475.310
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1475.939
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Log Likelihood
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-733.944
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-721.030
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-697.925
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-697.592
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+-697.907
+</td>
+</tr>
+<tr>
+<td style="padding-left: 5px;padding-right: 5px;">
+Deviance
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1467.887
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1442.059
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1395.850
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1395.185
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1395.814
+</td>
+</tr>
+<tr style="border-bottom: 2px solid #000000;">
+<td style="padding-left: 5px;padding-right: 5px;">
+Num. obs.
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1457
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1457
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1457
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1457
+</td>
+<td style="padding-left: 5px;padding-right: 5px;">
+1457
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="font-size: 0.8em;" colspan="6">
+<sup>***</sup>p &lt; 0.001; <sup>**</sup>p &lt; 0.01; <sup>*</sup>p &lt; 0.05; <sup>†</sup>p &lt; 0.1
+</td>
+</tr>
+</tfoot>
+
+</table>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>FigPolitSector_int<span class="ot">&lt;-</span>ggeffects<span class="sc">::</span><span class="fu">ggpredict</span>(m3<span class="fl">.2</span>log, <span class="at">terms =</span> <span class="fu">c</span>(<span class="st">"politicization"</span>, <span class="st">"private_sector"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>predicted, <span class="at">shape =</span> group, <span class="at">color =</span> group)) <span class="sc">+</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group=</span>group,<span class="at">linetype =</span> group),<span class="at">position =</span> <span class="fu">position_dodge</span>(.<span class="dv">1</span>)) <span class="sc">+</span> </span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.5</span>,<span class="at">position =</span> <span class="fu">position_dodge</span>(.<span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">6</span>, <span class="at">by =</span> <span class="dv">1</span>), <span class="at">name =</span> <span class="st">""</span>) <span class="sc">+</span> </span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_discrete</span>(<span class="at">name =</span> <span class="st">"Sector de empleo"</span>,</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>                       <span class="at">limits =</span> <span class="fu">c</span>(<span class="st">"0"</span>, <span class="st">"1"</span>),</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>                       <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Público"</span>, <span class="st">"Privado"</span>)) <span class="sc">+</span></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">name =</span> <span class="st">"Sector de empleo"</span>,</span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>                     <span class="at">limits =</span> <span class="fu">c</span>(<span class="st">"0"</span>, <span class="st">"1"</span>),</span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Público"</span>, <span class="st">"Privado"</span>),</span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>                     <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"black"</span>, <span class="st">"black"</span>)) <span class="sc">+</span></span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_linetype_manual</span>(<span class="at">name =</span> <span class="st">"Sector de empleo"</span>,</span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>                        <span class="at">limits =</span> <span class="fu">c</span>(<span class="st">"0"</span>, <span class="st">"1"</span>),</span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>                        <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Público"</span>, <span class="st">"Privado"</span>),</span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a>                        <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"solid"</span>, <span class="st">"dashed"</span>)) <span class="sc">+</span></span>
+<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.8</span>), <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="fl">0.8</span>, <span class="at">by =</span> <span class="fl">0.1</span>),</span>
+<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>(<span class="at">accuracy =</span> 1L)) <span class="sc">+</span></span>
+<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb42-20"><a href="#cb42-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">""</span>, <span class="at">y =</span> <span class="st">""</span>) <span class="sc">+</span> </span>
+<span id="cb42-21"><a href="#cb42-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">11</span>),</span>
+<span id="cb42-22"><a href="#cb42-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text=</span><span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">11</span>))</span>
+<span id="cb42-23"><a href="#cb42-23" aria-hidden="true" tabindex="-1"></a>FigPolitSector_int</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="06-resource_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Content <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> 2023 by <a href="https://www.jc-castillo.com">Juan Castillo</a> <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-by" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-nc" aria-hidden="true"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></div>   
+    <div class="nav-footer-right">Made with <i class="fa-brands fa-r-project" aria-hidden="true"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://github.com/Kevin-carrasco/metod1-MCS">View the source at <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a></div>
+  </div>
+</footer>
+
+
+
+</body></html>
