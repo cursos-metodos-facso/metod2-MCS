@@ -1,0 +1,252 @@
+---
+title: "Práctica 7 Correlación y regresióna"
+subtitle: "Metodología I - Magíster en Ciencias Sociales"
+linktitle: "Práctica 7: Correlación y regresión"
+date: "2023-06-23"
+lang: es
+---
+
+# Presentación
+
+La siguiente práctica tiene el objetivo de repasar en la interpretación de coeficientes de correlación y la construcción de índices, así como también en la interpretación de coeficientes de regresión lineal y logística. Para ello, utilizaremos la base de datos de la tercera ola del [*Estudio Longitudinal Social del Chile 2018*](https://doi.org/10.7910/DVN/H8OVMF) con el objetivo de analizar los determinantes de la **Participación Ciudadana.**
+
+La versión original de este ejercicio proviene del curso de [Estadística multivariada](https://multivariada.netlify.app/assignment/10-code/) versión 2022.
+
+# Librerías
+
+```{r}
+pacman::p_load(dplyr, summarytools, sjPlot,texreg, corrplot,ggplot2,sjlabelled, fastDummies)
+```
+
+# Datos
+
+El Estudio Longitudinal Social del Chile [ELSOC](https://coes.cl/encuesta-panel/), único en Chile y América Latina, consiste en encuestar a casi 3.000 chilenos, anualmente, a lo largo de una década. ELSOC ha sido diseñado para evaluar la manera cómo piensan, sienten y se comportan los chilenos en torno a un conjunto de temas referidos al conflicto y la cohesión social en Chile. La población objetivo son hombres y mujeres entre 15 y 75 años de edad con un alcance nacional, donde se obtuvo una muestra final de **3748** casos en el año 2018.
+
+```{r}
+load("../files/data/elsoc2.RData")
+```
+
+```{r eval=FALSE}
+#Cargamos la base de datos desde internet
+load(url("https://github.com/Kevin-carrasco/metod1-MCS/raw/main/files/data/elsoc2.RData"))
+```
+
+## Explorar datos
+
+A partir de la siguiente tabla se obtienen estadísticos descriptivos que luego serán relevantes para realizar las transformaciones y análisis posteriores.
+
+```{r}
+view_df(elsoc,max.len = 50)
+```
+
+## Variable dependiente: participación política
+
+```{r, fig.width=10}
+plot_stackfrq(elsoc[,c("part01","part02","part03","part04")]) + theme(legend.position="bottom")
+```
+
+```{r}
+corrplot.mixed(cor(select(elsoc,part01,part02,part03,part04),
+                   use = "complete.obs"))
+```
+
+```{r}
+elsoc <- elsoc %>% mutate(partpol=rowSums(select(., part01,part02,part03,part04)))
+summary(elsoc$partpol)
+```
+
+## Variable independiente: ingresos
+
+ingresos hogar variable continua
+```{r}
+summary(elsoc$inghogar)
+```
+ingreso hogar en tramos
+
+```{r} 
+sjmisc::frq(elsoc$inghogar_t,
+            out = "txt",
+            show.na = T) %>% knitr::kable()
+```
+
+podemos obtener la mediana de cada tramo
+
+```{r}
+elsoc$inghogar_t[elsoc$inghogar_t==1] <-(       220000 )    # [1]  "Menos de $220.000 mensuales liquidos"          
+elsoc$inghogar_t[elsoc$inghogar_t==2] <-(220001 +280000 )/2 # [2]  "De $220.001 a $280.000 mensuales liquidos"       
+elsoc$inghogar_t[elsoc$inghogar_t==3] <-(280001 +330000 )/2 # [3]  "De $280.001 a $330.000 mensuales liquidos"       
+elsoc$inghogar_t[elsoc$inghogar_t==4] <-(330001 +380000 )/2 # [4]  "De $330.001 a $380.000 mensuales liquidos"       
+elsoc$inghogar_t[elsoc$inghogar_t==5] <-(380001 +420000 )/2 # [5]  "De $380.001 a $420.000 mensuales liquidos"       
+elsoc$inghogar_t[elsoc$inghogar_t==6] <-(420001 +470000 )/2 # [6]  "De $420.001 a $470.000 mensuales liquidos"       
+elsoc$inghogar_t[elsoc$inghogar_t==7] <-(470001 +510000 )/2 # [7]  "De $470.001 a $510.000 mensuales liquidos"       
+elsoc$inghogar_t[elsoc$inghogar_t==8] <-(510001 +560000 )/2 # [8]  "De $510.001 a $560.000 mensuales liquidos"       
+elsoc$inghogar_t[elsoc$inghogar_t==9] <-(560001 +610000 )/2 # [9]  "De $560.001 a $610.000 mensuales liquidos"       
+elsoc$inghogar_t[elsoc$inghogar_t==10]<-(610001 +670000 )/2 # [10] "De $610.001 a $670.000 mensuales liquidos"       
+elsoc$inghogar_t[elsoc$inghogar_t==11]<-(670001 +730000 )/2 # [11] "De $670.001 a $730.000 mensuales liquidos"       
+elsoc$inghogar_t[elsoc$inghogar_t==12]<-(730001 +800000 )/2 # [12] "De $730.001 a $800.000 mensuales liquidos"       
+elsoc$inghogar_t[elsoc$inghogar_t==13]<-(800001 +890000 )/2 # [13] "De $800.001 a $890.000 mensuales liquidos"       
+elsoc$inghogar_t[elsoc$inghogar_t==14]<-(890001 +980000 )/2 # [14] "De $890.001 a $980.000 mensuales liquidos"       
+elsoc$inghogar_t[elsoc$inghogar_t==15]<-(980001 +1100000)/2 # [15] "De $980.001 a $1.100.000 mensuales liquidos"      
+elsoc$inghogar_t[elsoc$inghogar_t==16]<-(1100001+1260000)/2 # [16] "De $1.100.001 a $1.260.000 mensuales liquidos"    
+elsoc$inghogar_t[elsoc$inghogar_t==17]<-(1260001+1490000)/2 # [17] "De $1.260.001 a $1.490.000 mensuales liquidos"    
+elsoc$inghogar_t[elsoc$inghogar_t==18]<-(1490001+1850000)/2 # [18] "De $1.490.001 a $1.850.000 mensuales liquidos"    
+elsoc$inghogar_t[elsoc$inghogar_t==19]<-(1850001+2700000)/2 # [19] "De $1.850.001 a $2.700.000 mensuales liquidos"    
+elsoc$inghogar_t[elsoc$inghogar_t==20]<-(2700000)           # [20] "Mas de $2.700.000 a mensuales liquidos"
+```
+
+y luego *imputar* este valor medio a los casos NA
+
+```{r}
+elsoc$inghogar_i <- ifelse(test = (is.na(elsoc$inghogar)), #¿existen NA en ingresos?
+                           yes = elsoc$inghogar_t,         #VERDADERO, remplazar con la media del tramo
+                           no = elsoc$inghogar)            #FALSE, mantener la variable original.
+
+elsoc$inghogar_i <- set_label(elsoc$inghogar_i,"Ingreso total del hogar (imputada)")
+```
+
+```{r}
+elsoc$ing_pcap <- elsoc$inghogar_i/elsoc$tamhogar
+elsoc$ing_pcap <- set_label(elsoc$ing_pcap,"Ingreso per cápita del hogar")
+```
+
+```{r}
+elsoc$quintile<- dplyr::ntile(x = elsoc$ing_pcap,
+                              n = 5) # n de categorias, para quintiles usamos 5 
+elsoc$quintile <- factor(elsoc$quintile,c(1,2,3,4,5), c("Quintil 1","Quintil 2","Quintil 3","Quintil 4","Quintil 5")) 
+elsoc %>% 
+  group_by(quintile) %>% 
+  summarise(n=n(),
+            Media=mean(ing_pcap,na.rm = T),
+            Mediana=median(ing_pcap,na.rm = T)) %>% 
+  knitr::kable()
+
+```
+
+```{r}
+elsoc$quintilemiss <- factor(elsoc$quintile,ordered = T)
+elsoc$quintilemiss <- ifelse(test=is.na(elsoc$quintilemiss),yes = 6,no = elsoc$quintilemiss)
+elsoc$quintilemiss <- factor(elsoc$quintilemiss ,levels = c(1,2,3,4,5,6),labels =  c("Quintil 1","Quintil 2","Quintil 3","Quintil 4","Quintil 5","Missing")) 
+elsoc %>% group_by(quintilemiss) %>% summarise(n=n())
+```
+
+## Variables dummy
+
+Una forma de pasar una variable categórica a dummies es con la función dummy_cols del paquete fastDummies
+
+```{r}
+elsoc <- dummy_cols(elsoc, select_columns = "quintilemiss")
+head(elsoc[,16:22])
+```
+
+¿cómo hacerlo para una variable *numérica*?
+
+También existen muchas formas, como por ejemplo establecer como punto de corte la media o la mediana, o ver la distribución de las respuestas y tratar de establecer una distribución homogénea entre las dos nuevas categorías. 
+
+Si recordamos la distribución de nuestra variable dependiente antes de construir el índice de participación: 
+
+```{r, fig.width=10}
+plot_stackfrq(elsoc[,c("part01","part02","part03","part04")]) + theme(legend.position="bottom")
+```
+
+y luego en el índice de participación
+
+```{r}
+summary(elsoc$partpol)
+```
+
+Podemos notar que la mayoría de las respuestas se agrupan en la categoría "nunca" de las variables por separado y luego en el índice la mediana también corresponde al valor mínimo posible de "4" que es la suma de todas las personas que nunca han participado en ninguna de las opciones. Por lo tanto, tenemos dos criterios que nos permiten decidir que nuestra variable dependiente puede ser considera como dummy bajo los valores 0=nunca ha participado; y 1=si ha participado.
+
+Una forma de hacer esta agrupación de valores es con la función case_when del paquete dplyr (similar a ifelse)
+
+```{r}
+elsoc <- elsoc %>% rowwise() %>%  mutate(partpol_dummy = case_when(partpol==4~0,
+                                                                   partpol>4~1,
+                                                                   TRUE ~ NA))
+table(elsoc$partpol_dummy)
+```
+
+# Regresión lineal
+
+veamos primero las diferencias de usar cada tipo de variable de ingreso
+
+```{r}
+fit01<- lm(partpol~ing_pcap,data=elsoc)
+fit02<- lm(partpol~quintile,data=elsoc)
+fit03<- lm(partpol~quintilemiss,data=elsoc)
+```
+
+```{r, results='asis'}
+labs01 <- c("Intercepto","Ingreso per/cap",
+            "Quintil 2","Quintil 3","Quintil 4","Quintil 5",
+            "Quintil 2","Quintil 3","Quintil 4","Quintil 5","Quintil perdido")
+```
+
+
+```{r, results='asis', eval=FALSE}
+#screenreg para que se vea en R
+screenreg(list(fit01,fit02,fit03),custom.coef.names = labs01)
+```
+
+```{r, results='asis'}
+# htmlreg para que se vea en el sitio web
+htmlreg(list(fit01,fit02,fit03),doctype = FALSE, 
+        custom.model.names = c("Modelo 1","Modelo 2","Modelo 3"),
+        custom.coef.names = labs01)
+```
+
+El tercer modelo, con el quintil de casos perdidos, es el que entrega más información y además tiene mayor cantidad de casos (3740).
+
+```{r}
+fit04<- lm(partpol~sexo,data=elsoc)
+fit05<- lm(partpol~sexo+edad,data=elsoc)
+fit06<- lm(partpol~sexo+edad+quintilemiss,data=elsoc)
+fit07<- lm(partpol~sexo+edad+quintilemiss+pospol,data=elsoc)
+
+labs02 <- c("Intercepto","Sexo (mujer=1)","Edad",
+            "Quintil 2","Quintil 3","Quintil 4","Quintil 5","Quintil perdido",
+            "Izquierda (ref. derecha)","Centro","Idep./Ninguno")
+```
+
+```{r, results='asis', eval=FALSE}
+screenreg(list(fit04,fit05,fit06, fit07),custom.coef.names = labs02)
+```
+
+```{r, results='asis'}
+htmlreg(list(fit04,fit05,fit06, fit07),doctype = FALSE, 
+        custom.model.names = c("Modelo 1","Modelo 2","Modelo 3", "Modelo 4"),
+        custom.coef.names = labs02)
+```
+
+# Regresión logística
+
+```{r}
+fit01log <- glm(partpol_dummy ~ sexo, data = elsoc, family = "binomial")
+fit02log <- glm(partpol_dummy ~ sexo+edad,data=elsoc, family = "binomial")
+fit03log <- glm(partpol_dummy ~ sexo+edad+quintilemiss,data=elsoc, family = "binomial")
+fit04log <- glm(partpol_dummy ~ sexo+edad+quintilemiss+pospol,data=elsoc, family = "binomial")
+```
+
+```{r, results='asis', eval=FALSE}
+screenreg(list(fit01log,fit02log,fit03log, fit04log),custom.coef.names = labs02)
+```
+
+```{r, results='asis'}
+htmlreg(list(fit01log,fit02log,fit03log, fit04log),doctype = FALSE, 
+        custom.model.names = c("Modelo 1 (log odds)","Modelo 2(log odds)","Modelo 3(log odds)", "Modelo 4(log odds)"),
+        custom.coef.names = labs02)
+```
+
+En el Modelo 1, en comparación con los hombres, el log-odds de participación política para las mujeres disminuye en 0.16 (p<0.05). Este efecto se vuelve positivo al controlar por el resto de variables en los modelos 3 y 4, pero pierde su significación estadística.
+
+En el Modelo 2 se incluye la variable edad, donde su efecto indica que por cada unidad que aumenta la edad, el log-odds de participación política disminuye en 0.04 (p<0.001), manteniendo el sexo constante. Este efecto es consistente en el resto de los modelos al controlar por las demás variables.
+
+En el Modelo 3 se incluyen los quintiles de ingreso como variable predictora que indican que, en comparación con el menor quintil de ingreso, al poseer un quintil de ingreso de 3, 4 o 5 los log-odds de participación política aumentan (p<0.001), manteniendo el resto de las variables constantes. Este efecto disminuye un poco en el modelo siguiente, pero mantiene un efecto lineal (a mayor quintil, mayor log-odds).
+
+Finalmente, en el Modelo 4 que incluye la posición política de los/as encuestados, el log-odds de ser de izquierda, centro o independiente/ninguno disminuye en comparación con las personas de derecha, manteniendo el resto de las variables constantes
+
+
+el log-odds de participación en marchas para afiliados a sindicatos aumenta en 0.418 en comparación con los no sindicalizados (p<0.01). Este resultado mantiene su significación estadística en el Modelo 2 y baja su significación a p<0.1 en el Modelo 3, al controlar por las demás variables independientes.
+
+En el Modelo 2, En comparación a los/as trabajadores/as del sector público (categoría de referencia), el log-odds de participación en marchas para los/as del sector privado disminuye en 0,52 (p < 0,01), manteniendo el resto de variables constantes. Este efecto hace referencia a que, 
+
+En el Modelo 3, por cada unidad de aumento en la escala de politización, el log-odds de participación en marchas aumenta en 0,28 (p < 0,001), manteniendo el resto de las variables constantes.

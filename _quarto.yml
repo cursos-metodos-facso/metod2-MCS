@@ -110,6 +110,8 @@ website:
           file: resource/05-resource.qmd
         - text: "Práctica 6"
           file: resource/06-resource.qmd
+        - text: "Práctica 7"
+          file: resource/07-resource.qmd
 
 
   page-footer:
