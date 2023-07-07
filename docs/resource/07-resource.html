@@ -652,7 +652,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 </div>
 </div>
-<p>podemos obtener la media de cada tramo</p>
+<p>podemos obtener la mediana de cada tramo</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>elsoc<span class="sc">$</span>inghogar_t[elsoc<span class="sc">$</span>inghogar_t<span class="sc">==</span><span class="dv">1</span>] <span class="ot">&lt;-</span>(       <span class="dv">220000</span> )    <span class="co"># [1]  "Menos de $220.000 mensuales liquidos"          </span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>elsoc<span class="sc">$</span>inghogar_t[elsoc<span class="sc">$</span>inghogar_t<span class="sc">==</span><span class="dv">2</span>] <span class="ot">&lt;-</span>(<span class="dv">220001</span> <span class="sc">+</span><span class="dv">280000</span> )<span class="sc">/</span><span class="dv">2</span> <span class="co"># [2]  "De $220.001 a $280.000 mensuales liquidos"       </span></span>
@@ -1590,6 +1590,10 @@ Num. obs.
 </tfoot>
 
 </table>
+<p>El Modelo 1 indica que las mujeres participan 0.13 unidades menos en comparación con los hombres, sin embargo, esta relación no es estadísticamente significativa (p&gt;0.05).</p>
+<p>El Modelo 2 indica que por cada unidad que aumenta la edad, la participación política disminuye en promedio 0.04 unidades, con un 99.9% de significación estadístico y manteniendo el sexo constante. Esta relación es consistente en los otros dos modelos.</p>
+<p>El Modelo 3 indica que en medida que aumenta el ingreso, la participación política tiende a ser más alta. En específico, en comparación con el menor quintil de ingreso, al pertenecer a un quintil de ingreso 2 (p&lt;0.05), 3, 4 y 5 (p&lt;0.001), la participación política aumenta, manteniendo el resto de las variables constantes. Este efecto disminuye un poco en el modelo siguiente, pero mantiene un efecto lineal (a mayor quintil, mayor participación).</p>
+<p>En el Modelo 4 que incluye la posición política de los/as encuestados, la participación política de las personas de izquierda, centro o independiente/ninguno es menor en comparación con las personas de derecha, con una significación estadística del 99.9%, manteniendo el resto de las variables constantes.</p>
 </section>
 <section id="regresión-logística" class="level1">
 <h1>Regresión logística</h1>
@@ -2100,10 +2104,7 @@ Num. obs.
 <p>En el Modelo 1, en comparación con los hombres, el log-odds de participación política para las mujeres disminuye en 0.16 (p&lt;0.05). Este efecto se vuelve positivo al controlar por el resto de variables en los modelos 3 y 4, pero pierde su significación estadística.</p>
 <p>En el Modelo 2 se incluye la variable edad, donde su efecto indica que por cada unidad que aumenta la edad, el log-odds de participación política disminuye en 0.04 (p&lt;0.001), manteniendo el sexo constante. Este efecto es consistente en el resto de los modelos al controlar por las demás variables.</p>
 <p>En el Modelo 3 se incluyen los quintiles de ingreso como variable predictora que indican que, en comparación con el menor quintil de ingreso, al poseer un quintil de ingreso de 3, 4 o 5 los log-odds de participación política aumentan (p&lt;0.001), manteniendo el resto de las variables constantes. Este efecto disminuye un poco en el modelo siguiente, pero mantiene un efecto lineal (a mayor quintil, mayor log-odds).</p>
-<p>Finalmente, en el Modelo 4 que incluye la posición política de los/as encuestados, el log-odds de ser de izquierda, centro o independiente/ninguno disminuye en comparación con las personas de derecha, manteniendo el resto de las variables constantes</p>
-<p>el log-odds de participación en marchas para afiliados a sindicatos aumenta en 0.418 en comparación con los no sindicalizados (p&lt;0.01). Este resultado mantiene su significación estadística en el Modelo 2 y baja su significación a p&lt;0.1 en el Modelo 3, al controlar por las demás variables independientes.</p>
-<p>En el Modelo 2, En comparación a los/as trabajadores/as del sector público (categoría de referencia), el log-odds de participación en marchas para los/as del sector privado disminuye en 0,52 (p &lt; 0,01), manteniendo el resto de variables constantes. Este efecto hace referencia a que,</p>
-<p>En el Modelo 3, por cada unidad de aumento en la escala de politización, el log-odds de participación en marchas aumenta en 0,28 (p &lt; 0,001), manteniendo el resto de las variables constantes.</p>
+<p>Finalmente, en el Modelo 4 que incluye la posición política de los/as encuestados, el log-odds de ser de izquierda, centro o independiente/ninguno disminuye en comparación con las personas de derecha (p&lt;0.001), manteniendo el resto de las variables constantes.</p>
 
 
 </section>
