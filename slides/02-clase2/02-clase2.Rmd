@@ -1,7 +1,7 @@
 ---
-title: "Metodología I"
-author: ".small[Kevin Carrasco <br><br> Departamento de Sociología - UCH / COES <br><br>]"
-date: "1er Sem 2023"
+title: "Metodología Cuantitativa Avanzada"
+author: ".small[Daniela Olivares Collío <br><br> Departamento de Sociología - UCH / COES <br><br>]"
+date: "1er Sem 2024"
 output:
   xaringan::moon_reader:
     css: "../../files/css/custom_2020.css"
@@ -57,18 +57,18 @@ About macros.js: permite escalar las imágenes como [scale 50%](path to image), 
 
 
 .pull-left[
-# Metodología I
-## **Kevin Carrasco**
-## Magister Ciencias Sociales FACSO - UChile
-## 1er Sem 2023 
-## [.green[metod1-mcs.netlify.com]](https://metod1-mcs.netlify.com)
+# Metodología Cuantitativa Avanzada
+## .black[Daniela Olivares Collío]
+## Magister Ciencias Sociales
+## 1er Sem 2024 
+## [.green[metod2-mcs.netlify.com]](https://metod2-mcs.netlify.com)
 ] 
     
 
 .pull-right[
 .right[
 <br>
-## .yellow[Sesión 2: Operacionalización de variables ]
+## .yellow[Sesión 2: Correlación]
 ![:scale 70%](../../files/img/eval-hires.png)
 
 

@@ -1,13 +1,13 @@
 ---
 title: "Presentación"
-date: "2023-03-17"
+date: "2023-04-05"
 lang: es
 ---
 
 ## Documento de presentación
 
 
-<iframe src=/slides/01-clase1/01-clase1.html height="550" width=100% allowfullscreen="true">
+<iframe src=/slides/02-clase2/02-clase2.html height="550" width=100% allowfullscreen="true">
 </iframe> 
 
 
