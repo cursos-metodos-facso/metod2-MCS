@@ -1,1 +1,1 @@
-Sitemap: https://metod1-mcs.netlify.app/sitemap.xml
+Sitemap: https://metod2-mcs.netlify.app/sitemap.xml

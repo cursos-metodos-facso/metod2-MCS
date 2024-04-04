@@ -22,16 +22,16 @@ bibliography: files/bib/references.bib
 csl: files/bib/chicago-author-date.csl
 
 website:
-  title: "Metodología I - MCS"
-  site-url: "https://metod1-mcs.netlify.app"
+  title: "Metodología Cuantitativa Avanzada - MCS"
+  site-url: "https://metod2-mcs.netlify.app"
   description: "Magister en Ciencias Sociales, mención en Sociología de la Modernización"
   favicon: "/files/icon-513.png"
 
-  twitter-card:
-    image: "/files/social-image-f22.png"
-    card-style: summary_large_image
-    creator: "@juankcastillo"
-    site: "@juankcastillo"
+  # twitter-card:
+  #   image: "/files/social-image-f22.png"
+  #   card-style: summary_large_image
+  #   creator: "@juankcastillo"
+  #   site: "@juankcastillo"
 
   open-graph:
     image: "/files/social-image-f22.png"
@@ -39,25 +39,25 @@ website:
 
   navbar:
     pinned: true
-    background: "#08C4C4"
+    background: "#265e5e"
     right:
       - syllabus.qmd
       - schedule.qmd
-      - text: "Contenidos"
+      - text: "Clases"
         file: content/index.qmd
 #      - text: "Assignments"
 #        file: assignment/index.qmd
 #      - text: "Examples"
 #        file: example/index.qmd
       - trabajos.qmd
-      - text: "Recursos"
+      - text: "Prácticos"
         file: resource/index.qmd
-      - icon: slack
-        href: "https://www.slack.com"
-        aria-label: Slack
+      # - icon: slack
+      #   href: "https://www.slack.com"
+      #   aria-label: Slack
 
   sidebar:
-    - title: "Contenidos"
+    - title: "Clases"
       style: "docked"
       search: false
       background: dark
@@ -67,56 +67,56 @@ website:
             - content/index.qmd
         - section: "Sesiones"
           contents:
-            - text: "00: Presentación"
+            - text: "01: Introducción"
               file: content/01-content.qmd
-            - text: "01: Sesión 1"
-              file: content/02-content.qmd
             - text: "02: Sesión 2"
-              file: content/03-content.qmd
-            - text: "03: Sesión 3"
-              file: content/04-content.qmd
-            - text: "04: Sesión 4"
-              file: content/05-content.qmd
-            - text: "05: Sesión 5"
-              file: content/06-content.qmd
-            - text: "06: Sesión 6"
-              file: content/07-content.qmd
-            - text: "07: Sesión 7"
-              file: content/08-content.qmd
-            - text: "08: Sesión 8"
-              file: content/09-content.qmd
-            - text: "09: Sesión 9"
-              file: content/10-content.qmd
-            - text: "10: Sesión 10"
-              file: content/11-content.qmd
-    - title: "Recursos"
+              file: content/02-content.qmd
+            # - text: "02: Sesión 2"
+            #   file: content/03-content.qmd
+            # - text: "03: Sesión 3"
+            #   file: content/04-content.qmd
+            # - text: "04: Sesión 4"
+            #   file: content/05-content.qmd
+            # - text: "05: Sesión 5"
+            #   file: content/06-content.qmd
+            # - text: "06: Sesión 6"
+            #   file: content/07-content.qmd
+            # - text: "07: Sesión 7"
+            #   file: content/08-content.qmd
+            # - text: "08: Sesión 8"
+            #   file: content/09-content.qmd
+            # - text: "09: Sesión 9"
+            #   file: content/10-content.qmd
+            # - text: "10: Sesión 10"
+            #   file: content/11-content.qmd
+    - title: "Prácticos"
       style: "docked"
       search: false
       background: dark
       contents:
         - text: "Descripción"
           file: resource/index.qmd
-        - text: "Práctica 1"
+        - text: "Práctico 1"
           file: resource/01-resource.qmd
-        - text: "Práctica 2"
-          file: resource/02-resource.qmd
-        - text: "Práctica 2.2"
-          file: resource/02-2-resource.qmd
-        - text: "Práctica 3"
-          file: resource/03-resource.qmd
-        - text: "Práctica 4"
-          file: resource/04-resource.qmd
-        - text: "Práctica 5"
-          file: resource/05-resource.qmd
-        - text: "Práctica 6"
-          file: resource/06-resource.qmd
-        - text: "Práctica 7"
-          file: resource/07-resource.qmd
+        # - text: "Práctica 2"
+        #   file: resource/02-resource.qmd
+        # - text: "Práctica 2.2"
+        #   file: resource/02-2-resource.qmd
+        # - text: "Práctica 3"
+        #   file: resource/03-resource.qmd
+        # - text: "Práctica 4"
+        #   file: resource/04-resource.qmd
+        # - text: "Práctica 5"
+        #   file: resource/05-resource.qmd
+        # - text: "Práctica 6"
+        #   file: resource/06-resource.qmd
+        # - text: "Práctica 7"
+        #   file: resource/07-resource.qmd
 
 
   page-footer:
     left: |
-      Content {{< fa brands creative-commons >}} {{< var course.copyright_year >}} by [{{< var instructor.name_no_title >}}]({{< var instructor.url >}}) <br>
+      Content {{< fa brands creative-commons >}} {{< var course.copyright_year >}} by [{{< var instructor3.name_no_title >}}]({{< var instructor3.url >}}) <br>
       All content licensed under a {{< fa brands creative-commons >}}
       {{< fa brands creative-commons-by >}} {{< fa brands creative-commons-nc >}}
       [Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/)
