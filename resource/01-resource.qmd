@@ -1,5 +1,5 @@
 ---
-title: "Práctico 1. Correlación de Pearson"
+title: "Práctico 1. Cálculo y reporte de Correlación"
 subtitle: "Metodología Cuantitativa Avanzada - Magíster en Ciencias Sociales"
 linktitle: "Práctico 1: Correlación"
 date: "2023-04-05"

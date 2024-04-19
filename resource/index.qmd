@@ -1,8 +1,40 @@
 ---
-title: "Recursos"
+title: "Instrucciones generales"
 lang: es
 ---
 
-En esta sección se presentan una serie de recursos como ejemplos de investigaciones, construcción de instrumentos, muestreo, análisis y reporte.
+## Descripción
 
-[en construcción] 
+Los prácticos consisten en el desarrollo de una guía práctica (por lo general cada semana de clases) donde se aplican y profundizan los contenidos de las clases, y donde también se abordan otras temáticas relacionadas al manejo y repote de datos.
+
+## Trabajo con software R
+
+Para los análisis estadísticos de este curso usamos el programa R, en parte porque es gratuito, pero la principal razón es que es de código abierto. Esto quiere decir que cualquier persona puede revisar cómo está hecho y aportar con modificaciones y procedimientos nuevos, como son las librerías que realizan funciones específicas.
+
+El carácter de apertura de R posee muchas ventajas, pero también conlleva complicaciones. Se actualiza permanentemente, así como también las librerías, y esto puede generar problemas de compatibilidad y de fallas en ejecución del código de análisis.
+
+Para minimizar estos posibles problemas en este curso, vamos a:
+
+-   trabajar con la misma y última versión de R, que es la 4.3 (Chequear con `sessionInfo()`)
+-   evitar uso de tilde, ñ, espacios y mayúsculas tanto en carpetas y archivos, así como también en los nombres de las variables
+
+## Sobre errores y consultas respecto a problemas con R y ejecución de código
+
+En caso de problemas con ejecución de código, se sugiere intentar solucionarlo autónomamente por no más de 10 minutos, si los problemas siguen entonces consultar.
+
+Se sugiere que las consultas sobre problemas en la ejecución del código y otros se realicen en los foros al final de los prácticos correspondientes, para lo cual se requiere solo habilitar una cuenta en Github. Al hacer la consulta, adjuntar la siguiente información:
+
+-   Código completo hasta que se produce el problema
+-   Indicar línea del código donde se produce el problema
+-   Adjuntar el resultado del output de la información de la sesión (`sessionInfo()`)
+
+### Sobre el trabajo en hojas de código en RStudio {#codigoR}
+
+-   El trabajo de análisis en RStudio se efectua en una *hoja de código* (o R script o sintaxis, o para los usuarios de Stata la *do-file*), que es donde se anotan los comandos y funciones. Para abrir una hoja, en RStudio ir a File \> New File \> R Script (o ctrl+shift+N),y aparecerá un panel con una pestaña "Untitled" (sin título). Esta es la hoja de código donde se anotan los comandos.
+
+-   Los contenidos de las hojas de código son básicamente 2:
+
+    -   comandos o funciones: se escriben en la hoja, y para ejecutarlos se debe posicionar el cursor en la línea respectiva y ctrl+enter, el resultado aparecerá en el panel de resultados o *Consola*.
+    -   texto: para escribir títulos, comentarios, y todo lo que permita entender qué se está haciendo, al principio de la línea respectiva escribir el signo `#`
+
+-   Para grabar nuestra hoja de código y así respaldar nuestros análisis, File \> Save (o ctrl+s), y dar un nombre al archivo. Recordar: breve, sin espacios ni tildes ni eñes. Por defecto, la extensión de estos archivos es .R

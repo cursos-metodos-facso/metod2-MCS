@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Metodología Cuantitativa Avanzada - MCS - Recursos</title>
+<title>Metodología Cuantitativa Avanzada - MCS - Instrucciones generales</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -63,7 +63,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Metodología Cuantitativa Avanzada - MCS - Recursos">
+<meta property="og:title" content="Metodología Cuantitativa Avanzada - MCS - Instrucciones generales">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://metod2-mcs.netlify.app/files/social-image-f22.png">
 <meta property="og:site-name" content="Metodología Cuantitativa Avanzada - MCS">
@@ -150,14 +150,25 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#descripción" id="toc-descripción" class="nav-link active" data-scroll-target="#descripción">Descripción</a></li>
+  <li><a href="#trabajo-con-software-r" id="toc-trabajo-con-software-r" class="nav-link" data-scroll-target="#trabajo-con-software-r">Trabajo con software R</a></li>
+  <li><a href="#sobre-errores-y-consultas-respecto-a-problemas-con-r-y-ejecución-de-código" id="toc-sobre-errores-y-consultas-respecto-a-problemas-con-r-y-ejecución-de-código" class="nav-link" data-scroll-target="#sobre-errores-y-consultas-respecto-a-problemas-con-r-y-ejecución-de-código">Sobre errores y consultas respecto a problemas con R y ejecución de código</a>
+  <ul class="collapse">
+  <li><a href="#codigoR" id="toc-codigoR" class="nav-link" data-scroll-target="#codigoR">Sobre el trabajo en hojas de código en RStudio</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Recursos</h1>
+<h1 class="title">Instrucciones generales</h1>
 </div>
 
 
@@ -172,10 +183,44 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>En esta sección se presentan una serie de recursos como ejemplos de investigaciones, construcción de instrumentos, muestreo, análisis y reporte.</p>
-<p>[en construcción]</p>
+<section id="descripción" class="level2">
+<h2 class="anchored" data-anchor-id="descripción">Descripción</h2>
+<p>Los prácticos consisten en el desarrollo de una guía práctica (por lo general cada semana de clases) donde se aplican y profundizan los contenidos de las clases, y donde también se abordan otras temáticas relacionadas al manejo y repote de datos.</p>
+</section>
+<section id="trabajo-con-software-r" class="level2">
+<h2 class="anchored" data-anchor-id="trabajo-con-software-r">Trabajo con software R</h2>
+<p>Para los análisis estadísticos de este curso usamos el programa R, en parte porque es gratuito, pero la principal razón es que es de código abierto. Esto quiere decir que cualquier persona puede revisar cómo está hecho y aportar con modificaciones y procedimientos nuevos, como son las librerías que realizan funciones específicas.</p>
+<p>El carácter de apertura de R posee muchas ventajas, pero también conlleva complicaciones. Se actualiza permanentemente, así como también las librerías, y esto puede generar problemas de compatibilidad y de fallas en ejecución del código de análisis.</p>
+<p>Para minimizar estos posibles problemas en este curso, vamos a:</p>
+<ul>
+<li>trabajar con la misma y última versión de R, que es la 4.3 (Chequear con <code>sessionInfo()</code>)</li>
+<li>evitar uso de tilde, ñ, espacios y mayúsculas tanto en carpetas y archivos, así como también en los nombres de las variables</li>
+</ul>
+</section>
+<section id="sobre-errores-y-consultas-respecto-a-problemas-con-r-y-ejecución-de-código" class="level2">
+<h2 class="anchored" data-anchor-id="sobre-errores-y-consultas-respecto-a-problemas-con-r-y-ejecución-de-código">Sobre errores y consultas respecto a problemas con R y ejecución de código</h2>
+<p>En caso de problemas con ejecución de código, se sugiere intentar solucionarlo autónomamente por no más de 10 minutos, si los problemas siguen entonces consultar.</p>
+<p>Se sugiere que las consultas sobre problemas en la ejecución del código y otros se realicen en los foros al final de los prácticos correspondientes, para lo cual se requiere solo habilitar una cuenta en Github. Al hacer la consulta, adjuntar la siguiente información:</p>
+<ul>
+<li>Código completo hasta que se produce el problema</li>
+<li>Indicar línea del código donde se produce el problema</li>
+<li>Adjuntar el resultado del output de la información de la sesión (<code>sessionInfo()</code>)</li>
+</ul>
+<section id="codigoR" class="level3">
+<h3 class="anchored" data-anchor-id="codigoR">Sobre el trabajo en hojas de código en RStudio</h3>
+<ul>
+<li><p>El trabajo de análisis en RStudio se efectua en una <em>hoja de código</em> (o R script o sintaxis, o para los usuarios de Stata la <em>do-file</em>), que es donde se anotan los comandos y funciones. Para abrir una hoja, en RStudio ir a File &gt; New File &gt; R Script (o ctrl+shift+N),y aparecerá un panel con una pestaña “Untitled” (sin título). Esta es la hoja de código donde se anotan los comandos.</p></li>
+<li><p>Los contenidos de las hojas de código son básicamente 2:</p>
+<ul>
+<li>comandos o funciones: se escriben en la hoja, y para ejecutarlos se debe posicionar el cursor en la línea respectiva y ctrl+enter, el resultado aparecerá en el panel de resultados o <em>Consola</em>.</li>
+<li>texto: para escribir títulos, comentarios, y todo lo que permita entender qué se está haciendo, al principio de la línea respectiva escribir el signo <code>#</code></li>
+</ul></li>
+<li><p>Para grabar nuestra hoja de código y así respaldar nuestros análisis, File &gt; Save (o ctrl+s), y dar un nombre al archivo. Recordar: breve, sin espacios ni tildes ni eñes. Por defecto, la extensión de estos archivos es .R</p></li>
+</ul>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

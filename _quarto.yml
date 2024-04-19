@@ -67,10 +67,10 @@ website:
             - content/index.qmd
         - section: "Sesiones"
           contents:
-            - text: "01: Introducción"
-              file: content/01-content.qmd
-            - text: "02: Sesión 2"
-              file: content/02-content.qmd
+            # - text: "01: Introducción"
+            #   file: content/01-content.qmd
+            # - text: "02: Sesión 2"
+            #   file: content/02-content.qmd
             # - text: "02: Sesión 2"
             #   file: content/03-content.qmd
             # - text: "03: Sesión 3"
@@ -98,8 +98,8 @@ website:
           file: resource/index.qmd
         - text: "Práctico 1"
           file: resource/01-resource.qmd
-        # - text: "Práctica 2"
-        #   file: resource/02-resource.qmd
+        - text: "Práctico 2"
+          file: resource/02-resource.qmd
         # - text: "Práctica 2.2"
         #   file: resource/02-2-resource.qmd
         # - text: "Práctica 3"
