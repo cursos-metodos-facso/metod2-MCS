@@ -2,7 +2,7 @@
 title: "Práctico 3. Inferencia Estadística y Curva Normal"
 subtitle: "Metodología Cuantitativa Avanzada - Magíster en Ciencias Sociales"
 linktitle: "Práctico 3: Inferencia"
-date: "2023-04-04"
+date: "2023-04-26"
 lang: es
 ---
 
@@ -40,7 +40,7 @@ Existen **distribuciones empíricas** y **distribuciones teóricas**, en donde:
 -   las segundas son una *función matématica* que expresan la distribución de un conjunto de números mediante su *probabilidad de ocurencia*.
 
 
-Como vimos en el [práctico 4](/assignment/04-practico.html), una de las distribuciones teóricas más conocidas es la **distribución normal estándar**.
+Una de las distribuciones teóricas más conocidas es la **distribución normal estándar**.
 
 ## 2.2. Distribución muestral
 
@@ -50,7 +50,7 @@ Como vimos en el [práctico 4](/assignment/04-practico.html), una de las distrib
 
 La **distribución muestral** es la distribución de las estimaciones, o estadísticos como la media o proporción, tomadas de múltiples muestras aleatorias de una población. Permite comprender cómo varían las estimaciones de una muestra a otra.
 
-**Ejemplo 1**: Imaginemos que tenemos una población de niñ_s de 0 a 9 años, y tomamos múltiples muestras de 6 individu_s (n=6). Cada una de las muestras tendrá un promedio (estadístico muestral, en este caso $\bar{x}$) diferente, que no necesariamente coincidirn con el promedio de la población (parámetro, en este caso $\mu_{x}$)
+**Ejemplo 1**: Imaginemos que tenemos una población de niñ_s de 0 a 9 años, y tomamos múltiples muestras de 6 individu_s (n=6). Cada una de las muestras tendrá un promedio (estadístico muestral, en este caso $\bar{x}$) diferente, que no necesariamente coincidirá con el promedio de la población (parámetro, en este caso $\mu_{x}$)
 
 ![](../files/dist_muestral.png)
 
@@ -62,7 +62,7 @@ muestras <- replicate(100, mean(rnorm(30, mean = 50, sd = 10))) # 100 muestras d
 muestras
 ```
 
-Como se vio en la [sesión 6](/content/06-content.html), si tengo la desviación estándar de los promedios, puedo construir un intervalo de probabilidad, basado en la curva normal (mirar [sesión 5](/content/05-content.html)).
+Si conocemos la desviación estándar de los promedios, podedmos construir un intervalo de probabilidad, basado en la curva normal.
 
 ::: callout-note
 Una característica importante es que se asume que las muestras tomadas de la población son *aleatorias y representativas*, lo que es esencial para que la distribución muestral refleje adecuadamente la variabilidad de las estimaciones.
@@ -357,7 +357,7 @@ intervalo_confianza
 ```
 
 
-Como vimos en la [sesión 6](/content/06-content.html) el promedio de la muestra $\bar{x}$ se distruye normal, con un error estándar $SE$, lo que nos permite estimar probabilidades basándonos en la curva normal. 
+El promedio de la muestra $\bar{x}$ se distruye normal, con un error estándar $SE$, lo que nos permite estimar probabilidades basándonos en la curva normal. 
 
 Por ejemplo, si nos desviamos $\pm1.96SE$ desde la media abarcaremos aproximadamente el 95% de los valores probables.
 
