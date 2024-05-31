@@ -1,433 +1,290 @@
 ---
-title: "Práctica 6 Regresión logística y Probabilidades predichas"
-subtitle: "Metodología I - Magíster en Ciencias Sociales"
-linktitle: "Práctica 6: Regresión logística y Probabilidades predichas"
-date: "2023-06-23"
+title: "Práctico 6. Asociación con variables categóricas"
+subtitle: "Metodología Cuantitativa Avanzada - Magíster en Ciencias Sociales"
+linktitle: "Práctico 6: Inferencia"
+date: "2024-05-31"
 lang: es
 ---
 
-# Presentación
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE,
+                      warning = FALSE)
+```
 
-La Encuesta Mundial de Valores (EMV) o World Values Survey [WVS](https://www.worldvaluessurvey.org/wvs.jsp) es un proyecto global de investigación social que explora los valores y opiniones de la gente, cómo estos cambian con el tiempo, y su impacto social y político. Desde 1981 una red mundial de científicos sociales y politólogos llevan a cabo esta investigación, haciendo encuestas nacionales representativas en casi 100 países. La WVS es la única fuente de datos empíricos sobre actitudes y valores humanos que abarca a la mayoría de la población mundial (casi el 90%).
+# Objetivo de la práctica
 
-## Objetivo
+El objetivo de esta guía práctica es introducirnos en técnicas de asociación entre variables categóricas, aplicando lo apredendido hasta ahora sobre inferencia estadística. 
 
-En el ejemplo de esta práctica, que utiliza solo casos para Chile entre 2005 y 2022, se intentará responder la pregunta ¿existe una relación entre la afiliación a sindicatos y la participación en marchas?
+En detalle, aprenderemos:
 
-Debido a la naturaleza de la variable dependiente participación en marchas (si/no), el objetivo de esta práctica es estimar modelos de regresión logística binaria.
+1.  Generar y analizar tablas de contingencia (o cruzadas)
+2.  Estimar e interpretar la prueba de Chi-cuadrado
+3.  Aplicar coeficientes de correlación entre variables categóricas
 
-# Librerías
+
+## Recursos de la práctica
+
+En esta práctica trabajaremos con un subconjunto de datos previamente procesados de la Encuesta de Caracterización Socioeconómica (CASEN) del año 2022, elaborada por el [Ministerio de Desarrollo Social y Familia](https://observatorio.ministeriodesarrollosocial.gob.cl/). Para este ejercicio, obtendremos directamente esta base desde internet. No obstante, también tienen la opción de acceder a la misma información a través del siguiente enlace: [{{< fa table >}} `CASEN 20222`](https://github.com/cursos-metodos-facso/datos-ejemplos/raw/main/proc_casen.RData). Desde allí, podrás descargar el archivo que contiene el subconjunto procesado de la base de datos CASEN 2022.
+
+# Preparación datos
+
+Comencemos por preparar nuestros datos. Iniciamos cargando las librerías necesarias.
+
+```{r librerias, collapse=TRUE}
+pacman::p_load(tidyverse, # Manipulacion datos
+               sjPlot, # Tablas
+               psych, # Correlaciones
+               DescTools, # Tablas
+               gginference, # Visualizacion 
+               rempsyc, # Reporte
+               broom) # Varios
+
+options(scipen = 999) # para desactivar notacion cientifica
+rm(list = ls()) # para limpiar el entorno de trabajo
+```
+
+Cargamos los datos directamente desde internet.
+
+```{r datos}
+
+load(url("https://github.com/cursos-metodos-facso/datos-ejemplos/raw/main/casen_proc.RData")) #Cargar base de datos
+
+dim(proc_casen)
+```
+
+Contamos con 29 variables (columnas) y 3000 observaciones (filas).
+
+# Tablas de contingencia
+
+Una tabla de contingencia es una de las maneras más simples y útiles para representar el cruce entre dos variables categóricas.
+
+Con ella, podemos obtener en las celdas las frecuencias **conjuntas** entre ambas variables, es decir, cuántos casos de una determinada categoría de la variable Y ocurren conjuntamente con una determinada categoría de la variable X. 
+
+Además, podemos presentar los totales de cada fila y columna al exterior de la tabla, también conocidas como frecuencias **marginales**.
+
+Veamos un ejemplo con `ss_salud` y `universitaria`:
 
 ```{r}
-pacman::p_load(tidyr,
-               dplyr,
-               sjPlot,
-               sjmisc,
-               psych,
-               texreg,
-               haven,
-               ggplot2,
-               lmtest,
-               DescTools)
+sjPlot::sjt.xtab(var.row = proc_casen$ss_salud, var.col = proc_casen$universitaria, 
+                 show.summary = F, emph.total = T)
 ```
 
-# Datos
+Sumado a esto, tenemos:
+
+- _Frecuencias absolutas_: números que aparencen en la tabla (ya sean conjuntas o marginales)
+- _Frecuencias porcentuales_: 
+          
+  * porcentaje fila: % que cada frecuencia conjunta representa sobre la marginal de su fila
+  * porcentaje columna: % que cada frecuencia conjunta representa sobre la marginal de su columna
+  * porcentaje total: % que cada frecuencia conjunta representa sobre el número total de casos de la tabla
+
+Veamos cómo incorporar el porcentaje fila y columna en la tabla.
 
 ```{r}
-WVS_2005_2022_Chl<- readRDS(file = "../files/data/WVS_2005_2022_Chl.rds")
+sjPlot::sjt.xtab(var.row = proc_casen$ss_salud, 
+                 var.col = proc_casen$universitaria, 
+                 show.summary = F, 
+                 emph.total = T, 
+                 show.row.prc = T, # porcentaje fila
+                 show.col.prc = T # porcentaje columna
+                 )
 ```
 
-```{r eval=FALSE}
-#Cargamos la base de datos desde internet
-load(url("https://github.com/Kevin-carrasco/metod1-MCS/raw/main/files/data/WVS_2005_2022_Chl.RData"))
-```
+Aquí, los porcentajes fila aparecen en azul y los porcentajes columna en verde. 
 
-## Explorar datos
+# Prueba de hipótesis con Chi-cuadrado
+
+La prueba de Chi-cudrado ($\chi^2$) es una herramienta estadística utilizada para evaluar si existe una asociación significativa entre dos variables categóricas. 
+
+Testeamos la **hipótesis de independencia** en una tabla de contigencia. Por ejemplo, si decimos que existe una relación entre tener educación superior y la preferencia por algún sistema de salud, esperamos encontrar que un porcentaje más alto de quienes tienen educación superior se inclinen por un sistema de salud determinado. 
+
+Se basa en la comparación de las **frecuencias observadas** en una tabla de contingencia con las **frecuencias esperadas** si las variables fueran independientes. Si existe una gran diferencia entre las esperadas y las observadas, podemos suponer que hay una relación entre variables. 
+
+::: {.callout-tip}
+#### Prueba de Chi-cuadrado
+
+Contrastamos la _hipótesis nula_ (o de trabajo) de que las variables son idenpendientes entre ellas:
+$$  H_{0}: \pi_{fc} =  \pi_{f}\pi_{c} $$
+
+En relación a una _hipótesis alternativa_ sobre que las variables están relacionadas:
+$$  H_{A}:  \pi_{fc} \neq  \pi_{f}\pi_{c} $$
+:::
+
+Veamos un ejemplo con nuestros datos. Evaluemos si el nivel educacional se relaciona con el tipo de sistema de salud al que pertenecen las personas en Chile durante el 2022.
+
+Apliquemos nuestros [cinco pasos para inferencia](https://correlacional.netlify.app/assignment/08-practico#cinco-pasos-para-la-inferencia-estad%C3%ADstica).
+
+1. Formulamos nuestras hipótesis:
+
+- $H_{0}$: No hay asociación entre el nivel educacional y la preferencia por un sistema de salud.
+
+- $H_{A}$: El nivel educacional se asocia con la preferencia por un sistema de salud.
+
+2. Generar tabla de contingencia con frecuencias observadas y esperadas:
 
 ```{r}
-summary(WVS_2005_2022_Chl) #con comando de paquete haven
-describe(WVS_2005_2022_Chl) #con comando de paquete psych
+conti_table <- table(proc_casen$ss_salud, proc_casen$universitaria)
+conti_table
 ```
 
-# Regresiones logísticas
-
-El punto de partida es transformación de los coeficientes 𝛽 en coeficientes logit:
-
-* Se conoce como “logit” a la transformación logarítmica de los odds (traducidos comúnmente como “chances”)
-
-* ¿Qué son los odds? Una razón de probabilidades
-
-* Por lo tanto, para estimar probabilidades a través de una regresión logística hay que seguir estos pasos:
-  1. Estimar los odds o razón de probabilidades
-  2. Estimar odds ratios (razones entre odds)
-  3. Aplicar una transformación logarítmica a esos odds ratios para obtener coeficientes logit
-  4. Calcular las probabilidades
-
-## Tabla de contingencia bivariado: sindicalización / participación en marchas
+Además, podemos añadir las frecuencias marginales.
 
 ```{r}
-WVS_2005_2022_Chl <- WVS_2005_2022_Chl %>%
-  mutate(Unionized = labelled(.$Unionized,c("No"=0,"Sí"=1)),
-         demonstr_dummy = labelled(.$demonstr_dummy,c("No"=0,"Sí"=1)))
+row_sum <- margin.table(conti_table, 1)
+col_sum <- margin.table(conti_table, 2)
 
-WVS_2005_2022_Chl <- as.data.frame(WVS_2005_2022_Chl) #para que la base quede como data frame (necesario para las figuras)
-
-frq(WVS_2005_2022_Chl$Unionized)
-frq(WVS_2005_2022_Chl$demonstr_dummy)
-
-sjPlot::tab_xtab(var.col = WVS_2005_2022_Chl$Unionized, 
-                 var.row = WVS_2005_2022_Chl$demonstr_dummy, 
-                 title = "Participación en marchas según afiliación sindical", 
-                 show.col.prc = TRUE,
-                 value.labels = TRUE,
-                 encoding = "UTF-8")
+conti_added <- cbind(conti_table, as.vector(row_sum))
+conti_added <- rbind(conti_added, c(as.vector(col_sum), sum(conti_table)))
+conti_added
 ```
 
-### Odds
+Ahora, generamos una tabla de contingencia con frecuencias esperadas.
 
-$$Odds_{participar} = \frac{0.207}{0.793} = 0.26$$
+Las _frecuencias observadas_ corresponden a:
 
-Las chances de participar en una marcha son de 0,26, respecto a las chances de no participar
+$$ f_{e_c} = \frac{{\text{(Total marginal de fila para la celda)} \times \text{(Total marginal de columna para la celda)}}}{{N}} $$
 
-* En otras palabras: por cada 1 persona, hay sólo 0,26 personas que participan en marchas.
+Usando nuestros datos la frecuencia esperada para la primera celda sería:
 
-* O más intuitivamente, por cada 100 personas, hay sólo 26 personas que participan
+$$ f_{e_c} = \frac{(2551)*(2236)}{{2964}} = 1924.4$$
 
-¿Cambian las chances de participar según se esté afiliado/a a un sindicato
-
-$$Odds_{sindical} = \frac{0.26}{0.74} = 0.35$$
-
-$$Odds_{no.sindical} = \frac{0.194}{0.806} = 0.24$$
-
-¿Cómo se interpretan los odds?
-
-* Valores bajo 1 indican que las chances de que ocurra un evento son negativas
-
-* Valores iguales a 1 indican chances iguales
-
-* Valores sobre 1 indican chances positivas
-
-### Odds ratios (razones de chances)
-
-* Cálculo que permite reflejar asociación entre dos variables dicotómicas, a partir de una comparación entre chances
-
-* Siguiendo con el ejemplo anterior, ¿tienen los/as sindicalizados más chances de participar en marchas que quienes no están sindicalizados/as?
-
-$$OR = \frac{P_{sindical}/(1-P_{sindical})}{P_{no.sindical}/(1-P_{no.sindical})}$$
-
-$$OR = \frac{0.26/0.74}{0.194/0.806} = \frac{0.35}{0.24} = 1.46$$
-
-Las chances de participar en marchas de los/as sindicalizados/as son 1,5 veces más que las de quienes no están sindicalizados/as
-
-* Implicancias:
-
-  1. El odds ratio o razones de chances es útil porque nos permite expresar en un número la relación entre dos variables categóricas
-  2. En las regresiones logísticas, el odds ratio es la primera manera de aproximarnos a relación entre variables
-  3. Sin embargo, falta un paso más necesario para construir modelos de regresión logística
-  
-## Logit
-
-* Es una unidad de medida de la relación entre dos variables (VD: dicotómica), que en regresión logística se calcula a partir del logaritmo natural de los odds
-
-* Esta transformación logarítmica es la base de la estimación de parámetros en la regresión logística:
-
-La mejor combinación lineal de predictores no se obtiene a través de MCO, sino a través del procedimiento de máxima verosimilitud
-
-* A diferencia de los odds ratio, los coeficientes logit tienen valores que van de –\infty a +\infty
-
-## Modelo de probabilidad lineal
-
-Primero, solo para comparación, estimamos un modelo de probabilidad lineal.
+Esto debemos repetirlo para cada celda... pero podemos hacerlo más rápido con `DescTools`.
 
 ```{r}
-m1mpl <- lm(demonstr_dummy ~ Unionized + Wave, data = WVS_2005_2022_Chl)
+exp_table <- DescTools::ExpFreq(conti_added, freq = "abs")
+round(exp_table, 1)
 ```
 
+3. Calcular el valor estimado de la prueba:
 
-```{r results='asis'}
-htmlreg(m1mpl,
-          custom.model.names = "Modelo de Prob Lineal",
-          digits = 3, 
-          stars = c(0.001, 0.01, 0.05, 0.1),symbol = "†")
+Establecemos la diferencia entre lo observado y lo esperado, siendo:
+
+$$\chi^2=\sum\frac{(f_o-f_e)^2}{f_e}$$
+```{r}
+chi_stat <- sum(
+  (2027-1924.4)^2/1924.4,
+  (524-626.6)^2/626.6,
+  (111-209.7)^2/209.7,
+  (167-68.3)^2/68.3,
+  (37-44.5)^2/44.5,
+  (22-14.5)^2/14.5,
+  (61-57.3)^2/57.3,
+  (15-18.7)^2/18.7
+  )
+chi_stat
 ```
 
-## Modelo de regresión logística
+4. Especifica el valor crítico de la prueba:
 
 ```{r}
-m0log <- glm(demonstr_dummy~ Unionized, data = WVS_2005_2022_Chl, family = "binomial"(link = "logit"))
-m1log <- glm(demonstr_dummy~ Unionized + Wave, data = WVS_2005_2022_Chl, family = "binomial"(link = "logit"))
-#nota: "logit" viene por defecto en la opción "binomial", por eso no es necesario 
-#incluirla explícitamente en el código (tal como lo hago en los modelos sgtes)
-m2log <- glm(demonstr_dummy~ Unionized + Female + X003 + Educ + private_sector + Wave, data = WVS_2005_2022_Chl,family = "binomial")
-m3log <- glm(demonstr_dummy~ Unionized + Female + X003 + Educ + private_sector + politicization + Wave, data = WVS_2005_2022_Chl,family = "binomial")
+df <- (4-1)*(2-1) #definimos grados de libertad
+
+chi_critico <- qchisq(p = 0.05, df, lower.tail = F)
+chi_critico
 ```
 
-
-```{r results='asis'}
-htmlreg(list(m1mpl, m1log,m2log,m3log),
-          custom.model.names = c("M1 (m prob lineal)","M1 (log odds)","M2 (log odds)","M3 (log odds)"),
-          digits = 3, 
-          stars = c(0.001, 0.01, 0.05, 0.1),symbol = "†")
-```
-
-En el Modelo 1 (M1), el log-odds de participación en marchas para afiliados a sindicatos aumenta en 0.418 en comparación con los no sindicalizados (p<0.01). Este resultado mantiene su significación estadística en el Modelo 2 y baja su significación a p<0.1 en el Modelo 3, al controlar por las demás variables independientes.
-
-En el Modelo 2, En comparación a los/as trabajadores/as del sector público (categoría de referencia), el log-odds de participación en marchas para los/as del sector privado disminuye en 0,52 (p < 0,01), manteniendo el resto de variables constantes.
-
-En el Modelo 3, por cada unidad de aumento en la escala de politización, el log-odds de participación en marchas aumenta en 0,28 (p < 0,001), manteniendo el resto de las variables constantes.
-
-### Problemas de interpretación 
-
-A pesar de sus ventajas, los coeficientes logit son difíciles de interpretar:
-
-* Los coef. logit son el resultado de una transformación de la escala original
-
-* Ellos no muestran directamente probabilidades
-
-* Entonces: Volver a la escala original de **odds ratio** mediante la **exponenciación de los coeficientes** (la función exponencial es la inversa del logaritmo)
-
-$$logit_x = log(odds)$$
-
-$$e^{logit} = odds_x$$
-
-$$e^{0.39} = odds_x = 1.477$$
-
-Las chances (odds) de participar en marchas de los/as sindicalizados/as son 1,5 veces más que las de quienes no están sindicalizados/as, controlando por las otras variables incluidas en el modelo
-
-## Estimación de odds ratios
+5. Contrasta el valor estimado con el crítico e interpreta los resultados:
 
 ```{r}
-exp(coef(m1log)) #comando básico
-
-### Cálculo de OR para cada modelo
-m0log_OR <- exp(coef(m0log))
-m1log_OR <- exp(coef(m1log))
-m2log_OR <- exp(coef(m2log))
-m3log_OR <- exp(coef(m3log))
+chi_stat > chi_critico
 ```
 
+> En el análisis utilizando la prueba de $\chi^2$ de Pearson para la asociación entre el tipo de sistema de salud y el nivel educativo, se encontró una relación significativa (χ2 = 217.56 , df = 3, p< .001). Por tanto, rechazamos la $H_{0}$ sobre no asociación con un 95% de confianza, existiendo evidencia a favor de nuestra $H_{A}$ ya que hay evidencia de una relación entre el sistema de salud y el nivel educativo.
 
-```{r results='asis'}
-##Odds ratios en tabla de texreg
-htmlreg(list(m1log,m2log,m3log), 
-          override.coef = list(m1log_OR,m2log_OR,m3log_OR), # Sobreescribir coeficientes
-          custom.model.names = c("m1 (OR)","m2 (OR)","m3 (OR)"),
-          digits = 3, 
-          stars = c(0.001, 0.01, 0.05, 0.1),symbol = "†")
-#Nota: errores estándares en esta tabla NO tienen  sentido (no están calculados a partir de OR, sino de log odds)
-#Es mejor no reportarlos si solo se van a presentar odds ratios
+6. Y el cálculo directo en R:
+
+```{r, collapse=TRUE}
+chi_results <- chisq.test(table(proc_casen$ss_salud, proc_casen$universitaria))
+
+stats.table <- tidy(chi_results, conf_int = T)
+nice_table(stats.table)
 ```
 
-Sin embargo, los coeficientes de un modelo de reg. logística (log-odds u odds-ratios) no son comparables con los coeficientes de otro modelo
-
-## Cálculo de probabilidades predichas
-
-```{r results='asis'}
-# Tabla básica: sólo sindicalizacion como vble independ
-htmlreg(m0log,
-          custom.model.names = c("m0 (log odds)"),
-          digits = 3, 
-          stars = c(0.001, 0.01, 0.05, 0.1),symbol = "†")
-```
-
-A partir de este modelo se pueden predecir log-odds y, más importante aún, probabilidades para personas con distintos atributos controlados en el modelo (ej., sindicalizadas o no)
-
-$$logit(prob.marcha) = 𝛼+ 𝛽_1X_1 $$
-
-$$logit(prob.marcha)_{sindical} = -1.422 + (0.374 * Unionized=1) = -1.048 $$
-
-$$logit(prob.marcha)_{no.sindical} = -1.422 + (0.374 * Unionized=0) = -1.422 $$
-
-Este “puntaje predicho” (log-odds) no tiene interpretación, por lo que hay que pasarlo a Odds
-
-
-$$Odds_x = e^{𝛼+𝛽_jX_j}$$
-
-$$Odds_{sindicalizados} = e^{-1.048} = 0.35$$
-
-$$Odds_{no.sindicalizados} = e^{-1.422} = 0.24$$
-
-Finalmente, habiendo calculado los odds para cada tipo de persona se pueden calcular sus probabilidades predichas
-
-$$p = \frac{e^{𝛼+𝛽_jX_j}}{1+e^{𝛼+𝛽_jX_j}} = \frac{odds_{xj}}{1+odds_{xj}}$$
-
-$$p_{sindicalizados} = \frac{0.35}{1+0.35} = \frac{0.35}{1.35} = 0.26$$
-
-$$p_{no.sindicalizados} = \frac{0.24}{1+0.24} = \frac{0.24}{1.24} = 0.19$$
-
-La probabilidad de que un/a sindicalizado participe en marchas es del 26%, mientras que la probabilidad de que alguien que no esté sindicalizado/a es del 19%
-
-
-## Cálculo de probabilidades predichas en R
-
-* Paquete ggeffects de R: últil para estimar probabilidades predichas a partir de modelos de regresión logísticas
-
-* Combinado con ggplot2, se pueden generar gráficos que muestran de modo más intuitivo la relación entre variables
-
-Gráfico de probabilidades predichas para sindicalizados/as y no sindicalizados/as
+Visualicemos la distribución de esta prueba y su zona de rechazo.
 
 ```{r}
-FigSind_1_Prob <- ggeffects::ggpredict(m3log, terms = c("Unionized")) %>%
-  ggplot(aes(x=x, y=predicted)) +
-  geom_bar(stat="identity", color="grey", fill="grey")+
-  geom_errorbar(aes(ymin = conf.low, ymax = conf.high), width=.1) +
-  labs(title="Sindicalización", x = "", y = "") +
-  theme_bw() +
-  theme(plot.title = element_text(size = 12), 
-        axis.text.x = element_text(angle = 0, vjust = 0.5, size = 12),
-        axis.text.y = element_text(vjust = 0.5, size = 10)) +
-  scale_x_continuous(name = "",
-                     breaks = c(0,1),
-                     labels = c("Non-union members", "Union members")) +
-  scale_y_continuous(limits = c(0,0.35), 
-                     breaks = seq(0,0.35, by = 0.05),
-                     labels = scales::percent_format(accuracy = 1L))
-
-FigSind_1_Prob
+ggchisqtest(chi_results)
 ```
 
-Gráfico de probabilidades predichas para variable politización
+
+# Correlación entre categóricas
+
+Al igual que otros coeficientes de correlación, las correlaciones entre categóricas:
+
+- Oscila entre -1 y 1.
+- Indica la dirección y fuerza de asociación entre variables.
+- Su tamaño de efecto se puede interpretar a partir de ciertos estándares.
+- Se interpreta de la misma forma que otros coeficientes de correlación.
+
+### a) Punto biserial
+
+La correlación punto biserial se utiliza para calcular la correlación entre una variable categórica dicotómica y una variable continua.
+
+Veamos la frecuencia de `sexo` y la media de `y1`.
+
+```{r, collapse=TRUE}
+sjmisc::frq(proc_casen$sexo)
+
+mean(proc_casen$y1, na.rm = T)
+```
+
+Obtengamos la correlación punto biserial entre sexo e ingresos.
 
 ```{r}
-FigPolit_1_Prob<- ggeffects::ggpredict(m3log, terms="politicization") %>%
-  ggplot(mapping=aes(x = x, y=predicted)) +
-  labs(title="Politización", x = "", y = "")+
-  theme_bw() +
-  geom_smooth()+
-  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), alpha = .2, fill = "black") +
-  theme(plot.title = element_text(size = 12), 
-        axis.text.x = element_text(angle = 0, vjust = 0.5, size = 10),
-        axis.text.y = element_text(vjust = 0.5, size = 10))+
-  scale_x_continuous(breaks = seq(0,6, by = 1))+
-  scale_y_continuous(limits = c(0,0.6), breaks=seq(0,0.6, by = 0.1),
-                     labels = scales::percent_format(accuracy = 1L))
-
-FigPolit_1_Prob
+cor.test(proc_casen$sexo, proc_casen$y1)
 ```
 
-## Bondad de ajuste (comando de paquete lmtest)
+### b) Tetracórica
 
-* Razón de verosimilitudes
+La correlación tetracórica se utiliza para calcular la correlación entre dos variables binarias categóricas, es decir, variables nominales dicómoticas (solo dos posibles valores).
+
+Veamos las frecuencias de `sexo` y `disc_fisica`.
+
+```{r, collapse=TRUE}
+sjmisc::frq(proc_casen$sexo)
+
+sjmisc::frq(proc_casen$disc_fisica)
+```
+
+Obtengamos la correlación tetrácorica entre sexo y discriminación por apariencia física.
 
 ```{r}
-anova(m1log, m2log, test = "Chisq")
-anova(m2log, m3log, test = "Chisq") 
-lrtest(m1log, m2log) #likelihood ratio test / Prueba de razón de verosimilitud (comparación m1-m2)
+matriz <- proc_casen %>% select(sexo, disc_fisica) # creamos matriz con var de interes
 
-lrtest(m2log, m3log) #likelihood ratio test / Prueba de razón de verosimilitud (comparación m2-m3)
+psych::tetrachoric(matriz, na.rm = T)
 ```
 
-* Pseudo R2 (McFadden)
+
+### c) Policórica
+
+La correlación policórica se utiliza para calcular la correlación entre dos variables ordinales categóricas, es decir, variables ordinales cuyos posibles valores siguen un orden (por ejemplo, variables tipo Likert).
+
+Veamos las frecuencias de `ayuda_moverse` y `ayuda_thogar`.
+
+```{r, collapse=TRUE}
+sjmisc::frq(proc_casen$ayuda_moverse)
+
+sjmisc::frq(proc_casen$ayuda_thogar)
+```
+
+Obtengamos la correlación policórica entre si la persona necesitó ayuda para moverse dentro de la casa y si necesitó ayuda para realizar tareas dentro del hogar, en los últimos 30 días.
 
 ```{r}
-m1log_R2<-DescTools::PseudoR2(m1log)
-m2log_R2<-DescTools::PseudoR2(m2log)
-m3log_R2<-DescTools::PseudoR2(m3log)
+matriz <- proc_casen %>% select(ayuda_moverse, ayuda_thogar) # creamos matriz con var de interes
+
+psych::polychoric(matriz, na.rm = T)
 ```
 
 
-```{r results='asis'}
-#Misma tabla, en log odds, con Pseudo R2
-htmlreg(list(m1log,m2log,m3log),
-          custom.model.names = c("m1 (log odds)","m2 (log odds)","m3 (log odds)"),
-          custom.gof.rows=list("Pseudo R2" = c(m1log_R2, m2log_R2,m3log_R2)),
-          digits = 3, 
-          stars = c(0.001, 0.01, 0.05, 0.1),symbol = "†")
-```
+# Resumen
 
-## Efectos de interacción
+Hoy profundizamos en medidas de asociación entre variables categóricas.
 
-sindicalizacion - sector privado
+Hoy profundizamos en medidas de asociación entre variables categóricas.
 
-```{r}
-m3.1log <- glm(demonstr_dummy~ Unionized + Female + X003 + Educ + private_sector + politicization + Wave + Unionized*private_sector, 
-               data = WVS_2005_2022_Chl,family = "binomial")
-```
+En detalle, aprendimos a:
 
-
-```{r results='asis'}
-htmlreg(list(m1log,m2log,m3log,m3.1log),
-          custom.model.names = c("M1 (log odds)","M2 (log odds)","M3 (log odds)",
-                                 "M3.1 (log odds)"),
-          digits = 3, 
-          stars = c(0.001, 0.01, 0.05, 0.1),symbol = "†")
-```
-
-* La interacción también se puede graficar según probabilidades predichas
-
-```{r}
-# ojo que la relación sindicalización x sector privado no es significativa
-FigSindSector_int<-ggeffects::ggpredict(m3.1log, terms = c("Unionized", "private_sector")) %>%
-  ggplot(aes(x=x, y=predicted, shape = group, color = group)) +
-  geom_line(aes(group=group,linetype = group),position = position_dodge(.1)) + 
-  geom_point(size = 2.5,position = position_dodge(.1))+
-  scale_x_continuous(name = "", breaks=c(0,1), labels = c("No sindicalizados/as", "Sindicalizados/as")) + 
-  scale_shape_discrete(name = "Sector de empleo",
-                       limits = c("0", "1"),
-                       labels = c("Público", "Privado")) +
-  scale_color_manual(name = "Sector de empleo",
-                     limits = c("0", "1"),
-                     labels = c("Público", "Privado"),
-                     values = c("black", "black")) +
-  scale_linetype_manual(name = "Sector de empleo",
-                        limits = c("0", "1"),
-                        labels = c("Público", "Privado"),
-                        values = c("solid", "dashed")) +
-  scale_y_continuous(limits = c(0,0.40), breaks=seq(0,0.40, by = 0.05),
-                     labels = scales::percent_format(accuracy = 1L)) +
-  theme_bw() +
-  labs(title="", y = "") + 
-  theme(plot.title = element_text(size = 11),
-        axis.text=element_text(size=11))
-
-FigSindSector_int
-```
-
-* Sector de empleo - politización
-
-```{r}
-m3.2log <- glm(demonstr_dummy~ Unionized + Female + X003 + Educ + private_sector 
-               + politicization + Wave + private_sector*politicization,
-               data = WVS_2005_2022_Chl,family = "binomial")
-```
-
-
-```{r results='asis'}
-htmlreg(list(m1log,m2log,m3log,m3.1log,m3.2log),
-          custom.model.names = c("M1 (log odds)","M2 (log odds)","M3 (log odds)",
-                                 "M3.1 (log odds)","M3.2 (log odds)"),
-          digits = 3, 
-          stars = c(0.001, 0.01, 0.05, 0.1),symbol = "†")
-```
-
-
-```{r}
-FigPolitSector_int<-ggeffects::ggpredict(m3.2log, terms = c("politicization", "private_sector")) %>%
-  ggplot(aes(x=x, y=predicted, shape = group, color = group)) +
-  geom_line(aes(group=group,linetype = group),position = position_dodge(.1)) + 
-  geom_point(size = 2.5,position = position_dodge(.1))+
-  scale_x_continuous(breaks=seq(0,6, by = 1), name = "") + 
-  scale_shape_discrete(name = "Sector de empleo",
-                       limits = c("0", "1"),
-                       labels = c("Público", "Privado")) +
-  scale_color_manual(name = "Sector de empleo",
-                     limits = c("0", "1"),
-                     labels = c("Público", "Privado"),
-                     values = c("black", "black")) +
-  scale_linetype_manual(name = "Sector de empleo",
-                        limits = c("0", "1"),
-                        labels = c("Público", "Privado"),
-                        values = c("solid", "dashed")) +
-  scale_y_continuous(limits = c(0,0.8), breaks=seq(0,0.8, by = 0.1),
-                     labels = scales::percent_format(accuracy = 1L)) +
-  theme_bw() +
-  labs(title="", y = "") + 
-  theme(plot.title = element_text(size = 11),
-        axis.text=element_text(size=11))
-FigPolitSector_int
-```
-
-
-
-
-
+1.  Generar y analizar tablas de contingencia (o cruzadas)
+2.  Estimar e interpretar la prueba de Chi-cuadrado
+3.  Aplicar coeficientes de correlación entre variables categóricas

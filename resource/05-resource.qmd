@@ -1,8 +1,8 @@
 ---
-title: "Práctica 5 Supuestos de regresión lineal"
-subtitle: "Metodología I - Magíster en Ciencias Sociales"
-linktitle: "Práctica 5: Supuestos de regresión lineal"
-date: "2023-06-23"
+title: "Práctico 5. Documentos reproducibles"
+subtitle: "Metodología Cuantitativa Avanzada - Magíster en Ciencias Sociales"
+linktitle: "Práctico 5: Inferencia"
+date: "2024-05-31"
 lang: es
 ---
 
