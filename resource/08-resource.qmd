@@ -1,0 +1,259 @@
+---
+title: "Práctica 5 Supuestos de regresión lineal"
+subtitle: "Metodología I - Magíster en Ciencias Sociales"
+linktitle: "Práctica 5: Supuestos de regresión lineal"
+date: "2023-06-23"
+lang: es
+---
+
+# Presentación
+
+La siguiente práctica tiene el objetivo de introducir en los **supuestos y robustez del modelo de regresión**. Por esta razón, volveremos a algunos de los contenidos previos relacionados con la estimación, análisis de residuos y ajuste.  Para ello, utilizaremos la base de datos de la tercera ola del [*Estudio Longitudinal Social del Chile 2018*](https://doi.org/10.7910/DVN/H8OVMF) con el objetivo de analizar los determinantes de la **Participación Ciudadana.**
+
+La versión original de este ejercicio proviene del curso de [Estadística multivariada](https://multivariada.netlify.app/assignment/10-code/) versión 2022.
+
+# Librerías
+
+```{r}
+pacman::p_load(dplyr, summarytools, sjPlot,texreg, corrplot,ggplot2,ggfortify,sandwich,lmtest,sjlabelled)
+```
+
+# Datos
+
+El Estudio Longitudinal Social del Chile [ELSOC](https://coes.cl/encuesta-panel/), único en Chile y América Latina, consiste en encuestar a casi 3.000 chilenos, anualmente, a lo largo de una década. ELSOC ha sido diseñado para evaluar la manera cómo piensan, sienten y se comportan los chilenos en torno a un conjunto de temas referidos al conflicto y la cohesión social en Chile. La población objetivo son hombres y mujeres entre 15 y 75 años de edad con un alcance nacional, donde se obtuvo una muestra final de **3748** casos en el año 2018.
+
+```{r}
+load("../files/data/elsoc.RData")
+```
+
+```{r eval=FALSE}
+#Cargamos la base de datos desde internet
+load(url("https://github.com/Kevin-carrasco/metod1-MCS/raw/main/files/data/elsoc.RData"))
+```
+
+## Explorar datos
+
+A partir de la siguiente tabla se obtienen estadísticos descriptivos que luego serán relevantes para realizar las transformaciones y análisis posteriores.
+
+```{r eval=FALSE}
+view(dfSummary(elsoc, headings = FALSE, method = "render"))
+```
+
+```{r echo=FALSE}
+print(dfSummary(elsoc, headings = FALSE,), method = 'render')
+```
+
+```{r}
+view_df(elsoc,max.len = 50)
+```
+
+```{r, fig.width=10, include=FALSE}
+plot_stackfrq(elsoc[,c("part01","part02","part03","part04")]) + theme(legend.position="bottom")
+```
+
+```{r, include=FALSE}
+corrplot.mixed(cor(select(elsoc,part01,part02,part03,part04),
+                   use = "complete.obs"))
+```
+
+```{r}
+elsoc <- elsoc %>% mutate(partpol=rowSums(select(., part01,part02,part03,part04)))
+```
+
+```{r echo=TRUE, include=FALSE}
+descr(elsoc$partpol,style = "rmarkdown",stats = "common", transpose = T,headings = F)
+plot_frq(data = elsoc$partpol,type = "hist",show.mean = T)
+```
+
+# Estimación
+
+```{r}
+fit01 <- lm(partpol ~ sexo, data=elsoc)
+fit02 <- lm(partpol ~ sexo + edad, data=elsoc)
+fit03 <- lm(partpol ~ sexo + edad + quintilemiss, data=elsoc)
+fit04 <- lm(partpol ~ sexo + edad + quintilemiss + pospol, data=elsoc)
+```
+
+```{r, results='asis'}
+labs01 <- c("Intercepto","Sexo (mujer=1)","Edad",
+            "Quintil 2","Quintil 3","Quintil 4","Quintil 5","Quintil perdido",
+            "Centro (ref. derecha)","Izquierda","Idep./Ninguno")
+htmlreg(list(fit01,fit02,fit03, fit04),doctype = FALSE, 
+        custom.model.names = c("Modelo 1","Modelo 2","Modelo 3", "Modelo 4"),
+        custom.coef.names = labs01)
+```
+
+```{r eval=FALSE, include=FALSE}
+screenreg(list(fit01,fit02,fit03, fit04),custom.coef.names = labs01)
+```
+
+## Diágnosticos
+
+### Casos influyentes
+
+Para determinar si un outlier es un caso influyente, es decir que su presencia/ausencia genera un cambio importante en la estimación de los coeficientes de regresión, calculamos la **Distancia de Cook.**. 
+
+Posteriormente, se establece un punto de corte de $4/(n-k-1)$:
+
+```{r}
+n<- nobs(fit04) #n de observaciones
+k<- length(coef(fit04)) # n de parametros
+dcook<- 4/(n-k-1) #punt de corte
+```
+
+Si lo graficamos se ve de la siguiente manera:
+
+```{r, fig.width=10}
+final <- broom::augment_columns(fit04,data = elsoc)
+final$id <- as.numeric(row.names(final))
+# identify obs with Cook's D above cutoff
+ggplot(final, aes(id, .cooksd)) +
+  geom_bar(stat="identity", position="identity") +
+  xlab("Obs. Number")+ # Modificación nombre eje x
+  ylab("Cook's distance")+ # Modificación nombre eje y
+  geom_hline(yintercept=dcook)+ # Incluir una línea horizontal
+  geom_text(aes(label=ifelse((.cooksd>dcook),id,"")), # geom text agrega nombre a los casos, en esta oportunidad solo a los valores mayores a dcook
+            vjust=-0.2, hjust=0.5)
+```
+
+Identificamos los casos influyentes y filtramos la base de datos:
+
+```{r}
+ident<- final %>% filter(.cooksd>dcook)
+elsoc02 <- final %>% filter(!(id %in% ident$id))
+```
+
+Estimación sin casos influyentes:
+
+```{r}
+fit05<- lm(partpol~sexo+edad+quintilemiss+pospol,data=elsoc02)
+```
+
+```{r, results='asis'}
+labs02 <- c("Intercepto","Sexo (mujer=1)","Edad",
+            "Quintil 2","Quintil 3","Quintil 4","Quintil 5","Quintil perdido",
+            "Izquierda (ref. derecha)","Centro","Idep./Ninguno")
+
+htmlreg(list(fit04,fit05), 
+        doctype = FALSE,
+        custom.model.names = c("Modelo 4", "Modelo 5"),
+        custom.coef.names = labs02)
+```
+
+```{r eval=FALSE, include=FALSE}
+screenreg(list(fit04,fit05), 
+        custom.model.names = c("Modelo 4", "Modelo 5"),
+        custom.coef.names = labs02
+        )
+```
+
+En términos generales, el sentido y significación estadística de los coeficientes del Modelo 5 se mantiene respecto al Modelo 4. Adicionalmente, si observamos que el modelo sin casos influyentes presenta una mejora en ajuste. Por lo tanto, los análisis posteriores se realizaran en base a este modelo.
+
+### Linealidad
+
+Para analizar la linealidad respecto de un modelo de regresión, debemos analizar la distribución de los residuos con respecto a la recta de regresión.
+
+* Los residuos deben ser independientes de los valores predichos (fitted values).
+* Cualquier correlación entre residuo y valores predichos violarían este supuesto. 
+* La presencia de un patrón no lineal, es señal de que el modelo está especificado incorrectamente.
+
+
+```{r, fig.cap="Relación entre residuos y valores predichos", fig.width=10}
+ggplot(fit05, aes(.fitted, .resid)) +
+  geom_point() +
+  geom_hline(yintercept = 0) +
+  geom_smooth(se = TRUE)
+```
+
+El gráfico nos indica que existe un patrón en la distribución de los residuos. Para intentar mejorar la estimación podemos realizar una transformación de variables. A continuación presentaremos un ejemplo para la Edad y para los Ingresos.
+
+* Polinomio: $\text{Edad}^2$
+
+```{r}
+elsoc02$edad2 <- elsoc02$edad^2
+fit06<- lm(partpol~sexo+edad+edad2+quintilemiss+pospol,data=elsoc02)
+```
+
+```{r, fig.cap="Efecto cuadrático de la edad (Modelo 5)", fig.width=10}
+edad<- fit06$model$edad
+fit<- fit06$fitted.values
+data01 <- as.data.frame(cbind(edad,fit))
+
+ggplot(data01, aes(x = edad, y = fit)) +
+  theme_bw() +
+  geom_point()+
+  geom_smooth()
+```
+
+```{r}
+fit07 <- lm(partpol~sexo+edad+edad2+quintilemiss+pospol,data=elsoc02)
+```
+
+```{r, results='asis'}
+labs03 <- c("Intercepto","Sexo (mujer=1)","Edad",
+            "Quintil 2","Quintil 3","Quintil 4","Quintil 5","Quintil perdido",
+            "Izquierda (ref. derecha)","Centro","Idep./Ninguno", "Edad²")
+
+htmlreg(list(fit05, fit06, fit07), doctype = FALSE,
+        custom.model.names = c("Modelo 4", "Modelo 5", "Modelo 6"), 
+          custom.coef.names = labs03)
+```
+
+```{r eval=FALSE, include=FALSE}
+screenreg(list(fit05, fit06, fit07),
+        custom.model.names = c("Modelo 4", "Modelo 5", "Modelo 6"), 
+          custom.coef.names = labs03)
+```
+
+# Test homogeneidad de varianza
+
+```{r}
+car::ncvTest(fit06)
+```
+
+```{r}
+lmtest::bptest(fit06)
+```
+
+Tanto el test Breush-Pagan como el de Cook-Weisberg nos indican que existen problemas con respecto a homogeneidad en la distribución de los residuos del modelo debido a que $p>0.05$ en ambos casos. Es decir, se rechaza $H_0$ donde se asume que la varianza del error es constante, lo cual nos indica que tenemos problemas de **heterocedasticidad** en los residuos. 
+
+Para hacer frente a este problema, debemos calcular los errores estándar robustos para nuestra última estimación para corregir problemas de heterocedasticidad y así estimar el último modelo nuevamente:
+
+```{r}
+model_robust<- coeftest(fit06, vcov=vcovHC)
+```
+
+**Comparemos los resultados:**
+
+```{r, results='asis'}
+labs04 <- c("Intercepto","Sexo (mujer=1)","Edad",
+            "Quintil 2","Quintil 3","Quintil 4","Quintil 5","Quintil perdido",
+            "Izquierda (ref. derecha)","Centro","Idep./Ninguno", "Edad²")
+
+htmlreg(list(fit05, fit06, model_robust), doctype = FALSE,
+          custom.model.names = c("Modelo 5","Modelo 6", "M6 Robust"), custom.coef.names = labs04)
+```
+
+```{r eval=FALSE, include=FALSE}
+screenreg(list(fit05, fit06, model_robust), 
+          custom.model.names = c("Modelo 5","Modelo 6", "M6 Robust"), custom.coef.names = labs04)
+```
+
+Los resultados del modelo con errores estándar robustos nos indica que nuestras estimaciones son robustas a la presencia de heterocedasticidad en los residuos, debido a que la significancia de los coeficientes se mantiene si lo comparamos con el Modelo 6.
+
+# Multicolinealidad
+
+```{r, results='hold'}
+car::vif(fit05)
+car::vif(fit06)
+```
+
+Entonces, asumiendo que valores del VIF (Variance Inflation Factor) mayores a 2.5, vemos que en el modelo que no incorpora el término cuadrático de edad no tendríamos problemas de multicolinealidad. Sin embargo, al incorporar el término cuadrático, nos muestra un VIF de 6.2 en la variable `edad` y `edad2`.
+
+
+## Referencias
+
+[Darlington & Hayes 2016 Cap16 Detecting and Managing Irregularities](https://multivariada.netlify.app/docs/lecturas/Darlington&Hayes_16irregularities.pdf)
+
+[Darlington & Hayes 2016 Cap12 Nonlinear relationships ](https://multivariada.netlify.app/docs/lecturas/Darlington&Hayes_13nonlinear.pdf)
+

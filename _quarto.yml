@@ -106,10 +106,12 @@ website:
           file: resource/04-resource.qmd
         # - text: "Práctica 5"
         #   file: resource/05-resource.qmd
-        - text: "Práctica 6"
+        - text: "Práctica 5"
           file: resource/06-resource.qmd
-        # - text: "Práctica 7"
-        #   file: resource/07-resource.qmd
+        - text: "Práctica 6"
+          file: resource/07-resource.qmd
+        - text: "7: Supuestos de regresión"
+          file: resource/08-resource.qmd
 
 
   page-footer:

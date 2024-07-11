@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Metodología Cuantitativa Avanzada - MCS - Práctico 5. Documentos reproducibles</title>
+<title>Metodología Cuantitativa Avanzada - MCS - Práctica 5 Supuestos de regresión lineal</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -133,8 +133,8 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="Metodología Cuantitativa Avanzada - MCS - Práctico 5. Documentos reproducibles">
-<meta property="og:description" content="Metodología Cuantitativa Avanzada - Magíster en Ciencias Sociales">
+<meta property="og:title" content="Metodología Cuantitativa Avanzada - MCS - Práctica 5 Supuestos de regresión lineal">
+<meta property="og:description" content="Metodología I - Magíster en Ciencias Sociales">
 <meta property="og:image" content="https://metod2-mcs.netlify.app/files/social-image-f22.png">
 <meta property="og:site_name" content="Metodología Cuantitativa Avanzada - MCS">
 <meta property="og:locale" content="en_US">
@@ -142,7 +142,7 @@ window.Quarto = {
 <meta property="og:image:width" content="500">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -176,7 +176,7 @@ window.Quarto = {
 <span class="menu-text">Trabajos</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../resource/index.html"> 
+    <a class="nav-link active" href="../resource/index.html" aria-current="page"> 
 <span class="menu-text">Prácticos</span></a>
   </li>  
 </ul>
@@ -185,10 +185,75 @@ window.Quarto = {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../resource/08-resource.html">7: Supuestos de regresión</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resource/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Descripción</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resource/01-resource.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctico 1</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resource/02-resource.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctico 2</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resource/03-resource.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctico 3</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resource/04-resource.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica 4</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resource/06-resource.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica 5</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resource/07-resource.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica 6</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resource/08-resource.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">7: Supuestos de regresión</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -222,8 +287,8 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Práctico 5. Documentos reproducibles</h1>
-<p class="subtitle lead">Metodología Cuantitativa Avanzada - Magíster en Ciencias Sociales</p>
+<h1 class="title">Práctica 5 Supuestos de regresión lineal</h1>
+<p class="subtitle lead">Metodología I - Magíster en Ciencias Sociales</p>
 </div>
 
 
@@ -234,7 +299,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Fecha de publicación</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">31 de mayo de 2024</p>
+      <p class="date">23 de junio de 2023</p>
     </div>
   </div>
   
@@ -339,7 +404,7 @@ window.Quarto = {
 </tr>
 </tbody>
 </table></td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAGkAAAA3BAMAAAD9KHmOAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAPUExURf////3+/aampvDw8P///7GHRIEAAAACdFJOUwAAdpPNOAAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBwsWEg+jAtreAAAAQklEQVRIx2NgGL5ACR8QRAcCUF3KxriB0aiuUV2jukZ1YdFFXmkjSBIYCF1KJAEFIsIQE4zqGtU1qmtUF7mlzXAEALA3YowAbRPnAAAAAElFTkSuQmCC" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAGkAAAA3BAMAAAD9KHmOAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAPUExURf////3+/aampvDw8P///7GHRIEAAAACdFJOUwAAdpPNOAAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBwsWEwLEqJciAAAAQklEQVRIx2NgGL5ACR8QRAcCUF3KxriB0aiuUV2jukZ1YdFFXmkjSBIYCF1KJAEFIsIQE4zqGtU1qmtUF7mlzXAEALA3YowAbRPnAAAAAElFTkSuQmCC" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">3748 (100.0%)</td>
 <td style="text-align: center;">0 (0.0%)</td>
 </tr>
@@ -364,7 +429,7 @@ window.Quarto = {
 </tbody>
 </table></td>
 <td style="text-align: left; vertical-align: middle;">70 distinct values</td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuBAMAAAApJ8cWAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAPUExURf////3+/aampvDw8P///7GHRIEAAAACdFJOUwAAdpPNOAAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBwsWEg+jAtreAAAAvklEQVRo3u3YfQ6DIAyHYa4wbzC9wXr/u21tFibBMYTGj/n+/jCY2CdKTAVDIC251WTUlC5Yg00i8gCrxQadezfs5QjYaTF7Ge5emJYfHLPO44WZ8Y9YnCUPLJaPsfM4YFM09seG7MF6sKwcDOzsWGnFtxqTwu3NsbTZd2J5FdhBsWRR04vpAQwM7ALYwmeqHbMzMDAwMDAwMLDNsYW/blVYuol6Y1+qfmI6AAMDuwD22UQ5YDYwcd7PuhNIS57my94dWyVbJgAAAABJRU5ErkJggg==" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJgAAABuBAMAAAApJ8cWAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAPUExURf////3+/aampvDw8P///7GHRIEAAAACdFJOUwAAdpPNOAAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBwsWEwOzr6e0AAAAvklEQVRo3u3YfQ6DIAyHYa4wbzC9wXr/u21tFibBMYTGj/n+/jCY2CdKTAVDIC251WTUlC5Yg00i8gCrxQadezfs5QjYaTF7Ge5emJYfHLPO44WZ8Y9YnCUPLJaPsfM4YFM09seG7MF6sKwcDOzsWGnFtxqTwu3NsbTZd2J5FdhBsWRR04vpAQwM7ALYwmeqHbMzMDAwMDAwMLDNsYW/blVYuol6Y1+qfmI6AAMDuwD22UQ5YDYwcd7PuhNIS57my94dWyVbJgAAAABJRU5ErkJggg==" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">3748 (100.0%)</td>
 <td style="text-align: center;">0 (0.0%)</td>
 </tr>
@@ -425,7 +490,7 @@ window.Quarto = {
 </tr>
 </tbody>
 </table></td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAE0AAAB9BAMAAAAVXfMuAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAPUExURf////3+/aampvDw8P///7GHRIEAAAACdFJOUwAAdpPNOAAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBwsWEg+jAtreAAAAdklEQVRYw+3WsQ3AIAxEUUaIN4Bkg2T/3SJFpomMzg3IwvfrV0BxiFLid/aamB3qrkejo0vkvPsQ0CzXj4ec3vemo8vkvPsQ0Oz9jqr/92oQHd2OzruPCPtt+L36oqPL4rz7ENCK/VrfBOu+1reDjm5H591H5F5kKse6HRk9NwAAAABJRU5ErkJggg==" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAE0AAAB9BAMAAAAVXfMuAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAPUExURf////3+/aampvDw8P///7GHRIEAAAACdFJOUwAAdpPNOAAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBwsWEwOzr6e0AAAAdklEQVRYw+3WsQ3AIAxEUUaIN4Bkg2T/3SJFpomMzg3IwvfrV0BxiFLid/aamB3qrkejo0vkvPsQ0CzXj4ec3vemo8vkvPsQ0Oz9jqr/92oQHd2OzruPCPtt+L36oqPL4rz7ENCK/VrfBOu+1reDjm5H591H5F5kKse6HRk9NwAAAABJRU5ErkJggg==" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">3743 (99.9%)</td>
 <td style="text-align: center;">5 (0.1%)</td>
 </tr>
@@ -477,7 +542,7 @@ window.Quarto = {
 </tr>
 </tbody>
 </table></td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAD0AAABmBAMAAACKBYTuAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAPUExURf////3+/aampvDw8P///7GHRIEAAAACdFJOUwAAdpPNOAAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBwsWEg+jAtreAAAAYUlEQVRIx2NgGHighA4EIUAAKq9sjAqMRuVH5akoTyj9CeIA1JJXwgLwuR/mhVH5UXlqyBNKf7RO/yTmD0V0eTT/jcqPylNVnlD6o3P6hwMF3PkbDEblR+WpIU8o/Q0kAADKv2NasD6r2gAAAABJRU5ErkJggg==" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAD0AAABmBAMAAACKBYTuAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAPUExURf////3+/aampvDw8P///7GHRIEAAAACdFJOUwAAdpPNOAAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBwsWEwOzr6e0AAAAYUlEQVRIx2NgGHighA4EIUAAKq9sjAqMRuVH5akoTyj9CeIA1JJXwgLwuR/mhVH5UXlqyBNKf7RO/yTmD0V0eTT/jcqPylNVnlD6o3P6hwMF3PkbDEblR+WpIU8o/Q0kAADKv2NasD6r2gAAAABJRU5ErkJggg==" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">3664 (97.8%)</td>
 <td style="text-align: center;">84 (2.2%)</td>
 </tr>
@@ -545,7 +610,7 @@ window.Quarto = {
 </tr>
 </tbody>
 </table></td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAHkAAAB9BAMAAAB0RdFsAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAPUExURf////3+/aampvDw8P///7GHRIEAAAACdFJOUwAAdpPNOAAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBwsWEhAuCtcrAAAAeElEQVRYw+3XsQ2AMBBD0YwAGwDZIOy/Gw0BUZ5PkSzy3b/iXFi6UubNIWW7dT2VoNFo9Eid27VVymKg31sU/XTe0Gg02kXndi1ivHS/epd07xyNRqN9dG7XQshKRy/+6hpsG41Go8fr3K4J1ESH3hE0Go3+vZ4xFxoycA8frCj/AAAAAElFTkSuQmCC" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAHkAAAB9BAMAAAB0RdFsAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAPUExURf////3+/aampvDw8P///7GHRIEAAAACdFJOUwAAdpPNOAAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBwsWEwOzr6e0AAAAeElEQVRYw+3XsQ2AMBBD0YwAGwDZIOy/Gw0BUZ5PkSzy3b/iXFi6UubNIWW7dT2VoNFo9Eid27VVymKg31sU/XTe0Gg02kXndi1ivHS/epd07xyNRqN9dG7XQshKRy/+6hpsG41Go8fr3K4J1ESH3hE0Go3+vZ4xFxoycA8frCj/AAAAAElFTkSuQmCC" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">3742 (99.8%)</td>
 <td style="text-align: center;">6 (0.2%)</td>
 </tr>
@@ -613,7 +678,7 @@ window.Quarto = {
 </tr>
 </tbody>
 </table></td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJAAAAB9BAMAAAC/svfXAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAPUExURf////3+/aampvDw8P///7GHRIEAAAACdFJOUwAAdpPNOAAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBwsWEhAuCtcrAAAAfklEQVRo3u3V0QmAMAxAwa7gCNoN6v67aUHwT4WkUOHeAAdtIClFX9rCXVDdgzUQCAQCvUBpO3sJNy3UX7lmQH1qIBAIBBoKpe3skDE31P8oBTqn1kAgEAg0FErb2TFkaih4+G+ogkAgEGg0lLazo8zEUPDwg0AgEOiPkJ47ABWtx0D2x9HUAAAAAElFTkSuQmCC" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJAAAAB9BAMAAAC/svfXAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAPUExURf////3+/aampvDw8P///7GHRIEAAAACdFJOUwAAdpPNOAAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBwsWEwQtyzIXAAAAfklEQVRo3u3V0QmAMAxAwa7gCNoN6v67aUHwT4WkUOHeAAdtIClFX9rCXVDdgzUQCAQCvUBpO3sJNy3UX7lmQH1qIBAIBBoKpe3skDE31P8oBTqn1kAgEAg0FErb2TFkaih4+G+ogkAgEGg0lLazo8zEUPDwg0AgEOiPkJ47ABWtx0D2x9HUAAAAAElFTkSuQmCC" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">3745 (99.9%)</td>
 <td style="text-align: center;">3 (0.1%)</td>
 </tr>
@@ -681,7 +746,7 @@ window.Quarto = {
 </tr>
 </tbody>
 </table></td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJUAAAB9BAMAAABZmzyTAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAPUExURf////3+/aampvDw8P///7GHRIEAAAACdFJOUwAAdpPNOAAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBwsWEhAuCtcrAAAAb0lEQVRo3u3V0QmAMAxAwY6gG9g6gvvvZj8cwNAUKt4b4CAEklIUrSV0PNZ5jcdisVisOVbmvd8T2ha3+rg1y+p7ZLFYLNaiVua9H3W+YPmPLBaL9Q/Lf4xZjcVisVisoJVALW9VFovFYrGClt53AxDQ32gWeDXZAAAAAElFTkSuQmCC" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAJUAAAB9BAMAAABZmzyTAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAPUExURf////3+/aampvDw8P///7GHRIEAAAACdFJOUwAAdpPNOAAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBwsWEwQtyzIXAAAAb0lEQVRo3u3V0QmAMAxAwY6gG9g6gvvvZj8cwNAUKt4b4CAEklIUrSV0PNZ5jcdisVisOVbmvd8T2ha3+rg1y+p7ZLFYLNaiVua9H3W+YPmPLBaL9Q/Lf4xZjcVisVisoJVALW9VFovFYrGClt53AxDQ32gWeDXZAAAAAElFTkSuQmCC" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">3745 (99.9%)</td>
 <td style="text-align: center;">3 (0.1%)</td>
 </tr>
@@ -749,7 +814,7 @@ window.Quarto = {
 </tr>
 </tbody>
 </table></td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAHUAAAB9BAMAAABueTHiAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAPUExURf////3+/aampvDw8P///7GHRIEAAAACdFJOUwAAdpPNOAAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBwsWEhFZDee9AAAAg0lEQVRYw+3XwQ2AIBBEUUrQDlQ60P57M4qJeGN2E9yEP/d32DkMIaXxshmyPDYferBYLNZqPXs1GzL9bMsFq8mWnrFYLLaP9eyVhILY95Vpv/nbs9Y1FovFWq1nr5pBIHufarRXzzsWi8V2sp69ElkIq/4VapvFPwoWi8V6rGevRsoJI6Fh6Io7pmoAAAAASUVORK5CYII=" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAAHUAAAB9BAMAAABueTHiAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAPUExURf////3+/aampvDw8P///7GHRIEAAAACdFJOUwAAdpPNOAAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBwsWEwQtyzIXAAAAg0lEQVRYw+3XwQ2AIBBEUUrQDlQ60P57M4qJeGN2E9yEP/d32DkMIaXxshmyPDYferBYLNZqPXs1GzL9bMsFq8mWnrFYLLaP9eyVhILY95Vpv/nbs9Y1FovFWq1nr5pBIHufarRXzzsWi8V2sp69ElkIq/4VapvFPwoWi8V6rGevRsoJI6Fh6Io7pmoAAAAASUVORK5CYII=" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">3743 (99.9%)</td>
 <td style="text-align: center;">5 (0.1%)</td>
 </tr>
@@ -819,7 +884,7 @@ window.Quarto = {
 </tr>
 </tbody>
 </table></td>
-<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAACkAAACVBAMAAAA3Rs7LAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAPUExURf////3+/aampvDw8P///7GHRIEAAAACdFJOUwAAdpPNOAAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBwsWEhFZDee9AAAAR0lEQVRIx2NgoB1QQgEKUFFlY2QwKjr4RLHHmyAKECBDdDQ9DE3R0fQwKjqaHkZFR9PDqOhApwdFDFGQG0ZFB7Mo9nijBQAAufNRRm204TwAAAAASUVORK5CYII=" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
+<td style="text-align: left; vertical-align: middle; padding: 0; background-color: transparent;"><img src="data:image/png;base64,%20iVBORw0KGgoAAAANSUhEUgAAACkAAACVBAMAAAA3Rs7LAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAPUExURf////3+/aampvDw8P///7GHRIEAAAACdFJOUwAAdpPNOAAAAAFiS0dEAIgFHUgAAAAHdElNRQfoBwsWEwQtyzIXAAAAR0lEQVRIx2NgoB1QQgEKUFFlY2QwKjr4RLHHmyAKECBDdDQ9DE3R0fQwKjqaHkZFR9PDqOhApwdFDFGQG0ZFB7Mo9nijBQAAufNRRm204TwAAAAASUVORK5CYII=" class="img-fluid" style="border:none;background-color:transparent;padding:0;max-width:max-content;"></td>
 <td style="text-align: center;">3748 (100.0%)</td>
 <td style="text-align: center;">0 (0.0%)</td>
 </tr>
@@ -1477,7 +1542,7 @@ Num. obs.
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="05-resource_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="960"></p>
+<p><img src="08-resource_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1822,7 +1887,7 @@ Num. obs.
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="05-resource_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="960"></p>
+<p><img src="08-resource_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="960"></p>
 <figcaption>Relación entre residuos y valores predichos</figcaption>
 </figure>
 </div>
@@ -1851,7 +1916,7 @@ Num. obs.
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="05-resource_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="960"></p>
+<p><img src="08-resource_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="960"></p>
 <figcaption>Efecto cuadrático de la edad (Modelo 5)</figcaption>
 </figure>
 </div>

@@ -235,7 +235,19 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../resource/06-resource.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica 5</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resource/07-resource.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Práctica 6</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resource/08-resource.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">7: Supuestos de regresión</span></a>
   </div>
 </li>
     </ul>
@@ -796,95 +808,48 @@ Nota
 <p>Ahora ¡Manos a la obra!</p>
 <p>Calculemos intervalos de confianza. Primero, carguemos las librerías necesarias:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pacman)</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, <span class="co"># colección de paquetes para manipulación de datos</span></span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>               car,       <span class="co"># para recodificar</span></span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>               psych,     <span class="co"># para analizar datos</span></span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>               sjmisc,    <span class="co"># para analizar datos</span></span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>               srvyr,     <span class="co"># para estimación de IC y ponderadores</span></span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>               Publish)   <span class="co"># para IC</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pacman)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Installing package into 'C:/Users/kevin/AppData/Local/R/win-library/4.4'
+<pre><code>Warning: package 'pacman' was built under R version 4.3.3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, <span class="co"># colección de paquetes para manipulación de datos</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>               car,       <span class="co"># para recodificar</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>               psych,     <span class="co"># para analizar datos</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>               sjmisc,    <span class="co"># para analizar datos</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>               srvyr,     <span class="co"># para estimación de IC y ponderadores</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>               Publish)   <span class="co"># para IC</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Installing package into 'C:/Users/kevin/AppData/Local/R/win-library/4.3'
 (as 'lib' is unspecified)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>also installing the dependencies 'mitools', 'RcppArmadillo', 'survey'</code></pre>
+<pre><code>also installing the dependencies 'TH.data', 'multcomp'</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: unable to access index for repository http://www.stats.ox.ac.uk/pub/RWin/bin/windows/contrib/4.4:
-  no fue posible abrir la URL 'http://www.stats.ox.ac.uk/pub/RWin/bin/windows/contrib/4.4/PACKAGES'</code></pre>
+<pre><code>Warning: unable to access index for repository http://www.stats.ox.ac.uk/pub/RWin/bin/windows/contrib/4.3:
+  no fue posible abrir la URL 'http://www.stats.ox.ac.uk/pub/RWin/bin/windows/contrib/4.3/PACKAGES'</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>
-  There is a binary version available but the source version is later:
-                  binary   source needs_compilation
-RcppArmadillo 0.12.8.4.0 14.0.0-1              TRUE
-
-  Binaries will be installed
-package 'mitools' successfully unpacked and MD5 sums checked
-package 'RcppArmadillo' successfully unpacked and MD5 sums checked
-package 'survey' successfully unpacked and MD5 sums checked
-package 'srvyr' successfully unpacked and MD5 sums checked
-
-The downloaded binary packages are in
-    C:\Users\kevin\AppData\Local\Temp\RtmpMfb2TG\downloaded_packages</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-srvyr installed</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'srvyr' was built under R version 4.4.1</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Installing package into 'C:/Users/kevin/AppData/Local/R/win-library/4.4'
-(as 'lib' is unspecified)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>also installing the dependencies 'listenv', 'parallelly', 'shape', 'future', 'globals', 'zoo', 'diagram', 'future.apply', 'progressr', 'SQUAREM', 'mvtnorm', 'TH.data', 'sandwich', 'prodlim', 'lava', 'multcomp'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: unable to access index for repository http://www.stats.ox.ac.uk/pub/RWin/bin/windows/contrib/4.4:
-  no fue posible abrir la URL 'http://www.stats.ox.ac.uk/pub/RWin/bin/windows/contrib/4.4/PACKAGES'</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>package 'listenv' successfully unpacked and MD5 sums checked
-package 'parallelly' successfully unpacked and MD5 sums checked
-package 'shape' successfully unpacked and MD5 sums checked
-package 'future' successfully unpacked and MD5 sums checked
-package 'globals' successfully unpacked and MD5 sums checked
-package 'zoo' successfully unpacked and MD5 sums checked
-package 'diagram' successfully unpacked and MD5 sums checked
-package 'future.apply' successfully unpacked and MD5 sums checked
-package 'progressr' successfully unpacked and MD5 sums checked
-package 'SQUAREM' successfully unpacked and MD5 sums checked
-package 'mvtnorm' successfully unpacked and MD5 sums checked
-package 'TH.data' successfully unpacked and MD5 sums checked
-package 'sandwich' successfully unpacked and MD5 sums checked
-package 'prodlim' successfully unpacked and MD5 sums checked
-package 'lava' successfully unpacked and MD5 sums checked
+<pre><code>package 'TH.data' successfully unpacked and MD5 sums checked
 package 'multcomp' successfully unpacked and MD5 sums checked
 package 'Publish' successfully unpacked and MD5 sums checked
 
 The downloaded binary packages are in
-    C:\Users\kevin\AppData\Local\Temp\RtmpMfb2TG\downloaded_packages</code></pre>
+    C:\Users\kevin\AppData\Local\Temp\Rtmp0aXAJf\downloaded_packages</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 Publish installed</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'Publish' was built under R version 4.4.1</code></pre>
+<pre><code>Warning: package 'Publish' was built under R version 4.3.3</code></pre>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'prodlim' was built under R version 4.4.1</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>) <span class="co"># para desactivar notacion cientifica</span></span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># para limpiar el entorno de trabajo</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>) <span class="co"># para desactivar notacion cientifica</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># para limpiar el entorno de trabajo</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>y también carguemos la base de datos que utilizaremos, que corresponde a un subset de la Encuesta Suplementaria de ingresos <a href="https://www.ine.gob.cl/estadisticas/sociales/ingresos-y-gastos/encuesta-suplementaria-de-ingresos">ESI</a> para ocupados:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">"https://github.com/cursos-metodos-facso/datos-ejemplos/raw/main/esi-2021-ocupados.rdata"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">"https://github.com/cursos-metodos-facso/datos-ejemplos/raw/main/esi-2021-ocupados.rdata"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -906,7 +871,7 @@ Nota
 <h4 class="anchored" data-anchor-id="ic-para-medias">IC para Medias</h4>
 <p>Calculemos un intervalo de confianza para la media de ingresos de personas ocupadas:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describe</span>(esi<span class="sc">$</span>ing_t_p)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describe</span>(esi<span class="sc">$</span>ing_t_p)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   vars     n     mean       sd   median  trimmed      mad min      max
 X1    1 37124 586360.4 697362.9 405347.7 474473.1 255411.6   0 38206253
@@ -915,7 +880,7 @@ X1 38206253   12   402.32 3619.36</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>Publish<span class="sc">::</span><span class="fu">ci.mean</span>(esi<span class="sc">$</span>ing_t_p, <span class="at">alpha =</span> <span class="fl">0.05</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>Publish<span class="sc">::</span><span class="fu">ci.mean</span>(esi<span class="sc">$</span>ing_t_p, <span class="at">alpha =</span> <span class="fl">0.05</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> mean      CI-95%               
  586360.41 [579266.37;593454.45]</code></pre>
@@ -927,7 +892,7 @@ X1 38206253   12   402.32 3619.36</code></pre>
 <h4 class="anchored" data-anchor-id="ic-para-proporciones">IC para Proporciones</h4>
 <p>Para calcular un intervalo de confianza para la proporción por la variable sexo, usamos:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">frq</span>(esi<span class="sc">$</span>sexo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">frq</span>(esi<span class="sc">$</span>sexo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>x &lt;numeric&gt; 
 # total N=37124 valid N=37124 mean=1.44 sd=0.50
@@ -938,7 +903,7 @@ Value |     N | Raw % | Valid % | Cum. %
     2 | 16318 | 43.96 |   43.96 | 100.00
  &lt;NA&gt; |     0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x =</span> <span class="dv">20806</span>, <span class="at">n =</span> <span class="dv">37124</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="at">x =</span> <span class="dv">20806</span>, <span class="at">n =</span> <span class="dv">37124</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     1-sample proportions test with continuity correction
@@ -961,18 +926,18 @@ sample estimates:
 <p>Para muestras complejas que cuentan con ponderador (o factor de expansión) también podemos hacer este ejercicio.</p>
 <p>Primero, es necesario identificar la variable de factor de expansión o ponderador:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>esi_pond <span class="ot">&lt;-</span> esi <span class="sc">%&gt;%</span> <span class="fu">as_survey_design</span>(<span class="at">ids =</span> <span class="dv">1</span>, <span class="co"># indica conglomerados de muestreo; ~0 o ~1 cuando no hay</span></span>
-<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">strata =</span> estrato, <span class="co"># indica efecto de diseño muestral</span></span>
-<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">weights =</span> fact_cal_esi) <span class="co"># indica el ponderador</span></span>
-<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">survey.lonely.psu =</span> <span class="st">"certainty"</span>) <span class="co"># seteamos para que ids no moleste</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>esi_pond <span class="ot">&lt;-</span> esi <span class="sc">%&gt;%</span> <span class="fu">as_survey_design</span>(<span class="at">ids =</span> <span class="dv">1</span>, <span class="co"># indica conglomerados de muestreo; ~0 o ~1 cuando no hay</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">strata =</span> estrato, <span class="co"># indica efecto de diseño muestral</span></span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">weights =</span> fact_cal_esi) <span class="co"># indica el ponderador</span></span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">survey.lonely.psu =</span> <span class="st">"certainty"</span>) <span class="co"># seteamos para que ids no moleste</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="ic-para-medias-1" class="level4">
 <h4 class="anchored" data-anchor-id="ic-para-medias-1">IC para Medias</h4>
 <p>Ahora, teniendo en consideración el factor de expansión, podemos señalar que:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>esi_pond <span class="sc">%&gt;%</span> </span>
-<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">media =</span> <span class="fu">survey_mean</span>(ing_t_p, <span class="at">vartype =</span> <span class="st">"ci"</span>, <span class="at">levels =</span> <span class="fl">0.95</span>, <span class="at">na.rm=</span><span class="cn">TRUE</span>)) <span class="co"># usamos funcion survey_mean</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>esi_pond <span class="sc">%&gt;%</span> </span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">media =</span> <span class="fu">survey_mean</span>(ing_t_p, <span class="at">vartype =</span> <span class="st">"ci"</span>, <span class="at">levels =</span> <span class="fl">0.95</span>, <span class="at">na.rm=</span><span class="cn">TRUE</span>)) <span class="co"># usamos funcion survey_mean</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 3
     media media_low media_upp
@@ -986,7 +951,7 @@ sample estimates:
 <h4 class="anchored" data-anchor-id="ic-para-proporciones-1">IC para Proporciones</h4>
 <p>Finalmente, si calculamos la proporción de hombres ocupados en la población considerando el factor de expansión:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">frq</span>(esi<span class="sc">$</span>sexo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">frq</span>(esi<span class="sc">$</span>sexo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>x &lt;numeric&gt; 
 # total N=37124 valid N=37124 mean=1.44 sd=0.50
@@ -999,9 +964,9 @@ Value |     N | Raw % | Valid % | Cum. %
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>esi_pond <span class="sc">%&gt;%</span> </span>
-<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sexo) <span class="sc">%&gt;%</span> <span class="co"># agrupamos por sexo</span></span>
-<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">prop =</span> <span class="fu">survey_prop</span>(<span class="at">vartype =</span> <span class="st">"ci"</span>, <span class="at">levels =</span> <span class="fl">0.95</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>esi_pond <span class="sc">%&gt;%</span> </span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sexo) <span class="sc">%&gt;%</span> <span class="co"># agrupamos por sexo</span></span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">prop =</span> <span class="fu">survey_prop</span>(<span class="at">vartype =</span> <span class="st">"ci"</span>, <span class="at">levels =</span> <span class="fl">0.95</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 4
    sexo  prop prop_low prop_upp
