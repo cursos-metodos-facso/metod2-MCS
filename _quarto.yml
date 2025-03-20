@@ -27,12 +27,6 @@ website:
   description: "Magister en Ciencias Sociales, mención en Sociología de la Modernización"
   favicon: "/files/icon-513.png"
 
-  # twitter-card:
-  #   image: "/files/social-image-f22.png"
-  #   card-style: summary_large_image
-  #   creator: "@juankcastillo"
-  #   site: "@juankcastillo"
-
   open-graph:
     image: "/files/social-image-f22.png"
     locale: en_US
@@ -81,14 +75,14 @@ website:
             #   file: content/06-content.qmd
             # - text: "06: Sesión 6"
             #   file: content/07-content.qmd
-             - text: "Regresión lineal I"
-               file: content/08-content.qmd
-             - text: "Regresión lineal II"
-               file: content/09-content.qmd
-             - text: "Regresión logística I"
-               file: content/10-content.qmd
-             - text: "Regresión logística II"
-               file: content/11-content.qmd
+             # - text: "Regresión lineal I"
+             #   file: content/08-content.qmd
+             # - text: "Regresión lineal II"
+             #   file: content/09-content.qmd
+             # - text: "Regresión logística I"
+             #   file: content/10-content.qmd
+             # - text: "Regresión logística II"
+             #   file: content/11-content.qmd
     - title: "Prácticos"
       style: "docked"
       search: false
@@ -96,27 +90,27 @@ website:
       contents:
         - text: "Descripción"
           file: resource/index.qmd
-        - text: "Práctico 1"
-          file: resource/01-resource.qmd
-        - text: "Práctico 2"
-          file: resource/02-resource.qmd
-        - text: "Práctico 3"
-          file: resource/03-resource.qmd
-        - text: "Práctica 4"
-          file: resource/04-resource.qmd
+        # - text: "Práctico 1"
+        #   file: resource/01-resource.qmd
+        # - text: "Práctico 2"
+        #   file: resource/02-resource.qmd
+        # - text: "Práctico 3"
+        #   file: resource/03-resource.qmd
+        # - text: "Práctica 4"
+        #   file: resource/04-resource.qmd
+        # # - text: "Práctica 5"
+        # #   file: resource/05-resource.qmd
         # - text: "Práctica 5"
-        #   file: resource/05-resource.qmd
-        - text: "Práctica 5"
-          file: resource/06-resource.qmd
-        - text: "Práctica 6"
-          file: resource/07-resource.qmd
-        - text: "7: Supuestos de regresión"
-          file: resource/08-resource.qmd
+        #   file: resource/06-resource.qmd
+        # - text: "Práctica 6"
+        #   file: resource/07-resource.qmd
+        # - text: "7: Supuestos de regresión"
+        #   file: resource/08-resource.qmd
 
 
   page-footer:
     left: |
-      Content {{< fa brands creative-commons >}} {{< var course.copyright_year >}} by [{{< var instructor3.name_no_title >}}]({{< var instructor3.url >}}) <br>
+      Content {{< fa brands creative-commons >}} {{< var course.copyright_year >}} by [{{< var instructor.name_no_title >}}]({{< var instructor.url >}}) <br>
       All content licensed under a {{< fa brands creative-commons >}}
       {{< fa brands creative-commons-by >}} {{< fa brands creative-commons-nc >}}
       [Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/)

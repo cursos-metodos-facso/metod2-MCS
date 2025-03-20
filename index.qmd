@@ -3,7 +3,7 @@ title: "Metodología Cuantitativa Avanzada"
 subtitle: "Magister en Ciencias Sociales, mención Sociología de la Modernización"
 lang: es
 details: |
-  MCS7113 • Primer Semestre 2024<br>Departamento de Sociología FACSO<br>Universidad de Chile
+  MCS7171-1 • Primer Semestre 2025<br>Departamento de Sociología FACSO<br>Universidad de Chile
 sidebar: false
 toc: false
 page-layout: full
@@ -40,14 +40,6 @@ withr::with_dir(here::here(), {
 - {{< fa university >}} &nbsp; {{< var instructor2.office >}}
 - {{< fa envelope >}} &nbsp; <a href="mailto:{{< var instructor.email >}}">{{< var instructor2.email >}}</a>
 - {{< fa brands twitter >}} &nbsp; [{{< var instructor2.twitter >}}](https://www.twitter.com/{{< var instructor2.twitter >}})
-
---------------------------------------------------------------------------------
-
-- {{< fa user >}} &nbsp; [{{< var instructor3.name >}}]({{< var instructor3.url >}})
-- {{< fa university >}} &nbsp; {{< var instructor3.office >}}
-- {{< fa envelope >}} &nbsp; <a href="mailto:{{< var instructor3.email >}}">{{< var instructor3.email >}}</a>
-- {{< fa brands twitter >}} &nbsp; [{{< var instructor3.twitter >}}](https://www.twitter.com/{{< var instructor3.twitter >}})
-
 
 :::
 

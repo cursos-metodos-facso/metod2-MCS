@@ -1,16 +1,16 @@
-author: Daniela Olivares Collío
+author: Daniela Olivares Collío & Kevin Carrasco
 
 instructor:
-  name: Pablo Perez Ahumada
-  name_no_title: Pablo Perez Ahumada
-  email: pabloperez@uchile.cl
-  url: "https://coes.cl/integrantes/pablo-perez-ahumada/"
-  twitter: pablo_perez_a
-  # github: https://github.com/Kevin-carrasco/metod1-MCS
-  office: "Departamento de Sociología FACSO - sala 319"
+  name: Daniela Olivares Collío
+  name_no_title: Daniela Olivares Collío
+  email: danielaolivarescollio@gmail.com
+  url: "https://coes.cl/integrantes/daniela-olivares-collio/"
+  twitter:
+  github: https://github.com/DaniOlivaresCollio
+  office: "Departamento de Sociología FACSO - sala 328"
   contact_policy: >-
     A través de correo
-  appointment_url: pabloperez@uchile.cl
+  appointment_url: danielaolivarescollio@gmail.com
 
 instructor2:
   name: Kevin Carrasco Quintanilla
@@ -24,27 +24,15 @@ instructor2:
     A través de correo
   appointment_url: kevin.carrasco@ug.uchile.cl
 
-instructor3:
-  name: Daniela Olivares Collío
-  name_no_title: Daniela Olivares Collío
-  email: danielaolivarescollio@gmail.com
-  url: "https://coes.cl/integrantes/daniela-olivares-collio/"
-  twitter:
-  github: https://github.com/DaniOlivaresCollio
-  office: "Departamento de Sociología FACSO - sala 328"
-  contact_policy: >-
-    A través de correo
-  appointment_url: danielaolivarescollio@gmail.com
-
 course:
-  number: "MCS7113"
-  semester: "Primer Semestre 2024"
+  number: "MCS7171-1"
+  semester: "Primer Semestre 2025"
   days: "Viernes"
-  time: "09:00-11:45 AM"
+  time: "09:00-11:30 AM"
   location: "Sala 35. FACSO"
-  dates: "Marzo – Julio, 2024"
+  dates: "Marzo – Julio, 2025"
   github: "https://github.com/DaniOlivaresCollio/metod2-MCS"
-  copyright_year: "2024"
+  copyright_year: "2025"
   slack: ""
 
 university:
