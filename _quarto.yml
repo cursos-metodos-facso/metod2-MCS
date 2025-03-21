@@ -39,13 +39,14 @@ website:
       - schedule.qmd
       - text: "Clases"
         file: content/index.qmd
-#      - text: "Assignments"
+      - text: "Prácticos"
+        file: resource/index.qmd
+      - text: "Evaluación"
+        file: evaluaciones.qmd
+#     - text: "Assignments"
 #        file: assignment/index.qmd
 #      - text: "Examples"
 #        file: example/index.qmd
-      - trabajos.qmd
-      - text: "Prácticos"
-        file: resource/index.qmd
       # - icon: slack
       #   href: "https://www.slack.com"
       #   aria-label: Slack
@@ -98,8 +99,8 @@ website:
         #   file: resource/03-resource.qmd
         # - text: "Práctica 4"
         #   file: resource/04-resource.qmd
-        # # - text: "Práctica 5"
-        # #   file: resource/05-resource.qmd
+        # - text: "Práctica 5"
+        #   file: resource/05-resource.qmd
         # - text: "Práctica 5"
         #   file: resource/06-resource.qmd
         # - text: "Práctica 6"
@@ -110,7 +111,7 @@ website:
 
   page-footer:
     left: |
-      Content {{< fa brands creative-commons >}} {{< var course.copyright_year >}} by [{{< var instructor.name_no_title >}}]({{< var instructor.url >}}) <br>
+      Content {{< fa brands creative-commons >}} {{< var course.copyright_year >}} by [{{< var instructor.name_no_title >}}]({{< var instructor.url >}}) & [{{< var instructor2.name_no_title >}}]({{< var instructor2.url >}}) <br>
       All content licensed under a {{< fa brands creative-commons >}}
       {{< fa brands creative-commons-by >}} {{< fa brands creative-commons-nc >}}
       [Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/)
