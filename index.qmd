@@ -29,12 +29,20 @@ withr::with_dir(here::here(), {
 ::: {.g-col-4}
 ### Profesores
 
+<div class="image-cropper">
+  <img src="https://static.u-cursos.cl/r/usuario/af/af4bf2025223c7ec26f2b05853a831e8/datos_usuario/av_611aa760e705a.jpg" alt="avatar" class="profile-pic">
+</div>
+
 - {{< fa user >}} &nbsp; [{{< var instructor.name >}}]({{< var instructor.url >}})
 - {{< fa university >}} &nbsp; {{< var instructor.office >}}
 - {{< fa envelope >}} &nbsp; <a href="mailto:{{< var instructor.email >}}">{{< var instructor.email >}}</a>
 - {{< fa brands twitter >}} &nbsp; [{{< var instructor.twitter >}}](https://www.twitter.com/{{< var instructor.twitter >}})
 
 --------------------------------------------------------------------------------
+
+<div class="image-cropper">
+  <img src="https://ucampus.uchile.cl/d/r/usuario/f1/f102fdb482bd26aa12d41abfa8054b0b/perfil/75bf44ba76242207373e3bda4ea0733f.jpg" alt="avatar" class="profile-pic" width="80" height="80" />
+</div>
 
 - {{< fa user >}} &nbsp; [{{< var instructor2.name >}}]({{< var instructor2.url >}})
 - {{< fa university >}} &nbsp; {{< var instructor2.office >}}
@@ -57,6 +65,12 @@ withr::with_dir(here::here(), {
 ### Contacto
 
 {{< var instructor.contact_policy >}}
+
+
+### Versiones anteriores del curso
+
+- [2024](https://version2024--estadictica-descriptiva-uch.netlify.app/)
+
 :::
 
 :::

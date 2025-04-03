@@ -158,7 +158,7 @@
     "href": "index.html",
     "title": "\n            Metodología Cuantitativa Avanzada\n        ",
     "section": "",
-    "text": "Metodología Cuantitativa Avanzada\n        \n        \n            Magister en Ciencias Sociales, mención Sociología de la Modernización\n        \n        \n            MCS7171-1 • Primer Semestre 2025Departamento de Sociología FACSOUniversidad de Chile\n        \n    \n    \n        \n    \n\n\n\n\n\nProfesores\n\n   Daniela Olivares Collío\n   Departamento de Sociología FACSO - sala 328\n   danielaolivarescollio@gmail.com\n   \n\n\n\n   Kevin Carrasco Quintanilla\n   Departamento de Sociología FACSO - sala 328\n   kevin.carrasco@ug.uchile.cl\n   kevincarrascoq1\n\n\n\nInformación del curso\n\n   Viernes\n   Marzo – Julio, 2025\n   09:00-11:30 AM\n   Sala 307. FACSO \n\n\n\nContacto\nA través de correo"
+    "text": "Metodología Cuantitativa Avanzada\n        \n        \n            Magister en Ciencias Sociales, mención Sociología de la Modernización\n        \n        \n            MCS7171-1 • Primer Semestre 2025Departamento de Sociología FACSOUniversidad de Chile\n        \n    \n    \n        \n    \n\n\n\n\n\nProfesores\n\n\n\n\n   Daniela Olivares Collío\n   Dpto. de Sociología FACSO - sala 328\n   danielaolivarescollio@gmail.com\n   \n\n\n\n\n\n\n   Kevin Carrasco Quintanilla\n   Dpto. de Sociología FACSO - sala 328\n   kevin.carrasco@ug.uchile.cl\n   kevincarrascoq1\n\n\n\nInformación del curso\n\n   Viernes\n   Marzo – Julio, 2025\n   09:00-11:30 hrs.\n   Sala 334, FACSO \n\n\n\n\nContacto\nA través de correo o U-Cursos\n\n\nVersiones anteriores del curso\n\n2024"
   },
   {
     "objectID": "content/11-content.html#lecturas",
@@ -201,6 +201,27 @@
     "title": "Presentación",
     "section": "Lecturas",
     "text": "Lecturas\nR for Data Science"
+  },
+  {
+    "objectID": "assignment/01-practico.html",
+    "href": "assignment/01-practico.html",
+    "title": "Práctico 1. Cálculo y reporte de Correlación",
+    "section": "",
+    "text": "El objetivo de esta guía práctica es aprender a calcular y graficar la correlación entre dos variables utilizando R.\nEn detalle, aprenderemos:\n\nQué es una correlación\nCuál es la correlación de Pearson\nCómo calcular una correlación de Pearson y graficarla"
+  },
+  {
+    "objectID": "assignment/01-practico.html#diagrama-de-dispersión-nube-de-puntos-o-scatterplot",
+    "href": "assignment/01-practico.html#diagrama-de-dispersión-nube-de-puntos-o-scatterplot",
+    "title": "Práctico 1. Cálculo y reporte de Correlación",
+    "section": "Diagrama de dispersión (nube de puntos o scatterplot)",
+    "text": "Diagrama de dispersión (nube de puntos o scatterplot)\nSiempre es recomendable acompañar el valor de la correlación con una exploración gráfica de la distribución bivariada de los datos. El gráfico o diagrama de dispersión es una buena herramienta, ya que muestra la forma, la dirección y la fuerza de la relación entre dos variables cuantitativas.\nEste tipo de gráfico lo podemos realizar usando la librería ggplot2.\n\npacman::p_load(ggplot2)\nplot1 &lt;- ggplot(data, \n                aes(x=educ, y=ing)) + \n                geom_point(colour = \"red\", \n                size = 5)\nplot1\n\n\n\n\nEn el gráfico podemos ver como se crea una nube de puntos en las intersecciones de los valores para ambas variables de cada caso."
+  },
+  {
+    "objectID": "assignment/01-practico.html#el-cuarteto-de-anscombe-y-las-limitaciones-de-la-correlación-lineal",
+    "href": "assignment/01-practico.html#el-cuarteto-de-anscombe-y-las-limitaciones-de-la-correlación-lineal",
+    "title": "Práctico 1. Cálculo y reporte de Correlación",
+    "section": "El cuarteto de Anscombe y las limitaciones de la correlación lineal",
+    "text": "El cuarteto de Anscombe y las limitaciones de la correlación lineal\nAhora, revisaremos un muy buen ejemplo de la importancia de la exploración gráfica de los datos mediante un ejemplo de Anscombe (1973), que permite visualizar las limitaciones del coeficiente de correlación.\nPrimero, crearemos la base de datos:\n\nanscombe &lt;- data.frame(\n  x1 = c(10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5),\n  y1 = c(8.04, 6.95, 7.58, 8.81, 8.33, 9.96, 7.24, 4.26, 10.84, 4.82, 5.68),\n  x2 = c(10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5),\n  y2 = c(9.14, 8.14, 8.74, 8.77, 9.26, 8.10, 6.13, 3.10, 9.13, 7.26, 4.74),\n  x3 = c(10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5),\n  y3 = c(7.46, 6.77, 12.74, 7.11, 7.81, 8.84, 6.08, 5.39, 8.15, 6.42, 5.73),\n  x4 = c(8, 8, 8, 8, 8, 8, 8, 19, 8, 8, 8),\n  y4 = c(6.58, 5.76, 7.71, 8.84, 8.47, 7.04, 5.25, 12.50, 5.56, 7.91, 6.89)\n)\n\nCalculamos la correlación pares de datos\n\ncor(anscombe$x1, anscombe$y1)\n\n[1] 0.8164205\n\ncor(anscombe$x2, anscombe$y2)\n\n[1] 0.8162365\n\ncor(anscombe$x3, anscombe$y3)\n\n[1] 0.8162867\n\ncor(anscombe$x4, anscombe$y4)\n\n[1] 0.8165214\n\n\nPodemos observar que los valores de las correlaciones son equivalentes, por lo tanto podríamos pensar que todos los pares de columnas se encuentran correlacionados de manera similar.\nPero, ¿será suficiente con esa información? Pasemos a revisar los gráficos de dispersión de cada par de variables.\n\nggplot(anscombe, aes(x = x1, y = y1)) +\n  geom_point(colour = \"red\", \n             size = 5) +\n  geom_smooth(method = \"lm\", se = FALSE, color=\"blue\", size=0.5) +\n  labs(title = \"Caso I\")\n\n\n\nggplot(anscombe, aes(x = x2, y = y2)) +\n  geom_point(colour = \"green\", \n             size = 5) +\n  geom_smooth(method = \"lm\", se = FALSE, color=\"blue\", size=0.5) +\n  labs(title = \"Caso II\")\n\n\n\nggplot(anscombe, aes(x = x3, y = y3)) +\n  geom_point(colour = \"yellow\", \n             size = 5) +\n  geom_smooth(method = \"lm\", se = FALSE, color=\"blue\", size=0.5) +\n  labs(title = \"Caso III\")\n\n\n\nggplot(anscombe, aes(x = x4, y = y4)) +\n  geom_point(colour = \"orange\", \n             size = 5) +\n  geom_smooth(method = \"lm\", se = FALSE, color=\"blue\", size=0.5) +\n  labs(title = \"Caso IV\")\n\n\n\n\nComo vemos, con distintas distribuciones las correlaciones pueden ser las mismas, principalmente porque Pearson es una medida que solo captura relaciones lineales (rectas), además de verse influido fuertemente por valores extremos. Por lo mismo, es relevante siempre una buena visualización de la distribución bivariada de los datos como complemento al cálculo del coeficiente de correlación."
   },
   {
     "objectID": "assignment/index.html",
@@ -515,7 +536,7 @@
     "href": "syllabus.html",
     "title": "Programa",
     "section": "",
-    "text": "Daniela Olivares Collío\n   Departamento de Sociología FACSO - sala 328\n   danielaolivarescollio@gmail.com\n   \n   Schedule an appointment\n\n\n\n\n\n   Viernes\n   Marzo – Julio, 2025\n   09:00-11:30 AM\n   Sala 307. FACSO\n   Slack"
+    "text": "Daniela Olivares Collío\n   Dpto. de Sociología FACSO - sala 328\n   danielaolivarescollio@gmail.com\n   \n   Schedule an appointment\n\n\n\n\n\n   Viernes\n   Marzo – Julio, 2025\n   09:00-11:30 hrs.\n   Sala 334, FACSO\n   Slack"
   },
   {
     "objectID": "syllabus.html#resumen",

@@ -12,7 +12,7 @@ library(pander)
 ::: {.grid .course-details .course-details-smaller}
 
 ::: {.g-col-6}
-### Profesor
+### Profesores
 
 - {{< fa user >}} &nbsp; [{{< var instructor.name >}}]({{< var instructor.url >}})
 - {{< fa university >}} &nbsp; {{< var instructor.office >}}

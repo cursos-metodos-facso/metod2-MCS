@@ -7,9 +7,9 @@ instructor:
   url: "https://coes.cl/integrantes/daniela-olivares-collio/"
   twitter:
   github: https://github.com/DaniOlivaresCollio
-  office: "Departamento de Sociología FACSO - sala 328"
+  office: "Dpto. de Sociología FACSO - sala 328"
   contact_policy: >-
-    A través de correo
+    A través de correo o U-Cursos
   appointment_url: danielaolivarescollio@gmail.com
 
 instructor2:
@@ -19,17 +19,17 @@ instructor2:
   url: "https://coes.cl/integrantes/kevin-carrasco-quintanilla/"
   twitter: kevincarrascoq1
   github: https://github.com/Kevin-carrasco/
-  office: "Departamento de Sociología FACSO - sala 328"
+  office: "Dpto. de Sociología FACSO - sala 328"
   contact_policy: >-
-    A través de correo
+    A través de correo o U-Cursos
   appointment_url: kevin.carrasco@ug.uchile.cl
 
 course:
   number: "MCS7171-1"
   semester: "Primer Semestre 2025"
   days: "Viernes"
-  time: "09:00-11:30 AM"
-  location: "Sala 307. FACSO"
+  time: "09:00-11:30 hrs."
+  location: "Sala 334, FACSO"
   dates: "Marzo – Julio, 2025"
   github: "https://github.com/DaniOlivaresCollio/metod2-MCS"
   copyright_year: "2025"
