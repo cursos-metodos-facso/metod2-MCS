@@ -18,6 +18,14 @@ library(pander)
 - {{< fa university >}} &nbsp; {{< var instructor.office >}}
 - {{< fa envelope >}} &nbsp; <a href="mailto:{{< var instructor.email >}}">{{< var instructor.email >}}</a>
 - {{< fa calendar-check >}} &nbsp; [Schedule an appointment]({{< var instructor.appointment_url >}})
+
+--------------------------------------------------------------------------------
+
+- {{< fa user >}} &nbsp; [{{< var instructor2.name >}}]({{< var instructor2.url >}})
+- {{< fa university >}} &nbsp; {{< var instructor2.office >}}
+- {{< fa envelope >}} &nbsp; <a href="mailto:{{< var instructor.email >}}">{{< var instructor2.email >}}</a>
+- {{< fa brands twitter >}} &nbsp; [{{< var instructor2.twitter >}}](https://www.twitter.com/{{< var instructor2.twitter >}})
+
 :::
 
 ::: {.g-col-6}
@@ -133,8 +141,8 @@ Hair, Joseph F., et al. (2004). Análisis multivariante. 5ta ed. Madrid: Prentic
 
 ## Recursos web
 
-- Sitio web del curso: https://metod2-mcs.netlify.app/
-- Descarga de R y Rstudio: https://posit.co/download/rstudio-desktop/
-- R4DS en español: https://es.r4ds.hadley.nz/
+- [Sitio web del curso](https://metod2-mcs.netlify.app/)
+- [Descarga de R y Rstudio](https://posit.co/download/rstudio-desktop/)
+- [R4DS en español](https://es.r4ds.hadley.nz/)
 
 
