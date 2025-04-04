@@ -1,6 +1,6 @@
 ---
-title: "Clase 2"
-date: "2025-03-25"
+title: "Clase 02"
+date: "2025-03-28"
 lang: es
 ---
 
