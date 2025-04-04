@@ -40,16 +40,10 @@ website:
       - text: "Clases"
         file: content/index.qmd
       - text: "Prácticos"
-        file: resource/index.qmd
+        file: assignment/index.qmd
       - text: "Evaluación"
         file: evaluaciones.qmd
-#     - text: "Assignments"
-#        file: assignment/index.qmd
-#      - text: "Examples"
-#        file: example/index.qmd
-      # - icon: slack
-      #   href: "https://www.slack.com"
-      #   aria-label: Slack
+
 
   sidebar:
     - title: "Clases"
@@ -62,10 +56,10 @@ website:
             - content/index.qmd
         - section: "Sesiones"
           contents:
-            # - text: "01: Introducción"
-            #   file: content/01-content.qmd
-            # - text: "02: Sesión 2"
-            #   file: content/02-content.qmd
+            - text: "01: Sesión 1"
+              file: content/01-content.qmd
+            - text: "02: Sesión 2"
+              file: content/02-content.qmd
             # - text: "02: Sesión 2"
             #   file: content/03-content.qmd
             # - text: "03: Sesión 3"
