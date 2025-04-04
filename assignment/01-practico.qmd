@@ -1,242 +1,254 @@
 ---
-title: "Práctico 1. Cálculo y reporte de Correlación"
+title: "Práctico 01. Aproximación inicial a R"
 subtitle: "Metodología Cuantitativa Avanzada - Magíster en Ciencias Sociales"
-linktitle: "Práctico 1: Correlación"
-date: "2023-04-05"
+linktitle: 
+date: "2025-03-21"
 lang: es
 ---
 
+## Objetivos de la práctica
+
+Esta práctica tiene dos objetivos: 1) Generar un primer acercamiento al uso de R y Rstudio, conociendo su interfaz y sus principales funcionalidades y 2) revisar algunos procedimientos básicos de la preparación de datos con R, que son necesarios para luego poder aplicar los contenidos más específicos de este curso.
+
+## R y Rstudio
+
+### Guía de instalación
+
+1. Acceder a la página de [posit](https://posit.co/), desarrollador del software desde octubre de 2022. Link directo a la descarga [acá](https://posit.co/download/rstudio-desktop/).
+
+2. Instalar R y Rstudio
+
+![](images/installR1.png)
+
+  a) Descargar R 
+    
+  - Seleccionamos sistema operativo según corresponda
+    
+  ![](images/installR2.png)
+    
+  - Descargar R por primera vez y seguir instrucciones. En esta oportunidad trabajaremos con la última versión de R 4.2.2
+  ![](images/installR3.png)
 
 
-```{r setup, include=FALSE, cache = FALSE}
-require("knitr")
-opts_chunk$set(warning=FALSE,
-             message=FALSE,
-             echo=TRUE,
-             cache = TRUE, 
-             fig.width=10, fig.height=8)
-pacman::p_load(tidyverse, kableExtra)
-```
+  b) Descargar RStudio
+    
+  - Descarga directa en la página de inicio
+    
+  c) Instalar ambos archivos siguiendo las instrucciones de instalación
 
+3. Abrir RStudio. Se debería ver similar a esto:
 
+![](images/installR4.png)
 
-# Objetivo de la práctica
+4. Recomendaciones generales:
 
-El objetivo de esta guía práctica es aprender a calcular y graficar la correlación entre dos variables utilizando R.
+- evitar uso de tilde, ñ, espacios y mayúsculas tanto en carpetas y archivos, así como también en los nombres de las variables
 
-En detalle, aprenderemos:
+- al momento de hacer consultas sobre problemas en la ejecución del código, adjuntar la siguiente información:
 
-1.  Qué es una correlación
-2.  Cuál es la correlación de Pearson
-3.  Cómo calcular una correlación de Pearson y graficarla
+1. Código completo hasta que se produce el problema
 
-# 1. Qué es la Correlación
+2. Indicar línea del código donde se produce el problema
 
-La **correlación** es una medida estadística que describe la asociación entre dos variables. Cuando existe correlación entre dos variables, el cambio en una de ellas tiende a estar asociado con un cambio en la otra variable.
+3. Adjuntar el resultado del output de la información de la sesión (sessionInfo())
 
-En términos concretos, lo que observamos es cómo se comportan los valores de dos (o más) variables para cada observación, y si podemos suponer que ese comportamiento conjunto tiene algún patrón. 
+## Primeros pasos
 
+En primer lugar vamos a abrir un archivo de R (*script*). Esto se puede hacer manualmente con File -> new file -> R script o directamente con ctrl + shift + N
 
-# 2. Correlación de Pearson
+Esta es nuestra hoja de código, que utilizaremos para procesar bases de datos, modificar variables y crear tablas y gráficos.
 
-La correlación de Pearson (o coeficiente de correlación de pearson) es una medida estadística que cuantifica la relación lineal entre dos variables continuas. Esta medida va desde -1 hasta 1, donde:
+### 0. Ejemplos
 
--   r=1: Correlación positiva perfecta. Cuando una variable aumenta, la otra también aumenta en proporción constante.
--   r=−1: Correlación negativa perfecta. Cuando una variable aumenta, la otra disminuye en proporción constante.
--   r=0: No hay correlación lineal entre las variables. No hay una relación lineal discernible entre los cambios en las variables.
+R puede ser una calculadora
 
-Cuanto más cercano esté el valor de r a 1 o -1, más fuerte será la correlación. Cuanto más cercano esté a 0, más débil será la correlación.
-
-![](images/scatters3.png)
-
-
-
-
-
-En el siguiente [enlace](https://rpsychologist.com/correlation/) pueden visualizar la correlación para dos variables cambiando la fuerza y el sentido de esta, al mismo tiempo que les permite observar la varianza compartida entre ambas variables.
-
-
-# 3. Estimación de la correlación de Pearson
-
-Utilizaremos un set mínimo simulado de datos (el mismo de la [sesión 3](/content/03-content.html) ) 
-
-Simulamos datos para 8 casos
-
--   con 8 niveles de educación (ej: desde basica incompleta=1, hasta postgrado=8), y
--   12 niveles de rangos de ingreso (ej: desde menos de 100.000=1 hasta más de 10.000.000=12)
-
-```{r ex1_data, warning=FALSE}
-id <-seq(1,8) # identificador de cada caso
-educ <- c(2,3,4,4,5,7,8,8)
-ing  <- c(1,3,3,5,4,7,9,11)
-data <- data.frame(id,educ,ing)
-
+```{r}
+10 + 5 # ¿cuánto es 10 + 5?
 ```
 
 ```{r}
-kableExtra::kbl(data, escape=F, full_width = F)  %>%
-   kable_paper("hover")
+10 * 5 # ¿cuánto es 10 * 5?
 ```
 
-La correlación de Pearson se basa en la covarianza, que es una medida de asociación entre variables basada en la varianza de cada una de ellas:
-
-
-\begin{align*}
-Covarianza = cov(x,y) &= \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})} {n-1}\\
-\\
-Correlación=r &= \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})} {(n-1)\sigma_x \sigma_y }\\ \\
- &= \frac{\sum(x-\bar{x})(y-\bar{y})}{\sqrt{\sum(x-\bar{x})^{2} \sum(y-\bar{y})^{2}}}
-\end{align*}
-
-Para obtener el coeficiente de correlación directamente en R se utiliza la función `cor()` :
-
-
-```{r ex0_cor, warning=FALSE}
-cor(data$educ, data$ing)
-```
-
-
-
-Vamos por paso:
-
-- $(x_i - \bar{x})$ es la diferencia de un valor de una variable respecto de su promedio. Por ejemplo, si x=educación, y un caso tiene educación 6 y el promedio de educación es 2, entonces el valor de $(x_i - \bar{x})=4$
-
-- $(y_i - \bar{y})$ : lo mismo pero para la otra varible, en el caso de nuestro ejemplo es ingreso.
-
-- $(x-\bar{x})(y-\bar{y})$ es la multiplicación de los dos pasos anteriores para cada caso. 
-
-- $\sum(x-\bar{x})(y-\bar{y})$ es la suma de estos valores para el total de los casos
-
-En nuestra base de datos de ejemplo simulamos columnas adicionales con esta información:
-
-- $(x_i - \bar{x})$ : dif_m_educ
-- $(y_i - \bar{y})$ : dif_m_ing
-- $(x-\bar{x})(y-\bar{y})$ : dif_xy
-
-Y además las diferencias de promedio de cada variable al cuadrado:
-
-- $(x_i - \bar{x})²$ : dif_m_educ2
-- $(y_i - \bar{y})²$ : dif_m_ing2
+Se pueden crear objetos y asignarles valores
 
 ```{r}
-data$dif_m_educ <- data$educ-mean(data$educ)
-data$dif_m_ing <- data$ing-mean(data$ing)
-data$dif_xy <-  data$dif_m_educ*data$dif_m_ing
-data$dif_m_educ2 <- (data$dif_m_educ)^2
-data$dif_m_ing2 <- (data$dif_m_ing)^2
+a <- 28
+b <- 8
+
+a + b
 ```
 
-En nuestra base de datos:
+O asignar operaciones a un objeto
 
 ```{r}
-kableExtra::kbl(data, digits = 3,full_width = F)  %>%
-   kable_paper("hover")
+c <- a + b
 ```
 
-
-Y obtenemos la suma de cada una de las tres últimas columnas, que es lo que se necesita para reemplazar en la fórmula de la correlación:
+Así como también agregar texto
 
 ```{r}
-sum(data$dif_xy); sum(data$dif_m_educ2);sum(data$dif_m_ing2)
+d <- "hola"
+
+d
 ```
 
-Reemplazando,
+y operaciones un poco más complejas
 
-\begin{align*}
-r &= \frac{\sum(x-\bar{x})(y-\bar{y})}{\sqrt{\sum(x-\bar{x})^{2} \sum(y-\bar{y})^{2}}} \\ \\
-&= \frac{51.625}{ \sqrt{36.875*79.875}} \\ \\
-&= \frac{51.625}{54.271} \\ \\
-&= 0.951
-\end{align*}
+```{r}
+e <- b^2
+
+e + a * c
+```
+
+Sin embargo, la mayor parte del tiempo usamos funciones que ya existen en R
+
+```{r}
+sum(28,8)
+```
+
+```{r}
+round(10.14536) #aproximar
+```
+
+# Parte 2
+
+## 2. Flujo de trabajo en R
+
+Tal vez una de las dificultades más comunes o cotidianas del uso de R es el orden de trabajo, en donde tenemos cientos de archivos, scripts, gráficos, bases de datos u otros repartidos desordenadamente en nuestro computador. También se da mucho el caso en que, cuando queremos trabajar con alguien, tenemos que cambiar las rutas de los archivos, por ejemplo en dónde están las bases de datos, ya que nuestros ordenadores y usuarios se llaman y son escencialmente distintos. 
+
+¿Cómo podemos sortear eso? Siguiendo un flujo de trabajo reproducible, autocontenido y ordenado. **En este curso trabajaremos R con un flujo de trabajo reproducible, basado en el sistema [IPO](https://lisa-coes.com/ipo-data/)**. El protocolor IPO es una plantilla/protocolo de estructura digital de carpetas que tiene por objetivo el organizar, procesar y documentar los datos de un proyecto de investigación con miras a la apertura de los datos en un repositorio público y de acceso libre. En concreto, el sistema IPO se propone abordar brevemente todo lo referente a los Datos, Métodos y Resultados.
+
+![](images/cora1.png)
 
 
-Y comprobamos con la función `cor()` de R, que nos entrega la correlación de Pearson:
+### Rproject
 
-```{r ex1_cor, warning=FALSE}
-cor(data$educ, data$ing)
+Un Rproject es una herramienta de R que nos permite establecer un directorio de trabajo en una carpeta de nuestro computador. Al hacerlo, establecemos un espacio de trabajo que permite crear una estructura de carpetas donde guardar los documentos asociados al proyecto. De esta forma, creamos un conjunto de archivos autocontenidos en un solo lugar que nos permite organizar nuestro trabajo y facilitar la **reproducibilidad**. En las próximas sesiones estableceremos un protocolo de trabajo que permite organizar y armonizar el trabajo: el [protocolo IPO](https://lisa-coes.com/ipo-repro/).
+
+Para crear un Rproject:
+
+1. Abrir Rstudio
+
+2. Seleccionar Archivo -> Nuevo proyecto
+
+![](images/project.png)
+
+3. Seleccionamos la opción de directorio existente
+
+4. Seleccionamos la carpeta donde descargamos nuestro repositorio de Github en el paso anterior
+
+5. Apretamos el botón de crear proyecto
+
+
+Y muchas de estas funciones que utilizamos en R están contenidas en librerías o paquetes (packages)
+
+### 1. Librerías principales (de R) a utilizar
+
+La lógica de R es instalar librerías (solo 1 vez, con `install.packages("librería")`), y luego cargarlas cada vez que es necesario usarlas (con `library(librería)`). El problema de esto es que a veces no se sabe claramente qué librerías están instaladas y cuales no, lo que va a arrojar error al cargarlas. Y, como sucede en R, existe una librería para solucionar este problema que se llama `pacman` (package manager). Lo que hace `pacman` es cargar la librería, y si no está instalada, la instala y la carga:
+
+
+Para utilizar la primera vez (si es que no está instalada):
+
+```{r eval=FALSE}
+install.packages("pacman")
+```
+
+Y en adelante, las librerías se cargan así <span class="sidenote"> pacman::p_load(libreria1,libreria2,libreriaX) </span>:
+
+
+```{r}
+pacman::p_load(dplyr, guaguas, ggplot2)
 ```
 
 
-Como vimos en clases, el valor de la correlación va entre -1 y 1, donde el valor 0 significa que las dos variables no se encuentran correlacionadas, y el valor -1 y 1 significa que se encuentran completamente correlacionadas, positiva y negativamente, respectivamente.
+Para esta sesión las librerías que vamos a utilizar son:
 
-En este caso, un valor de 0.95 es muy alto, y significa que las variables ingreso y educación, en nuestra base de datos simulada, se encuentran fuertemente correlacionadas.
+- `dplyr`: ajuste general de datos
 
-## Diagrama de dispersión (nube de puntos o scatterplot)
+- `guaguas`: Paquete que contiene los datos de nombres de guaguas (bebés) registrados en Chile entre 1920 y 2021 según el Registro Civil e Identificación
 
-Siempre es recomendable acompañar el valor de la correlación con una exploración gráfica de la distribución bivariada de los datos. El gráfico o diagrama de dispersión es una buena herramienta, ya que muestra la forma, la dirección y la fuerza de la relación entre dos variables cuantitativas.
+### 2. Cargar base de datos
 
-Este tipo de gráfico lo podemos realizar usando la librería `ggplot2`.
+**Ajustar espacio de trabajo**
 
-```{r ex1_plot1, warning=FALSE}
-pacman::p_load(ggplot2)
-plot1 <- ggplot(data, 
-                aes(x=educ, y=ing)) + 
-                geom_point(colour = "red", 
-                size = 5)
-plot1
+Previo a la carga de nuestra base de datos, se recomienda ejecutar los siguientes comandos:
+
+```{r}
+rm(list=ls())       # borrar todos los objetos en el espacio de trabajo
+options(scipen=999) # valores sin notación científica
 ```
 
-En el gráfico podemos ver como se crea una nube de puntos en las intersecciones de los valores para ambas variables de cada caso.
+La función `rm(list=ls())` permite comenzar con un espacio de trabajo (environment) vacío y sin otros objetos. Así también, la función `options(scipen=999)` desactiva la notación científica, es decir, veremos los valores numéricos con todos sus decimales.
 
+**Datos**
 
-## El cuarteto de Anscombe y las limitaciones de la correlación lineal
+Cargamos la base de datos desde el paquete (para otras bases de datos se deben importar de otra forma, esto es solo como ejemplo)
 
-
-Ahora, revisaremos un muy buen ejemplo de la importancia de la exploración gráfica de los datos mediante un ejemplo de Anscombe (1973), que permite visualizar las limitaciones del coeficiente de correlación.
-
-Primero, crearemos la base de datos:
-
-```{r ex2_data, warning=FALSE}
-anscombe <- data.frame(
-  x1 = c(10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5),
-  y1 = c(8.04, 6.95, 7.58, 8.81, 8.33, 9.96, 7.24, 4.26, 10.84, 4.82, 5.68),
-  x2 = c(10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5),
-  y2 = c(9.14, 8.14, 8.74, 8.77, 9.26, 8.10, 6.13, 3.10, 9.13, 7.26, 4.74),
-  x3 = c(10, 8, 13, 9, 11, 14, 6, 4, 12, 7, 5),
-  y3 = c(7.46, 6.77, 12.74, 7.11, 7.81, 8.84, 6.08, 5.39, 8.15, 6.42, 5.73),
-  x4 = c(8, 8, 8, 8, 8, 8, 8, 19, 8, 8, 8),
-  y4 = c(6.58, 5.76, 7.71, 8.84, 8.47, 7.04, 5.25, 12.50, 5.56, 7.91, 6.89)
-)
+```{r}
+base <- guaguas
 ```
 
-Calculamos la correlación pares de datos
+Conocemos las dimensiones de la base de datos
 
-```{r ex2_cor, warning=FALSE}
-cor(anscombe$x1, anscombe$y1)
-cor(anscombe$x2, anscombe$y2)
-cor(anscombe$x3, anscombe$y3)
-cor(anscombe$x4, anscombe$y4)
+```{r}
+dim(base)
 ```
 
-Podemos observar que los valores de las correlaciones son equivalentes, por lo tanto podríamos pensar que todos los pares de columnas se encuentran correlacionados de manera similar.
+Son 858782 casos y 5 variables. Los nombres de estas variables son:
 
-Pero, ¿será suficiente con esa información? Pasemos a revisar los gráficos de dispersión de cada par de variables.
-
-```{r ex2_plot, warning=FALSE}
-ggplot(anscombe, aes(x = x1, y = y1)) +
-  geom_point(colour = "red", 
-             size = 5) +
-  geom_smooth(method = "lm", se = FALSE, color="blue", size=0.5) +
-  labs(title = "Caso I")
-
-ggplot(anscombe, aes(x = x2, y = y2)) +
-  geom_point(colour = "green", 
-             size = 5) +
-  geom_smooth(method = "lm", se = FALSE, color="blue", size=0.5) +
-  labs(title = "Caso II")
-
-ggplot(anscombe, aes(x = x3, y = y3)) +
-  geom_point(colour = "yellow", 
-             size = 5) +
-  geom_smooth(method = "lm", se = FALSE, color="blue", size=0.5) +
-  labs(title = "Caso III")
-
-ggplot(anscombe, aes(x = x4, y = y4)) +
-  geom_point(colour = "orange", 
-             size = 5) +
-  geom_smooth(method = "lm", se = FALSE, color="blue", size=0.5) +
-  labs(title = "Caso IV")
+```{r}
+names(base)
 ```
 
-Como vemos, con distintas distribuciones las correlaciones pueden ser las mismas, principalmente porque Pearson es una medida que solo captura relaciones lineales (rectas), además de verse influido fuertemente por valores extremos. Por lo mismo, es relevante siempre una buena visualización de la distribución bivariada de los datos como complemento al cálculo del coeficiente de correlación.
+Y la base se ve así:
+
+```{r}
+head(base)
+```
+
+Ahora probemos algunas funciones para seguir explorando la base
+
+```{r}
+table(base$sexo)
+```
+
+Podemos ver la cantidad de nombres "F" (femenino), "M" (masculino) e "I" (indefinido) inscritos entre 1920 y 2021.
+
+Pueden buscar sus nombres y probar, utilizamos la funcion *filter* del paquete *dplyr*
+
+```{r}
+filter(base, nombre=="Kevin")
+```
+
+E incluso pueden ver la cantidad de personas con su nombre, en el mismo año que ustedes nacieron
+
+```{r}
+d <- filter(base, nombre=="Kevin" & anio==1996)
+sum(d$n)
+```
+
+Avanzando un poco más, podemos utilizar ggplot2 para hacer un gráfico de líneas que muestre la evolución en el tiempo
+
+```{r}
+datos <- filter(base, nombre=="Kevin")
+ggplot(datos, aes(x = anio, y = n)) +
+  geom_line() + 
+  labs(x = "Año", y = "Número de personas", title = "Número de personas llamadas Kevin por año")
+```
+
+¿Qué puede explicar el peak de "Kevins" previo a los 2000?
+
+spoiler: [link](https://es.wikipedia.org/wiki/Backstreet_Boys)
+
+## Otro ejemplo
+
+```{r}
+guaguas %>% 
+  filter(nombre %in% c("Salvador", "Augusto"), anio >= 1960 & anio <= 1979) %>% 
+  ggplot(aes(anio, n, color = nombre)) + 
+  geom_line() +
+  labs(x = "año", y = "total inscripciones", color = "nombre", 
+       title = "Inscripciones de 'Salvador' y 'Augusto' entre 1960 - 1979")
+```
 

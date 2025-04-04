@@ -84,11 +84,13 @@ website:
       background: dark
       contents:
         - text: "Descripción"
-          file: resource/index.qmd
-        # - text: "Práctico 1"
-        #   file: resource/01-resource.qmd
-        # - text: "Práctico 2"
-        #   file: resource/02-resource.qmd
+          file: assignment/index.qmd
+        - text: "Práctico 01: Aproximación inicial a R"
+          file: assignment/01-practico.qmd
+        - text: "Práctico 02: Taller quarto y github"
+          file: assignment/taller-github-quarto/taller-quarto-github.qmd
+        - text: "Práctico 03: Introducción a R"
+          file: assignment/03-practico.qmd
         # - text: "Práctico 3"
         #   file: resource/03-resource.qmd
         # - text: "Práctica 4"
