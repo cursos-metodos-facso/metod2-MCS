@@ -69,7 +69,7 @@ withr::with_dir(here::here(), {
 
 ### Versiones anteriores del curso
 
-- [2024](https://version2024--estadictica-descriptiva-uch.netlify.app/)
+- [2024](https://version2024--metod2-mcs.netlify.app/)
 
 :::
 

@@ -128,17 +128,17 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#resumen" id="toc-resumen" class="nav-link active" data-scroll-target="#resumen">Resumen</a></li>
   <li><a href="#objetivo-general" id="toc-objetivo-general" class="nav-link" data-scroll-target="#objetivo-general">Objetivo general</a></li>
   <li><a href="#objetivos-específicos" id="toc-objetivos-específicos" class="nav-link" data-scroll-target="#objetivos-específicos">Objetivos específicos</a></li>
-  <li><a href="#saberes-contenidos" id="toc-saberes-contenidos" class="nav-link" data-scroll-target="#saberes-contenidos">Saberes / contenidos</a>
+  <li><a href="#contenidos" id="toc-contenidos" class="nav-link" data-scroll-target="#contenidos">Contenidos</a>
   <ul class="collapse">
-  <li><a href="#módulo-1-estadística-descriptiva" id="toc-módulo-1-estadística-descriptiva" class="nav-link" data-scroll-target="#módulo-1-estadística-descriptiva">Módulo 1: Estadística descriptiva</a></li>
-  <li><a href="#módulo-2-inferencia-y-estadística-correlacional" id="toc-módulo-2-inferencia-y-estadística-correlacional" class="nav-link" data-scroll-target="#módulo-2-inferencia-y-estadística-correlacional">Módulo 2: Inferencia y estadística correlacional</a></li>
+  <li><a href="#módulo-1-inferencia-y-estadística-correlacional" id="toc-módulo-1-inferencia-y-estadística-correlacional" class="nav-link" data-scroll-target="#módulo-1-inferencia-y-estadística-correlacional">Módulo 1: Inferencia y estadística correlacional</a></li>
   <li><a href="#módulo-3-regresión-lineal-y-regresión-logística" id="toc-módulo-3-regresión-lineal-y-regresión-logística" class="nav-link" data-scroll-target="#módulo-3-regresión-lineal-y-regresión-logística">Módulo 3: Regresión lineal y regresión logística</a></li>
   </ul></li>
-  <li><a href="#bibliografía" id="toc-bibliografía" class="nav-link" data-scroll-target="#bibliografía">Bibliografía</a></li>
   <li><a href="#metodología" id="toc-metodología" class="nav-link" data-scroll-target="#metodología">Metodología</a></li>
   <li><a href="#evaluación" id="toc-evaluación" class="nav-link" data-scroll-target="#evaluación">Evaluación</a></li>
   <li><a href="#requisitos-de-aprobación" id="toc-requisitos-de-aprobación" class="nav-link" data-scroll-target="#requisitos-de-aprobación">Requisitos de aprobación</a></li>
   <li><a href="#palabras-clave" id="toc-palabras-clave" class="nav-link" data-scroll-target="#palabras-clave">Palabras Clave</a></li>
+  <li><a href="#bibliografía" id="toc-bibliografía" class="nav-link" data-scroll-target="#bibliografía">Bibliografía</a></li>
+  <li><a href="#recursos-web" id="toc-recursos-web" class="nav-link" data-scroll-target="#recursos-web">Recursos web</a></li>
   </ul>
 </nav>
     </div>
@@ -167,9 +167,8 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="profesores">Profesores</h3>
 <ul>
 <li><i class="fa-solid fa-user" aria-hidden="true"></i> &nbsp; <a href="https://coes.cl/integrantes/daniela-olivares-collio/">Daniela Olivares Collío</a></li>
-<li><i class="fa-solid fa-university" aria-hidden="true"></i> &nbsp; Dpto. de Sociología FACSO - sala 328</li>
+<li><i class="fa-solid fa-university" aria-hidden="true"></i> &nbsp; FACSO - sala 328</li>
 <li><i class="fa-solid fa-envelope" aria-hidden="true"></i> &nbsp; <a href="mailto:danielaolivarescollio@gmail.com">danielaolivarescollio@gmail.com</a></li>
-<li><i class="fa-brands fa-twitter" aria-hidden="true"></i> &nbsp; <a href="https://www.twitter.com/"></a></li>
 <li><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> &nbsp; <a href="danielaolivarescollio@gmail.com">Schedule an appointment</a></li>
 </ul>
 </section>
@@ -180,13 +179,12 @@ ul.task-list li input[type="checkbox"] {
 <li><i class="fa-solid fa-calendar-alt" aria-hidden="true"></i> &nbsp; Marzo – Julio, 2025</li>
 <li><i class="fa-solid fa-clock" aria-hidden="true"></i> &nbsp; 09:00-11:30 hrs.</li>
 <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> &nbsp; Sala 334, FACSO</li>
-<li><i class="fa-brands fa-slack" aria-hidden="true"></i> &nbsp; <a href="">Slack</a></li>
 </ul>
 </section>
 </div>
 <section id="resumen" class="level2">
 <h2 class="anchored" data-anchor-id="resumen">Resumen</h2>
-<p>Este curso busca dar un primer acercamiento a la investigación social cuantitativa, abarcando desde aspectos iniciales básicos de estadística descriptiva y visualización de datos, hasta análisis e interpretación de modelos explicativos de investigación social. Asimismo, se busca que los y las estudiantes logren familiarizarse con el uso de Rstudio para el análisis de datos sociales.</p>
+<p>Este curso busca dar acercamiento a la investigación social cuantitativa, abarcando el análisis e interpretación de modelos explicativos de investigación social. Asimismo, se busca que los y las estudiantes logren familiarizarse con el uso de Rstudio para el análisis de datos sociales.</p>
 <p>La metodología incluye clases lectivas y trabajo práctico en R.</p>
 </section>
 <section id="objetivo-general" class="level2">
@@ -197,61 +195,80 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="objetivos-específicos">Objetivos específicos</h2>
 <p>Al concluir el curso lo/as estudiantes deberán haber alcanzado los siguientes resultados de aprendizaje:</p>
 <ul>
-<li><p>Conocer las etapas de un diseño de investigación social cuantitativa y sus principales elementos</p></li>
-<li><p>Formular diseños de investigación social cuantitativa</p></li>
-<li><p>Conocer y aplicar instrumentos de medición y tipos de estudios cuantitativos</p></li>
-<li><p>Interpretar y analizar los elementos centrales de una base de datos con información social</p></li>
-<li><p>Aplicar e interpretar técnicas de estadística descriptiva según las distintas características de los datos</p></li>
-<li><p>Aplicar e interpretar técnicas de estadística correlacional e inferencia estadística para variables con distinta unidad de medida</p></li>
-<li><p>Aplicar e interpretar técnicas de regresión lineal y logística para variables numéricas y variables categóricas</p></li>
+<li>Conocer las etapas de un diseño de investigación social cuantitativa y sus principales elementos.</li>
+<li>Formular diseños de investigación social cuantitativa.</li>
+<li>Conocer y aplicar instrumentos de medición y tipos de estudios cuantitativos.</li>
+<li>Interpretar y analizar los elementos centrales de una base de datos con información social.</li>
+<li>Aplicar e interpretar técnicas de estadística descriptiva según las distintas características de los datos.</li>
+<li>Aplicar e interpretar técnicas de estadística correlacional e inferencia estadística para variables con distinta unidad de medida.</li>
+<li>Aplicar e interpretar técnicas de regresión lineal y logística para variables numéricas y variables categóricas.</li>
 </ul>
 </section>
-<section id="saberes-contenidos" class="level2">
-<h2 class="anchored" data-anchor-id="saberes-contenidos">Saberes / contenidos</h2>
-<section id="módulo-1-estadística-descriptiva" class="level3">
-<h3 class="anchored" data-anchor-id="módulo-1-estadística-descriptiva">Módulo 1: Estadística descriptiva</h3>
-<p>1.1 Elementos básicos de la investigación social</p>
+<section id="contenidos" class="level2">
+<h2 class="anchored" data-anchor-id="contenidos">Contenidos</h2>
+<section id="módulo-1-inferencia-y-estadística-correlacional" class="level3">
+<h3 class="anchored" data-anchor-id="módulo-1-inferencia-y-estadística-correlacional">Módulo 1: Inferencia y estadística correlacional</h3>
+<p><strong>1.1. Inferencia estadística y asociación</strong></p>
 <ul>
-<li><p>Etapas de la investigación Social</p></li>
-<li><p>Tipos de diseños</p></li>
-<li><p>Diseño de instrumentos de medición</p></li>
-<li><p>Bases de datos: datos de corte transversal, series de tiempo, cohortes, panel o longitudinal</p></li>
+<li>Área de una distribución, probabilidad en la curva normal, error tipo 1 y tipo 2</li>
+<li>Intervalos de confianza para medias y proporciones usando distribución Z</li>
+<li>Concepto de valor-p</li>
+<li>Distribución t de Student y grados de libertad</li>
 </ul>
-<p>1.2 Operacionalización y análisis de datos</p>
+<p><strong>1.2. Asociación entre dos variables cuantitativas</strong></p>
 <ul>
-<li><p>Operacionalización y niveles de medición</p></li>
-<li><p>Tidy data: unir, dividir, filtrar y ordenar datos en R</p></li>
-<li><p>Recodificación de variables: descriptivos básicos, casos perdidos, etiquetamiento de variables</p></li>
-<li><p>Agrupación de datos y construcción de variables a partir de datos existentes</p></li>
-<li><p>Construcción de índices y validez de escalas</p></li>
+<li>Concepto de covarianza y relación/correlación lineal y no-lineal</li>
+<li>Correlación de Pearson</li>
 </ul>
-<p>1.3 Visualización de datos en R</p>
+<p><strong>1.3. Asociación con variables categóricas</strong></p>
 <ul>
-<li><p>Tablas descriptivas y tablas de contingencia</p></li>
-<li><p>ggplot2: gráficos de barra, de caja, dispersión e histograma</p></li>
+<li>Tablas de contingencia y determinación de la asociación</li>
+<li>Asociación poblacional mediante chi-cuadrado</li>
 </ul>
-</section>
-<section id="módulo-2-inferencia-y-estadística-correlacional" class="level3">
-<h3 class="anchored" data-anchor-id="módulo-2-inferencia-y-estadística-correlacional">Módulo 2: Inferencia y estadística correlacional</h3>
-<p>2.1 Inferencia estadística</p>
-<p>2.2 Pruebas de hipótesis</p>
-<p>2.3 Correlación</p>
 </section>
 <section id="módulo-3-regresión-lineal-y-regresión-logística" class="level3">
 <h3 class="anchored" data-anchor-id="módulo-3-regresión-lineal-y-regresión-logística">Módulo 3: Regresión lineal y regresión logística</h3>
-<p>3.1 Regresión lineal de mínimos cuadrados</p>
+<p><strong>3.1 Regresión lineal de mínimos cuadrados</strong></p>
 <ul>
-<li><p>Aspectos centrales y supuestos de la regresión MCO</p></li>
-<li><p>Interpretación de coeficientes (variables cuantitativas y cualitativas) y efectos de interacción</p></li>
-<li><p>Representación gráfica de coeficientes de regresión lineal</p></li>
+<li>Aspectos centrales y supuestos de la regresión MCO</li>
+<li>Interpretación de coeficientes (variables cuantitativas y cualitativas) y efectos de interacción</li>
+<li>Representación gráfica de coeficientes de regresión lineal</li>
 </ul>
-<p>3.2 Regresión logística binaria</p>
+<p><strong>3.2 Regresión logística binaria</strong></p>
 <ul>
-<li><p>Aspectos básicos de la regresión logística</p></li>
-<li><p>Tipos de coeficientes e interpretación</p></li>
-<li><p>Representación gráfica (cálculo de probabilidades predichas)</p></li>
+<li>Aspectos básicos de la regresión logística</li>
+<li>Tipos de coeficientes e interpretación</li>
+<li>Representación gráfica (cálculo de probabilidades predichas)</li>
 </ul>
 </section>
+</section>
+<section id="metodología" class="level2">
+<h2 class="anchored" data-anchor-id="metodología">Metodología</h2>
+<p>El curso se organiza en sesiones semanales, con una parte lectiva seguida de una práctica. En la parte lectiva se transmiten y discuten los conceptos centrales de la investigación cuantitativa. En la parte práctica se aplicarán los conceptos transmitidos en la parte lectiva, además de resolver dudas en el avance de los trabajos de investigación.</p>
+</section>
+<section id="evaluación" class="level2">
+<h2 class="anchored" data-anchor-id="evaluación">Evaluación</h2>
+<p>Modalidad:</p>
+<p>Un reporte de investigación en parejas con dos entregas.</p>
+<p>Ponderaciones:</p>
+<ul>
+<li>Primera entrega 40%</li>
+<li>Segunda entrega 60%</li>
+</ul>
+</section>
+<section id="requisitos-de-aprobación" class="level2">
+<h2 class="anchored" data-anchor-id="requisitos-de-aprobación">Requisitos de aprobación</h2>
+<ul>
+<li>Nota mínima de aprobación: 4,0 (en escala de 1 a 7).</li>
+<li>Requisitos de presentación a exámen: Nota entre 3,5 y 4,9</li>
+</ul>
+<p><strong>Acerca del plagio:</strong> Cualquier información vertida en documentos calificables, que no se indique su debida procedencia, conociéndose de autor externo, y/o cualquier similitud, se considera plagio, conducente a la rendición del examen final.</p>
+</section>
+<section id="palabras-clave" class="level2">
+<h2 class="anchored" data-anchor-id="palabras-clave">Palabras Clave</h2>
+<ul>
+<li>Estadística, investigación cuantitativa, manipulación de datos, visualización de datos, interpretación de coeficientes</li>
+</ul>
 </section>
 <section id="bibliografía" class="level2">
 <h2 class="anchored" data-anchor-id="bibliografía">Bibliografía</h2>
@@ -262,24 +279,12 @@ ul.task-list li input[type="checkbox"] {
 <p>Hair, Joseph F., et al.&nbsp;(2004). Análisis multivariante. 5ta ed.&nbsp;Madrid: Prentice Hall.</p>
 <p><a href="http://www.fcharte.com/libros/ExploraVisualizaConR-Fcharte.pdf">Charte, Francisco (2014). Análisis exploratorio y Visualización de datos con R.</a></p>
 </section>
-<section id="metodología" class="level2">
-<h2 class="anchored" data-anchor-id="metodología">Metodología</h2>
-<p>El curso se organiza en sesiones semanales, con una parte lectiva seguida de una práctica. En la parte lectiva se transmiten y discuten los conceptos centrales de la investigación cuantitativa. En la parte práctica se aplicarán los conceptos transmitidos en la parte lectiva, además de resolver dudas en el avance de los trabajos de investigación</p>
-</section>
-<section id="evaluación" class="level2">
-<h2 class="anchored" data-anchor-id="evaluación">Evaluación</h2>
-<p>La evaluación consistirá en</p>
-</section>
-<section id="requisitos-de-aprobación" class="level2">
-<h2 class="anchored" data-anchor-id="requisitos-de-aprobación">Requisitos de aprobación</h2>
+<section id="recursos-web" class="level2">
+<h2 class="anchored" data-anchor-id="recursos-web">Recursos web</h2>
 <ul>
-<li>Nota mínima de aprobación: 4,0 (en escala de 1 a 7).</li>
-</ul>
-</section>
-<section id="palabras-clave" class="level2">
-<h2 class="anchored" data-anchor-id="palabras-clave">Palabras Clave</h2>
-<ul>
-<li>Estadística, investigación cuantitativa, manipulación de datos, visualización de datos, interpretación de coeficientes</li>
+<li>Sitio web del curso: https://metod2-mcs.netlify.app/</li>
+<li>Descarga de R y Rstudio: https://posit.co/download/rstudio-desktop/</li>
+<li>R4DS en español: https://es.r4ds.hadley.nz/</li>
 </ul>
 
 

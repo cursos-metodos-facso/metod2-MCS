@@ -17,7 +17,6 @@ library(pander)
 - {{< fa user >}} &nbsp; [{{< var instructor.name >}}]({{< var instructor.url >}})
 - {{< fa university >}} &nbsp; {{< var instructor.office >}}
 - {{< fa envelope >}} &nbsp; <a href="mailto:{{< var instructor.email >}}">{{< var instructor.email >}}</a>
-- {{< fa brands twitter >}} &nbsp; [{{< var instructor.twitter >}}](https://www.twitter.com/{{< var instructor.twitter >}})
 - {{< fa calendar-check >}} &nbsp; [Schedule an appointment]({{< var instructor.appointment_url >}})
 :::
 
@@ -28,17 +27,16 @@ library(pander)
 - {{< fa calendar-alt >}} &nbsp; {{< var course.dates >}}
 - {{< fa clock >}} &nbsp; {{< var course.time >}}
 - {{< fa location-dot >}} &nbsp; {{< var course.location >}}
-- {{< fa brands slack >}} &nbsp; [Slack]({{< var course.slack >}})
+
 :::
 
 :::
 
 ## Resumen
 
-Este curso busca dar un primer acercamiento a la investigación social cuantitativa, abarcando desde aspectos iniciales básicos de estadística descriptiva y visualización de datos, hasta análisis e interpretación de modelos explicativos de investigación social. Asimismo, se busca que los y las estudiantes logren familiarizarse con el uso de Rstudio para el análisis de datos sociales.
+Este curso busca dar acercamiento a la investigación social cuantitativa, abarcando el análisis e interpretación de modelos explicativos de investigación social. Asimismo, se busca que los y las estudiantes logren familiarizarse con el uso de Rstudio para el análisis de datos sociales.
 
 La metodología incluye clases lectivas y trabajo práctico en R.
-
 
 ## Objetivo general
 
@@ -47,92 +45,77 @@ Al finalizar el curso, el/la estudiante podrá elaborar y analizar diseños de i
 
 ## Objetivos específicos
 
-Al concluir el curso lo/as estudiantes deberán haber alcanzado los siguientes resultados de aprendizaje:
+Al concluir el curso lo/as estudiantes deberán haber alcanzado los siguientes  resultados de aprendizaje:
 
+- Conocer las etapas de un diseño de investigación social cuantitativa y sus principales elementos.
+- Formular diseños de investigación social cuantitativa.
+- Conocer y aplicar instrumentos de medición y tipos de estudios cuantitativos.
+- Interpretar y analizar los elementos centrales de una base de datos con información social.
+- Aplicar e interpretar técnicas de estadística descriptiva según las distintas características de los datos.
+- Aplicar e interpretar técnicas de estadística correlacional e inferencia estadística para variables con distinta unidad de medida.
+- Aplicar e interpretar técnicas de regresión lineal y logística para variables numéricas y variables categóricas.
 
-- Conocer las etapas de un diseño de investigación social cuantitativa y sus principales elementos
+## Contenidos
 
+### Módulo 1: Inferencia y estadística correlacional
 
-- Formular diseños de investigación social cuantitativa
+**1.1. Inferencia estadística y asociación**
 
+- Área de una distribución, probabilidad en la curva normal, error tipo 1 y tipo 2
+- Intervalos de confianza para medias y proporciones usando distribución Z
+- Concepto de valor-p
+- Distribución t de Student y grados de libertad
 
-- Conocer y aplicar instrumentos de medición y tipos de estudios cuantitativos
-- Interpretar y analizar los elementos centrales de una base de datos con información social
+**1.2. Asociación entre dos variables cuantitativas**
 
+- Concepto de covarianza y relación/correlación lineal y no-lineal
+- Correlación de Pearson
 
-- Aplicar e interpretar técnicas de estadística descriptiva según las distintas características de los datos
+**1.3. Asociación con variables categóricas**
 
-
-- Aplicar e interpretar técnicas de estadística correlacional e inferencia estadística para variables con distinta unidad de medida
-
-
-- Aplicar e interpretar técnicas de regresión lineal y logística para variables numéricas y variables categóricas
-
-
-
-## Saberes / contenidos
-
-### Módulo 1: Estadística descriptiva
-
-
-1.1  Elementos básicos de la investigación social
-
-- Etapas de la investigación Social
-
-- Tipos de diseños
-
-- Diseño de instrumentos de medición
-
-- Bases de datos: datos de corte transversal, series de tiempo, cohortes, panel o longitudinal
-
-
-1.2 Operacionalización y análisis de datos
-
-- Operacionalización y niveles de medición
-
-- Tidy data: unir, dividir, filtrar y ordenar datos en R
-
-- Recodificación de variables: descriptivos básicos, casos perdidos, etiquetamiento de variables
-
-- Agrupación de datos y construcción de variables a partir de datos existentes
-
-- Construcción de índices y validez de escalas
-
-
-1.3 Visualización de datos en R
-
-- Tablas descriptivas y tablas de contingencia
-
-- ggplot2: gráficos de barra, de caja, dispersión e histograma
-
-
-### Módulo 2: Inferencia y estadística correlacional
-
-2.1 Inferencia estadística
-
-2.2 Pruebas de hipótesis
-
-2.3 Correlación
-
+- Tablas de contingencia y determinación de la asociación
+- Asociación poblacional mediante chi-cuadrado
 
 ### Módulo 3: Regresión lineal y regresión logística
 
-3.1 Regresión lineal de mínimos cuadrados
+**3.1 Regresión lineal de mínimos cuadrados**
 
 - Aspectos centrales y supuestos de la regresión MCO
-
 - Interpretación de coeficientes (variables cuantitativas y cualitativas) y efectos de interacción 
-
 - Representación gráfica de coeficientes de regresión lineal
 
-
-3.2 Regresión logística binaria
+**3.2 Regresión logística binaria**
 
 - Aspectos básicos de la regresión logística
-
 - Tipos de coeficientes e interpretación
-
 - Representación gráfica (cálculo de probabilidades predichas) 
+
+## Metodología
+
+El curso se organiza en sesiones semanales, con una parte lectiva seguida de una práctica. En la parte lectiva se transmiten y discuten los conceptos centrales de la investigación cuantitativa. En la parte práctica se aplicarán los conceptos transmitidos en la parte lectiva, además de resolver dudas en el avance de los trabajos de investigación.
+
+## Evaluación
+
+Modalidad: 
+
+Un reporte de investigación en parejas con dos entregas.
+
+Ponderaciones:
+
+- Primera entrega 40%
+- Segunda entrega 60%
+
+## Requisitos de aprobación
+
+- Nota mínima de aprobación: 4,0 (en escala de 1 a 7). 
+- Requisitos de presentación a exámen: Nota entre 3,5 y 4,9
+
+**Acerca del plagio:**
+Cualquier información vertida en documentos calificables, que no se indique su debida procedencia, conociéndose de autor externo, y/o cualquier similitud, se considera plagio, conducente a la rendición del examen final.
+
+## Palabras Clave 
+
+- Estadística, investigación cuantitativa, manipulación de datos, visualización de datos, interpretación de coeficientes
 
 ## Bibliografía
 
@@ -148,22 +131,10 @@ Hair, Joseph F., et al. (2004). Análisis multivariante. 5ta ed. Madrid: Prentic
 
 [Charte, Francisco (2014). Análisis exploratorio y Visualización de datos con R.](http://www.fcharte.com/libros/ExploraVisualizaConR-Fcharte.pdf)
 
+## Recursos web
 
+- Sitio web del curso: https://metod2-mcs.netlify.app/
+- Descarga de R y Rstudio: https://posit.co/download/rstudio-desktop/
+- R4DS en español: https://es.r4ds.hadley.nz/
 
-## Metodología
-
-El curso se organiza en sesiones semanales, con una parte lectiva seguida de una práctica. En la parte lectiva se transmiten y discuten los conceptos centrales de la investigación cuantitativa. En la parte práctica se aplicarán los conceptos transmitidos en la parte lectiva, además de resolver dudas en el avance de los trabajos de investigación
-
-## Evaluación
-
-La evaluación consistirá en 
-
-## Requisitos de aprobación
-
-- Nota mínima de aprobación: 4,0 (en escala de 1 a 7). 
-
-
-## Palabras Clave 
-
-- Estadística, investigación cuantitativa, manipulación de datos, visualización de datos, interpretación de coeficientes
 
