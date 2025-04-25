@@ -5,12 +5,12 @@ toc: false
 page-layout: full
 ---
 
-Los dos componentes centrales del curso son las clases teóricas y las actividades prácticas. Las **clases** se realizarán los días **Viernes  09:00 a 10:50** en sala **329**
+Los dos componentes centrales del curso son las clases teóricas y las actividades prácticas. Las **clases** se realizarán los días **Viernes  09:00 a 10:50** en sala **334**
 
 
 - [**Clases**]() (<i class="fas fa-chalkboard-teacher"></i> ): Lecturas, documentos de presentación y video (en caso que la sesión sea grabada)
 
-- [**Prácticas y evaluaciones**]() (<i class="fas fa-user-edit"></i>): Actividades prácticas a desarrollar durante la semana.
+- [**Prácticos y evaluaciones**]() (<i class="fas fa-user-edit"></i>): Actividades prácticas a desarrollar en clases y durante la semana.
 
 - [**Lecturas**]() (<i class="fas fa-book-reader"></i>): Llegar a la clase con los textos leídos.
 
@@ -18,41 +18,37 @@ Los dos componentes centrales del curso son las clases teóricas y las actividad
 
 | |<i class="fas fa-chalkboard-teacher"></i>  Clases  |  <i class="fas fa-user-edit"></i>  Prácticas y evaluaciones | <i class="fas fa-book-reader"></i> Lecturas y material adicional
 -----|----|-----------|-----------
+### UNIDAD 0: Introducción
+|||
+-----|----|-----------|-----------
 <font color="orange"> **Marzo** </font> |   |   |
-Viernes 17 | [**00. Presentación**](/content/01-content.html) e [**01. introducción**](/content/02-content.html)  | [**1. Aproximación inicial a R**](/resource/01-resource.html)  | - Leer detalladamente [programa del curso](syllabus.html)
-
-### UNIDAD 1: Estadística descriptiva
-
-|||
------|----|-----------|-----------
-Viernes 24 | [**2.Operacionalización de variables **](/content/03-content.html)   |  [**2.Operacionalización de variables**](/resource/02-resource.html) | - [Wickham & Grolemund, (2017). cap. 1 Introducción](https://es.r4ds.hadley.nz/introducci%C3%B3n.html) <br>
-Viernes 31 | [**3. Visualización de datos**](/content/03-content.html)  | -  | - [Wickham & Grolemund, (2017). cap. 2 Explorar](https://es.r4ds.hadley.nz/explorar-introduccion.html)
+Viernes 21 | [**Introducción**](/content/01-clase.html) | [**Aproximación inicial a R**](/assignment/01-practico)  | - Leer detalladamente [programa del curso](syllabus.html)
+Viernes 28 | [**Documentos Dinámicos y Markdown/Quarto**]() | [**Documentos Dinámicos y Markdown/Quarto**]() | 
 <font color="orange"> **Abril** </font> |   |   |
-Viernes 07 | Viernes santo  |   |
-Viernes 14 | 1° semana presencial  |   |
-Viernes 21 |   | Evaluación  |  |
+Viernes 04 | [**Introducción a R/Rstudio y Estadística Descriptiva**](/content/03-content.html)  |  |  
+Viernes 11 | 1° Semana de integración  |   |
+Viernes 18 | Feriado |   |
 
-### UNIDAD 2: Estadística Correlacional
-
+### UNIDAD 1: Inferencia y Estadística Correlacional
 |||
 -----|----|-----------|-----------
-Viernes 28 | [**4. Introducción a la inferencia estadística**](/content/05-content.html)  |   |
+Viernes 25 | [**Correlación 1: Inferencia**]()  |   |  
 <font color="orange"> **Mayo** </font> |   |   |
-Viernes 05 | 1° semana de pausa reflexiva  |   |
-Viernes 12 | [**5. Correlación**](/content/06-content.html)  |   | 
-Viernes 19 | [**6. Índices y análisis factorial**](/content/07-content.html)  |   | 
-Viernes 26 | 2° semana presencial  |   |
+Viernes 02 | [**Correlación 2: Asociación**](/content/05-content.html)  |   |
+Viernes 09 | [**Correlación 3: Categóricas**](/content/06-content.html)  |   | 
+Viernes 16 | 2° Semana de integración  |   | 
+Viernes 23 | Semana de pausa Escuela de Pregrado  |   |
 
-### UNIDAD 3: Regresión lineal y regresión logística
-
+### UNIDAD 2: Regresión lineal y regresión logística
 |||
 -----|----|-----------|-----------
-<font color="orange"> **Junio** </font> |   |   |
-Viernes 02 | [**7. Regresión lineal de mínimos cuadrados**]() | |  |
-Viernes 09 | 2° semana de pausa reflexiva  |   |
-Viernes 16 | [**8. Regresión logística binaria: interpretación de coeficientes y cálculo de probabilidades]()  |   | 
-Viernes 23 | [**10. Análisis factorial y regresión lineal en R**](https://metod1-mcs.netlify.app/content/11-content.html)  |   | 
-Viernes 30 | [**11. Supuestos de regresión y valores predichos**](https://metod1-mcs.netlify.app/content/12-content.html)   |   | 
+Viernes 30 | [**Regresión lineal 1**]() |   |   
+<font color="orange"> **Junio** </font> |   |   
+Viernes 06 | [**Regresión lineal 2**]() |   | 
+Viernes 13 | 3° Semana de integración  |   |
+Viernes 20 | Feriado  |   |
+Viernes 27 | [**Regresión logística**]()  |   | 
 <font color="orange"> **Julio** </font> |   |   |
-Viernes 07 | 3° semana presencial  |   |
-Viernes 14 |   | Evaluación  |  |
+Viernes 04 | [**Documentos Dinámicos y Markdown/Quarto**]()   |   | 
+Viernes 11 |   | Evaluación  |  |
+-----|----|-----------|-----------

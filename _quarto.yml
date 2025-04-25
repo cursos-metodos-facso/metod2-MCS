@@ -56,19 +56,19 @@ website:
             - content/index.qmd
         - section: "Sesiones"
           contents:
-            - text: "01: Sesión 1"
+            - text: "Sesión 1"
               file: content/01-content.qmd
-            - text: "02: Sesión 2"
+            - text: "Sesión 2"
               file: content/02-content.qmd
-            # - text: "02: Sesión 2"
+            # - text: "Sesión 3"
             #   file: content/03-content.qmd
-            # - text: "03: Sesión 3"
+            # - text: "Sesión 4. Correlación 1: Inferencia"
             #   file: content/04-content.qmd
-            # - text: "04: Sesión 4"
+            # - text: "Sesión 4"
             #   file: content/05-content.qmd
-            # - text: "05: Sesión 5"
+            # - text: "Sesión 5"
             #   file: content/06-content.qmd
-            # - text: "06: Sesión 6"
+            # - text: "Sesión 6"
             #   file: content/07-content.qmd
              # - text: "Regresión lineal I"
              #   file: content/08-content.qmd
@@ -89,8 +89,8 @@ website:
           file: assignment/01-practico.qmd
         - text: "Práctico 02: Taller quarto y github"
           file: assignment/taller-github-quarto/taller-quarto-github.qmd
-        - text: "Práctico 03: Introducción a R"
-          file: assignment/03-practico.qmd
+        # - text: "Práctico 03: Introducción a R y Estadística Descriptiva"
+        #   file: assignment/03-practico.qmd
         # - text: "Práctico 3"
         #   file: resource/03-resource.qmd
         # - text: "Práctica 4"
