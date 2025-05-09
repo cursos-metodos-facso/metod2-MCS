@@ -1,19 +1,17 @@
 ---
 title: "Práctica 2. Conocimientos básicos de programación en R"
+subtitle: "Metodología Cuantitativa Avanzada - Magíster en Ciencias Sociales"
 date: "2025-04-04"
 lang: es
 output:
   number_sections: true
 ---
  
-# Presentación
-
-## 0. Objetivo de la práctica
+## Objetivos de la práctica
 
 El objetivo de esta guía práctica es introducirnos en los procedimientos básicos del uso del lenguaje y ambiente R.
 
 En detalle, aprenderemos:
-
 
 1. Herramientas básicas de programación en R
 
