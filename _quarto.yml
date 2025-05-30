@@ -93,10 +93,10 @@ website:
           file: assignment/03-practico.qmd
         # - text: "Práctica 4"
         #   file: resource/04-resource.qmd
-        - text: "Práctica 5: Correlación"
+        - text: "Práctico 05: Correlación"
           file: assignment/05-practico.qmd
-        # - text: "Práctica 5"
-        #   file: resource/06-resource.qmd
+        - text: "Práctico 06: Correlación categóricas"
+          file: assignment/06-practico.qmd
         # - text: "Práctica 6"
         #   file: resource/07-resource.qmd
         # - text: "7: Supuestos de regresión"

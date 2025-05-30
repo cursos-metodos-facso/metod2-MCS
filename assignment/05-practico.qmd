@@ -1,7 +1,7 @@
 ---
 title: "Práctico 5. Correlación"
 subtitle: "Metodología Cuantitativa Avanzada - Magíster en Ciencias Sociales"
-date: "2025-05-08"
+date: "2025-05-09"
 lang: es
 output:
   number_sections: true
@@ -68,7 +68,6 @@ id <-seq(1,8) # identificador de cada caso
 educ <- c(2,3,4,4,5,7,8,8)
 ing  <- c(1,3,3,5,4,7,9,11)
 data <- data.frame(id,educ,ing)
-
 ```
 
 ```{r}
