@@ -34,21 +34,22 @@ Viernes 18 | Feriado |   |
 -----|----|-----------|-----------
 Viernes 25 | [**Correlación 1: Inferencia**]()  |   |  
 <font color="orange"> **Mayo** </font> |   |   |
-Viernes 02 | [**Correlación 2: Asociación**](/content/05-content.html)  |   |
-Viernes 09 | [**Correlación 3: Categóricas**](/content/06-content.html)  |   | 
+Viernes 02 | Interferiado |  |
+Viernes 09 | [**Correlación 2: Asociación**](/content/05-content.html)  |   |
 Viernes 16 | 2° Semana de integración  |   | 
 Viernes 23 | Semana de pausa Escuela de Pregrado  |   |
 
 ### UNIDAD 2: Regresión lineal y regresión logística
 |||
 -----|----|-----------|-----------
-Viernes 30 | [**Regresión lineal 1**]() |   |   
-<font color="orange"> **Junio** </font> |   |   
-Viernes 06 | [**Regresión lineal 2**]() |   | 
+Viernes 30 | [**Correlación 3: Categóricas**](/content/06-content.html)  |   |
+<font color="orange"> **Junio** </font> |   |  
+Viernes 06 | [**Regresión lineal 1**]() |   |   
 Viernes 13 | 3° Semana de integración  |   |
 Viernes 20 | Feriado  |   |
-Viernes 27 | [**Regresión logística**]()  |   | 
+Viernes 27 | [**Regresión lineal 2**]() |   | 
 <font color="orange"> **Julio** </font> |   |   |
-Viernes 04 | [**Documentos Dinámicos y Markdown/Quarto**]()   |   | 
-Viernes 11 |   | Evaluación  |  |
+Viernes 04 | [**Regresión logística**]()  |   | 
+Viernes 11 | [**Documentos Dinámicos y Markdown/Quarto**]()   |   | 
+Viernes 18 |   | Evaluación  |  |
 -----|----|-----------|-----------

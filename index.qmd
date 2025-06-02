@@ -62,6 +62,7 @@ withr::with_dir(here::here(), {
 :::
 
 ::: {.g-col-4 .contact-policy}
+
 ### Contacto
 
 {{< var instructor.contact_policy >}}

@@ -42,7 +42,7 @@ website:
       - text: "Prácticos"
         file: assignment/index.qmd
       - text: "Evaluación"
-        file: evaluaciones.qmd
+        file: trabajos.qmd
 
 
   sidebar:

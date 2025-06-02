@@ -1,24 +1,19 @@
 ---
-title: Trabajos
+title: Evaluaciones
 lang: es
 ---
 
-# Presentación y directrices generales
+## Presentación y directrices generales
 
-La presente evaluación tiene por objetivo que las y los estudiantes apliquen de forma integral los
-contenidos del curso a una temática de interés específica utilizando la base de datos del Estudio Social
-Longitudinal de Chile (ELSOC) 2022. Se espera un ejercicio de investigación que logre dar cuenta del
-aprendizaje de las herramientas de análisis estadístico que configuran las habilidades básicas para
-desarrollar procesos de investigación social, analizando fuentes de información de carácter
-cuantitativo desde una perspectiva sociológica.
+La presente evaluación tiene por objetivo que las y los estudiantes apliquen de forma integral los contenidos del curso a una temática de interés específica utilizando la base de datos del Estudio Social Longitudinal de Chile (ELSOC) 2022. Se espera un ejercicio de investigación que logre dar cuenta del aprendizaje de las herramientas de análisis estadístico que configuran las habilidades básicas para desarrollar procesos de investigación social, analizando fuentes de información de carácter cuantitativo desde una perspectiva sociológica.
 
-## Cuestiones a considerar:
+### Cuestiones a considerar:
 
   1. El trabajo debe ser realizado en parejas.
   
-  2. Se realizará una entrega final tipo reporte de investigación breve.
+  2. Se realizarán **dos entregas: una parcial y una final** tipo **reporte de investigación breve**.
 
-  3. Se recomienda que elaboren un problema de investigación que trate sobre las características sociales de algún problema actual de la sociedad chilena, y que sea factible de investigar con los datos del Estudio Social Longitudinal de Chile (ELSOC) 2022.
+  3. Se recomienda que elaboren un problema de investigación que trate sobre las características sociales de algún **problema actual de la sociedad chilena**, y que sea factible de investigar con los datos del Estudio Social Longitudinal de Chile (ELSOC) 2022.
   
 ##   Instrucciones para el Informe
   
@@ -34,60 +29,48 @@ Para la entrega del informe se espera que, habiendo seleccionado un fenómeno es
 | **Regresión logística**      | Estimar, visualizar e interpretar coeficientes de regresión logística - tabla de regresión: 0.5 - interpretación coeficientes (interpretación de efectos de interacción es opcional, pero se valorará positivamente): 1 - inferencia: 1 - ajuste: 0.5      | 3.0         |
 | **Conclusiones**             | En las conclusiones se deben sintetizar los aspectos más relevantes de los análisis estadísticos ya expuestos, articulando toda la información trabajada debe presentarse una respuesta tentativa a la pregunta de investigación. Además, debe reflexionar sobre los límites de su diseño de investigación y señalar posibles ejes de investigación que podrían ser considerados en futuras indagaciones (1 plana). | 2.0         |
 | **Trabajo en R**             | Además del informe, entregar la carpeta con el Proyecto R, que contenga un archivo .Rproject, y las carpetas input, procesamiento y output. - La carpeta input debe contener la base de datos, manual de usuario, libro de códigos. - La carpeta procesamiento debe contener un archivo de sintaxis para el procesamiento y otro para el análisis de los datos. - La carpeta output debe contener la base de datos procesada y el resto de salidas asociadas (tablas, gráficos, etc.). - Se evaluará que los códigos utilizados generen las salidas (tablas, gráficos, etc.) que se presentan en el informe. | 1.0         |
- 
 
+## Fecha y formato de entrega 
+  
+El formato de cada informe debe ser un documento en **formato PDF (.pdf)**, que debe estar alojado en la carpeta output del Proyecto R. 
 
+**Entrega parcial**: 
+
+- Comprende los componentes: 1, 2, 3, 4 y 8.
+
+- Fecha entrega: Viernes 13 de junio, 23:59 hrs. vía módulo Tareas en plataforma U-Cursos. 
+
+- Entregas atrasadas hasta las 02:00 del sábado 14 de junio tendrán 0,5 puntos de descuento  sobre la nota final. 
+
+- Entregas atrasadas hasta el sábado 14 de julio hasta las 23:59 tendrán 1,0 punto de descuento sobre la nota final. No serán evaluadas entregas posteriores a esta fecha. 
+
+**Entrega final**: 
+
+- Comprende los componentes: corrección de 1, 2, 3, 4, además de 5, 6, 7 y 8.
+
+- Fecha entrega: Viernes 18 de julio,  23:59 hrs. vía módulo Tareas en plataforma U-Cursos.
+
+- Entregas atrasadas hasta las 02:00 del sábado 19 de julio tendrán 0,5 puntos de descuento  sobre la nota final. 
+
+- Entregas atrasadas hasta el sábado 19 de julio hasta las 23:59 tendrán 1,0 punto de descuento sobre la nota final. No serán evaluadas entregas posteriores a esta fecha. 
 
 ## Aspectos formales  
   
 Para la construcción del reporte de investigación por favor considere:
 
-● El trabajo debe tener una portada que incluya: título, logo de la universidad, nombre de los
-estudiantes, profesor/a, fecha y ayudantes.
+- El trabajo debe tener una portada que incluya: título, logo de la universidad, nombre de los estudiantes, profesor/a, fecha y ayudantes.
 
-● Debe incluirse un índice. Tablas, referencias y bibliografía utilizada debe presentarse en
-formato APA.
+- Debe incluirse un índice. Tablas, referencias y bibliografía utilizada debe presentarse en formato APA.
 
-● La fuente a utilizar debe ser Letra Times New Roman 12, interlineado simple y justificado.
-Notas a pie de página en tamaño 10, en mismo formato que el texto central.
+- La fuente a utilizar debe ser Letra Times New Roman 12, interlineado simple y justificado. Notas a pie de página en tamaño 10, en mismo formato que el texto central.
 
-● El trabajo debe tener una redacción adecuada y sin errores de ortografía.
+- El trabajo debe tener una redacción adecuada y sin errores de ortografía.
 
-● Se descontarán hasta 5 décimas sobre la nota final por errores de este tipo.
+- Se descontarán hasta 5 décimas sobre la nota final por errores de este tipo.
   
-## Fecha y formato de entrega 
-  
-El formato de entrega del informe debe ser un documento en formato PDF (.pdf), que debe estar
-alojado en la carpeta output del Proyecto R. Fecha de entrega: jueves 18 de julio hasta las 12:00AM
-vía módulo Tareas en plataforma U-Cursos.
-
-● Entregas atrasadas hasta las 23:59 del jueves 18 de julio tendrán 0,5 puntos de descuento
-sobre la nota final.
-
-● Entregas atrasadas hasta el viernes 19 de julio hasta las 23:59 tendrán 1,0 punto de descuento
-sobre la nota final. No serán evaluadas entregas posteriores a esta fecha.
-
 ## Sobre plagio
 
-Todos los trabajos se procesan en software para detección de plagio: evidencia de una situación de
-plagio implica obtención de la nota mínima en la evaluación (1,0) junto con constituirse como causal
-de reprobación de la asignatura.
-
-## Recomendaciones para la entrega
-
-● Máxima de escritura: una idea por párrafo. Si comienza una idea nueva, se recomienda
-comenzar otro párrafo. Al revés, si el párrafo siguiente habla de lo mismo, sumarlo al párrafo
-anterior.
-
-● La idea del párrafo se resume en la primera parte del párrafo, lo que en inglés se llama "topic
-sentence".
-
-● Declarar domicilio disciplinar: ej, mencionar la palabra "sociología" en el primer/segundo
-párrafo, esto fuerza que la investigación se enmarque en la disciplina.
-
-En caso de tener dudas, no dude en contactar a sus ayudantes respectivos, o bien, vía foro U-Cursos al
-equipo docente de la asignatura.
-
+Todos los trabajos se procesan en software para detección de plagio: evidencia de una situación de plagio implica obtención de la nota mínima en la evaluación (1,0) junto con constituirse como causal de reprobación de la asignatura.
 
 
 
