@@ -38,11 +38,11 @@ Viernes 02 | Interferiado |  |
 Viernes 09 | [**Correlación 2: Asociación**](/content/05-content.html)  |   |
 Viernes 16 | 2° Semana de integración  |   | 
 Viernes 23 | Semana de pausa Escuela de Pregrado  |   |
+Viernes 30 | [**Correlación 3: Categóricas**](/content/06-content.html)  |   |
 
 ### UNIDAD 2: Regresión lineal y regresión logística
 |||
 -----|----|-----------|-----------
-Viernes 30 | [**Correlación 3: Categóricas**](/content/06-content.html)  |   |
 <font color="orange"> **Junio** </font> |   |  
 Viernes 06 | [**Regresión lineal 1**]() |   |   
 Viernes 13 | 3° Semana de integración  |   |
