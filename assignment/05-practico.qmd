@@ -32,13 +32,13 @@ En detalle, aprenderemos:
 7.  Qué es y cómo calcular la correlación de Spearman.
 8.  Qué es el coeficiente de determinación $R^2$.
 
-## Qué es la Correlación
+## 1. Qué es la Correlación
 
 La **correlación** es una medida estadística que describe la asociación entre dos variables. Cuando existe correlación entre dos variables, el cambio en una de ellas tiende a estar asociado con un cambio en la otra variable.
 
 En términos concretos, lo que observamos es cómo se comportan los valores de dos (o más) variables para cada observación, y si podemos suponer que ese comportamiento conjunto tiene algún patrón. 
 
-## Correlación de Pearson
+## 2. Correlación de Pearson
 
 La correlación de Pearson (o coeficiente de correlación de pearson) es una medida estadística que cuantifica la relación lineal entre dos variables continuas. Esta medida va desde -1 hasta 1, donde:
 
