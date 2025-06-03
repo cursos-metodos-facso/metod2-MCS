@@ -13,13 +13,17 @@ El objetivo de esta guía práctica es introducirnos en los procedimientos bási
 
 En detalle, aprenderemos:
 
-1. Herramientas básicas de programación en R
+1. Lenguaje orientado a objetos
 
 2. Operadores en R
 
 3. Tipos de datos
 
-## 1. Herramientas básicas de programación 
+4. Cargar librerías
+
+5. Importar datos
+
+::: callout-note
 
 Revisemos algunos conocimientos básicos para la programación en R. Pero antes, tengamos dos cosas en mente: 
 
@@ -27,34 +31,11 @@ Revisemos algunos conocimientos básicos para la programación en R. Pero antes,
 
 - Segundo, de aquí en adelante nos manejaremos con una máxima en el curso; **_existe un acuerdo implícito entre tú y R_: R hará todos los cálculos por ti, pero en cambio _tú_ debes dar las instrucciones con total precisión.**
 
-### 1.1. R como calculadora
+:::
 
-Uno de los usos más sencillos y que están a la base de R, es usarlo como una calculadora. 
+## 1. Lenguaje orientado a objetos
 
-```{r, collapse=FALSE}
-5+5
-
-25/5
-
-2*2
-
-27-2
-
-```
-
-Como podrás ver, el resultado de estas instrucciones aparecen como un `[1]` en la consola. También podemos hacer operatorias más complejas y con más cálculos. 
-
-```{r, collapse=FALSE}
-12*(7+2)+(45-32)+8
-
-22^2 - 2^2
-
-1/200 * 30
-```
-
-### 1.2. Un lenguaje orientado a objetos
-
-R es un lenguaje de programación orientado a objetos. ¿Qué significa eso?, implica que podemos crear elementos dentro del ambiente de R, a los cuales les **asignaremos información** que quedará almacenada, información que puede ir desde números, palabras, cálculos hasta grandes bases de datos. 
+R es un lenguaje de programación orientado a objetos. ¿Qué significa eso?, implica que podemos crear elementos dentro del ambiente de R, a los cuales les **asignaremos información** que quedará almacenada, información que puede ir desde números, palabras, cálculos hasta bases de datos. 
 
 Todas las instrucciones en R en las que crees objetos, es decir, instrucciones de **asignación**, tendrán la misma estructura:
 
@@ -62,11 +43,11 @@ Todas las instrucciones en R en las que crees objetos, es decir, instrucciones d
 
 El asignador `<-` se utiliza para crear objetos y forma parte de uno de los **operadores** más usados en R. 
 
-Los elementos que podemos asignar a objetos son múltiples, como números, palabras acompañadas siempre de corchetes `" "` y vectores que corresponden a un conjunto o secuencia de elementos del mismo tipo definidos por la funcion de concatenar = `c()`.
-
 Veamos algunos ejemplos de creación de objetos.
 
-#### Objetos simples: valores
+### 1.1. Objetos simples: valores
+
+Los elementos que podemos asignar a objetos son múltiples, como números, palabras acompañadas siempre de corchetes `" "`
 
 ```{r, collapse=FALSE}
 x <- 4 # asignar
@@ -76,13 +57,11 @@ x # ejecutar
 y <- "Hola mundo" # los carácteres alfabéticos siempre van acompañados de corchetes
 
 y 
-
 ```
 
 **Hagamos un pequeño reto**: ¿Cuál es el valor de a y b? Si a <- 5; b <- a; a <- 4
 
 ```{r, collapse=FALSE}
-
 a <- 5
 b <- a
 a <- 4
@@ -102,9 +81,9 @@ z <- a^2 # asignar
 a * b + z
 ```
 
-#### Vectores
+### 1.2. Vectores
 
-Concatenando. con la función `c()`, podemos hacer un vector.
+Los vectores corresponden a un conjunto o secuencia de elementos del mismo tipo definidos por la funcion de concatenar: `c()`.
 
 ```{r, collapse=FALSE}
 edad <- c(18,22,36,19,35) # concatenar (variable de razon)
@@ -120,20 +99,17 @@ gse <- c("ABC1", "C2", "E", "AbC1", "E")  # tambíen se pueden usar carácteres 
 gse
 ```
 
-#### Data.frames
+### 1.3. Data.frames
 
-Además de lo anterior, en R es fundamental la creación de **data.frames**. Un Data.frame es una estructura de datos de dos dimensiones (columnas y filas), donde las columnas pueden ser de diferente naturaleza, pero deben tener el mismo largo. A partir de ella agrupamos variables en una matriz, o sea, construimos una base de datos. Es como "pegar" las columnas (variables) una al lado de otra. 
+Además de lo anterior, en R es fundamental la creación de data.frames. Un `data.frame` es una estructura de datos de dos dimensiones (columnas y filas), donde las columnas pueden ser de diferente naturaleza, pero deben tener el mismo largo. A partir de ella agrupamos variables en una matriz, o sea, construimos una base de datos. Es como "pegar" las columnas (variables) una al lado de otra. 
 
-Creemos un data.frame con los vectores que ya creamos antes. 
+Creemos un data.frame con los vectores que ya creamos antes. Para crear el data.frame usamos la función que lleva el mismo nombre, colocando dentro del paréntesis los vectores que creamos anteriormente: `data.frame(vector1, vector2, vectorX)`. 
 
 ```{r, collapse=FALSE}
-base1 <- data.frame(genero, gse, edad) # Resulta como objeto de "datos" en
-                                       # entorno.
+base1 <- data.frame(genero, gse, edad) # Se ve como objeto de "datos" en entorno.
 
 base1
 ```
-
-Como puedes ver, para crear el data.frame usamos la función que lleva el mismo nombre, colocando dentro del paréntesis los vectores que creamos anteriormente: `data.frame(mis_vectores)`. 
 
 Ahora, creemos un `data.frame` desce cero. En este ejemplo, crearemos los vectores dentro de la función `data.frame()`.
 
@@ -143,10 +119,10 @@ base2 <- data.frame(Sexo=c("H","M","H","M","H","M"),
                     Estatura=c(1.83,1.76,1.82,1.60,1.90,1.66),
                     Peso=c(67,58,66,48,75,55))
 
-head(base2)  # Me permite visualizar las primeras filas
+base2 
 ```
 
-## 3. Operadores en R
+## 2. Operadores en R
 
 Antes de trabajar con datos, debemos conocer el concepto de **operadores**. Estos símbolos no son de uso exclusivo en R, pero no todos tienen el mismo significado que en otros softwares.
 
@@ -169,9 +145,9 @@ p = 10; y = 5; p <= y # operatoria en objetos
 
 ```
 
-## 4. Tipos de datos
+## 3. Tipos de datos
 
-### 4.1 ¿Qué son los tipos de datos?
+### 3.1 ¿Qué son los tipos de datos?
 
 En R, al igual que en la mayoría de lenguajes de programación, contamos con datos de diversos tipos, en razón de los cuales podemos realizar determinados procedimientos de tratamiento o análisis. 
 
@@ -179,124 +155,31 @@ En R, al igual que en la mayoría de lenguajes de programación, contamos con da
 
 ![](../files/img/assignment/noir.jpg)
 
-### 4.2 ¿Qué tipos de datos encontramos en R?
+### 3.2 ¿Qué tipos de datos encontramos en R?
 
-Para responder esta pregunta, exploremos algunos datos. En esta oportunidad trabajaremos con el Estudio Longitudinal Social de Chile, que es una encuesta desarrollada para analizar intertemporalmente la evolución del conflicto y cohesión en la sociedad chilena, basándose en modelos conceptuales descritos en la literatura nacional e internacional que abordan dichas materias. Se orienta a examinar los principales antecedentes, factores moderadores y mediadores, así como las principales consecuencias asociadas al desarrollo de distintas formas de conflicto y cohesión social en Chile. Su objetivo fundamental es constituirse en un insumo empírico para la comprensión de las creencias, actitudes y percepciones de los chilenos hacia las distintas dimensiones de la convivencia y el conflicto, y como éstas cambian a lo largo del tiempo.
+En R encontramos una clasificación de los tipos de datos que tiene un correlato con los niveles de medición de las variables.
 
-## Importar datos
+Para mostrar un ejemplo de los tipos de datos con casos reales cargaremos la base de datos de ELSOC, pero en los puntos 4 y 5 mostraremos en detalle como cargar librerías y bases de datos.
 
-En R es es posible importar y exportar datos que se encuentren en *cualquier formato*: ya sea .csv, .dta, .sav, .xlsx y, por supuesto, .rds y .RData. Sin embargo, para poder hacerlo, lo primero es instalar y cargar las librerías que contienen las funciones necesarias para la importación de distintos tipos de archivos.
-
-Pero, ¿dónde están mis datos? Como hemos mencionado, nuestros datos los dejaremos en la carpeta `input/data` de nuestro proyecto. La base con la que trabajaremos en este práctico pueden encontrarla en la página oficial de ELSOC en este [enlace](https://coes.cl/encuesta-panel). 
-
-Luego de descargar la base de datos, asegurate de dejar el archivo .sav en la carpeta `input/data` de tu proyecto. **Nota**: Los datos tendrán distinto nombre según su formato (.sav, .csv, .dta, etc.).
-
-Una vez descargados los datos, procedemos a importar nuestra base de datos. Para ello, en nuestro script, dejamos indicado que a partir de la lectura de los datos con `load()`, crearemos un objeto que contiene la base de datos. Fijate en el *Enviroment*, ya que si lo anterior se logra, el objeto aparecerá allí.
-
-La estructura general para importar datos es la siguiente:
-
-`read_*("ruta_hacia_archivo/nombre_archivo.*")`
-
-Sin embargo, por esta vez podemos descargar la base desde internet
-
-```{r include=FALSE, eval=TRUE}
-
-load("input/data/ELSOC_W05_v1.0_R.RData")
-
-```
-
-
-```{r eval=FALSE, include=TRUE}
-load(url(("https://github.com/cursos-metodos-facso/metod1-MCS/raw/main/resource/files/ELSOC_W05_v1.0_R.RData"))
-
-```
-
-::: callout-note
-Para **importar** los datos en R debemos tener en consideración tres cosas:
-
-1.  Cómo se llaman los datos (en nuestro caso ELSOC_W05_v1.0_SPSS)
-
-2.  El formato de nuestros datos (en nuestro caso .sav)
-
-3.  El lugar de donde están alojados nuestros datos
-:::
-
-###  Importar datos en otros formatos
-
-No siempre nuestros datos vendrán en un único formato. Para ello, R cuenta con otras formas de leer distintos tipos de formatos.
-
-- readxl para archivos .xlsx
-
-- haven para archivos .sav
-
-- readr para .csv
-
-## Explorar datos
-
-Lo más probable es que no trabajemos con _todos_ los datos que importamos, por lo que debemos seleccionar aquellas variables con las que trabajaremos para nuestro problema de investigación (cualquiera sea). 
-
-Pero, para ello primero debemos _explorar_ nuestros datos. En R, las funciones más comunes para explorar datos son: 
-
-```{r eval = F}
-View(elsoc_2021) # Ver datos
-names(elsoc_2021) # Nombre de columnas
-dim(elsoc_2021) # Dimensiones
-```
-
-Tenemos una base de datos con 2740 casos o filas y con 311 variables o columnas. 
-
-## Cargar librerías
-
-En R se trabaja a partir de paquetes (packages). ¿Qué son? De forma resumida, los paquetes son un conjunto de funciones o herramientas que pueden ser usadas en R. Los directorios de R donde se almacenan los paquetes se denominan librerías. La lógica es instalar paquetes y luego cargar (o llamar) las librerías cada vez que es necesario usarlas.
-
-Usualmente para cargar paquetes lo hacemos de la siguiente manera:
-
-```{r eval=FALSE, include=TRUE}
-install.packages("paquete")
-library(paquete)
-```
-
-Pero en esta ocasión utilizaremos un paquete llamado **pacman**, que facilita y agiliza la lectura (instalación y carga) de los paquetes a utilizar en R. De esta forma lo instalamos 1 única vez así:
-
-```{r eval=FALSE, include=TRUE}
-install.packages("pacman")
+```{r,warning=FALSE}
 library(pacman)
+load("input/data/ELSOC_W05_v1.0_R.RData")
 ```
-
-Luego instalaremos y cargaremos los paquetes de R de la siguiente manera, volviendo más eficiente el procedimiento de carga de paquetes.
-
-En este práctico utilizaremos seis paquetes
-
-1.  `pacman`: este facilita y agiliza la lectura de los paquetes a utilizar en R
-
-2.  `tidyverse`: colección de paquetes, de la cual utilizaremos dplyr y haven
-
-3.  `dplyr`: nos permite seleccionar variables de un set de datos
-
-4.  `haven`: cargar y exportar bases de datos en formatos .sav y .dta
-
-5.  `car`: para recodificar/agrupar valores de variables
-
-
-```{r echo=TRUE}
-pacman::p_load(dplyr, # para manipular datos
-               car # para recodificar datos
-               )
-```
-
-
-Como se puede ver, antes de la función p_load hay un `::`, esto se refiere a que se “fuerza” que esa función provenga de ese paquete (en este caso del paquete `pacman`). 
-
-## Tipos de datos
 
 #### I) Character
 
 Los datos `character` están directamente asociados a las variables cualitativas (o categóricas). Generalmente suelen ser variables de texto abierto, como es el caso de la variable **pais**, que detalla el país de procedencia de la persona encuestada.
 
-Para conocer cuál es el tipo de variable en R, utilizamos el comando `class()`, y para detallar dentro de la base de datos cuál es la variable de interés, utilizamos el símbolo `$` posterior a la base de datos:
+::: callout-note
+
+Para conocer cuál es el tipo de variable en R, utilizamos el comando `class()`.
+
+Para detallar dentro de la base de datos cuál es la variable de interés, utilizamos el símbolo `$` posterior a la base de datos. Siempre es la misma estructura: `base$variable`
+
+:::
 
 ```{r, collapse=FALSE}
-class(elsoc_2021$comuna) # siempre es la misma estructura = base$variable
+class(elsoc_2021$comuna) 
 ```
 
 Sin embargo, estas variables no tienden a ser las mejores a la hora de presentar nuestros resultados. Como solución, tenemos las variables de tipo Factor.
@@ -308,7 +191,7 @@ Las variables de tipo `factor` son ideales para trabajar con variables de tipo n
 ```{r, collapse=FALSE}
 class(elsoc_2021$m0_sexo)
 
-class(elsoc_2021$m38) #religion
+class(elsoc_2021$m38) # religion
 ```
 
 #### III) Numeric
@@ -317,16 +200,92 @@ Las variables de tipo `numeric` son variables de tipo númerica, las cuales pued
 
 ```{r, collapse=FALSE}
 class(elsoc_2021$m0_edad)
-
 ```
 
-## Resumen
+## 4. Cargar librerías
 
-Hoy aprendimos distintas herramientas básicas para utilizar el lenguaje y ambiente R. Como resumen:
+En R se trabaja a partir de paquetes (packages). ¿Qué son? De forma resumida, los paquetes son un conjunto de funciones o herramientas que pueden ser usadas en R. Los directorios de R donde se almacenan los paquetes se denominan librerías. La lógica es instalar paquetes y luego cargar (o llamar) las librerías cada vez que es necesario usarlas.
 
-- Utilizar R como calculadora, su lógica orientada a objetos creando objetos, vectores y data.frames
+Usualmente para cargar paquetes lo hacemos de la siguiente manera:
 
-- Operadores en R
+`install.packages("paquete")`
 
-- Tipos de datos en R como variables cualitativas (character o factor) y cuantitativas (numeric)
+`library(paquete)`
 
+Pero en esta ocasión utilizaremos un paquete llamado `pacman`, que facilita y agiliza la lectura (instalación y carga) de los paquetes a utilizar en R. De esta forma lo instalamos 1 única vez así:
+
+```{r eval=FALSE, include=TRUE}
+install.packages("pacman")
+library(pacman)
+```
+
+Luego instalaremos y cargaremos los paquetes de R de la siguiente manera, volviendo más eficiente el procedimiento de carga de paquetes.
+
+En este práctico utilizaremos cuatro paquetes
+
+1.  `pacman`: este facilita y agiliza la lectura de los paquetes a utilizar en R
+
+2.  `dplyr`: nos permite seleccionar variables de un set de datos
+
+3.  `haven`: cargar y exportar bases de datos en formatos .sav y .dta
+
+4.  `car`: para recodificar/agrupar valores de variables
+
+
+```{r echo=TRUE}
+pacman::p_load(dplyr, 
+               haven,
+               car)
+```
+
+::: callout-note
+
+Como se puede ver, antes de la función p_load hay un `::`, esto se refiere a que se “fuerza” que esa función provenga de ese paquete (en este caso del paquete `pacman`). 
+
+:::
+
+## 5. Importar datos
+
+En R es es posible importar y exportar datos que se encuentren en *cualquier formato*: ya sea .csv, .dta, .sav, .xlsx y, por supuesto, .rds y .RData. Sin embargo, para poder hacerlo, lo primero es instalar y cargar las librerías que contienen las funciones necesarias para la importación de distintos tipos de archivos.
+
+Pero, ¿dónde están mis datos? Como hemos mencionado, nuestros datos los dejaremos en la carpeta `input/data` de nuestro proyecto. La base con la que trabajaremos en este práctico pueden encontrarla en la página oficial de ELSOC en este [enlace](https://coes.cl/encuesta-panel). 
+
+Luego de descargar la base de datos, asegurate de dejar el archivo .sav en la carpeta `input/data` de tu proyecto. 
+
+Una vez descargados los datos, procedemos a importar nuestra base de datos. Para ello, en nuestro script, dejamos indicado que a partir de la lectura de los datos con `load()`, crearemos un objeto que contiene la base de datos. Fijate en el *Enviroment*, ya que si lo anterior se logra, el objeto aparecerá allí.
+
+La estructura general para importar datos es la siguiente:
+
+`read_*("ruta_hacia_archivo/nombre_archivo.*")`
+
+Sin embargo, por esta vez podemos descargar la base desde internet
+
+```{r include=FALSE, eval=TRUE}
+load("input/data/ELSOC_W05_v1.0_R.RData")
+```
+
+```{r eval=FALSE, include=TRUE}
+load(url(("https://github.com/cursos-metodos-facso/metod1-MCS/raw/main/resource/files/ELSOC_W05_v1.0_R.RData"))
+```
+
+::: callout-note
+
+Para **importar** los datos en R debemos tener en consideración tres cosas:
+
+1.  Cómo se llaman los datos (en nuestro caso ELSOC_W05_v1.0_SPSS)
+
+2.  El formato de nuestros datos (en nuestro caso .sav)
+
+3.  El lugar de donde están alojados nuestros datos
+
+:::
+
+### 5.1. Importar datos en otros formatos
+
+No siempre nuestros datos vendrán en un único formato. Para ello, R cuenta con otras formas de leer distintos tipos de formatos.
+
+- readxl para archivos .xlsx
+
+- haven para archivos .sav
+
+- readr para .csv

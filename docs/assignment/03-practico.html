@@ -154,7 +154,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../assignment/03-practico.html">Práctico 03: Introducción a R y Estadística Descriptiva</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../assignment/01-practico.html">Sesiones</a></li><li class="breadcrumb-item"><a href="../assignment/03-practico.html">Práctico 03: Introducción a R y Estadística Descriptiva</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -166,42 +166,64 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Información general prácticos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../assignment/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Descripción Prácticos</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Sesiones</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../assignment/01-practico.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Práctico 01: Aproximación inicial a R</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../assignment/taller-github-quarto/taller-github-quarto.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Práctico 02: Taller quarto y github</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../assignment/03-practico.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Práctico 03: Introducción a R y Estadística Descriptiva</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../assignment/05-practico.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Práctico 05: Correlación</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../assignment/06-practico.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Práctico 06: Correlación categóricas</span></a>
   </div>
 </li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -213,24 +235,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#objetivos-de-la-práctica" id="toc-objetivos-de-la-práctica" class="nav-link active" data-scroll-target="#objetivos-de-la-práctica">Objetivos de la práctica</a></li>
-  <li><a href="#herramientas-básicas-de-programación" id="toc-herramientas-básicas-de-programación" class="nav-link" data-scroll-target="#herramientas-básicas-de-programación">1. Herramientas básicas de programación</a>
+  <li><a href="#lenguaje-orientado-a-objetos" id="toc-lenguaje-orientado-a-objetos" class="nav-link" data-scroll-target="#lenguaje-orientado-a-objetos">1. Lenguaje orientado a objetos</a>
   <ul class="collapse">
-  <li><a href="#r-como-calculadora" id="toc-r-como-calculadora" class="nav-link" data-scroll-target="#r-como-calculadora">1.1. R como calculadora</a></li>
-  <li><a href="#un-lenguaje-orientado-a-objetos" id="toc-un-lenguaje-orientado-a-objetos" class="nav-link" data-scroll-target="#un-lenguaje-orientado-a-objetos">1.2. Un lenguaje orientado a objetos</a></li>
+  <li><a href="#objetos-simples-valores" id="toc-objetos-simples-valores" class="nav-link" data-scroll-target="#objetos-simples-valores">1.1. Objetos simples: valores</a></li>
+  <li><a href="#vectores" id="toc-vectores" class="nav-link" data-scroll-target="#vectores">1.2. Vectores</a></li>
+  <li><a href="#data.frames" id="toc-data.frames" class="nav-link" data-scroll-target="#data.frames">1.3. Data.frames</a></li>
   </ul></li>
-  <li><a href="#operadores-en-r" id="toc-operadores-en-r" class="nav-link" data-scroll-target="#operadores-en-r">3. Operadores en R</a></li>
-  <li><a href="#tipos-de-datos" id="toc-tipos-de-datos" class="nav-link" data-scroll-target="#tipos-de-datos">4. Tipos de datos</a>
+  <li><a href="#operadores-en-r" id="toc-operadores-en-r" class="nav-link" data-scroll-target="#operadores-en-r">2. Operadores en R</a></li>
+  <li><a href="#tipos-de-datos" id="toc-tipos-de-datos" class="nav-link" data-scroll-target="#tipos-de-datos">3. Tipos de datos</a>
   <ul class="collapse">
-  <li><a href="#qué-son-los-tipos-de-datos" id="toc-qué-son-los-tipos-de-datos" class="nav-link" data-scroll-target="#qué-son-los-tipos-de-datos">4.1 ¿Qué son los tipos de datos?</a></li>
-  <li><a href="#qué-tipos-de-datos-encontramos-en-r" id="toc-qué-tipos-de-datos-encontramos-en-r" class="nav-link" data-scroll-target="#qué-tipos-de-datos-encontramos-en-r">4.2 ¿Qué tipos de datos encontramos en R?</a></li>
+  <li><a href="#qué-son-los-tipos-de-datos" id="toc-qué-son-los-tipos-de-datos" class="nav-link" data-scroll-target="#qué-son-los-tipos-de-datos">3.1 ¿Qué son los tipos de datos?</a></li>
+  <li><a href="#qué-tipos-de-datos-encontramos-en-r" id="toc-qué-tipos-de-datos-encontramos-en-r" class="nav-link" data-scroll-target="#qué-tipos-de-datos-encontramos-en-r">3.2 ¿Qué tipos de datos encontramos en R?</a></li>
   </ul></li>
-  <li><a href="#importar-datos" id="toc-importar-datos" class="nav-link" data-scroll-target="#importar-datos">Importar datos</a>
+  <li><a href="#cargar-librerías" id="toc-cargar-librerías" class="nav-link" data-scroll-target="#cargar-librerías">4. Cargar librerías</a></li>
+  <li><a href="#importar-datos" id="toc-importar-datos" class="nav-link" data-scroll-target="#importar-datos">5. Importar datos</a>
   <ul class="collapse">
-  <li><a href="#importar-datos-en-otros-formatos" id="toc-importar-datos-en-otros-formatos" class="nav-link" data-scroll-target="#importar-datos-en-otros-formatos">Importar datos en otros formatos</a></li>
+  <li><a href="#importar-datos-en-otros-formatos" id="toc-importar-datos-en-otros-formatos" class="nav-link" data-scroll-target="#importar-datos-en-otros-formatos">5.1. Importar datos en otros formatos</a></li>
   </ul></li>
-  <li><a href="#explorar-datos" id="toc-explorar-datos" class="nav-link" data-scroll-target="#explorar-datos">Explorar datos</a></li>
-  <li><a href="#cargar-librerías" id="toc-cargar-librerías" class="nav-link" data-scroll-target="#cargar-librerías">Cargar librerías</a></li>
-  <li><a href="#tipos-de-datos-1" id="toc-tipos-de-datos-1" class="nav-link" data-scroll-target="#tipos-de-datos-1">Tipos de datos</a></li>
   <li><a href="#resumen" id="toc-resumen" class="nav-link" data-scroll-target="#resumen">Resumen</a></li>
   </ul>
 </nav>
@@ -267,141 +288,115 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>El objetivo de esta guía práctica es introducirnos en los procedimientos básicos del uso del lenguaje y ambiente R.</p>
 <p>En detalle, aprenderemos:</p>
 <ol type="1">
-<li><p>Herramientas básicas de programación en R</p></li>
+<li><p>Lenguaje orientado a objetos</p></li>
 <li><p>Operadores en R</p></li>
 <li><p>Tipos de datos</p></li>
+<li><p>Cargar librerías</p></li>
+<li><p>Importar datos</p></li>
 </ol>
-</section>
-<section id="herramientas-básicas-de-programación" class="level2">
-<h2 class="anchored" data-anchor-id="herramientas-básicas-de-programación">1. Herramientas básicas de programación</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Revisemos algunos conocimientos básicos para la programación en R. Pero antes, tengamos dos cosas en mente:</p>
 <ul>
 <li><p>Primero, ¿qué es codificar?, en programación <strong>codificar corresponde a un proceso de entrega de instrucciones</strong> en un lenguaje específico, siguiendo un orden lógico y coherente.</p></li>
 <li><p>Segundo, de aquí en adelante nos manejaremos con una máxima en el curso; <strong><em>existe un acuerdo implícito entre tú y R</em>: R hará todos los cálculos por ti, pero en cambio <em>tú</em> debes dar las instrucciones con total precisión.</strong></p></li>
 </ul>
-<section id="r-como-calculadora" class="level3">
-<h3 class="anchored" data-anchor-id="r-como-calculadora">1.1. R como calculadora</h3>
-<p>Uno de los usos más sencillos y que están a la base de R, es usarlo como una calculadora.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span><span class="sc">+</span><span class="dv">5</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 10</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dv">25</span><span class="sc">/</span><span class="dv">5</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 5</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="dv">2</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dv">27-2</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 25</code></pre>
-</div>
-</div>
-<p>Como podrás ver, el resultado de estas instrucciones aparecen como un <code>[1]</code> en la consola. También podemos hacer operatorias más complejas y con más cálculos.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dv">12</span><span class="sc">*</span>(<span class="dv">7</span><span class="sc">+</span><span class="dv">2</span>)<span class="sc">+</span>(<span class="dv">45-32</span>)<span class="sc">+</span><span class="dv">8</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 129</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dv">22</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="dv">2</span><span class="sc">^</span><span class="dv">2</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 480</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">/</span><span class="dv">200</span> <span class="sc">*</span> <span class="dv">30</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.15</code></pre>
 </div>
 </div>
 </section>
-<section id="un-lenguaje-orientado-a-objetos" class="level3">
-<h3 class="anchored" data-anchor-id="un-lenguaje-orientado-a-objetos">1.2. Un lenguaje orientado a objetos</h3>
-<p>R es un lenguaje de programación orientado a objetos. ¿Qué significa eso?, implica que podemos crear elementos dentro del ambiente de R, a los cuales les <strong>asignaremos información</strong> que quedará almacenada, información que puede ir desde números, palabras, cálculos hasta grandes bases de datos.</p>
+<section id="lenguaje-orientado-a-objetos" class="level2">
+<h2 class="anchored" data-anchor-id="lenguaje-orientado-a-objetos">1. Lenguaje orientado a objetos</h2>
+<p>R es un lenguaje de programación orientado a objetos. ¿Qué significa eso?, implica que podemos crear elementos dentro del ambiente de R, a los cuales les <strong>asignaremos información</strong> que quedará almacenada, información que puede ir desde números, palabras, cálculos hasta bases de datos.</p>
 <p>Todas las instrucciones en R en las que crees objetos, es decir, instrucciones de <strong>asignación</strong>, tendrán la misma estructura:</p>
 <p><code>nombre_objeto &lt;- valor</code></p>
 <p>El asignador <code>&lt;-</code> se utiliza para crear objetos y forma parte de uno de los <strong>operadores</strong> más usados en R.</p>
-<p>Los elementos que podemos asignar a objetos son múltiples, como números, palabras acompañadas siempre de corchetes <code>" "</code> y vectores que corresponden a un conjunto o secuencia de elementos del mismo tipo definidos por la funcion de concatenar = <code>c()</code>.</p>
 <p>Veamos algunos ejemplos de creación de objetos.</p>
-<section id="objetos-simples-valores" class="level4">
-<h4 class="anchored" data-anchor-id="objetos-simples-valores">Objetos simples: valores</h4>
+<section id="objetos-simples-valores" class="level3">
+<h3 class="anchored" data-anchor-id="objetos-simples-valores">1.1. Objetos simples: valores</h3>
+<p>Los elementos que podemos asignar a objetos son múltiples, como números, palabras acompañadas siempre de corchetes <code>" "</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">4</span> <span class="co"># asignar</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>x <span class="co"># ejecutar</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">4</span> <span class="co"># asignar</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>x <span class="co"># ejecutar</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="st">"Hola mundo"</span> <span class="co"># los carácteres alfabéticos siempre van acompañados de corchetes</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>y </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="st">"Hola mundo"</span> <span class="co"># los carácteres alfabéticos siempre van acompañados de corchetes</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>y </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Hola mundo"</code></pre>
 </div>
 </div>
 <p><strong>Hagamos un pequeño reto</strong>: ¿Cuál es el valor de a y b? Si a &lt;- 5; b &lt;- a; a &lt;- 4</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> a</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">4</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(a) <span class="co"># imprimir en la consola</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> a</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(a) <span class="co"># imprimir en la consola</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(b)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(b)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">+</span> <span class="dv">10</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">+</span> <span class="dv">10</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 14</code></pre>
 </div>
 </div>
 <p>Ahora, sea z = a^2 ¿qué resultado obtenemos de a * b + z?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> a<span class="sc">^</span><span class="dv">2</span> <span class="co"># asignar</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>a <span class="sc">*</span> b <span class="sc">+</span> z</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> a<span class="sc">^</span><span class="dv">2</span> <span class="co"># asignar</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>a <span class="sc">*</span> b <span class="sc">+</span> z</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 36</code></pre>
 </div>
 </div>
 </section>
-<section id="vectores" class="level4">
-<h4 class="anchored" data-anchor-id="vectores">Vectores</h4>
-<p>Concatenando. con la función <code>c()</code>, podemos hacer un vector.</p>
+<section id="vectores" class="level3">
+<h3 class="anchored" data-anchor-id="vectores">1.2. Vectores</h3>
+<p>Los vectores corresponden a un conjunto o secuencia de elementos del mismo tipo definidos por la funcion de concatenar: <code>c()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>edad <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">18</span>,<span class="dv">22</span>,<span class="dv">36</span>,<span class="dv">19</span>,<span class="dv">35</span>) <span class="co"># concatenar (variable de razon)</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>edad</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>edad <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">18</span>,<span class="dv">22</span>,<span class="dv">36</span>,<span class="dv">19</span>,<span class="dv">35</span>) <span class="co"># concatenar (variable de razon)</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>edad</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 18 22 36 19 35</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>genero <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>) <span class="co"># masculino = 1; femenino = 2; transgenero = 3 (variable nominal)</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>genero </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>genero <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>) <span class="co"># masculino = 1; femenino = 2; transgenero = 3 (variable nominal)</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>genero </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3 1 1 2 3</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>gse <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ABC1"</span>, <span class="st">"C2"</span>, <span class="st">"E"</span>, <span class="st">"AbC1"</span>, <span class="st">"E"</span>)  <span class="co"># tambíen se pueden usar carácteres (variable ordinal)</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>gse</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>gse <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ABC1"</span>, <span class="st">"C2"</span>, <span class="st">"E"</span>, <span class="st">"AbC1"</span>, <span class="st">"E"</span>)  <span class="co"># tambíen se pueden usar carácteres (variable ordinal)</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>gse</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "ABC1" "C2"   "E"    "AbC1" "E"   </code></pre>
 </div>
 </div>
 </section>
-<section id="data.frames" class="level4">
-<h4 class="anchored" data-anchor-id="data.frames">Data.frames</h4>
-<p>Además de lo anterior, en R es fundamental la creación de <strong>data.frames</strong>. Un Data.frame es una estructura de datos de dos dimensiones (columnas y filas), donde las columnas pueden ser de diferente naturaleza, pero deben tener el mismo largo. A partir de ella agrupamos variables en una matriz, o sea, construimos una base de datos. Es como “pegar” las columnas (variables) una al lado de otra.</p>
-<p>Creemos un data.frame con los vectores que ya creamos antes.</p>
+<section id="data.frames" class="level3">
+<h3 class="anchored" data-anchor-id="data.frames">1.3. Data.frames</h3>
+<p>Además de lo anterior, en R es fundamental la creación de data.frames. Un <code>data.frame</code> es una estructura de datos de dos dimensiones (columnas y filas), donde las columnas pueden ser de diferente naturaleza, pero deben tener el mismo largo. A partir de ella agrupamos variables en una matriz, o sea, construimos una base de datos. Es como “pegar” las columnas (variables) una al lado de otra.</p>
+<p>Creemos un data.frame con los vectores que ya creamos antes. Para crear el data.frame usamos la función que lleva el mismo nombre, colocando dentro del paréntesis los vectores que creamos anteriormente: <code>data.frame(vector1, vector2, vectorX)</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>base1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(genero, gse, edad) <span class="co"># Resulta como objeto de "datos" en</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>                                       <span class="co"># entorno.</span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>base1</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>base1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(genero, gse, edad) <span class="co"># Se ve como objeto de "datos" en entorno.</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>base1</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  genero  gse edad
 1      3 ABC1   18
@@ -411,15 +406,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 5      3    E   35</code></pre>
 </div>
 </div>
-<p>Como puedes ver, para crear el data.frame usamos la función que lleva el mismo nombre, colocando dentro del paréntesis los vectores que creamos anteriormente: <code>data.frame(mis_vectores)</code>.</p>
 <p>Ahora, creemos un <code>data.frame</code> desce cero. En este ejemplo, crearemos los vectores dentro de la función <code>data.frame()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo de como crear un data.frame desde 0: </span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>base2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Sexo=</span><span class="fu">c</span>(<span class="st">"H"</span>,<span class="st">"M"</span>,<span class="st">"H"</span>,<span class="st">"M"</span>,<span class="st">"H"</span>,<span class="st">"M"</span>),</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">Estatura=</span><span class="fu">c</span>(<span class="fl">1.83</span>,<span class="fl">1.76</span>,<span class="fl">1.82</span>,<span class="fl">1.60</span>,<span class="fl">1.90</span>,<span class="fl">1.66</span>),</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">Peso=</span><span class="fu">c</span>(<span class="dv">67</span>,<span class="dv">58</span>,<span class="dv">66</span>,<span class="dv">48</span>,<span class="dv">75</span>,<span class="dv">55</span>))</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(base2)  <span class="co"># Me permite visualizar las primeras filas</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo de como crear un data.frame desde 0: </span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>base2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Sexo=</span><span class="fu">c</span>(<span class="st">"H"</span>,<span class="st">"M"</span>,<span class="st">"H"</span>,<span class="st">"M"</span>,<span class="st">"H"</span>,<span class="st">"M"</span>),</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">Estatura=</span><span class="fu">c</span>(<span class="fl">1.83</span>,<span class="fl">1.76</span>,<span class="fl">1.82</span>,<span class="fl">1.60</span>,<span class="fl">1.90</span>,<span class="fl">1.66</span>),</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">Peso=</span><span class="fu">c</span>(<span class="dv">67</span>,<span class="dv">58</span>,<span class="dv">66</span>,<span class="dv">48</span>,<span class="dv">75</span>,<span class="dv">55</span>))</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(base2)  <span class="co"># Me permite visualizar las primeras filas</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Sexo Estatura Peso
 1    H     1.83   67
@@ -432,60 +426,151 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-</section>
 <section id="operadores-en-r" class="level2">
-<h2 class="anchored" data-anchor-id="operadores-en-r">3. Operadores en R</h2>
+<h2 class="anchored" data-anchor-id="operadores-en-r">2. Operadores en R</h2>
 <p>Antes de trabajar con datos, debemos conocer el concepto de <strong>operadores</strong>. Estos símbolos no son de uso exclusivo en R, pero no todos tienen el mismo significado que en otros softwares.</p>
 <p>Los operadores son símbolos que permiten, en los distintos procedimientos de procesamiento, simplificar procesos. Por ejemplo, serán útilizados cuando filtremos nuestros datos para personas de ciertas categorías, cuando calculemos variables nuevas (de manera aritmética o condicional) o, simplemente, cuando queramos hacer procesos “concatenados”.</p>
 <p><img src="../files/img/assignment/operadores.png" class="img-fluid"></p>
 <p>Veamos algunos ejemplos:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="dv">20</span> <span class="sc">==</span> <span class="dv">5</span> <span class="co"># igualdad</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="dv">20</span> <span class="sc">==</span> <span class="dv">5</span> <span class="co"># igualdad</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="dv">30</span> <span class="sc">&gt;=</span> <span class="dv">14</span> <span class="co"># mayor o igual que</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="dv">30</span> <span class="sc">&gt;=</span> <span class="dv">14</span> <span class="co"># mayor o igual que</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="dv">22</span> <span class="sc">&lt;=</span> <span class="dv">2</span> <span class="co"># menor o igual que</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="dv">22</span> <span class="sc">&lt;=</span> <span class="dv">2</span> <span class="co"># menor o igual que</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="dv">25</span> <span class="sc">!=</span> <span class="dv">10</span> <span class="co"># no es igual a</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="dv">25</span> <span class="sc">!=</span> <span class="dv">10</span> <span class="co"># no es igual a</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> <span class="dv">10</span>; y <span class="ot">=</span> <span class="dv">5</span>; p <span class="sc">&lt;=</span> y <span class="co"># operatoria en objetos</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> <span class="dv">10</span>; y <span class="ot">=</span> <span class="dv">5</span>; p <span class="sc">&lt;=</span> y <span class="co"># operatoria en objetos</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
 </div>
 </section>
 <section id="tipos-de-datos" class="level2">
-<h2 class="anchored" data-anchor-id="tipos-de-datos">4. Tipos de datos</h2>
+<h2 class="anchored" data-anchor-id="tipos-de-datos">3. Tipos de datos</h2>
 <section id="qué-son-los-tipos-de-datos" class="level3">
-<h3 class="anchored" data-anchor-id="qué-son-los-tipos-de-datos">4.1 ¿Qué son los tipos de datos?</h3>
+<h3 class="anchored" data-anchor-id="qué-son-los-tipos-de-datos">3.1 ¿Qué son los tipos de datos?</h3>
 <p>En R, al igual que en la mayoría de lenguajes de programación, contamos con datos de diversos tipos, en razón de los cuales podemos realizar determinados procedimientos de tratamiento o análisis.</p>
 <p><strong>Los tipos de datos están íntimamente relacionados con el nivel de medición de las variables</strong> a las que corresponden. La teoría de los niveles de medición contempla cuatro tipos:</p>
 <p><img src="../files/img/assignment/noir.jpg" class="img-fluid"></p>
 </section>
 <section id="qué-tipos-de-datos-encontramos-en-r" class="level3">
-<h3 class="anchored" data-anchor-id="qué-tipos-de-datos-encontramos-en-r">4.2 ¿Qué tipos de datos encontramos en R?</h3>
-<p>Para responder esta pregunta, exploremos algunos datos. En esta oportunidad trabajaremos con el Estudio Longitudinal Social de Chile, que es una encuesta desarrollada para analizar intertemporalmente la evolución del conflicto y cohesión en la sociedad chilena, basándose en modelos conceptuales descritos en la literatura nacional e internacional que abordan dichas materias. Se orienta a examinar los principales antecedentes, factores moderadores y mediadores, así como las principales consecuencias asociadas al desarrollo de distintas formas de conflicto y cohesión social en Chile. Su objetivo fundamental es constituirse en un insumo empírico para la comprensión de las creencias, actitudes y percepciones de los chilenos hacia las distintas dimensiones de la convivencia y el conflicto, y como éstas cambian a lo largo del tiempo.</p>
+<h3 class="anchored" data-anchor-id="qué-tipos-de-datos-encontramos-en-r">3.2 ¿Qué tipos de datos encontramos en R?</h3>
+<p>En R encontramos una clasificación de los tipos de datos que tiene un correlato con los niveles de medición de las variables.</p>
+<p>Para mostrar un ejemplo de los tipos de datos con casos reales cargaremos la base de datos de ELSOC, pero en los puntos 4 y 5 mostraremos en detalle como cargar librerías y bases de datos.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pacman)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"input/data/ELSOC_W05_v1.0_R.RData"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="i-character" class="level4">
+<h4 class="anchored" data-anchor-id="i-character">I) Character</h4>
+<p>Los datos <code>character</code> están directamente asociados a las variables cualitativas (o categóricas). Generalmente suelen ser variables de texto abierto, como es el caso de la variable <strong>pais</strong>, que detalla el país de procedencia de la persona encuestada.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Para conocer cuál es el tipo de variable en R, utilizamos el comando <code>class()</code>.</p>
+<p>Para detallar dentro de la base de datos cuál es la variable de interés, utilizamos el símbolo <code>$</code> posterior a la base de datos. Siempre es la misma estructura: <code>base$variable</code></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(elsoc_2021<span class="sc">$</span>comuna) </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "character"</code></pre>
+</div>
+</div>
+<p>Sin embargo, estas variables no tienden a ser las mejores a la hora de presentar nuestros resultados. Como solución, tenemos las variables de tipo Factor.</p>
 </section>
+<section id="ii-factor" class="level4">
+<h4 class="anchored" data-anchor-id="ii-factor">II) Factor</h4>
+<p>Las variables de tipo <code>factor</code> son ideales para trabajar con variables de tipo nominal u ordinal. Esto es así debido a que permiten establecer un orden entre las categorías de la variable, lo cual es fundamental si trabajamos, por ejemplo, con variables nominales como el sexo de los encuestados, o si trabajamos con variables ordinales como su ideología política.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(elsoc_2021<span class="sc">$</span>m0_sexo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "factor"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(elsoc_2021<span class="sc">$</span>m38) <span class="co"># religion</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "factor"</code></pre>
+</div>
+</div>
+</section>
+<section id="iii-numeric" class="level4">
+<h4 class="anchored" data-anchor-id="iii-numeric">III) Numeric</h4>
+<p>Las variables de tipo <code>numeric</code> son variables de tipo númerica, las cuales pueden ser intervalares o de razón. Así, por ejemplo, cuando trabajamos con variables de razón trabajamos con variables como el número de hijos o la edad (aunque sería extraño encuestar a alguien con 0 años).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(elsoc_2021<span class="sc">$</span>m0_edad)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "numeric"</code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="cargar-librerías" class="level2">
+<h2 class="anchored" data-anchor-id="cargar-librerías">4. Cargar librerías</h2>
+<p>En R se trabaja a partir de paquetes (packages). ¿Qué son? De forma resumida, los paquetes son un conjunto de funciones o herramientas que pueden ser usadas en R. Los directorios de R donde se almacenan los paquetes se denominan librerías. La lógica es instalar paquetes y luego cargar (o llamar) las librerías cada vez que es necesario usarlas.</p>
+<p>Usualmente para cargar paquetes lo hacemos de la siguiente manera:</p>
+<p><code>install.packages("paquete")</code></p>
+<p><code>library(paquete)</code></p>
+<p>Pero en esta ocasión utilizaremos un paquete llamado <code>pacman</code>, que facilita y agiliza la lectura (instalación y carga) de los paquetes a utilizar en R. De esta forma lo instalamos 1 única vez así:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"pacman"</span>)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pacman)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Luego instalaremos y cargaremos los paquetes de R de la siguiente manera, volviendo más eficiente el procedimiento de carga de paquetes.</p>
+<p>En este práctico utilizaremos cuatro paquetes</p>
+<ol type="1">
+<li><p><code>pacman</code>: este facilita y agiliza la lectura de los paquetes a utilizar en R</p></li>
+<li><p><code>dplyr</code>: nos permite seleccionar variables de un set de datos</p></li>
+<li><p><code>haven</code>: cargar y exportar bases de datos en formatos .sav y .dta</p></li>
+<li><p><code>car</code>: para recodificar/agrupar valores de variables</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(dplyr, </span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>               haven,</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>               car)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Como se puede ver, antes de la función p_load hay un <code>::</code>, esto se refiere a que se “fuerza” que esa función provenga de ese paquete (en este caso del paquete <code>pacman</code>).</p>
+</div>
+</div>
 </section>
 <section id="importar-datos" class="level2">
-<h2 class="anchored" data-anchor-id="importar-datos">Importar datos</h2>
+<h2 class="anchored" data-anchor-id="importar-datos">5. Importar datos</h2>
 <p>En R es es posible importar y exportar datos que se encuentren en <em>cualquier formato</em>: ya sea .csv, .dta, .sav, .xlsx y, por supuesto, .rds y .RData. Sin embargo, para poder hacerlo, lo primero es instalar y cargar las librerías que contienen las funciones necesarias para la importación de distintos tipos de archivos.</p>
 <p>Pero, ¿dónde están mis datos? Como hemos mencionado, nuestros datos los dejaremos en la carpeta <code>input/data</code> de nuestro proyecto. La base con la que trabajaremos en este práctico pueden encontrarla en la página oficial de ELSOC en este <a href="https://coes.cl/encuesta-panel">enlace</a>.</p>
-<p>Luego de descargar la base de datos, asegurate de dejar el archivo .sav en la carpeta <code>input/data</code> de tu proyecto. <strong>Nota</strong>: Los datos tendrán distinto nombre según su formato (.sav, .csv, .dta, etc.).</p>
+<p>Luego de descargar la base de datos, asegurate de dejar el archivo .sav en la carpeta <code>input/data</code> de tu proyecto.</p>
 <p>Una vez descargados los datos, procedemos a importar nuestra base de datos. Para ello, en nuestro script, dejamos indicado que a partir de la lectura de los datos con <code>load()</code>, crearemos un objeto que contiene la base de datos. Fijate en el <em>Enviroment</em>, ya que si lo anterior se logra, el objeto aparecerá allí.</p>
 <p>La estructura general para importar datos es la siguiente:</p>
 <p><code>read_*("ruta_hacia_archivo/nombre_archivo.*")</code></p>
 <p>Sin embargo, por esta vez podemos descargar la base desde internet</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>((<span class="st">"https://github.com/cursos-metodos-facso/metod1-MCS/raw/main/resource/files/ELSOC_W05_v1.0_R.RData"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>((<span class="st">"https://github.com/cursos-metodos-facso/metod1-MCS/raw/main/resource/files/ELSOC_W05_v1.0_R.RData"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -506,7 +591,7 @@ Nota
 </div>
 </div>
 <section id="importar-datos-en-otros-formatos" class="level3">
-<h3 class="anchored" data-anchor-id="importar-datos-en-otros-formatos">Importar datos en otros formatos</h3>
+<h3 class="anchored" data-anchor-id="importar-datos-en-otros-formatos">5.1. Importar datos en otros formatos</h3>
 <p>No siempre nuestros datos vendrán en un único formato. Para ello, R cuenta con otras formas de leer distintos tipos de formatos.</p>
 <ul>
 <li><p>readxl para archivos .xlsx</p></li>
@@ -515,92 +600,15 @@ Nota
 </ul>
 </section>
 </section>
-<section id="explorar-datos" class="level2">
-<h2 class="anchored" data-anchor-id="explorar-datos">Explorar datos</h2>
-<p>Lo más probable es que no trabajemos con <em>todos</em> los datos que importamos, por lo que debemos seleccionar aquellas variables con las que trabajaremos para nuestro problema de investigación (cualquiera sea).</p>
-<p>Pero, para ello primero debemos <em>explorar</em> nuestros datos. En R, las funciones más comunes para explorar datos son:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(elsoc_2021) <span class="co"># Ver datos</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(elsoc_2021) <span class="co"># Nombre de columnas</span></span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(elsoc_2021) <span class="co"># Dimensiones</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Tenemos una base de datos con 2740 casos o filas y con 311 variables o columnas.</p>
-</section>
-<section id="cargar-librerías" class="level2">
-<h2 class="anchored" data-anchor-id="cargar-librerías">Cargar librerías</h2>
-<p>En R se trabaja a partir de paquetes (packages). ¿Qué son? De forma resumida, los paquetes son un conjunto de funciones o herramientas que pueden ser usadas en R. Los directorios de R donde se almacenan los paquetes se denominan librerías. La lógica es instalar paquetes y luego cargar (o llamar) las librerías cada vez que es necesario usarlas.</p>
-<p>Usualmente para cargar paquetes lo hacemos de la siguiente manera:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"paquete"</span>)</span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(paquete)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Pero en esta ocasión utilizaremos un paquete llamado <strong>pacman</strong>, que facilita y agiliza la lectura (instalación y carga) de los paquetes a utilizar en R. De esta forma lo instalamos 1 única vez así:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"pacman"</span>)</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pacman)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Luego instalaremos y cargaremos los paquetes de R de la siguiente manera, volviendo más eficiente el procedimiento de carga de paquetes.</p>
-<p>En este práctico utilizaremos seis paquetes</p>
-<ol type="1">
-<li><p><code>pacman</code>: este facilita y agiliza la lectura de los paquetes a utilizar en R</p></li>
-<li><p><code>tidyverse</code>: colección de paquetes, de la cual utilizaremos dplyr y haven</p></li>
-<li><p><code>dplyr</code>: nos permite seleccionar variables de un set de datos</p></li>
-<li><p><code>haven</code>: cargar y exportar bases de datos en formatos .sav y .dta</p></li>
-<li><p><code>car</code>: para recodificar/agrupar valores de variables</p></li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(dplyr, <span class="co"># para manipular datos</span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>               car <span class="co"># para recodificar datos</span></span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>               )</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Como se puede ver, antes de la función p_load hay un <code>::</code>, esto se refiere a que se “fuerza” que esa función provenga de ese paquete (en este caso del paquete <code>pacman</code>).</p>
-</section>
-<section id="tipos-de-datos-1" class="level2">
-<h2 class="anchored" data-anchor-id="tipos-de-datos-1">Tipos de datos</h2>
-<section id="i-character" class="level4">
-<h4 class="anchored" data-anchor-id="i-character">I) Character</h4>
-<p>Los datos <code>character</code> están directamente asociados a las variables cualitativas (o categóricas). Generalmente suelen ser variables de texto abierto, como es el caso de la variable <strong>pais</strong>, que detalla el país de procedencia de la persona encuestada.</p>
-<p>Para conocer cuál es el tipo de variable en R, utilizamos el comando <code>class()</code>, y para detallar dentro de la base de datos cuál es la variable de interés, utilizamos el símbolo <code>$</code> posterior a la base de datos:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(elsoc_2021<span class="sc">$</span>comuna) <span class="co"># siempre es la misma estructura = base$variable</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "character"</code></pre>
-</div>
-</div>
-<p>Sin embargo, estas variables no tienden a ser las mejores a la hora de presentar nuestros resultados. Como solución, tenemos las variables de tipo Factor.</p>
-</section>
-<section id="ii-factor" class="level4">
-<h4 class="anchored" data-anchor-id="ii-factor">II) Factor</h4>
-<p>Las variables de tipo <code>factor</code> son ideales para trabajar con variables de tipo nominal u ordinal. Esto es así debido a que permiten establecer un orden entre las categorías de la variable, lo cual es fundamental si trabajamos, por ejemplo, con variables nominales como el sexo de los encuestados, o si trabajamos con variables ordinales como su ideología política.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(elsoc_2021<span class="sc">$</span>m0_sexo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "factor"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(elsoc_2021<span class="sc">$</span>m38) <span class="co">#religion</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "factor"</code></pre>
-</div>
-</div>
-</section>
-<section id="iii-numeric" class="level4">
-<h4 class="anchored" data-anchor-id="iii-numeric">III) Numeric</h4>
-<p>Las variables de tipo <code>numeric</code> son variables de tipo númerica, las cuales pueden ser intervales o de razón. Así, por ejemplo, cuando trabajamos con variables de razón trabajamos con variables como el número de hijos o la edad (aunque sería extraño encuestar a alguien con 0 años).</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(elsoc_2021<span class="sc">$</span>m0_edad)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "numeric"</code></pre>
-</div>
-</div>
-</section>
-</section>
 <section id="resumen" class="level2">
 <h2 class="anchored" data-anchor-id="resumen">Resumen</h2>
 <p>Hoy aprendimos distintas herramientas básicas para utilizar el lenguaje y ambiente R. Como resumen:</p>
 <ul>
-<li><p>Utilizar R como calculadora, su lógica orientada a objetos creando objetos, vectores y data.frames</p></li>
+<li><p>Su lógica orientada a objetos, creando objetos, vectores y data.frames</p></li>
 <li><p>Operadores en R</p></li>
-<li><p>Tipos de datos en R como variables cualitativas (character o factor) y cuantitativas (numeric)</p></li>
+<li><p>Tipos de datos en R como variables cualitativas (<code>character</code> o <code>factor</code>) y cuantitativas (<code>numeric</code>)</p></li>
+<li><p>Cargar librerías</p></li>
+<li><p>Importar datos</p></li>
 </ul>
 
 

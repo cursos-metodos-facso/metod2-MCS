@@ -83,20 +83,24 @@ website:
       search: false
       background: dark
       contents:
-        - text: "Descripción Prácticos"
-          file: assignment/index.qmd
-        - text: "Práctico 01: Aproximación inicial a R"
-          file: assignment/01-practico.qmd
-        - text: "Práctico 02: Taller quarto y github"
-          file: assignment/taller-github-quarto/taller-quarto-github.qmd
-        - text: "Práctico 03: Introducción a R y Estadística Descriptiva"
-          file: assignment/03-practico.qmd
+        - section: "Información general prácticos"
+          contents:
+            - text: "Descripción Prácticos"
+              file: assignment/index.qmd
+        - section: "Sesiones"
+          contents:
+            - text: "Práctico 01: Aproximación inicial a R"
+              file: assignment/01-practico.qmd
+            - text: "Práctico 02: Taller quarto y github"
+              file: assignment/taller-github-quarto/taller-quarto-github.qmd
+            - text: "Práctico 03: Introducción a R y Estadística Descriptiva"
+              file: assignment/03-practico.qmd
         # - text: "Práctica 4"
         #   file: resource/04-resource.qmd
-        - text: "Práctico 05: Correlación"
-          file: assignment/05-practico.qmd
-        - text: "Práctico 06: Correlación categóricas"
-          file: assignment/06-practico.qmd
+            - text: "Práctico 05: Correlación"
+              file: assignment/05-practico.qmd
+            - text: "Práctico 06: Correlación categóricas"
+              file: assignment/06-practico.qmd
         # - text: "Práctica 6"
         #   file: resource/07-resource.qmd
         # - text: "7: Supuestos de regresión"

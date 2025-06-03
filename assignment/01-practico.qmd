@@ -32,14 +32,27 @@ Esta es nuestra hoja de código, que utilizaremos para procesar bases de datos, 
 
 ### 2.a. R como calculadora
 
-R puede ser una calculadora
+Uno de los usos más sencillos y que están a la base de R, es usarlo como una calculadora. 
 
-```{r}
-10 + 5 # ¿cuánto es 10 + 5?
+```{r, collapse=FALSE}
+5+5
+
+25/5
+
+2*2
+
+27-2
+
 ```
 
-```{r}
-10 * 5 # ¿cuánto es 10 * 5?
+Como podrás ver, el resultado de estas instrucciones aparecen como un `[1]` en la consola. También podemos hacer operatorias más complejas y con más cálculos. 
+
+```{r, collapse=FALSE}
+12*(7+2)+(45-32)+8
+
+22^2 - 2^2
+
+1/200 * 30
 ```
 
 ### 2.b. Creación de objetos
@@ -98,13 +111,13 @@ La implementación de la reproducibilidad en este tipo de protocolos se basa en 
 
 ![](../files/img/assignment/ipo-exp.png)
 
-### Rproject
+### 3.1. Rproject
 
 Un Rproject es una herramienta de R que nos permite establecer un directorio de trabajo en una carpeta de nuestro computador. Al hacerlo, establecemos un espacio de trabajo que permite crear una estructura de carpetas donde guardar los documentos asociados al proyecto. De esta forma, creamos un conjunto de archivos autocontenidos en un solo lugar que nos permite organizar nuestro trabajo y facilitar la **reproducibilidad**. En las próximas sesiones estableceremos un protocolo de trabajo que permite organizar y armonizar el trabajo: el [protocolo IPO](https://lisa-coes.com/ipo-repro/).
 
 ![](../files/img/assignment/ipo-rproj.png)
 
-### Crear un Rproject
+### 3.2. Crear un Rproject
 
 1. Abrir Rstudio
 
@@ -124,9 +137,11 @@ Un Rproject es una herramienta de R que nos permite establecer un directorio de 
 
 ![](../files/img/assignment/project4.png)
 
-### 3.2. Librerías principales (de R) a utilizar
+## 4. Ejemplo 
 
-Muchas de las funciones que utilizamos en R están contenidas en librerías o paquetes (packages).
+### 4.1. Librerías a utilizar
+
+Como veremos en detalle en la próxima sesión, muchas de las funciones que utilizamos en R están contenidas en librerías o paquetes (packages).
 
 La lógica de R es instalar librerías (solo 1 vez, con `install.packages("librería")`), y luego cargarlas cada vez que es necesario usarlas (con `library(librería)`). El problema de esto es que a veces no se sabe claramente qué librerías están instaladas y cuales no, lo que va a arrojar error al cargarlas. Y, como suele suceder en R, existe una librería para solucionar este problema que se llama `pacman` (package manager). Lo que hace `pacman` es cargar la librería, y si no está instalada, la instala y la carga:
 
@@ -162,13 +177,15 @@ options(scipen=999)
 - La función `rm(list=ls())` permite comenzar con un espacio de trabajo (environment) vacío y sin otros objetos. 
 - La función `options(scipen=999)` desactiva la notación científica, es decir, veremos los valores numéricos con todos sus decimales.
 
-### 3.3. Cargar base de datos
+### 4.2. Cargar base de datos
 
 Cargamos la base de datos desde el paquete (para otras bases de datos se deben importar de otra forma, esto es solo como ejemplo)
 
 ```{r}
 base <- guaguas
 ```
+
+### 4.3. Exploración de datos
 
 Conocemos las dimensiones de la base de datos:
 
@@ -189,6 +206,8 @@ Y la base se ve así:
 ```{r}
 head(base)      # muestra los primeros 6 casos
 ```
+
+### 4.4. Breve análisis de datos
 
 Ahora probemos algunas funciones para seguir explorando la base:
 

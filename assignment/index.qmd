@@ -1,13 +1,11 @@
 ---
-title: "Prácticos"
+title: "Descripción Prácticos"
 lang: es
 ---
 
-## R y Rstudio
+## 1. Guía de instalación R y RStudio
 
 Las clases y guías prácticas de este curso se realizarán en el software R y su interfaz RStudio. A continuación dejamos una guía de instalación.
-
-## 1. Guía de instalación
 
 ### Paso 1. Acceder a Posit
 

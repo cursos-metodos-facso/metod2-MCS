@@ -159,7 +159,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../assignment/05-practico.html">Práctico 05: Correlación</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../assignment/01-practico.html">Sesiones</a></li><li class="breadcrumb-item"><a href="../assignment/05-practico.html">Práctico 05: Correlación</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -171,42 +171,64 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Información general prácticos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../assignment/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Descripción</span></a>
+ <span class="menu-text">Descripción Prácticos</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Sesiones</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../assignment/01-practico.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Práctico 01: Aproximación inicial a R</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../assignment/taller-github-quarto/taller-github-quarto.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Práctico 02: Taller quarto y github</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../assignment/03-practico.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Práctico 03: Introducción a R y Estadística Descriptiva</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../assignment/05-practico.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Práctico 05: Correlación</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../assignment/06-practico.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Práctico 06: Correlación categóricas</span></a>
   </div>
 </li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -218,8 +240,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#objetivo-de-la-práctica" id="toc-objetivo-de-la-práctica" class="nav-link active" data-scroll-target="#objetivo-de-la-práctica">Objetivo de la práctica</a></li>
-  <li><a href="#qué-es-la-correlación" id="toc-qué-es-la-correlación" class="nav-link" data-scroll-target="#qué-es-la-correlación">Qué es la Correlación</a></li>
-  <li><a href="#correlación-de-pearson" id="toc-correlación-de-pearson" class="nav-link" data-scroll-target="#correlación-de-pearson">Correlación de Pearson</a></li>
+  <li><a href="#qué-es-la-correlación" id="toc-qué-es-la-correlación" class="nav-link" data-scroll-target="#qué-es-la-correlación">1. Qué es la Correlación</a></li>
+  <li><a href="#correlación-de-pearson" id="toc-correlación-de-pearson" class="nav-link" data-scroll-target="#correlación-de-pearson">2. Correlación de Pearson</a></li>
   <li><a href="#estimación-de-la-correlación-de-pearson" id="toc-estimación-de-la-correlación-de-pearson" class="nav-link" data-scroll-target="#estimación-de-la-correlación-de-pearson">Estimación de la correlación de Pearson</a></li>
   <li><a href="#diagrama-de-dispersión-nube-de-puntos-o-scatterplot" id="toc-diagrama-de-dispersión-nube-de-puntos-o-scatterplot" class="nav-link" data-scroll-target="#diagrama-de-dispersión-nube-de-puntos-o-scatterplot">Diagrama de dispersión (nube de puntos o scatterplot)</a></li>
   <li><a href="#el-cuarteto-de-anscombe-y-las-limitaciones-de-la-correlación-lineal" id="toc-el-cuarteto-de-anscombe-y-las-limitaciones-de-la-correlación-lineal" class="nav-link" data-scroll-target="#el-cuarteto-de-anscombe-y-las-limitaciones-de-la-correlación-lineal">El cuarteto de Anscombe y las limitaciones de la correlación lineal</a></li>
@@ -280,12 +302,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 </section>
 <section id="qué-es-la-correlación" class="level2">
-<h2 class="anchored" data-anchor-id="qué-es-la-correlación">Qué es la Correlación</h2>
+<h2 class="anchored" data-anchor-id="qué-es-la-correlación">1. Qué es la Correlación</h2>
 <p>La <strong>correlación</strong> es una medida estadística que describe la asociación entre dos variables. Cuando existe correlación entre dos variables, el cambio en una de ellas tiende a estar asociado con un cambio en la otra variable.</p>
 <p>En términos concretos, lo que observamos es cómo se comportan los valores de dos (o más) variables para cada observación, y si podemos suponer que ese comportamiento conjunto tiene algún patrón.</p>
 </section>
 <section id="correlación-de-pearson" class="level2">
-<h2 class="anchored" data-anchor-id="correlación-de-pearson">Correlación de Pearson</h2>
+<h2 class="anchored" data-anchor-id="correlación-de-pearson">2. Correlación de Pearson</h2>
 <p>La correlación de Pearson (o coeficiente de correlación de pearson) es una medida estadística que cuantifica la relación lineal entre dos variables continuas. Esta medida va desde -1 hasta 1, donde:</p>
 <ul>
 <li><p>r=1: Correlación positiva perfecta. Cuando una variable aumenta, la otra también aumenta en proporción constante.</p></li>
