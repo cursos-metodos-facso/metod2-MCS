@@ -7,39 +7,45 @@ lang: es
 
 Las clases y guías prácticas de este curso se realizarán en el software R y su interfaz RStudio. A continuación dejamos una guía de instalación.
 
-## Guía de instalación
+## 1. Guía de instalación
 
 ### Paso 1. Acceder a Posit
 
-Acceder a la página de [posit](https://posit.co/), desarrollador del software desde octubre de 2022. Link directo a la descarga [acá](https://posit.co/download/rstudio-desktop/).
+- Acceder a la página de [posit](https://posit.co/), desarrollador del software desde octubre de 2022. Link directo a la descarga [acá](https://posit.co/download/rstudio-desktop/).
 
 ### Paso 2. Instalar R y Rstudio
 
-![](images/installR1.png)
+- En posit se verán las opciones para descargar R y RStudio.
 
-#### 2.a) Descargar R
+![](../files/img/assignment/installR1.png)
+
+#### 2.a. Descargar R
     
 - Seleccionamos sistema operativo según corresponda
     
-  ![](images/installR2.png)
+  ![](../files/img/assignment/installR2.png)
     
 - Descargar R por primera vez y seguir instrucciones. En esta oportunidad trabajaremos con la última versión de R 4.3.2
   
-  ![](images/installR3.png)
+  ![](../files/img/assignment/installR3.png)
 
-####  2.b) Descargar RStudio
+####  2.b. Descargar RStudio
     
-  - Descarga directa en la página de inicio
+- Descarga directa en la página de inicio
     
-#### 2.c) Instalar ambos archivos siguiendo las instrucciones de instalación
+#### 2.c. Instalación
 
-### Paso 3. Abrir RStudio. Se debería ver similar a esto (o en blanco):
+- Instalar ambos archivos siguiendo las instrucciones de instalación
 
-![](images/installR4.png)
+### Paso 3. Abrir RStudio
+
+- Se debería ver similar a esto (o con otro color de fondo):
+
+![](../files/img/assignment/installR4-blanco.png)
 
 ::: callout-note
 
-Alternativa a lo anterior: https://posit.cloud/
+Alternativa a lo anterior: [https://posit.cloud/](https://posit.cloud/)
 
 - Versión online de Rstudio
 
@@ -47,7 +53,7 @@ Alternativa a lo anterior: https://posit.cloud/
 
 :::
 
-## Recomendaciones generales
+## 2. Recomendaciones generales
 
 Respecto a las clases y guías prácticas, se recomienda lo siguiente:
 

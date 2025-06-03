@@ -169,7 +169,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../assignment/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Descripción</span></a>
+ <span class="menu-text">Descripción Prácticos</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -213,24 +213,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#objetivos-de-la-práctica" id="toc-objetivos-de-la-práctica" class="nav-link active" data-scroll-target="#objetivos-de-la-práctica">Objetivos de la práctica</a></li>
-  <li><a href="#r-y-rstudio" id="toc-r-y-rstudio" class="nav-link" data-scroll-target="#r-y-rstudio">R y Rstudio</a>
+  <li><a href="#r-y-rstudio" id="toc-r-y-rstudio" class="nav-link" data-scroll-target="#r-y-rstudio">1. R y Rstudio</a>
   <ul class="collapse">
   <li><a href="#guía-de-instalación" id="toc-guía-de-instalación" class="nav-link" data-scroll-target="#guía-de-instalación">Guía de instalación</a></li>
   </ul></li>
-  <li><a href="#primeros-pasos" id="toc-primeros-pasos" class="nav-link" data-scroll-target="#primeros-pasos">Primeros pasos</a>
+  <li><a href="#primeros-pasos" id="toc-primeros-pasos" class="nav-link" data-scroll-target="#primeros-pasos">2. Primeros pasos</a>
   <ul class="collapse">
-  <li><a href="#ejemplos" id="toc-ejemplos" class="nav-link" data-scroll-target="#ejemplos">0. Ejemplos</a></li>
+  <li><a href="#a.-r-como-calculadora" id="toc-a.-r-como-calculadora" class="nav-link" data-scroll-target="#a.-r-como-calculadora">2.a. R como calculadora</a></li>
+  <li><a href="#b.-creación-de-objetos" id="toc-b.-creación-de-objetos" class="nav-link" data-scroll-target="#b.-creación-de-objetos">2.b. Creación de objetos</a></li>
   </ul></li>
-  <li><a href="#parte-2" id="toc-parte-2" class="nav-link" data-scroll-target="#parte-2">Parte 2</a>
+  <li><a href="#flujo-de-trabajo-en-r" id="toc-flujo-de-trabajo-en-r" class="nav-link" data-scroll-target="#flujo-de-trabajo-en-r">3. Flujo de trabajo en R</a>
   <ul class="collapse">
-  <li><a href="#flujo-de-trabajo-en-r" id="toc-flujo-de-trabajo-en-r" class="nav-link" data-scroll-target="#flujo-de-trabajo-en-r">2. Flujo de trabajo en R</a>
-  <ul class="collapse">
-  <li><a href="#rproject" id="toc-rproject" class="nav-link" data-scroll-target="#rproject">Rproject</a></li>
-  <li><a href="#librerías-principales-de-r-a-utilizar" id="toc-librerías-principales-de-r-a-utilizar" class="nav-link" data-scroll-target="#librerías-principales-de-r-a-utilizar">1. Librerías principales (de R) a utilizar</a></li>
-  <li><a href="#cargar-base-de-datos" id="toc-cargar-base-de-datos" class="nav-link" data-scroll-target="#cargar-base-de-datos">2. Cargar base de datos</a></li>
+  <li><a href="#rproject" id="toc-rproject" class="nav-link" data-scroll-target="#rproject">3.1. RProject</a></li>
+  <li><a href="#librerías-principales-de-r-a-utilizar" id="toc-librerías-principales-de-r-a-utilizar" class="nav-link" data-scroll-target="#librerías-principales-de-r-a-utilizar">3.2. Librerías principales (de R) a utilizar</a></li>
+  <li><a href="#cargar-base-de-datos" id="toc-cargar-base-de-datos" class="nav-link" data-scroll-target="#cargar-base-de-datos">3.3. Cargar base de datos</a></li>
   </ul></li>
-  <li><a href="#otro-ejemplo" id="toc-otro-ejemplo" class="nav-link" data-scroll-target="#otro-ejemplo">Otro ejemplo</a></li>
-  </ul></li>
+  <li><a href="#ejemplo" id="toc-ejemplo" class="nav-link" data-scroll-target="#ejemplo">4. Ejemplo</a></li>
   </ul>
 </nav>
     </div>
@@ -263,60 +261,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="objetivos-de-la-práctica" class="level2">
 <h2 class="anchored" data-anchor-id="objetivos-de-la-práctica">Objetivos de la práctica</h2>
-<p>Esta práctica tiene dos objetivos: 1) Generar un primer acercamiento al uso de R y Rstudio, conociendo su interfaz y sus principales funcionalidades y 2) revisar algunos procedimientos básicos de la preparación de datos con R, que son necesarios para luego poder aplicar los contenidos más específicos de este curso.</p>
+<p>Esta práctica tiene dos objetivos:</p>
+<ol type="1">
+<li><p>Generar un primer acercamiento al uso de R y Rstudio, conociendo su interfaz y sus principales funcionalidades y</p></li>
+<li><p>Revisar algunos procedimientos básicos de la preparación de datos con R, que son necesarios para luego poder aplicar los contenidos más específicos de este curso.</p></li>
+</ol>
 </section>
 <section id="r-y-rstudio" class="level2">
-<h2 class="anchored" data-anchor-id="r-y-rstudio">R y Rstudio</h2>
+<h2 class="anchored" data-anchor-id="r-y-rstudio">1. R y Rstudio</h2>
 <section id="guía-de-instalación" class="level3">
 <h3 class="anchored" data-anchor-id="guía-de-instalación">Guía de instalación</h3>
-<ol type="1">
-<li><p>Acceder a la página de <a href="https://posit.co/">posit</a>, desarrollador del software desde octubre de 2022. Link directo a la descarga <a href="https://posit.co/download/rstudio-desktop/">acá</a>.</p></li>
-<li><p>Instalar R y Rstudio</p></li>
-</ol>
-<p><img src="images/installR1.png" class="img-fluid"></p>
-<ol type="a">
-<li>Descargar R</li>
-</ol>
-<ul>
-<li>Seleccionamos sistema operativo según corresponda</li>
-</ul>
-<p><img src="images/installR2.png" class="img-fluid"></p>
-<ul>
-<li>Descargar R por primera vez y seguir instrucciones. En esta oportunidad trabajaremos con la última versión de R 4.2.2 <img src="images/installR3.png" class="img-fluid"></li>
-</ul>
-<ol start="2" type="a">
-<li>Descargar RStudio</li>
-</ol>
-<ul>
-<li>Descarga directa en la página de inicio</li>
-</ul>
-<ol start="3" type="a">
-<li>Instalar ambos archivos siguiendo las instrucciones de instalación</li>
-</ol>
-<ol start="3" type="1">
-<li>Abrir RStudio. Se debería ver similar a esto:</li>
-</ol>
-<p><img src="images/installR4.png" class="img-fluid"></p>
-<ol start="4" type="1">
-<li>Recomendaciones generales:</li>
-</ol>
-<ul>
-<li><p>evitar uso de tilde, ñ, espacios y mayúsculas tanto en carpetas y archivos, así como también en los nombres de las variables</p></li>
-<li><p>al momento de hacer consultas sobre problemas en la ejecución del código, adjuntar la siguiente información:</p></li>
-</ul>
-<ol type="1">
-<li><p>Código completo hasta que se produce el problema</p></li>
-<li><p>Indicar línea del código donde se produce el problema</p></li>
-<li><p>Adjuntar el resultado del output de la información de la sesión (sessionInfo())</p></li>
-</ol>
+<p>Se encuentra un guía detallada para la instalación de R y RStudio en la <a href="../assignment/index.html">descripción de los prácticos</a>.</p>
 </section>
 </section>
 <section id="primeros-pasos" class="level2">
-<h2 class="anchored" data-anchor-id="primeros-pasos">Primeros pasos</h2>
-<p>En primer lugar vamos a abrir un archivo de R (<em>script</em>). Esto se puede hacer manualmente con File -&gt; new file -&gt; R script o directamente con ctrl + shift + N</p>
+<h2 class="anchored" data-anchor-id="primeros-pasos">2. Primeros pasos</h2>
+<p>En primer lugar vamos a abrir un archivo de R (<em>script</em>). Esto se puede hacer manualmente con File -&gt; new file -&gt; R script o directamente con ctrl + shift + N.</p>
 <p>Esta es nuestra hoja de código, que utilizaremos para procesar bases de datos, modificar variables y crear tablas y gráficos.</p>
-<section id="ejemplos" class="level3">
-<h3 class="anchored" data-anchor-id="ejemplos">0. Ejemplos</h3>
+<section id="a.-r-como-calculadora" class="level3">
+<h3 class="anchored" data-anchor-id="a.-r-como-calculadora">2.a. R como calculadora</h3>
 <p>R puede ser una calculadora</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">+</span> <span class="dv">5</span> <span class="co"># ¿cuánto es 10 + 5?</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -330,6 +293,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] 50</code></pre>
 </div>
 </div>
+</section>
+<section id="b.-creación-de-objetos" class="level3">
+<h3 class="anchored" data-anchor-id="b.-creación-de-objetos">2.b. Creación de objetos</h3>
 <p>Se pueden crear objetos y asignarles valores</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">28</span></span>
@@ -353,7 +319,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] "hola"</code></pre>
 </div>
 </div>
-<p>y operaciones un poco más complejas</p>
+<p>Y operaciones un poco más complejas</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> b<span class="sc">^</span><span class="dv">2</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -377,22 +343,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="parte-2" class="level1">
-<h1>Parte 2</h1>
 <section id="flujo-de-trabajo-en-r" class="level2">
-<h2 class="anchored" data-anchor-id="flujo-de-trabajo-en-r">2. Flujo de trabajo en R</h2>
+<h2 class="anchored" data-anchor-id="flujo-de-trabajo-en-r">3. Flujo de trabajo en R</h2>
 <p>Tal vez una de las dificultades más comunes o cotidianas del uso de R es el orden de trabajo, en donde tenemos cientos de archivos, scripts, gráficos, bases de datos u otros repartidos desordenadamente en nuestro computador. También se da mucho el caso en que, cuando queremos trabajar con alguien, tenemos que cambiar las rutas de los archivos, por ejemplo en dónde están las bases de datos, ya que nuestros ordenadores y usuarios se llaman y son escencialmente distintos.</p>
-<p>¿Cómo podemos sortear eso? Siguiendo un flujo de trabajo reproducible, autocontenido y ordenado. <strong>En este curso trabajaremos R con un flujo de trabajo reproducible, basado en el sistema <a href="https://lisa-coes.com/ipo-data/">IPO</a></strong>. El protocolor IPO es una plantilla/protocolo de estructura digital de carpetas que tiene por objetivo el organizar, procesar y documentar los datos de un proyecto de investigación con miras a la apertura de los datos en un repositorio público y de acceso libre. En concreto, el sistema IPO se propone abordar brevemente todo lo referente a los Datos, Métodos y Resultados.</p>
-<p><img src="images/cora1.png" class="img-fluid"></p>
+<p>¿Cómo podemos sortear eso? Siguiendo un flujo de trabajo reproducible, autocontenido y ordenado. <strong>En este curso trabajaremos R con un flujo de trabajo reproducible, basado en el sistema <a href="https://lisa-coes.com/ipo-data/">IPO</a></strong>. El protocolo IPO es una plantilla/protocolo de estructura digital de carpetas que tiene por objetivo el organizar, procesar y documentar los datos de un proyecto de investigación con miras a la apertura de los datos en un repositorio público y de acceso libre. En concreto, el sistema IPO se propone abordar brevemente todo lo referente a los Datos, Métodos y Resultados.</p>
+<p><img src="../files/img/assignment/ipo-exp.png" class="img-fluid"></p>
 <section id="rproject" class="level3">
-<h3 class="anchored" data-anchor-id="rproject">Rproject</h3>
-<p>Un Rproject es una herramienta de R que nos permite establecer un directorio de trabajo en una carpeta de nuestro computador. Al hacerlo, establecemos un espacio de trabajo que permite crear una estructura de carpetas donde guardar los documentos asociados al proyecto. De esta forma, creamos un conjunto de archivos autocontenidos en un solo lugar que nos permite organizar nuestro trabajo y facilitar la <strong>reproducibilidad</strong>. En las próximas sesiones estableceremos un protocolo de trabajo que permite organizar y armonizar el trabajo: el <a href="https://lisa-coes.com/ipo-repro/">protocolo IPO</a>.</p>
+<h3 class="anchored" data-anchor-id="rproject">3.1. RProject</h3>
+<p>Un Rproject es una herramienta de R que nos permite establecer un directorio de trabajo en una carpeta de nuestro computador. Al hacerlo, establecemos un espacio de trabajo que permite crear una estructura de carpetas donde podemos guardar los archivos asociados al proyecto. De esta forma, creamos un conjunto de archivos autocontenidos en un solo lugar que nos permite organizar nuestro trabajo y facilitar la <strong>reproducibilidad</strong>. En las próximas sesiones estableceremos un protocolo de trabajo que permite organizar y armonizar el trabajo: el <a href="https://lisa-coes.com/ipo-repro/">protocolo IPO</a>.</p>
+<p><img src="../files/img/assignment/ipo-rproj.png" class="img-fluid"></p>
 <p>Para crear un Rproject:</p>
 <ol type="1">
 <li><p>Abrir Rstudio</p></li>
 <li><p>Seleccionar Archivo -&gt; Nuevo proyecto</p></li>
 </ol>
-<p><img src="images/project.png" class="img-fluid"></p>
+<p><img src="../files/img/assignment/project1.png" class="img-fluid"></p>
 <ol start="3" type="1">
 <li><p>Seleccionamos la opción de directorio existente</p></li>
 <li><p>Seleccionamos la carpeta donde descargamos nuestro repositorio de Github en el paso anterior</p></li>
@@ -401,7 +366,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Y muchas de estas funciones que utilizamos en R están contenidas en librerías o paquetes (packages)</p>
 </section>
 <section id="librerías-principales-de-r-a-utilizar" class="level3">
-<h3 class="anchored" data-anchor-id="librerías-principales-de-r-a-utilizar">1. Librerías principales (de R) a utilizar</h3>
+<h3 class="anchored" data-anchor-id="librerías-principales-de-r-a-utilizar">3.2. Librerías principales (de R) a utilizar</h3>
 <p>La lógica de R es instalar librerías (solo 1 vez, con <code>install.packages("librería")</code>), y luego cargarlas cada vez que es necesario usarlas (con <code>library(librería)</code>). El problema de esto es que a veces no se sabe claramente qué librerías están instaladas y cuales no, lo que va a arrojar error al cargarlas. Y, como sucede en R, existe una librería para solucionar este problema que se llama <code>pacman</code> (package manager). Lo que hace <code>pacman</code> es cargar la librería, y si no está instalada, la instala y la carga:</p>
 <p>Para utilizar la primera vez (si es que no está instalada):</p>
 <div class="cell">
@@ -418,7 +383,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 <section id="cargar-base-de-datos" class="level3">
-<h3 class="anchored" data-anchor-id="cargar-base-de-datos">2. Cargar base de datos</h3>
+<h3 class="anchored" data-anchor-id="cargar-base-de-datos">3.3. Cargar base de datos</h3>
 <p><strong>Ajustar espacio de trabajo</strong></p>
 <p>Previo a la carga de nuestra base de datos, se recomienda ejecutar los siguientes comandos:</p>
 <div class="cell">
@@ -512,8 +477,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>spoiler: <a href="https://es.wikipedia.org/wiki/Backstreet_Boys">link</a></p>
 </section>
 </section>
-<section id="otro-ejemplo" class="level2">
-<h2 class="anchored" data-anchor-id="otro-ejemplo">Otro ejemplo</h2>
+<section id="ejemplo" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo">4. Ejemplo</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>guaguas <span class="sc">%&gt;%</span> </span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(nombre <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Salvador"</span>, <span class="st">"Augusto"</span>), anio <span class="sc">&gt;=</span> <span class="dv">1960</span> <span class="sc">&amp;</span> anio <span class="sc">&lt;=</span> <span class="dv">1979</span>) <span class="sc">%&gt;%</span> </span>
@@ -527,7 +492,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
