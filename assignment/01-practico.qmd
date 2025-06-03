@@ -103,19 +103,23 @@ Para crear un Rproject:
 
 ![](../files/img/assignment/project1.png)
 
-3. Seleccionamos la opción de directorio existente
+3. Seleccionamos la opción de nuevo directorio
 
-4. Seleccionamos la carpeta donde descargamos nuestro repositorio de Github en el paso anterior
+![](../files/img/assignment/project2.png)
 
-5. Apretamos el botón de crear proyecto
+4. Seleccionamos la opción de nuevo proyecto
 
+![](../files/img/assignment/project3.png)
 
-Y muchas de estas funciones que utilizamos en R están contenidas en librerías o paquetes (packages)
+5. Le ponemos nombre al proyecto, en *browse* indicamos la ubicación donde se guardará, y apretamos el botón de crear proyecto
+
+![](../files/img/assignment/project4.png)
 
 ### 3.2. Librerías principales (de R) a utilizar
 
-La lógica de R es instalar librerías (solo 1 vez, con `install.packages("librería")`), y luego cargarlas cada vez que es necesario usarlas (con `library(librería)`). El problema de esto es que a veces no se sabe claramente qué librerías están instaladas y cuales no, lo que va a arrojar error al cargarlas. Y, como sucede en R, existe una librería para solucionar este problema que se llama `pacman` (package manager). Lo que hace `pacman` es cargar la librería, y si no está instalada, la instala y la carga:
+Muchas de las funciones que utilizamos en R están contenidas en librerías o paquetes (packages).
 
+La lógica de R es instalar librerías (solo 1 vez, con `install.packages("librería")`), y luego cargarlas cada vez que es necesario usarlas (con `library(librería)`). El problema de esto es que a veces no se sabe claramente qué librerías están instaladas y cuales no, lo que va a arrojar error al cargarlas. Y, como suele suceder en R, existe una librería para solucionar este problema que se llama `pacman` (package manager). Lo que hace `pacman` es cargar la librería, y si no está instalada, la instala y la carga:
 
 Para utilizar la primera vez (si es que no está instalada):
 
@@ -123,7 +127,7 @@ Para utilizar la primera vez (si es que no está instalada):
 install.packages("pacman")
 ```
 
-Y en adelante, las librerías se cargan así <span class="sidenote"> pacman::p_load(libreria1,libreria2,libreriaX) </span>:
+Y en adelante, las librerías se cargan así: <span class="sidenote"> pacman::p_load(libreria1, libreria2, libreriaX) </span>
 
 ```{r}
 pacman::p_load(dplyr, guaguas, ggplot2)
@@ -133,22 +137,23 @@ Para esta sesión las librerías que vamos a utilizar son:
 
 - `dplyr`: ajuste general de datos
 
-- `guaguas`: Paquete que contiene los datos de nombres de guaguas (bebés) registrados en Chile entre 1920 y 2021 según el Registro Civil e Identificación
+- `guaguas`: paquete que contiene los datos de nombres de guaguas (bebés) registrados en Chile entre 1920 y 2021 según el Registro Civil e Identificación
 
-### 3.3. Cargar base de datos
+- `ggplot2`: para gráficos
 
-**Ajustar espacio de trabajo**
+#### Ajustar espacio de trabajo
 
-Previo a la carga de nuestra base de datos, se recomienda ejecutar los siguientes comandos:
+Previo a la carga de nuestra base de datos, y posterior a la carga de librerías, se recomienda ejecutar los siguientes comandos:
 
 ```{r}
-rm(list=ls())       # borrar todos los objetos en el espacio de trabajo
-options(scipen=999) # valores sin notación científica
+rm(list=ls())       
+options(scipen=999) 
 ```
 
-La función `rm(list=ls())` permite comenzar con un espacio de trabajo (environment) vacío y sin otros objetos. Así también, la función `options(scipen=999)` desactiva la notación científica, es decir, veremos los valores numéricos con todos sus decimales.
+- La función `rm(list=ls())` permite comenzar con un espacio de trabajo (environment) vacío y sin otros objetos. 
+- La función `options(scipen=999)` desactiva la notación científica, es decir, veremos los valores numéricos con todos sus decimales.
 
-**Datos**
+### 3.3. Cargar base de datos
 
 Cargamos la base de datos desde el paquete (para otras bases de datos se deben importar de otra forma, esto es solo como ejemplo)
 
@@ -156,13 +161,15 @@ Cargamos la base de datos desde el paquete (para otras bases de datos se deben i
 base <- guaguas
 ```
 
-Conocemos las dimensiones de la base de datos
+Conocemos las dimensiones de la base de datos:
 
 ```{r}
 dim(base)
 ```
 
-Son 858782 casos y 5 variables. Los nombres de estas variables son:
+Son 858782 casos y 5 variables. 
+
+Los nombres de estas variables son:
 
 ```{r}
 names(base)
@@ -171,31 +178,37 @@ names(base)
 Y la base se ve así:
 
 ```{r}
-head(base)
+head(base)      # muestra los primeros 6 casos
 ```
 
-Ahora probemos algunas funciones para seguir explorando la base
+Ahora probemos algunas funciones para seguir explorando la base:
 
 ```{r}
-table(base$sexo)
+table(base$sexo)      # Muestra las frecuencias por categoría de respuesta
 ```
 
 Podemos ver la cantidad de nombres "F" (femenino), "M" (masculino) e "I" (indefinido) inscritos entre 1920 y 2021.
 
-Pueden buscar sus nombres y probar, utilizamos la funcion *filter* del paquete *dplyr*
+Pueden buscar sus nombres y probar, utilizamos la funcion `filter` del paquete `dplyr`:
+
+```{r eval=FALSE}
+dplyr::filter(base, nombre=="Kevin")
+```
+
+o:
 
 ```{r}
 filter(base, nombre=="Kevin")
 ```
 
-E incluso pueden ver la cantidad de personas con su nombre, en el mismo año que ustedes nacieron
+E incluso pueden ver la cantidad de personas con su nombre, en el mismo año que ustedes nacieron:
 
 ```{r}
 d <- filter(base, nombre=="Kevin" & anio==1996)
 sum(d$n)
 ```
 
-Avanzando un poco más, podemos utilizar ggplot2 para hacer un gráfico de líneas que muestre la evolución en el tiempo
+Avanzando un poco más, podemos utilizar ggplot2 para hacer un gráfico de líneas que muestre la evolución en el tiempo:
 
 ```{r}
 datos <- filter(base, nombre=="Kevin")
@@ -208,7 +221,7 @@ ggplot(datos, aes(x = anio, y = n)) +
 
 spoiler: [link](https://es.wikipedia.org/wiki/Backstreet_Boys)
 
-## 4. Ejemplo
+## 4. Otro ejemplo
 
 ```{r}
 guaguas %>% 

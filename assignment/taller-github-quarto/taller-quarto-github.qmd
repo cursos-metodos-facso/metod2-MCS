@@ -12,17 +12,17 @@ editor: source
 ---
 
 
-# Introducción al flujo de investigación reproducible
+## Introducción al flujo de investigación reproducible
 
-## Prerequisitos
+### Prerequisitos
 
 - Crear cuenta en [www.github.com](www.github.com)
 
 - Descargar Github Desktop
 
-# Github
+## Github
 
-## Descripción
+### Descripción
 
 Github es una plataforma de desarrollo colaborativo que permite alojar proyectos utilizando el sistema de control de versiones Git. Se utiliza principalmente para la creación de código fuente de programas (software). 
 
@@ -32,13 +32,13 @@ El 4 de junio de 2018 Microsoft compró GitHub por la cantidad de 7500 millones 
 
 :::
 
-## Repositorios
+### Repositorios
 
 Un repositorio contiene todo el código, tus archivos y el historial de revisiones y cambios de cada uno de ellos. Es el elemento más básico de Github.
 
 Los repositorios pueden contar con múltiples colaboradores y pueden ser públicos o privados.
 
-## Principales términos
+### Principales términos
 
 | Término          | Definición                                                                                           |
 |---------------|------------------------------------------------------------------------------------------------------|
@@ -51,7 +51,7 @@ Los repositorios pueden contar con múltiples colaboradores y pueden ser públic
 | Upstream      | La branch de un repositorio original que se ha *forkeado* o clonado. La branch correspondiente de la branch clonada o *forkeada* se denomina «descendente».                                            |
 
 
-## Crear cuenta e instalación
+### Crear cuenta e instalación
 
 1. Acceder a la página de [github](https://github.com/)
 
@@ -65,7 +65,7 @@ La personalización de la cuenta se puede saltar haciendo click en **skip** abaj
 
 ![](images/github2.png)
 
-## Crear repositorio
+### Crear repositorio
 
 En la página principal de [github](https://github.com/) hacer click en el ícono de usuario de la esquina superior derecha y luego ir a Tus repositorios
 
@@ -89,7 +89,7 @@ Luego pueden generar un segundo repositorio que sea "Trabajo" para almacenar el 
 
 :::
 
-## Github desktop
+### Github desktop
 
 Una vez creado un repositorio, lo que nos interesa es descargarlo. Al abrir la aplicación de Github desktop por primera vez (descargada anteriormente), nos debería aparecer la opción de clonar nuestro repositorio ejercicios-practicos en la pantalla de inicio. Lo clonamos y seleccionamos una carpeta de nuestro computador para almacenarlo.
 
@@ -115,19 +115,20 @@ Para todas las siguientes veces, las instrucciones son estas:
 ![](images/ipo-hex.png)
 
 ## RStudio Projects
+
 - File -> New Project
 
 ![](images/project.png)
 
 ![](images/project2.png)
 
-## Abriendo la sesión de RStudio como proyecto
+### Abriendo la sesión de RStudio como proyecto
 
 - identificar en la carpeta respectiva el archivo .Rproj
 
 - ejecutar y se abre R / RStudio con ese directorio como raíz
 
-## Rutas relativas en código
+### Rutas relativas en código
 
 - forma de "señalar el camino" para abrir y guardar archivos al interior de una carpeta de proyecto autocontenido (= sin referencias locales)
 
@@ -140,7 +141,7 @@ Para todas las siguientes veces, las instrucciones son estas:
   - subir y bajar -> hacia otras subcarpetas 
 
 
-###  bajando
+####  bajando
 
 - para **"bajar"** hacia a una subcarpeta, simplemente damos la ruta de la carpeta/archivo
 
@@ -148,14 +149,14 @@ Para todas las siguientes veces, las instrucciones son estas:
   
   - o para señalar la ruta al bib desde paper.Rmd (en raíz): `input/bib/referencias.bib`
 
-### subiendo
+#### subiendo
 
 - para **subir** se utilizan los caracteres `../` por cada nivel.
 
 - Ej: si quiero guardar una tabla en el directorio raíz generada desde un archivo de código en la subcarpeta proc, entonces la ruta es `../tabla.html`
 
 
-### subiendo y bajando 
+#### subiendo y bajando 
 
 - combinación de las anteriores
 
@@ -238,13 +239,13 @@ Por ejemplo, como hacer una nota al pie[^1]. Para hacerlo, solo debemos escribir
 
 [^1]: Esta es la nota al pie
 
-# Código de análisis de ejemplo
+## Código de análisis de ejemplo
 
 Para poder escribir código de análisis en un documento Quarto debemos generar trozo de código llamado 'Chunk', que se puede crear con ctrl+alt+i o directamente en el menú de arriba en 'Code -> Insert Chunk'.
 
 ![](images/quarto3.png)
 
-## Cargar paquetes
+### Cargar paquetes
 
 ```{r}
 pacman::p_load(sjlabelled,
@@ -259,7 +260,7 @@ pacman::p_load(sjlabelled,
               ggplot2) # Para la mayoría de los gráficos
 ```
 
-## Cargar bases de datos
+### Cargar bases de datos
 
 Cargamos ambas bases de datos desde internet
 
@@ -282,11 +283,11 @@ proc_data <- proc_data %>% group_by(idenpa) %>%  # agrupamos por país
   summarise(promedio = mean(conf_inst, na.rm = TRUE)) # promedio de confianza en instituciones por país
 ```
 
-## Unir bases de datos
+### Unir bases de datos
 
 Para vincular nuestras bases de datos existen múltiples opciones, la primera es 'merge' de R base y las siguientes tres vienen desde dplyr: 'right_join', 'full_join' y 'left_join'. Cada una tiene sus propias potencialidades y limitaciones y dependerá de cada caso cuál usemos
 
-### Probemos merge
+#### Probemos merge
 
 ```{r}
 data <- merge(proc_data, context_data, by="idenpa")
@@ -320,7 +321,7 @@ data$gdp[data$gdp==0] <- NA
 data <- na.omit(data)
 ```
 
-### Guardamos esta nueva base en nuestra carpeta input
+## Guardamos esta nueva base en nuestra carpeta input
 
 ```{r eval=FALSE}
 save(data, file="input/data/proc/data.RData")
@@ -464,17 +465,4 @@ El link para llegar a nuestro documento renderizado de quarto sigue la estructur
 kevin-carrasco.github.io/ipo/trabajo.html
 
 ![](images/url-pages.png)
-
-
-
-
-
-
-
-
-
-
-
-
-
 
