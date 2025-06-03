@@ -83,7 +83,7 @@ website:
       search: false
       background: dark
       contents:
-        - text: "Descripción"
+        - text: "Descripción Prácticos"
           file: assignment/index.qmd
         - text: "Práctico 01: Aproximación inicial a R"
           file: assignment/01-practico.qmd

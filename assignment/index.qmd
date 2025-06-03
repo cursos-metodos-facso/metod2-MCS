@@ -9,15 +9,15 @@ Las clases y guías prácticas de este curso se realizarán en el software R y s
 
 ## Guía de instalación
 
-### Paso 1. Acceder a *Posit*
+### Paso 1. Acceder a Posit
 
 Acceder a la página de [posit](https://posit.co/), desarrollador del software desde octubre de 2022. Link directo a la descarga [acá](https://posit.co/download/rstudio-desktop/).
 
-### Paso 2. Instalar **R y Rstudio**
+### Paso 2. Instalar R y Rstudio
 
 ![](images/installR1.png)
 
-#### 2.a) Descargar **R** 
+#### 2.a) Descargar R
     
 - Seleccionamos sistema operativo según corresponda
     
@@ -27,13 +27,13 @@ Acceder a la página de [posit](https://posit.co/), desarrollador del software d
   
   ![](images/installR3.png)
 
-####  2.b) Descargar **RStudio**
+####  2.b) Descargar RStudio
     
   - Descarga directa en la página de inicio
     
 #### 2.c) Instalar ambos archivos siguiendo las instrucciones de instalación
 
-### Paso 3. Abrir **RStudio**. Se debería ver similar a esto (o en blanco):
+### Paso 3. Abrir RStudio. Se debería ver similar a esto (o en blanco):
 
 ![](images/installR4.png)
 
@@ -46,3 +46,17 @@ Alternativa a lo anterior: https://posit.cloud/
 - Utilizar en caso de problemas con PC
 
 :::
+
+## Recomendaciones generales
+
+Respecto a las clases y guías prácticas, se recomienda lo siguiente:
+
+- evitar uso de tilde, ñ, espacios y mayúsculas tanto en carpetas y archivos, así como también en los nombres de las variables
+
+- al momento de hacer consultas sobre problemas en la ejecución del código, adjuntar la siguiente información:
+
+  1. Código completo hasta que se produce el problema
+
+  2. Indicar línea del código donde se produce el problema
+
+  3. Adjuntar el resultado del output de la información de la sesión (sessionInfo())
