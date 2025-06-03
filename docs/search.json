@@ -200,14 +200,14 @@
     "href": "assignment/index.html",
     "title": "Prácticos",
     "section": "",
-    "text": "Acceder a la página de posit, desarrollador del software desde octubre de 2022. Link directo a la descarga acá.\nInstalar R y Rstudio\n\n\n\nDescargar R\n\n\nSeleccionamos sistema operativo según corresponda\n\n\n\nDescargar R por primera vez y seguir instrucciones. En esta oportunidad trabajaremos con la última versión de R 4.3.2\n\n\n\nDescargar RStudio\n\n\nDescarga directa en la página de inicio\n\n\nInstalar ambos archivos siguiendo las instrucciones de instalación\n\n\nAbrir RStudio. Se debería ver similar a esto (o en blanco):\n\n\n\n\n\n\n\n\nNota\n\n\n\nAlternativa a lo anterior: https://posit.cloud/\n\nVersión online de Rstudio\nUtilizar en caso de problemas con PC"
+    "text": "Las clases y guías prácticas de este curso se realizarán en el software R y su interfaz RStudio. A continuación dejamos una guía de instalación."
   },
   {
     "objectID": "assignment/index.html#r-y-rstudio",
     "href": "assignment/index.html#r-y-rstudio",
     "title": "Prácticos",
     "section": "",
-    "text": "Acceder a la página de posit, desarrollador del software desde octubre de 2022. Link directo a la descarga acá.\nInstalar R y Rstudio\n\n\n\nDescargar R\n\n\nSeleccionamos sistema operativo según corresponda\n\n\n\nDescargar R por primera vez y seguir instrucciones. En esta oportunidad trabajaremos con la última versión de R 4.3.2\n\n\n\nDescargar RStudio\n\n\nDescarga directa en la página de inicio\n\n\nInstalar ambos archivos siguiendo las instrucciones de instalación\n\n\nAbrir RStudio. Se debería ver similar a esto (o en blanco):\n\n\n\n\n\n\n\n\nNota\n\n\n\nAlternativa a lo anterior: https://posit.cloud/\n\nVersión online de Rstudio\nUtilizar en caso de problemas con PC"
+    "text": "Las clases y guías prácticas de este curso se realizarán en el software R y su interfaz RStudio. A continuación dejamos una guía de instalación."
   },
   {
     "objectID": "assignment/05-practico.html",
@@ -1027,5 +1027,12 @@
     "title": "Programa",
     "section": "Recursos web",
     "text": "Recursos web\n\nSitio web del curso\nDescarga de R y Rstudio\nR4DS en español"
+  },
+  {
+    "objectID": "assignment/index.html#guía-de-instalación",
+    "href": "assignment/index.html#guía-de-instalación",
+    "title": "Prácticos",
+    "section": "Guía de instalación",
+    "text": "Guía de instalación\n\nPaso 1. Acceder a Posit\nAcceder a la página de posit, desarrollador del software desde octubre de 2022. Link directo a la descarga acá.\n\n\nPaso 2. Instalar R y Rstudio\n\n\n2.a) Descargar R\n\nSeleccionamos sistema operativo según corresponda\n\nDescargar R por primera vez y seguir instrucciones. En esta oportunidad trabajaremos con la última versión de R 4.3.2\n\n\n\n\n2.b) Descargar RStudio\n\nDescarga directa en la página de inicio\n\n\n\n2.c) Instalar ambos archivos siguiendo las instrucciones de instalación\n\n\n\nPaso 3. Abrir RStudio. Se debería ver similar a esto (o en blanco):\n\n\n\n\n\n\n\nNota\n\n\n\nAlternativa a lo anterior: https://posit.cloud/\n\nVersión online de Rstudio\nUtilizar en caso de problemas con PC"
   }
 ]
