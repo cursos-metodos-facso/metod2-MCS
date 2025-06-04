@@ -110,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta property="og:image:width" content="500">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -140,7 +140,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Clases</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../assignment/index.html" rel="" target="">
+    <a class="nav-link active" href="../assignment/index.html" rel="" target="" aria-current="page">
  <span class="menu-text">Prácticos</span></a>
   </li>  
   <li class="nav-item">
@@ -153,10 +153,91 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../assignment/01-practico.html">Sesiones</a></li><li class="breadcrumb-item"><a href="../assignment/04-practico.html">Práctico 04. Inferencia</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Información general prácticos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignment/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Descripción Prácticos</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Sesiones</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignment/01-practico.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctico 01: Aproximación inicial a R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignment/taller-github-quarto/taller-github-quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctico 02: Taller quarto y github</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignment/03-practico.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctico 03: Conocimientos básicos R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignment/04-practico.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Práctico 04. Inferencia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignment/05-practico.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctico 05: Correlación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignment/06-practico.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctico 06: Correlación categóricas</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -164,38 +245,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#objetivo-de-la-práctica" id="toc-objetivo-de-la-práctica" class="nav-link active" data-scroll-target="#objetivo-de-la-práctica">Objetivo de la práctica</a></li>
-  <li><a href="#qué-es-la-inferencia-estadística" id="toc-qué-es-la-inferencia-estadística" class="nav-link" data-scroll-target="#qué-es-la-inferencia-estadística">¿Qué es la inferencia estadística?</a></li>
-  <li><a href="#distribución-normal" id="toc-distribución-normal" class="nav-link" data-scroll-target="#distribución-normal">Distribución normal</a></li>
-  <li><a href="#probabilidades-asociadas-con-valores-z" id="toc-probabilidades-asociadas-con-valores-z" class="nav-link" data-scroll-target="#probabilidades-asociadas-con-valores-z">Probabilidades asociadas con valores z</a>
+  <li><a href="#inferencia-estadística" id="toc-inferencia-estadística" class="nav-link" data-scroll-target="#inferencia-estadística">1. Inferencia estadística</a></li>
+  <li><a href="#distribución-normal" id="toc-distribución-normal" class="nav-link" data-scroll-target="#distribución-normal">2. Distribución normal</a></li>
+  <li><a href="#probabilidades-asociadas-con-valores-z" id="toc-probabilidades-asociadas-con-valores-z" class="nav-link" data-scroll-target="#probabilidades-asociadas-con-valores-z">3. Probabilidades asociadas con valores z</a></li>
+  <li><a href="#distribución-muestral" id="toc-distribución-muestral" class="nav-link" data-scroll-target="#distribución-muestral">4. Distribución muestral</a></li>
+  <li><a href="#error-estándar" id="toc-error-estándar" class="nav-link" data-scroll-target="#error-estándar">5. Error estándar</a></li>
+  <li><a href="#intervalos-de-confianza" id="toc-intervalos-de-confianza" class="nav-link" data-scroll-target="#intervalos-de-confianza">6. Intervalos de confianza</a>
   <ul class="collapse">
-  <li><a href="#ejercicio-1" id="toc-ejercicio-1" class="nav-link" data-scroll-target="#ejercicio-1">Ejercicio 1</a></li>
-  <li><a href="#ejercicio-2" id="toc-ejercicio-2" class="nav-link" data-scroll-target="#ejercicio-2">Ejercicio 2</a></li>
+  <li><a href="#cálculo-de-intervalos-de-confianza" id="toc-cálculo-de-intervalos-de-confianza" class="nav-link" data-scroll-target="#cálculo-de-intervalos-de-confianza">6.1. Cálculo de intervalos de confianza</a></li>
+  <li><a href="#intervalos-de-confianza-sin-ponderador" id="toc-intervalos-de-confianza-sin-ponderador" class="nav-link" data-scroll-target="#intervalos-de-confianza-sin-ponderador">6.2. Intervalos de confianza sin ponderador</a></li>
+  <li><a href="#intervalos-de-confianza-con-ponderador" id="toc-intervalos-de-confianza-con-ponderador" class="nav-link" data-scroll-target="#intervalos-de-confianza-con-ponderador">6.3. Intervalos de confianza con ponderador</a></li>
   </ul></li>
-  <li><a href="#ejercicio-de-aplicación" id="toc-ejercicio-de-aplicación" class="nav-link" data-scroll-target="#ejercicio-de-aplicación">Ejercicio de aplicación</a>
+  <li><a href="#test-de-hipótesis-para-diferencia-de-medias" id="toc-test-de-hipótesis-para-diferencia-de-medias" class="nav-link" data-scroll-target="#test-de-hipótesis-para-diferencia-de-medias">7. Test de hipótesis para diferencia de medias</a>
   <ul class="collapse">
-  <li><a href="#ejercicio-1-1" id="toc-ejercicio-1-1" class="nav-link" data-scroll-target="#ejercicio-1-1">Ejercicio 1</a></li>
-  <li><a href="#ejercicio-2-1" id="toc-ejercicio-2-1" class="nav-link" data-scroll-target="#ejercicio-2-1">Ejercicio 2</a></li>
-  <li><a href="#ejercicio-3" id="toc-ejercicio-3" class="nav-link" data-scroll-target="#ejercicio-3">Ejercicio 3</a></li>
-  <li><a href="#distribución-muestral" id="toc-distribución-muestral" class="nav-link" data-scroll-target="#distribución-muestral">Distribución muestral</a></li>
-  <li><a href="#error-estándar" id="toc-error-estándar" class="nav-link" data-scroll-target="#error-estándar">Error estándar</a></li>
-  <li><a href="#intervalos-de-confianza" id="toc-intervalos-de-confianza" class="nav-link" data-scroll-target="#intervalos-de-confianza">Intervalos de confianza</a></li>
-  <li><a href="#cálculo-de-intervalos-de-confianza" id="toc-cálculo-de-intervalos-de-confianza" class="nav-link" data-scroll-target="#cálculo-de-intervalos-de-confianza">Cálculo de intervalos de confianza</a>
-  <ul class="collapse">
-  <li><a href="#intervalos-de-confianza-sin-ponderador" id="toc-intervalos-de-confianza-sin-ponderador" class="nav-link" data-scroll-target="#intervalos-de-confianza-sin-ponderador">Intervalos de confianza sin ponderador</a></li>
-  <li><a href="#intervalos-de-confianza-con-ponderador" id="toc-intervalos-de-confianza-con-ponderador" class="nav-link" data-scroll-target="#intervalos-de-confianza-con-ponderador">Intervalos de confianza con ponderador</a></li>
-  </ul></li>
-  <li><a href="#test-de-hipótesis-para-diferencia-de-medias" id="toc-test-de-hipótesis-para-diferencia-de-medias" class="nav-link" data-scroll-target="#test-de-hipótesis-para-diferencia-de-medias">Test de hipótesis para diferencia de medias</a>
-  <ul class="collapse">
-  <li><a href="#cálculo-paso-a-paso-de-estadístico-t" id="toc-cálculo-paso-a-paso-de-estadístico-t" class="nav-link" data-scroll-target="#cálculo-paso-a-paso-de-estadístico-t">Cálculo paso a paso de estadístico t</a></li>
-  </ul></li>
-  <li><a href="#recursos-de-la-práctica" id="toc-recursos-de-la-práctica" class="nav-link" data-scroll-target="#recursos-de-la-práctica">Recursos de la práctica</a></li>
+  <li><a href="#cálculo-paso-a-paso-de-estadístico-t" id="toc-cálculo-paso-a-paso-de-estadístico-t" class="nav-link" data-scroll-target="#cálculo-paso-a-paso-de-estadístico-t">7.1. Cálculo paso a paso de estadístico t</a></li>
+  <li><a href="#aplicación-práctica" id="toc-aplicación-práctica" class="nav-link" data-scroll-target="#aplicación-práctica">7.2. Aplicación práctica</a></li>
   <li><a href="#cinco-pasos-para-la-inferencia-estadística" id="toc-cinco-pasos-para-la-inferencia-estadística" class="nav-link" data-scroll-target="#cinco-pasos-para-la-inferencia-estadística">Cinco pasos para la inferencia estadística</a></li>
-  <li><a href="#preparación-datos" id="toc-preparación-datos" class="nav-link" data-scroll-target="#preparación-datos">Preparación datos</a></li>
-  <li><a href="#recordemos" id="toc-recordemos" class="nav-link" data-scroll-target="#recordemos">Recordemos…</a></li>
   <li><a href="#pruebas-de-hipótesis-direccionales-para-la-media" id="toc-pruebas-de-hipótesis-direccionales-para-la-media" class="nav-link" data-scroll-target="#pruebas-de-hipótesis-direccionales-para-la-media">Pruebas de hipótesis direccionales para la media</a></li>
-  <li><a href="#inferencia-para-proporciones" id="toc-inferencia-para-proporciones" class="nav-link" data-scroll-target="#inferencia-para-proporciones">Inferencia para proporciones</a></li>
-  <li><a href="#inferencia-en-correlación" id="toc-inferencia-en-correlación" class="nav-link" data-scroll-target="#inferencia-en-correlación">Inferencia en correlación</a></li>
+  <li><a href="#inferencia-para-proporciones" id="toc-inferencia-para-proporciones" class="nav-link" data-scroll-target="#inferencia-para-proporciones">7.3. Inferencia para proporciones</a></li>
   </ul></li>
+  <li><a href="#inferencia-en-correlación" id="toc-inferencia-en-correlación" class="nav-link" data-scroll-target="#inferencia-en-correlación">8. Inferencia en correlación</a></li>
   </ul>
 </nav>
     </div>
@@ -230,7 +299,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="objetivo-de-la-práctica">Objetivo de la práctica</h2>
 <p>El objetivo de esta guía práctica es, primero, introducirnos en la inferencia estadística, revisando los conceptos y aplicaciones de la curva normal y las probabilidades bajo esta con puntajes Z. Segundo, revisar algunos de sus conceptos clave como distribución muestral, error estándar, y la definición y aplicaciones de los intervalos de confianza. Y tercero, contraste de hipótesis de diferencia de medias y proporciones.</p>
 <p>En detalle, aprenderemos:</p>
-<ol type="1">
+<ul>
 <li>Qué es la inferencia estadística.</li>
 <li>Qué es la distribución normal y cómo interpretarla.</li>
 <li>Cómo calcular probabilidades asociadas con valores Z en R.</li>
@@ -239,23 +308,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Qué son y cómo calcular intervalos de conafianza.</li>
 <li>Test de hipótesis para diferencia de medias</li>
 <li>Test de hipótesis para diferencia de proporciones</li>
-</ol>
+</ul>
 </section>
-<section id="qué-es-la-inferencia-estadística" class="level2">
-<h2 class="anchored" data-anchor-id="qué-es-la-inferencia-estadística">¿Qué es la inferencia estadística?</h2>
+<section id="inferencia-estadística" class="level2">
+<h2 class="anchored" data-anchor-id="inferencia-estadística">1. Inferencia estadística</h2>
 <p>En estadística, llamamos inferencia al ejercicio de <strong>extrapolar</strong> determinadas estimaciones (estadístico) de una muestra a una población más grande (parámetro). En concreto, es el proceso de realizar conclusiones o predicciones sobre una población a partir de una muestra o subconjunto de esa población.</p>
 <p><img src="../files/INFERENCIA.jpg" class="img-fluid"></p>
-<p>Un concepto central en todo esto es la probabilidad de <em>error</em>, es decir, en qué medida nos estamos equivocando (o estamos dispuestos a estar equivocados) en tratar de extrapolar una estimación muestral a la población.</p>
+<p>Un concepto central en todo esto es la probabilidad de <strong>error</strong>, es decir, en qué medida nos estamos equivocando (o estamos dispuestos a estar equivocados) en tratar de extrapolar una estimación muestral a la población.</p>
 </section>
-<section id="distribución-normal" class="level1">
-<h1>Distribución normal</h1>
-<div class="callout callout-style-default callout-note callout-titled">
+<section id="distribución-normal" class="level2">
+<h2 class="anchored" data-anchor-id="distribución-normal">2. Distribución normal</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Nota
+Distribución de una variable
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -293,33 +362,14 @@ Nota
 </div>
 </div>
 <p>Tenemos que la probabilidad (en una curva normal estándar) de obtener un valor igual o menor a 0 es de 0.5, es decir, del 50%, pero ¿por qué?</p>
-<blockquote class="blockquote">
 <p>Porque como la distribución normal es simétrica alrededor de cero, la probabilidad de que sea menor o igual a cero es 0.5, es decir, el 50% de la distribución está por debajo de cero y el otro 50% está por encima de cero.</p>
-</blockquote>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../slides/img/norm2.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">:scale 65%</figcaption>
-</figure>
-</div>
+<p><img src="../files/img/assignment/norm2.png" class="img-fluid"></p>
 <p>Esto es posible mediante la relación entre las áreas bajo la curva normal y las probabilidades.</p>
 </section>
-<section id="probabilidades-asociadas-con-valores-z" class="level1">
-<h1>Probabilidades asociadas con valores z</h1>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Nota
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<section id="probabilidades-asociadas-con-valores-z" class="level2">
+<h2 class="anchored" data-anchor-id="probabilidades-asociadas-con-valores-z">3. Probabilidades asociadas con valores z</h2>
 <p>La puntuación Z es una medida que se utiliza para expresar la posición relativa de un valor con respecto a la media en una distribución normal. La puntuación Z mide cuántas desviaciones estándar está un valor por encima o por debajo de la media.</p>
-</div>
-</div>
-<p>En los ejemplos siguientes, usaremos valores Z de + 1,96 y -1,96 porque sabemos que estos valores aproximados marcan el 2,5% superior e inferior de la distribución normal estándar. Esto corresponde a un alfa típico = 0,05 para una prueba de hipótesis de dos colas (sobre la cual aprenderemos más en las próximas semanas).</p>
+<p>En los ejemplos siguientes, usaremos valores Z de + 1,96 y -1,96 porque sabemos que estos valores aproximados marcan el 2,5% superior e inferior de la distribución normal estándar. Esto corresponde a un <span class="math inline">\(alpha\)</span> típico = 0,05 para una prueba de hipótesis de dos colas (sobre la cual aprenderemos más en las próximas semanas).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="fl">1.96</span>, <span class="at">lower.tail=</span><span class="cn">TRUE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -357,8 +407,8 @@ Nota
 <pre><code>integer(0)</code></pre>
 </div>
 </div>
-<section id="ejercicio-1" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicio-1">Ejercicio 1</h3>
+<section id="ejercicio-1" class="level4">
+<h4 class="anchored" data-anchor-id="ejercicio-1">Ejercicio 1</h4>
 <p>Utilice la función <code>abline()</code> para agregar líneas en el puntaje z apropiado para demostrar el clásico 68-95-99.7 de esta curva normal estándar.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x.values, y.values, <span class="at">type=</span><span class="st">"l"</span>, <span class="at">lty=</span><span class="dv">1</span>, <span class="at">xlab=</span><span class="st">"Z value"</span>, <span class="at">ylab=</span><span class="st">"Probability"</span>, <span class="at">main=</span><span class="st">"Normal Distribution"</span>) <span class="sc">+</span></span>
@@ -390,8 +440,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="ejercicio-2" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicio-2">Ejercicio 2</h3>
+<section id="ejercicio-2" class="level4">
+<h4 class="anchored" data-anchor-id="ejercicio-2">Ejercicio 2</h4>
 <p>Hasta ahora hemos demostrado todo con una distribución normal estándar. Pero la mayoría de las curvas normales no son normales <em>estándar</em>.</p>
 <p>Genere una curva (como hicimos anteriormente para la distribución normal estándar) y trácela con una media de 20 y una desviación estándar de 1,65.</p>
 <div class="cell">
@@ -411,9 +461,8 @@ Nota
 </div>
 <p>Tenemos que el 97,5% de los valores estarán por debajo de 23,2.</p>
 </section>
-</section>
-<section id="ejercicio-de-aplicación" class="level1">
-<h1>Ejercicio de aplicación</h1>
+<section id="ejercicio-de-aplicación" class="level4">
+<h4 class="anchored" data-anchor-id="ejercicio-de-aplicación">Ejercicio de aplicación</h4>
 <p>Ahora que hemos generado distribuciones normales, echemos un vistazo a algunos datos y compárelos con la distribución normal. Utilizaremos un conjunto de datos desde internet, con mediciones de 247 hombres y 260 mujeres, la mayoría de los cuales eran considerados adultos jóvenes sanos.P uede encontrar una clave para los nombres de las variables <a href="http://www.openintro.org/stat/data/bdims.php">aquí</a>, pero nos centraremos en solo tres columnas: peso en kg (wgt), altura en cm (hgt) y sexo (1 = hombre; 0 = mujer).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">"http://www.openintro.org/stat/data/bdims.RData"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -423,8 +472,9 @@ Nota
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>mdims <span class="ot">&lt;-</span> <span class="fu">subset</span>(bdims, sex <span class="sc">==</span> <span class="dv">1</span>)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>fdims <span class="ot">&lt;-</span> <span class="fu">subset</span>(bdims, sex <span class="sc">==</span> <span class="dv">0</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="ejercicio-1-1" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicio-1-1">Ejercicio 1</h3>
+</section>
+<section id="ejercicio-1-1" class="level4">
+<h4 class="anchored" data-anchor-id="ejercicio-1-1">Ejercicio 1</h4>
 <p>Haz un histograma de la altura de los hombres y un histograma de la altura de las mujeres. ¿Cómo compararía los diversos aspectos de las dos distribuciones?</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(mdims<span class="sc">$</span>hgt, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">150</span>,<span class="dv">200</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -437,8 +487,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="ejercicio-2-1" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicio-2-1">Ejercicio 2</h3>
+<section id="ejercicio-2-1" class="level4">
+<h4 class="anchored" data-anchor-id="ejercicio-2-1">Ejercicio 2</h4>
 <p><code>scale</code> es una función en R y se puede aplicar a cualquier vector numérico (lista de números en R). Genere los dos histogramas siguientes, esta vez graficando <code>scale()</code> de las estaturas y determine cómo la versión escalada de las alturas corresponde a las alturas originales. ¿Qué calcula la escala para cada punto?</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">scale</span>(mdims<span class="sc">$</span>hgt))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -451,8 +501,8 @@ Nota
 </div>
 </div>
 </section>
-<section id="ejercicio-3" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicio-3">Ejercicio 3</h3>
+<section id="ejercicio-3" class="level4">
+<h4 class="anchored" data-anchor-id="ejercicio-3">Ejercicio 3</h4>
 <p>Nos gustaría comparar la distribución de estaturas en este conjunto de datos con la distribución normal. Para cada uno de los histogramas de alturas (sin escalar), trace una curva normal en la parte superior del histograma.</p>
 <ol type="1">
 <li><p>Calcule la media y la desviación estándar para las alturas femeninas y guárdelas como variables, <code>fhgtmean</code> y <code>fhgtsd</code>, respectivamente.</p></li>
@@ -521,8 +571,9 @@ Nota
 </div>
 </div>
 </section>
+</section>
 <section id="distribución-muestral" class="level2">
-<h2 class="anchored" data-anchor-id="distribución-muestral">Distribución muestral</h2>
+<h2 class="anchored" data-anchor-id="distribución-muestral">4. Distribución muestral</h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -539,7 +590,9 @@ Nota
 <p>La <strong>distribución muestral</strong> es la distribución de las estimaciones, o estadísticos como la media o proporción, tomadas de múltiples muestras aleatorias de una población. Permite comprender cómo varían las estimaciones de una muestra a otra.</p>
 <p><strong>Ejemplo 1</strong>: Imaginemos que tenemos una población de niñ_s de 0 a 9 años, y tomamos múltiples muestras de 6 individu_s (n=6). Cada una de las muestras tendrá un promedio (estadístico muestral, en este caso <span class="math inline">\(\bar{x}\)</span>) diferente, que no necesariamente coincidirn con el promedio de la población (parámetro, en este caso <span class="math inline">\(\mu_{x}\)</span>)</p>
 <p><img src="../files/dist_muestral.png" class="img-fluid"></p>
-<p><strong>Ejemplo 2</strong>: Si usamos valores simulados, podemos ver que todas las medias obtenidas en cada muesta son distintas.</p>
+<section id="ejemplo-2" class="level4">
+<h4 class="anchored" data-anchor-id="ejemplo-2">Ejemplo 2</h4>
+<p>Si usamos valores simulados, podemos ver que todas las medias obtenidas en cada muesta son distintas.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">100</span>)  <span class="co"># Establecer semilla </span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>muestras <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">100</span>, <span class="fu">mean</span>(<span class="fu">rnorm</span>(<span class="dv">30</span>, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">10</span>))) <span class="co"># 100 muestras de tamaño 30</span></span>
@@ -576,8 +629,9 @@ Nota
 </div>
 <p>La importancia de la distribución muestral es que nos permitirá estimar parámetros poblacionales a partir de estadísticos muestrales, construir intervalos de confianza, y realizar pruebas de hipótesis.</p>
 </section>
+</section>
 <section id="error-estándar" class="level2">
-<h2 class="anchored" data-anchor-id="error-estándar">Error estándar</h2>
+<h2 class="anchored" data-anchor-id="error-estándar">5. Error estándar</h2>
 <p>El error estándar es una medida de la variabilidad de una estimación, proporciona una medida de cuán precisas son nuestras estimaciones de la población. El error estándar del promedio corresponde a una estimación de la desviación estándar de los promedios extraídos de distintas muestras.</p>
 <p>Consideremos a cada punto una observación para la muestra roja, con la línea vertical como la media y la línea horizontal como la desviación estándar.</p>
 <p><img src="https://multivariada.netlify.app/slides/images/se_1.png" class="img-fluid"></p>
@@ -615,7 +669,7 @@ Nota
 <p>La importancia del error estándar es que nos permitirá construir intervalos de confianza, y realizar pruebas de hipótesis.</p>
 </section>
 <section id="intervalos-de-confianza" class="level2">
-<h2 class="anchored" data-anchor-id="intervalos-de-confianza">Intervalos de confianza</h2>
+<h2 class="anchored" data-anchor-id="intervalos-de-confianza">6. Intervalos de confianza</h2>
 <p>Un intervalo de confianza es un rango dentro del cual es probable que se encuentre un parámetro poblacional con un nivel de confianza específico. Además, proporciona información sobre la precisión de nuestras estimaciones.</p>
 <p>Por ejemplo,</p>
 <div class="cell">
@@ -645,9 +699,8 @@ Nota
 <p><strong>Nivel de significacncia</strong>: Corresponde a la probabilidad de que el intervalo calculado a partir de la muestra no comprenda el parámetro de la población (<span class="math inline">\(\alpha\)</span>).</p>
 </div>
 </div>
-</section>
-<section id="cálculo-de-intervalos-de-confianza" class="level2">
-<h2 class="anchored" data-anchor-id="cálculo-de-intervalos-de-confianza">Cálculo de intervalos de confianza</h2>
+<section id="cálculo-de-intervalos-de-confianza" class="level3">
+<h3 class="anchored" data-anchor-id="cálculo-de-intervalos-de-confianza">6.1. Cálculo de intervalos de confianza</h3>
 <p>Ahora ¡Manos a la obra!</p>
 <p>Calculemos intervalos de confianza. Primero, carguemos las librerías necesarias:</p>
 <div class="cell">
@@ -682,8 +735,9 @@ Nota
 <p>Recordemos que podemos contar con bases de datos que tengan factor de expansión (ponderador) o no. Esta distinción se presenta cuando trabajamos con muestras simples o complejas. Al trabajar con muestras complejas debemos identificar cuál es la variable del ponderador e incorporarla en nuestro cálculo, como veremos a continuación.</p>
 </div>
 </div>
+</section>
 <section id="intervalos-de-confianza-sin-ponderador" class="level3">
-<h3 class="anchored" data-anchor-id="intervalos-de-confianza-sin-ponderador">Intervalos de confianza sin ponderador</h3>
+<h3 class="anchored" data-anchor-id="intervalos-de-confianza-sin-ponderador">6.2. Intervalos de confianza sin ponderador</h3>
 <p>Podemos calcular intervalos de confianza con muestras representativas sin ponderadores o factores de expansión. Supongamos que es el caso.</p>
 <section id="ic-para-medias" class="level4">
 <h4 class="anchored" data-anchor-id="ic-para-medias">IC para Medias</h4>
@@ -740,7 +794,7 @@ sample estimates:
 </section>
 </section>
 <section id="intervalos-de-confianza-con-ponderador" class="level3">
-<h3 class="anchored" data-anchor-id="intervalos-de-confianza-con-ponderador">Intervalos de confianza con ponderador</h3>
+<h3 class="anchored" data-anchor-id="intervalos-de-confianza-con-ponderador">6.3. Intervalos de confianza con ponderador</h3>
 <p>Para muestras complejas que cuentan con ponderador (o factor de expansión) también podemos hacer este ejercicio.</p>
 <p>Primero, es necesario identificar la variable de factor de expansión o ponderador:</p>
 <div class="cell">
@@ -798,7 +852,7 @@ Value |     N | Raw % | Valid % | Cum. %
 </section>
 </section>
 <section id="test-de-hipótesis-para-diferencia-de-medias" class="level2">
-<h2 class="anchored" data-anchor-id="test-de-hipótesis-para-diferencia-de-medias">Test de hipótesis para diferencia de medias</h2>
+<h2 class="anchored" data-anchor-id="test-de-hipótesis-para-diferencia-de-medias">7. Test de hipótesis para diferencia de medias</h2>
 <p>Primero, carguemos las librerías necesarias:</p>
 <div class="cell" data-hash="04-practico_cache/html/unnamed-chunk-35_aaae332be7653c5c6210a966f96f0af0">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pacman)</span>
@@ -877,7 +931,7 @@ mean in group 1 mean in group 2
 </div>
 <p>Lo principal en este output es el <strong>valor p</strong>, que es la probabilidad de error de rechazar la hipótesis nula. En este caso, <span class="math inline">\(p = 0.006658\)</span>, que es menor a un nivel de confianza convencional como <span class="math inline">\(\alpha = 0.05\)</span>, incluso es menor que un nivel más exigente como el <span class="math inline">\(\alpha = 0.01\)</span>. Por lo tanto, rechazamos la hipótesis nula de igualdad de medias con un 99% de confianza, hay suficiente evidencia estadística para sostener que el promedio de edad de hombres y mujeres es diferente.</p>
 <section id="cálculo-paso-a-paso-de-estadístico-t" class="level3">
-<h3 class="anchored" data-anchor-id="cálculo-paso-a-paso-de-estadístico-t">Cálculo paso a paso de estadístico t</h3>
+<h3 class="anchored" data-anchor-id="cálculo-paso-a-paso-de-estadístico-t">7.1. Cálculo paso a paso de estadístico t</h3>
 <p>En esta última sección se realizará el cálculo paso a paso del estadístico <span class="math inline">\(t\)</span> del ejemplo anterior para demostrar cómo se origina la información que aparece en el output de R.</p>
 <p>Recordemos la fórmula de t:</p>
 <p><span class="math inline">\(t=\frac{(\bar{x}_1-\bar{x}_2)}{\sqrt{\frac{s_1²}{\sqrt{n_1}}+\frac{s_2²}{\sqrt{n_2}} }}\)</span></p>
@@ -963,13 +1017,12 @@ mean in group 1 mean in group 2
 <p><strong>Paso 5</strong>: test de hipótesis</p>
 <p>Según la distribución t, el valor crítico para poder rechazar <span class="math inline">\(H_0\)</span> con un 95% de confianza es 2.26. El t calculado con información de la muestra (o t empírico) es 4.87. Este valor es superior al t crítico, por lo tanto se rechaza <span class="math inline">\(H_0\)</span> con un 95% de confianza, o una probabilidad de error p&lt;0.05.</p>
 </section>
-</section>
-<section id="recursos-de-la-práctica" class="level2">
-<h2 class="anchored" data-anchor-id="recursos-de-la-práctica">Recursos de la práctica</h2>
+<section id="aplicación-práctica" class="level3">
+<h3 class="anchored" data-anchor-id="aplicación-práctica">7.2. Aplicación práctica</h3>
 <p>En esta práctica trabajaremos con un subconjunto de datos previamente procesados de la Encuesta de Caracterización Socioeconómica (CASEN) del año 2022, elaborada por el <a href="https://observatorio.ministeriodesarrollosocial.gob.cl/">Ministerio de Desarrollo Social y Familia</a>. Para este ejercicio, obtendremos directamente esta base desde internet. No obstante, también tienes la opción de acceder a la misma información a través del siguiente enlace: <a href="https://github.com/cursos-metodos-facso/datos-ejemplos/raw/main/proc_casen.RData"><i class="fa-solid fa-table" aria-hidden="true"></i> <code>CASEN 20222</code></a>. Desde allí, podrás descargar el archivo que contiene el subconjunto procesado de la base de datos CASEN 2022.</p>
 </section>
-<section id="cinco-pasos-para-la-inferencia-estadística" class="level2">
-<h2 class="anchored" data-anchor-id="cinco-pasos-para-la-inferencia-estadística">Cinco pasos para la inferencia estadística</h2>
+<section id="cinco-pasos-para-la-inferencia-estadística" class="level3">
+<h3 class="anchored" data-anchor-id="cinco-pasos-para-la-inferencia-estadística">Cinco pasos para la inferencia estadística</h3>
 <p>En inferencia, las pruebas de hipótesis nos ayudan a determinar si el resultado que obtenemos en nuestra muestra es un efecto real/extensible a la población o un error de muestreo. Aquí recomendamos una lista de cinco pasos lógicos para enfrentarnos a la inferencia estadística:</p>
 
 <style>
@@ -1039,9 +1092,8 @@ Contrasta el valor estimado con el valor crítico e intrepreta los resultados
 
 </tbody></table>
 <p>Además de estos 5 pasos también existe la posibilidad de calcular un intervalo de confianza, que acompañe la precisión de nuestra estimación.</p>
-</section>
-<section id="preparación-datos" class="level2">
-<h2 class="anchored" data-anchor-id="preparación-datos">Preparación datos</h2>
+<section id="preparación-datos" class="level4">
+<h4 class="anchored" data-anchor-id="preparación-datos">Preparación datos</h4>
 <p>Comencemos por preparar nuestros datos. Iniciamos cargando las librerías necesarias.</p>
 <div class="cell" data-hash="04-practico_cache/html/unnamed-chunk-44_4c966c71da73721868e7a885e2757559">
 <div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, <span class="co"># Manipulacion datos</span></span>
@@ -1086,9 +1138,7 @@ Contrasta el valor estimado con el valor crítico e intrepreta los resultados
 </div>
 </div>
 </div>
-</section>
-<section id="recordemos" class="level2">
-<h2 class="anchored" data-anchor-id="recordemos">Recordemos…</h2>
+<p><strong>Recordemos…</strong></p>
 <p>En estadística, la formulación de hipótesis que implica dos variables (o la comparación de grupos) busca determinar si existen diferencias en una variable entre grupos y, de ser el caso, evaluar si esta diferencia es estadísticamente significativa.</p>
 <p>hemos aprendido a contrastar hipótesis sobre <strong>diferencias entre grupos</strong>. A esto también se le llama <strong>hipótesis de dos colas</strong>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -1191,7 +1241,7 @@ Prueba de dos colas
 </div>
 <p>Comparamos el valor estimado con el valor crítico para dos colas. Por tanto, nuestro valor estimado queda dentro de la zona de rechazo de <span class="math inline">\(H_0\)</span>. En consecuencia, podemos decir que:</p>
 <blockquote class="blockquote">
-<p>La prueba T que evalúa la diferencia de medias entre el ingreso del trabajo según sexo sugiere que el efecto es positivo y estadísticamente signficativo (diferencia = 143.260, t(58004.33) = 23.43, p &lt; .001). Por tanto, rechazamos la <span class="math inline">\(H_{0}\)</span> sobre igualdad de medias con un 95% de confianza, existiendo evidencia a favor de nuestra <span class="math inline">\(H_{A}\)</span> ya que hay diferencias salariales significativas entre hombres y mujeres.</p>
+<p><strong>Respuesta</strong>: La prueba T que evalúa la diferencia de medias entre el ingreso del trabajo según sexo sugiere que el efecto es positivo y estadísticamente signficativo (diferencia = 143.260, t(58004.33) = 23.43, p &lt; .001). Por tanto, rechazamos la <span class="math inline">\(H_{0}\)</span> sobre igualdad de medias con un 95% de confianza, existiendo evidencia a favor de nuestra <span class="math inline">\(H_{A}\)</span> ya que hay diferencias salariales significativas entre hombres y mujeres.</p>
 </blockquote>
 <ol start="6" type="1">
 <li>Y el cálculo directo en R:</li>
@@ -1217,8 +1267,9 @@ Prueba de dos colas
 </div>
 <p>Además, podemos calcular un intervalo de confianza que acompaña nuestra estimación. En este caso, vemos que el IC para la diferencia de medias oscila entre [131.275 - 155.245] y <strong>no contiene el cero</strong>, por lo que podemos rechazar la hipótesis nula.</p>
 </section>
-<section id="pruebas-de-hipótesis-direccionales-para-la-media" class="level2">
-<h2 class="anchored" data-anchor-id="pruebas-de-hipótesis-direccionales-para-la-media">Pruebas de hipótesis direccionales para la media</h2>
+</section>
+<section id="pruebas-de-hipótesis-direccionales-para-la-media" class="level3">
+<h3 class="anchored" data-anchor-id="pruebas-de-hipótesis-direccionales-para-la-media">Pruebas de hipótesis direccionales para la media</h3>
 <p>Sin embargo, también podemos <strong>plantear hipótesis</strong> respecto a que el valor de cierto parámetro para un grupo <strong>puede ser mayor o menor</strong> al de otro grupo. A esto se le conoce como <strong>hipótesis de una cola</strong>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1324,7 +1375,7 @@ Prueba de una cola
 </div>
 </div>
 <blockquote class="blockquote">
-<p>La prueba T que evalúa la diferencia de medias entre el ingreso del trabajo y tener hijos en las mujeres ocupadas sugiere que el efecto es positivo y estadísticamente signficativo (diferencia = 74.762, t(11417.34) = 8.15, p &lt; .05). Por tanto, con un 95% de confianza, rechazamos la <span class="math inline">\(H_{0}\)</span> ya que existe evidencia a favor de nuestra <span class="math inline">\(H_{A}\)</span> respecto a que el ingreso de las mujeres sin hijos es mayor al ingreso de las mujeres con hijos.</p>
+<p><strong>Respuesta</strong>: La prueba T que evalúa la diferencia de medias entre el ingreso del trabajo y tener hijos en las mujeres ocupadas sugiere que el efecto es positivo y estadísticamente signficativo (diferencia = 74.762, t(11417.34) = 8.15, p &lt; .05). Por tanto, con un 95% de confianza, rechazamos la <span class="math inline">\(H_{0}\)</span> ya que existe evidencia a favor de nuestra <span class="math inline">\(H_{A}\)</span> respecto a que el ingreso de las mujeres sin hijos es mayor al ingreso de las mujeres con hijos.</p>
 </blockquote>
 <ol start="6" type="1">
 <li>Y el cálculo en R.</li>
@@ -1349,8 +1400,8 @@ Prueba de una cola
 </div>
 <p>En este caso, el IC del 95% es (59.670, Inf), donde “Inf” representa infinito. Esto significa que podemos estar 95% seguros de que <strong>la diferencia real entre las medias está por encima de 59.670</strong>. En otras palabras, con alta confianza, podemos afirmar que la media del “grupo 0” es significativamente mayor que la del “grupo 1”.</p>
 </section>
-<section id="inferencia-para-proporciones" class="level2">
-<h2 class="anchored" data-anchor-id="inferencia-para-proporciones">Inferencia para proporciones</h2>
+<section id="inferencia-para-proporciones" class="level3">
+<h3 class="anchored" data-anchor-id="inferencia-para-proporciones">7.3. Inferencia para proporciones</h3>
 <p>Cuando queremos realizar inferencia para variables categóricas, generlamente utilizamos pruebas que comparan <strong>proporciones de una variable de interés</strong> entre grupos.</p>
 <p>El <em>test de proporciones</em> es una prueba estadística utilizada para <strong>determinar si hay una diferencia significativa entre dos proporciones (tasas) en dos grupos</strong>. Se basa en datos categóricos, en donde <strong>se cuentan los eventos “exitosos”</strong> o “positivos” en cada grupo de comparación, por sobre el total de eventos.</p>
 <p>Evaluamos si existen diferencias entre hombres y mujeres en la proporción de encontrarse en situación de pobreza multidimensional.</p>
@@ -1425,12 +1476,13 @@ Prueba de una cola
 </div>
 <p>¿Y cómo reportamos esto?:</p>
 <blockquote class="blockquote">
-<p>Esta prueba que evalúa la diferencia de proporciones entre encontrarse en situación de pobreza según sexo sugiere que el efecto es positivo y estadísticamente no significativo (<span class="math inline">\(X^2\)</span>= 0.19887, p = 0.6556). Por tanto, no se rechaza la <span class="math inline">\(H_{0}\)</span> sobre igualdad de proporciones ya que no existe suficiente evidencia para concluir que las proporciones en los dos grupos son significativamente diferentes.</p>
+<p><strong>Respuesta</strong>: Esta prueba que evalúa la diferencia de proporciones entre encontrarse en situación de pobreza según sexo sugiere que el efecto es positivo y estadísticamente no significativo (<span class="math inline">\(X^2\)</span>= 0.19887, p = 0.6556). Por tanto, no se rechaza la <span class="math inline">\(H_{0}\)</span> sobre igualdad de proporciones ya que no existe suficiente evidencia para concluir que las proporciones en los dos grupos son significativamente diferentes.</p>
 </blockquote>
 <p>Además de lo anterior, vemos que en este caso el IC de diferencia de proporciones <strong>sí contiene el cero</strong>, por lo que no podemos rechazar la hipótesis nula.</p>
 </section>
+</section>
 <section id="inferencia-en-correlación" class="level2">
-<h2 class="anchored" data-anchor-id="inferencia-en-correlación">Inferencia en correlación</h2>
+<h2 class="anchored" data-anchor-id="inferencia-en-correlación">8. Inferencia en correlación</h2>
 <p>En el contexto de la inferencia, <strong>la correlación</strong> nos permite <strong>determinar si existe (o no) una asociación estadísticamente significativa</strong> entre dos variables. En ese sentido, la lógica del contraste de hipótesis usando correlación es:</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1467,11 +1519,10 @@ Hipótesis en correlación
 </div>
 </div>
 <blockquote class="blockquote">
-<p>El coeficiente de correlación de Pearson entre nivel educativo e ingresos es positivo, estadísticamente significativo (r = 0.38, p &lt; .001) y moderado de acuerdo con las recomendaciones de Cohen (1988). Por tanto, con un 95% de confianza se puede rechazar la <span class="math inline">\(H_{0}\)</span> de no asociación entre variables, existiendo evidencia a favor de la <span class="math inline">\(H_{A}\)</span> sobre una asociación significativa entre educación e ingresos.</p>
+<p><strong>Respuesta</strong>: El coeficiente de correlación de Pearson entre nivel educativo e ingresos es positivo, estadísticamente significativo (r = 0.38, p &lt; .001) y moderado de acuerdo con las recomendaciones de Cohen (1988). Por tanto, con un 95% de confianza se puede rechazar la <span class="math inline">\(H_{0}\)</span> de no asociación entre variables, existiendo evidencia a favor de la <span class="math inline">\(H_{A}\)</span> sobre una asociación significativa entre educación e ingresos.</p>
 </blockquote>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

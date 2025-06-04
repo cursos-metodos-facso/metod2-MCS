@@ -216,6 +216,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../assignment/04-practico.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctico 04. Inferencia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../assignment/05-practico.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Práctico 05: Correlación</span></a>
   </div>
@@ -239,17 +245,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#objetivo-de-la-práctica" id="toc-objetivo-de-la-práctica" class="nav-link active" data-scroll-target="#objetivo-de-la-práctica">Objetivo de la práctica</a></li>
-  <li><a href="#recursos-de-la-práctica" id="toc-recursos-de-la-práctica" class="nav-link" data-scroll-target="#recursos-de-la-práctica">Recursos de la práctica</a></li>
-  <li><a href="#preparación-datos" id="toc-preparación-datos" class="nav-link" data-scroll-target="#preparación-datos">Preparación datos</a></li>
-  <li><a href="#tablas-de-contingencia" id="toc-tablas-de-contingencia" class="nav-link" data-scroll-target="#tablas-de-contingencia">Tablas de contingencia</a></li>
-  <li><a href="#prueba-de-hipótesis-con-chi-cuadrado" id="toc-prueba-de-hipótesis-con-chi-cuadrado" class="nav-link" data-scroll-target="#prueba-de-hipótesis-con-chi-cuadrado">Prueba de hipótesis con Chi-cuadrado</a></li>
-  <li><a href="#correlación-entre-categóricas" id="toc-correlación-entre-categóricas" class="nav-link" data-scroll-target="#correlación-entre-categóricas">Correlación entre categóricas</a>
+  <li><a href="#aplicación-práctica" id="toc-aplicación-práctica" class="nav-link" data-scroll-target="#aplicación-práctica">0. Aplicación práctica</a>
   <ul class="collapse">
-  <li><a href="#a-punto-biserial" id="toc-a-punto-biserial" class="nav-link" data-scroll-target="#a-punto-biserial">a) Punto biserial</a></li>
-  <li><a href="#b-tetracórica" id="toc-b-tetracórica" class="nav-link" data-scroll-target="#b-tetracórica">b) Tetracórica</a></li>
-  <li><a href="#c-policórica" id="toc-c-policórica" class="nav-link" data-scroll-target="#c-policórica">c) Policórica</a></li>
+  <li><a href="#carga-de-librerías-y-datos-datos" id="toc-carga-de-librerías-y-datos-datos" class="nav-link" data-scroll-target="#carga-de-librerías-y-datos-datos">0.1. Carga de librerías y datos datos</a></li>
   </ul></li>
-  <li><a href="#resumen" id="toc-resumen" class="nav-link" data-scroll-target="#resumen">Resumen</a></li>
+  <li><a href="#tablas-de-contingencia" id="toc-tablas-de-contingencia" class="nav-link" data-scroll-target="#tablas-de-contingencia">1. Tablas de contingencia</a></li>
+  <li><a href="#prueba-de-hipótesis-con-chi-cuadrado" id="toc-prueba-de-hipótesis-con-chi-cuadrado" class="nav-link" data-scroll-target="#prueba-de-hipótesis-con-chi-cuadrado">2. Prueba de hipótesis con Chi-cuadrado</a></li>
+  <li><a href="#correlación-entre-categóricas" id="toc-correlación-entre-categóricas" class="nav-link" data-scroll-target="#correlación-entre-categóricas">3. Correlación entre categóricas</a>
+  <ul class="collapse">
+  <li><a href="#punto-biserial" id="toc-punto-biserial" class="nav-link" data-scroll-target="#punto-biserial">3.1. Punto biserial</a></li>
+  <li><a href="#tetracórica" id="toc-tetracórica" class="nav-link" data-scroll-target="#tetracórica">3.2. Tetracórica</a></li>
+  <li><a href="#policórica" id="toc-policórica" class="nav-link" data-scroll-target="#policórica">3.3. Policórica</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -290,12 +297,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Aplicar coeficientes de correlación entre variables categóricas</li>
 </ol>
 </section>
-<section id="recursos-de-la-práctica" class="level2">
-<h2 class="anchored" data-anchor-id="recursos-de-la-práctica">Recursos de la práctica</h2>
+<section id="aplicación-práctica" class="level2">
+<h2 class="anchored" data-anchor-id="aplicación-práctica">0. Aplicación práctica</h2>
 <p>En esta práctica trabajaremos con un subconjunto de datos previamente procesados de la Encuesta de Caracterización Socioeconómica (CASEN) del año 2022, elaborada por el <a href="https://observatorio.ministeriodesarrollosocial.gob.cl/">Ministerio de Desarrollo Social y Familia</a>. Para este ejercicio, obtendremos directamente esta base desde internet. No obstante, también tienen la opción de acceder a la misma información a través del siguiente enlace: <a href="https://github.com/cursos-metodos-facso/datos-ejemplos/raw/main/proc_casen.RData"><i class="fa-solid fa-table" aria-hidden="true"></i> <code>CASEN 20222</code></a>. Desde allí, podrás descargar el archivo que contiene el subconjunto procesado de la base de datos CASEN 2022.</p>
-</section>
-<section id="preparación-datos" class="level2">
-<h2 class="anchored" data-anchor-id="preparación-datos">Preparación datos</h2>
+<section id="carga-de-librerías-y-datos-datos" class="level3">
+<h3 class="anchored" data-anchor-id="carga-de-librerías-y-datos-datos">0.1. Carga de librerías y datos datos</h3>
 <p>Comencemos por preparar nuestros datos. Iniciamos cargando las librerías necesarias.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, <span class="co"># Manipulacion datos</span></span>
@@ -320,10 +326,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Contamos con 29 variables (columnas) y 3000 observaciones (filas).</p>
 </section>
+</section>
 <section id="tablas-de-contingencia" class="level2">
-<h2 class="anchored" data-anchor-id="tablas-de-contingencia">Tablas de contingencia</h2>
+<h2 class="anchored" data-anchor-id="tablas-de-contingencia">1. Tablas de contingencia</h2>
 <p>Una tabla de contingencia es una de las maneras más simples y útiles para representar el cruce entre dos variables categóricas.</p>
-<p>Con ella, podemos obtener en las celdas las frecuencias <strong>conjuntas</strong> entre ambas variables, es decir, cuántos casos de una determinada categoría de la variable Y ocurren conjuntamente con una determinada categoría de la variable X.</p>
+<p>Con ella, podemos obtener en las celdas las frecuencias <strong>conjuntas</strong> entre ambas variables, es decir, cuántos casos de una determinada categoría de la variable <code>Y</code> ocurren conjuntamente con una determinada categoría de la variable <code>X</code>.</p>
 <p>Además, podemos presentar los totales de cada fila y columna al exterior de la tabla, también conocidas como frecuencias <strong>marginales</strong>.</p>
 <p>Veamos un ejemplo con <code>ss_salud</code> y <code>universitaria</code>:</p>
 <div class="cell">
@@ -392,9 +399,9 @@ Orden</td>
 <li><p><em>Frecuencias absolutas</em>: números que aparencen en la tabla (ya sean conjuntas o marginales)</p></li>
 <li><p><em>Frecuencias porcentuales</em>:</p>
 <ul>
-<li>porcentaje fila: % que cada frecuencia conjunta representa sobre la marginal de su fila</li>
-<li>porcentaje columna: % que cada frecuencia conjunta representa sobre la marginal de su columna</li>
-<li>porcentaje total: % que cada frecuencia conjunta representa sobre el número total de casos de la tabla</li>
+<li><strong>porcentaje fila</strong>: % que cada frecuencia conjunta representa sobre la marginal de su fila</li>
+<li><strong>porcentaje columna</strong>: % que cada frecuencia conjunta representa sobre la marginal de su columna</li>
+<li><strong>porcentaje total</strong>: % que cada frecuencia conjunta representa sobre el número total de casos de la tabla</li>
 </ul></li>
 </ul>
 <p>Veamos cómo incorporar el porcentaje fila y columna en la tabla.</p>
@@ -497,7 +504,7 @@ Orden</td>
 <p>Aquí, los porcentajes fila aparecen en azul y los porcentajes columna en verde.</p>
 </section>
 <section id="prueba-de-hipótesis-con-chi-cuadrado" class="level2">
-<h2 class="anchored" data-anchor-id="prueba-de-hipótesis-con-chi-cuadrado">Prueba de hipótesis con Chi-cuadrado</h2>
+<h2 class="anchored" data-anchor-id="prueba-de-hipótesis-con-chi-cuadrado">2. Prueba de hipótesis con Chi-cuadrado</h2>
 <p>La prueba de Chi-cudrado (<span class="math inline">\(\chi^2\)</span>) es una herramienta estadística utilizada para evaluar si existe una asociación significativa entre dos variables categóricas.</p>
 <p>Testeamos la <strong>hipótesis de independencia</strong> en una tabla de contigencia. Por ejemplo, si decimos que existe una relación entre tener educación superior y la preferencia por algún sistema de salud, esperamos encontrar que un porcentaje más alto de quienes tienen educación superior se inclinen por un sistema de salud determinado.</p>
 <p>Se basa en la comparación de las <strong>frecuencias observadas</strong> en una tabla de contingencia con las <strong>frecuencias esperadas</strong> si las variables fueran independientes. Si existe una gran diferencia entre las esperadas y las observadas, podemos suponer que hay una relación entre variables.</p>
@@ -516,7 +523,7 @@ Prueba de Chi-cuadrado
 </div>
 </div>
 <p>Veamos un ejemplo con nuestros datos. Evaluemos si el nivel educacional se relaciona con el tipo de sistema de salud al que pertenecen las personas en Chile durante el 2022.</p>
-<p>Apliquemos nuestros <a href="https://correlacional.netlify.app/assignment/08-practico#cinco-pasos-para-la-inferencia-estad%C3%ADstica">cinco pasos para inferencia</a>.</p>
+<p>Apliquemos cinco pasos para inferencia.</p>
 <ol type="1">
 <li>Formulamos nuestras hipótesis:</li>
 </ol>
@@ -599,7 +606,7 @@ Prueba de Chi-cuadrado
 <li>Especifica el valor crítico de la prueba:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> (<span class="dv">4-1</span>)<span class="sc">*</span>(<span class="dv">2-1</span>) <span class="co">#definimos grados de libertad</span></span>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> (<span class="dv">4-1</span>)<span class="sc">*</span>(<span class="dv">2-1</span>) <span class="co"># definimos grados de libertad</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>chi_critico <span class="ot">&lt;-</span> <span class="fu">qchisq</span>(<span class="at">p =</span> <span class="fl">0.05</span>, df, <span class="at">lower.tail =</span> F)</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>chi_critico</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -629,7 +636,7 @@ Prueba de Chi-cuadrado
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">nice_table</span>(stats.table)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
-<div class="tabwid"><style>.cl-cb2e7c88{table-layout:auto;}.cl-cb273bd0{font-family:'Times New Roman';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-cb273bda{font-family:'Times New Roman';font-size:12pt;font-weight:normal;font-style:italic;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-cb2a08c4{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-cb2a08ce{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-cb2a2282{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0.5pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-cb2a2283{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-cb2a228c{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-cb2e7c88"><thead><tr style="overflow-wrap:break-word;"><th class="cl-cb2a2282"><p class="cl-cb2a08c4"><span class="cl-cb273bd0">statistic</span></p></th><th class="cl-cb2a2282"><p class="cl-cb2a08c4"><span class="cl-cb273bda">p</span></p></th><th class="cl-cb2a2282"><p class="cl-cb2a08c4"><span class="cl-cb273bd0">parameter</span></p></th><th class="cl-cb2a2282"><p class="cl-cb2a08c4"><span class="cl-cb273bd0">Method</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-cb2a2283"><p class="cl-cb2a08ce"><span class="cl-cb273bd0">217.56</span></p></td><td class="cl-cb2a228c"><p class="cl-cb2a08c4"><span class="cl-cb273bd0">&lt; .001***</span></p></td><td class="cl-cb2a228c"><p class="cl-cb2a08c4"><span class="cl-cb273bd0">3</span></p></td><td class="cl-cb2a228c"><p class="cl-cb2a08c4"><span class="cl-cb273bd0">Pearson's Chi-squared test</span></p></td></tr></tbody></table></div>
+<div class="tabwid"><style>.cl-f6c11d08{table-layout:auto;}.cl-f6b9f2bc{font-family:'Times New Roman';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-f6b9f2c6{font-family:'Times New Roman';font-size:12pt;font-weight:normal;font-style:italic;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-f6bcd9be{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-f6bcd9c8{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-f6bcf30e{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0.5pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f6bcf318{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f6bcf319{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-f6c11d08"><thead><tr style="overflow-wrap:break-word;"><th class="cl-f6bcf30e"><p class="cl-f6bcd9be"><span class="cl-f6b9f2bc">statistic</span></p></th><th class="cl-f6bcf30e"><p class="cl-f6bcd9be"><span class="cl-f6b9f2c6">p</span></p></th><th class="cl-f6bcf30e"><p class="cl-f6bcd9be"><span class="cl-f6b9f2bc">parameter</span></p></th><th class="cl-f6bcf30e"><p class="cl-f6bcd9be"><span class="cl-f6b9f2bc">Method</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-f6bcf318"><p class="cl-f6bcd9c8"><span class="cl-f6b9f2bc">217.56</span></p></td><td class="cl-f6bcf319"><p class="cl-f6bcd9be"><span class="cl-f6b9f2bc">&lt; .001***</span></p></td><td class="cl-f6bcf319"><p class="cl-f6bcd9be"><span class="cl-f6b9f2bc">3</span></p></td><td class="cl-f6bcf319"><p class="cl-f6bcd9be"><span class="cl-f6b9f2bc">Pearson's Chi-squared test</span></p></td></tr></tbody></table></div>
 </div>
 </div>
 <p>Visualicemos la distribución de esta prueba y su zona de rechazo.</p>
@@ -641,7 +648,7 @@ Prueba de Chi-cuadrado
 </div>
 </section>
 <section id="correlación-entre-categóricas" class="level2">
-<h2 class="anchored" data-anchor-id="correlación-entre-categóricas">Correlación entre categóricas</h2>
+<h2 class="anchored" data-anchor-id="correlación-entre-categóricas">3. Correlación entre categóricas</h2>
 <p>Al igual que otros coeficientes de correlación, las correlaciones entre categóricas:</p>
 <ul>
 <li>Oscila entre -1 y 1.</li>
@@ -649,27 +656,30 @@ Prueba de Chi-cuadrado
 <li>Su tamaño de efecto se puede interpretar a partir de ciertos estándares.</li>
 <li>Se interpreta de la misma forma que otros coeficientes de correlación.</li>
 </ul>
-<section id="a-punto-biserial" class="level3">
-<h3 class="anchored" data-anchor-id="a-punto-biserial">a) Punto biserial</h3>
+<section id="punto-biserial" class="level3">
+<h3 class="anchored" data-anchor-id="punto-biserial">3.1. Punto biserial</h3>
 <p>La correlación punto biserial se utiliza para calcular la correlación entre una variable categórica dicotómica y una variable continua.</p>
-<p>Veamos la frecuencia de <code>sexo</code> y la media de <code>y1</code>.</p>
+<p>Veamos la frecuencia de <code>sexo</code> y la media de ingresos <code>y1</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">frq</span>(proc_casen<span class="sc">$</span>sexo)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Sexo (x) &lt;numeric&gt; </span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="do">## # total N=3000 valid N=3000 mean=1.53 sd=0.50</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Value |     Label |    N | Raw % | Valid % | Cum. %</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="do">## ---------------------------------------------------</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="do">##     1 | 1. Hombre | 1404 | 46.80 |   46.80 |  46.80</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="do">##     2 |  2. Mujer | 1596 | 53.20 |   53.20 | 100.00</span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  &lt;NA&gt; |      &lt;NA&gt; |    0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(proc_casen<span class="sc">$</span>y1, <span class="at">na.rm =</span> T)</span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 619435.3</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">frq</span>(proc_casen<span class="sc">$</span>sexo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sexo (x) &lt;numeric&gt; 
+# total N=3000 valid N=3000 mean=1.53 sd=0.50
+
+Value |     Label |    N | Raw % | Valid % | Cum. %
+---------------------------------------------------
+    1 | 1. Hombre | 1404 | 46.80 |   46.80 |  46.80
+    2 |  2. Mujer | 1596 | 53.20 |   53.20 | 100.00
+ &lt;NA&gt; |      &lt;NA&gt; |    0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(proc_casen<span class="sc">$</span>y1, <span class="at">na.rm =</span> T)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 619435.3</code></pre>
+</div>
 </div>
 <p>Obtengamos la correlación punto biserial entre sexo e ingresos.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(proc_casen<span class="sc">$</span>sexo, proc_casen<span class="sc">$</span>y1)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(proc_casen<span class="sc">$</span>sexo, proc_casen<span class="sc">$</span>y1)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's product-moment correlation
@@ -685,36 +695,39 @@ sample estimates:
 </div>
 </div>
 </section>
-<section id="b-tetracórica" class="level3">
-<h3 class="anchored" data-anchor-id="b-tetracórica">b) Tetracórica</h3>
+<section id="tetracórica" class="level3">
+<h3 class="anchored" data-anchor-id="tetracórica">3.2. Tetracórica</h3>
 <p>La correlación tetracórica se utiliza para calcular la correlación entre dos variables binarias categóricas, es decir, variables nominales dicómoticas (solo dos posibles valores).</p>
 <p>Veamos las frecuencias de <code>sexo</code> y <code>disc_fisica</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">frq</span>(proc_casen<span class="sc">$</span>sexo)</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Sexo (x) &lt;numeric&gt; </span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="do">## # total N=3000 valid N=3000 mean=1.53 sd=0.50</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Value |     Label |    N | Raw % | Valid % | Cum. %</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="do">## ---------------------------------------------------</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="do">##     1 | 1. Hombre | 1404 | 46.80 |   46.80 |  46.80</span></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="do">##     2 |  2. Mujer | 1596 | 53.20 |   53.20 | 100.00</span></span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  &lt;NA&gt; |      &lt;NA&gt; |    0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">frq</span>(proc_casen<span class="sc">$</span>disc_fisica)</span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Discriminado por su apariencia física (x) &lt;numeric&gt; </span></span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="do">## # total N=3000 valid N=3000 mean=1.03 sd=0.17</span></span>
-<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="do">## Value |    N | Raw % | Valid % | Cum. %</span></span>
-<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a><span class="do">## ---------------------------------------</span></span>
-<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a><span class="do">##     1 | 2916 | 97.20 |   97.20 |  97.20</span></span>
-<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a><span class="do">##     2 |   84 |  2.80 |    2.80 | 100.00</span></span>
-<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a><span class="do">##  &lt;NA&gt; |    0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">frq</span>(proc_casen<span class="sc">$</span>sexo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sexo (x) &lt;numeric&gt; 
+# total N=3000 valid N=3000 mean=1.53 sd=0.50
+
+Value |     Label |    N | Raw % | Valid % | Cum. %
+---------------------------------------------------
+    1 | 1. Hombre | 1404 | 46.80 |   46.80 |  46.80
+    2 |  2. Mujer | 1596 | 53.20 |   53.20 | 100.00
+ &lt;NA&gt; |      &lt;NA&gt; |    0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">frq</span>(proc_casen<span class="sc">$</span>disc_fisica)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Discriminado por su apariencia física (x) &lt;numeric&gt; 
+# total N=3000 valid N=3000 mean=1.03 sd=0.17
+
+Value |    N | Raw % | Valid % | Cum. %
+---------------------------------------
+    1 | 2916 | 97.20 |   97.20 |  97.20
+    2 |   84 |  2.80 |    2.80 | 100.00
+ &lt;NA&gt; |    0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
+</div>
 </div>
 <p>Obtengamos la correlación tetrácorica entre sexo y discriminación por apariencia física.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>matriz <span class="ot">&lt;-</span> proc_casen <span class="sc">%&gt;%</span> <span class="fu">select</span>(sexo, disc_fisica) <span class="co"># creamos matriz con var de interes</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">tetrachoric</span>(matriz, <span class="at">na.rm =</span> T)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>matriz <span class="ot">&lt;-</span> proc_casen <span class="sc">%&gt;%</span> <span class="fu">select</span>(sexo, disc_fisica) <span class="co"># creamos matriz con var de interes</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">tetrachoric</span>(matriz, <span class="at">na.rm =</span> T)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call: psych::tetrachoric(x = matriz, na.rm = T)
 tetrachoric correlation 
@@ -728,46 +741,49 @@ disc_fisica -0.05  1.00
 </div>
 </div>
 </section>
-<section id="c-policórica" class="level3">
-<h3 class="anchored" data-anchor-id="c-policórica">c) Policórica</h3>
+<section id="policórica" class="level3">
+<h3 class="anchored" data-anchor-id="policórica">3.3. Policórica</h3>
 <p>La correlación policórica se utiliza para calcular la correlación entre dos variables ordinales categóricas, es decir, variables ordinales cuyos posibles valores siguen un orden (por ejemplo, variables tipo Likert).</p>
 <p>Veamos las frecuencias de <code>ayuda_moverse</code> y <code>ayuda_thogar</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">frq</span>(proc_casen<span class="sc">$</span>ayuda_moverse)</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="do">## s33c. Últ. 30 días, ayuda de otra persona para: Moverse dentro de la casa (x) &lt;numeric&gt; </span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="do">## # total N=3000 valid N=68 mean=3.21 sd=1.49</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Value |            Label |    N | Raw % | Valid % | Cum. %</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="do">## ----------------------------------------------------------</span></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   -99 |      No responde |    0 |  0.00 |    0.00 |   0.00</span></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="do">##   -88 |          No sabe |    0 |  0.00 |    0.00 |   0.00</span></span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="do">##     1 |         1. Nunca |   13 |  0.43 |   19.12 |  19.12</span></span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="do">##     2 |    2. Casi nunca |    9 |  0.30 |   13.24 |  32.35</span></span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="do">##     3 | 3. Algunas veces |   18 |  0.60 |   26.47 |  58.82</span></span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="do">##     4 |  4. Muchas veces |    7 |  0.23 |   10.29 |  69.12</span></span>
-<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="do">##     5 |       5. Siempre |   21 |  0.70 |   30.88 | 100.00</span></span>
-<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  &lt;NA&gt; |             &lt;NA&gt; | 2932 | 97.73 |    &lt;NA&gt; |   &lt;NA&gt;</span></span>
-<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">frq</span>(proc_casen<span class="sc">$</span>ayuda_thogar)</span>
-<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a><span class="do">## s33h. Últ. 30 días, ayuda de otra persona para: Realizar sus tareas del hogar (x) &lt;numeric&gt; </span></span>
-<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a><span class="do">## # total N=3000 valid N=80 mean=3.80 sd=1.39</span></span>
-<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a><span class="do">## Value |            Label |    N | Raw % | Valid % | Cum. %</span></span>
-<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a><span class="do">## ----------------------------------------------------------</span></span>
-<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a><span class="do">##   -99 |      No responde |    0 |  0.00 |    0.00 |   0.00</span></span>
-<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a><span class="do">##   -88 |          No sabe |    0 |  0.00 |    0.00 |   0.00</span></span>
-<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a><span class="do">##     1 |         1. Nunca |   10 |  0.33 |   12.50 |  12.50</span></span>
-<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a><span class="do">##     2 |    2. Casi nunca |    3 |  0.10 |    3.75 |  16.25</span></span>
-<span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a><span class="do">##     3 | 3. Algunas veces |   17 |  0.57 |   21.25 |  37.50</span></span>
-<span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a><span class="do">##     4 |  4. Muchas veces |   13 |  0.43 |   16.25 |  53.75</span></span>
-<span id="cb26-28"><a href="#cb26-28" aria-hidden="true" tabindex="-1"></a><span class="do">##     5 |       5. Siempre |   37 |  1.23 |   46.25 | 100.00</span></span>
-<span id="cb26-29"><a href="#cb26-29" aria-hidden="true" tabindex="-1"></a><span class="do">##  &lt;NA&gt; |             &lt;NA&gt; | 2920 | 97.33 |    &lt;NA&gt; |   &lt;NA&gt;</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">frq</span>(proc_casen<span class="sc">$</span>ayuda_moverse)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>s33c. Últ. 30 días, ayuda de otra persona para: Moverse dentro de la casa (x) &lt;numeric&gt; 
+# total N=3000 valid N=68 mean=3.21 sd=1.49
+
+Value |            Label |    N | Raw % | Valid % | Cum. %
+----------------------------------------------------------
+  -99 |      No responde |    0 |  0.00 |    0.00 |   0.00
+  -88 |          No sabe |    0 |  0.00 |    0.00 |   0.00
+    1 |         1. Nunca |   13 |  0.43 |   19.12 |  19.12
+    2 |    2. Casi nunca |    9 |  0.30 |   13.24 |  32.35
+    3 | 3. Algunas veces |   18 |  0.60 |   26.47 |  58.82
+    4 |  4. Muchas veces |    7 |  0.23 |   10.29 |  69.12
+    5 |       5. Siempre |   21 |  0.70 |   30.88 | 100.00
+ &lt;NA&gt; |             &lt;NA&gt; | 2932 | 97.73 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">frq</span>(proc_casen<span class="sc">$</span>ayuda_thogar)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>s33h. Últ. 30 días, ayuda de otra persona para: Realizar sus tareas del hogar (x) &lt;numeric&gt; 
+# total N=3000 valid N=80 mean=3.80 sd=1.39
+
+Value |            Label |    N | Raw % | Valid % | Cum. %
+----------------------------------------------------------
+  -99 |      No responde |    0 |  0.00 |    0.00 |   0.00
+  -88 |          No sabe |    0 |  0.00 |    0.00 |   0.00
+    1 |         1. Nunca |   10 |  0.33 |   12.50 |  12.50
+    2 |    2. Casi nunca |    3 |  0.10 |    3.75 |  16.25
+    3 | 3. Algunas veces |   17 |  0.57 |   21.25 |  37.50
+    4 |  4. Muchas veces |   13 |  0.43 |   16.25 |  53.75
+    5 |       5. Siempre |   37 |  1.23 |   46.25 | 100.00
+ &lt;NA&gt; |             &lt;NA&gt; | 2920 | 97.33 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
+</div>
 </div>
 <p>Obtengamos la correlación policórica entre si la persona necesitó ayuda para moverse dentro de la casa y si necesitó ayuda para realizar tareas dentro del hogar, en los últimos 30 días.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>matriz <span class="ot">&lt;-</span> proc_casen <span class="sc">%&gt;%</span> <span class="fu">select</span>(ayuda_moverse, ayuda_thogar) <span class="co"># creamos matriz con var de interes</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">polychoric</span>(matriz, <span class="at">na.rm =</span> T)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>matriz <span class="ot">&lt;-</span> proc_casen <span class="sc">%&gt;%</span> <span class="fu">select</span>(ayuda_moverse, ayuda_thogar) <span class="co"># creamos matriz con var de interes</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">polychoric</span>(matriz, <span class="at">na.rm =</span> T)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call: psych::polychoric(x = matriz, na.rm = T)
 Polychoric correlations 
@@ -781,19 +797,9 @@ ayuda_moverse -0.87 -0.46  0.22 0.499
 ayuda_thogar  -1.15 -0.98 -0.32 0.094</code></pre>
 </div>
 </div>
-</section>
-</section>
-<section id="resumen" class="level2">
-<h2 class="anchored" data-anchor-id="resumen">Resumen</h2>
-<p>Hoy profundizamos en medidas de asociación entre variables categóricas.</p>
-<p>En detalle, aprendimos a:</p>
-<ol type="1">
-<li>Generar y analizar tablas de contingencia (o cruzadas)</li>
-<li>Estimar e interpretar la prueba de Chi-cuadrado</li>
-<li>Aplicar coeficientes de correlación entre variables categóricas</li>
-</ol>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

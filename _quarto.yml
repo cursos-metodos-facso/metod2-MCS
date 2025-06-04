@@ -95,8 +95,8 @@ website:
               file: assignment/taller-github-quarto/taller-quarto-github.qmd
             - text: "Práctico 03: Conocimientos básicos R"
               file: assignment/03-practico.qmd
-        # - text: "Práctica 4"
-        #   file: resource/04-resource.qmd
+            - text: "Práctico 04. Inferencia"
+              file: assignment/04-practico.qmd
             - text: "Práctico 05: Correlación"
               file: assignment/05-practico.qmd
             - text: "Práctico 06: Correlación categóricas"
