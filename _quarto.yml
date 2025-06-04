@@ -93,7 +93,7 @@ website:
               file: assignment/01-practico.qmd
             - text: "Práctico 02: Taller quarto y github"
               file: assignment/taller-github-quarto/taller-quarto-github.qmd
-            - text: "Práctico 03: Introducción a R y Estadística Descriptiva"
+            - text: "Práctico 03: Conocimientos básicos R"
               file: assignment/03-practico.qmd
         # - text: "Práctica 4"
         #   file: resource/04-resource.qmd

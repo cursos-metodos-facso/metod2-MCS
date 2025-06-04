@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Metodología Cuantitativa Avanzada - MCS - Práctico 5. Correlación</title>
+<title>Metodología Cuantitativa Avanzada - MCS - Práctico 05. Correlación</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -102,7 +102,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="Metodología Cuantitativa Avanzada - MCS - Práctico 5. Correlación">
+<meta property="og:title" content="Metodología Cuantitativa Avanzada - MCS - Práctico 05. Correlación">
 <meta property="og:description" content="Metodología Cuantitativa Avanzada - Magíster en Ciencias Sociales">
 <meta property="og:image" content="https://metod2-mcs.netlify.app/files/social-image-f22.png">
 <meta property="og:site-name" content="Metodología Cuantitativa Avanzada - MCS">
@@ -212,7 +212,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../assignment/03-practico.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Práctico 03: Introducción a R y Estadística Descriptiva</span></a>
+ <span class="menu-text">Práctico 03: Conocimientos básicos R</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -240,22 +240,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#objetivo-de-la-práctica" id="toc-objetivo-de-la-práctica" class="nav-link active" data-scroll-target="#objetivo-de-la-práctica">Objetivo de la práctica</a></li>
-  <li><a href="#qué-es-la-correlación" id="toc-qué-es-la-correlación" class="nav-link" data-scroll-target="#qué-es-la-correlación">1. Qué es la Correlación</a></li>
-  <li><a href="#correlación-de-pearson" id="toc-correlación-de-pearson" class="nav-link" data-scroll-target="#correlación-de-pearson">2. Correlación de Pearson</a></li>
-  <li><a href="#estimación-de-la-correlación-de-pearson" id="toc-estimación-de-la-correlación-de-pearson" class="nav-link" data-scroll-target="#estimación-de-la-correlación-de-pearson">Estimación de la correlación de Pearson</a></li>
-  <li><a href="#diagrama-de-dispersión-nube-de-puntos-o-scatterplot" id="toc-diagrama-de-dispersión-nube-de-puntos-o-scatterplot" class="nav-link" data-scroll-target="#diagrama-de-dispersión-nube-de-puntos-o-scatterplot">Diagrama de dispersión (nube de puntos o scatterplot)</a></li>
-  <li><a href="#el-cuarteto-de-anscombe-y-las-limitaciones-de-la-correlación-lineal" id="toc-el-cuarteto-de-anscombe-y-las-limitaciones-de-la-correlación-lineal" class="nav-link" data-scroll-target="#el-cuarteto-de-anscombe-y-las-limitaciones-de-la-correlación-lineal">El cuarteto de Anscombe y las limitaciones de la correlación lineal</a></li>
-  <li><a href="#aplicación-práctica" id="toc-aplicación-práctica" class="nav-link" data-scroll-target="#aplicación-práctica">Aplicación práctica</a>
+  <li><a href="#correlación" id="toc-correlación" class="nav-link" data-scroll-target="#correlación">1. Correlación</a></li>
+  <li><a href="#correlación-de-pearson" id="toc-correlación-de-pearson" class="nav-link" data-scroll-target="#correlación-de-pearson">2. Correlación de Pearson</a>
   <ul class="collapse">
-  <li><a href="#preparación-datos" id="toc-preparación-datos" class="nav-link" data-scroll-target="#preparación-datos">Preparación datos</a></li>
-  <li><a href="#tratamiento-de-casos-perdidos" id="toc-tratamiento-de-casos-perdidos" class="nav-link" data-scroll-target="#tratamiento-de-casos-perdidos">Tratamiento de casos perdidos</a></li>
+  <li><a href="#estimación-de-la-correlación-de-pearson" id="toc-estimación-de-la-correlación-de-pearson" class="nav-link" data-scroll-target="#estimación-de-la-correlación-de-pearson">2.1. Estimación de la correlación de Pearson</a></li>
+  <li><a href="#diagrama-de-dispersión-nube-de-puntos-o-scatterplot" id="toc-diagrama-de-dispersión-nube-de-puntos-o-scatterplot" class="nav-link" data-scroll-target="#diagrama-de-dispersión-nube-de-puntos-o-scatterplot">2.2. Diagrama de dispersión (nube de puntos o scatterplot)</a></li>
+  <li><a href="#el-cuarteto-de-anscombe" id="toc-el-cuarteto-de-anscombe" class="nav-link" data-scroll-target="#el-cuarteto-de-anscombe">2.3. El cuarteto de Anscombe</a></li>
+  <li><a href="#aplicación-práctica" id="toc-aplicación-práctica" class="nav-link" data-scroll-target="#aplicación-práctica">2.4. Aplicación práctica</a></li>
   </ul></li>
-  <li><a href="#matrices-de-correlación" id="toc-matrices-de-correlación" class="nav-link" data-scroll-target="#matrices-de-correlación">Matrices de correlación</a></li>
-  <li><a href="#tamaños-de-efecto" id="toc-tamaños-de-efecto" class="nav-link" data-scroll-target="#tamaños-de-efecto">Tamaños de efecto</a></li>
-  <li><a href="#otros-tipos-de-correlación-spearman" id="toc-otros-tipos-de-correlación-spearman" class="nav-link" data-scroll-target="#otros-tipos-de-correlación-spearman">Otros tipos de correlación: Spearman</a>
-  <ul class="collapse">
-  <li><a href="#coeficiente-de-determinación" id="toc-coeficiente-de-determinación" class="nav-link" data-scroll-target="#coeficiente-de-determinación">Coeficiente de determinación</a></li>
-  </ul></li>
+  <li><a href="#matrices-de-correlación" id="toc-matrices-de-correlación" class="nav-link" data-scroll-target="#matrices-de-correlación">3. Matrices de correlación</a></li>
+  <li><a href="#tamaños-de-efecto" id="toc-tamaños-de-efecto" class="nav-link" data-scroll-target="#tamaños-de-efecto">4. Tamaños de efecto</a></li>
+  <li><a href="#correlación-spearman" id="toc-correlación-spearman" class="nav-link" data-scroll-target="#correlación-spearman">5. Correlación Spearman</a></li>
+  <li><a href="#coeficiente-de-determinación" id="toc-coeficiente-de-determinación" class="nav-link" data-scroll-target="#coeficiente-de-determinación">6. Coeficiente de determinación</a></li>
   </ul>
 </nav>
     </div>
@@ -264,7 +260,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Práctico 5. Correlación</h1>
+<h1 class="title">Práctico 05. Correlación</h1>
 <p class="subtitle lead">Metodología Cuantitativa Avanzada - Magíster en Ciencias Sociales</p>
 </div>
 
@@ -290,41 +286,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="objetivo-de-la-práctica">Objetivo de la práctica</h2>
 <p>El objetivo de esta guía práctica es aprender a calcular y graficar la correlación entre dos variables utilizando R. Particularmente, conocer maneras de reportar coeficientes de correlación y cómo interpretar sus tamaños de efecto en ciencias sociales. Además, nos introduciremos en el tratamiento de valores perdidos y otras medidas de correlación entre variables.</p>
 <p>En detalle, aprenderemos:</p>
-<ol type="1">
-<li>Qué es una correlación</li>
-<li>Cuál es la correlación de Pearson</li>
+<ul>
 <li>Cómo calcular una correlación de Pearson y graficarla</li>
 <li>Cómo reportar y presentar matrices de correlación.</li>
 <li>Interpretar el tamaño de efecto de una correlación.</li>
 <li>Tratamiento de casos perdidos.</li>
 <li>Qué es y cómo calcular la correlación de Spearman.</li>
 <li>Qué es el coeficiente de determinación <span class="math inline">\(R^2\)</span>.</li>
-</ol>
+</ul>
 </section>
-<section id="qué-es-la-correlación" class="level2">
-<h2 class="anchored" data-anchor-id="qué-es-la-correlación">1. Qué es la Correlación</h2>
+<section id="correlación" class="level2">
+<h2 class="anchored" data-anchor-id="correlación">1. Correlación</h2>
 <p>La <strong>correlación</strong> es una medida estadística que describe la asociación entre dos variables. Cuando existe correlación entre dos variables, el cambio en una de ellas tiende a estar asociado con un cambio en la otra variable.</p>
 <p>En términos concretos, lo que observamos es cómo se comportan los valores de dos (o más) variables para cada observación, y si podemos suponer que ese comportamiento conjunto tiene algún patrón.</p>
 </section>
 <section id="correlación-de-pearson" class="level2">
 <h2 class="anchored" data-anchor-id="correlación-de-pearson">2. Correlación de Pearson</h2>
-<p>La correlación de Pearson (o coeficiente de correlación de pearson) es una medida estadística que cuantifica la relación lineal entre dos variables continuas. Esta medida va desde -1 hasta 1, donde:</p>
+<p>La correlación de Pearson (o coeficiente de correlación de pearson) es una medida estadística que cuantifica la relación lineal entre dos <strong>variables continuas</strong>. Esta medida va desde -1 hasta 1, donde:</p>
 <ul>
-<li><p>r=1: Correlación positiva perfecta. Cuando una variable aumenta, la otra también aumenta en proporción constante.</p></li>
-<li><p>r=−1: Correlación negativa perfecta. Cuando una variable aumenta, la otra disminuye en proporción constante.</p></li>
-<li><p>r=0: No hay correlación lineal entre las variables. No hay una relación lineal discernible entre los cambios en las variables.</p></li>
+<li><code>r=1</code>: <strong>Correlación positiva perfecta</strong>. Cuando una variable aumenta, la otra también aumenta en proporción constante.</li>
+<li><code>r=−1</code>: <strong>Correlación negativa perfecta</strong>. Cuando una variable aumenta, la otra disminuye en proporción constante.</li>
+<li><code>r=0</code>: <strong>No hay correlación lineal</strong> entre las variables. No hay una relación lineal discernible entre los cambios en las variables.</li>
 </ul>
 <p>Cuanto más cercano esté el valor de r a 1 o -1, más fuerte será la correlación. Cuanto más cercano esté a 0, más débil será la correlación.</p>
-<p><img src="../slides/img/scatters3.png" class="img-fluid"></p>
+<p><img src="../files/img/assignment/scatters3.png" class="img-fluid"></p>
 <p>En el siguiente <a href="https://rpsychologist.com/correlation/">enlace</a> pueden visualizar la correlación para dos variables cambiando la fuerza y el sentido de esta, al mismo tiempo que les permite observar la varianza compartida entre ambas variables.</p>
-</section>
-<section id="estimación-de-la-correlación-de-pearson" class="level2">
-<h2 class="anchored" data-anchor-id="estimación-de-la-correlación-de-pearson">Estimación de la correlación de Pearson</h2>
-<p>Utilizaremos un set mínimo simulado de datos.</p>
-<p>Simulamos datos para 8 casos</p>
+<section id="estimación-de-la-correlación-de-pearson" class="level3">
+<h3 class="anchored" data-anchor-id="estimación-de-la-correlación-de-pearson">2.1. Estimación de la correlación de Pearson</h3>
+<p>Utilizaremos un set mínimo simulado de datos para 8 casos:</p>
 <ul>
-<li>con 8 niveles de educación (ej: desde basica incompleta=1, hasta postgrado=8), y</li>
-<li>12 niveles de rangos de ingreso (ej: desde menos de 100.000=1 hasta más de 10.000.000=12)</li>
+<li>con 8 niveles de educación (ej: desde basica incompleta = 1, hasta postgrado = 8), y</li>
+<li>12 niveles de rangos de ingreso (ej: desde menos de 100.000 = 1 hasta más de 10.000.000 = 12)</li>
 </ul>
 <div class="cell" data-hash="05-practico_cache/html/ex1_data_5db6c850feee4d7eed6f619250e47b8c">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>id <span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">8</span>) <span class="co"># identificador de cada caso</span></span>
@@ -399,7 +391,7 @@ Correlación=r &amp;= \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})} {(n-1)
 &amp;= \frac{\sum(x-\bar{x})(y-\bar{y})}{\sqrt{\sum(x-\bar{x})^{2} \sum(y-\bar{y})^{2}}}
 \end{align*}\]</span></p>
 <p>Para obtener el coeficiente de correlación directamente en R se utiliza la función <code>cor()</code> :</p>
-<div class="cell" data-hash="05-practico_cache/html/ex0_cor_8cdade27e095f1bbd2d9602f06c7a3c5">
+<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-2_2a0c3851f16db0147cd9dda9b460a676">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(data<span class="sc">$</span>educ, data<span class="sc">$</span>ing)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.9512367</code></pre>
@@ -423,7 +415,7 @@ Correlación=r &amp;= \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})} {(n-1)
 <li><span class="math inline">\((x_i - \bar{x})²\)</span> : dif_m_educ2</li>
 <li><span class="math inline">\((y_i - \bar{y})²\)</span> : dif_m_ing2</li>
 </ul>
-<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-2_5b3100f413e1fcc2bd24182965f3f7f7">
+<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-3_f0f3b64179372447d44dccf5a6cec339">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>dif_m_educ <span class="ot">&lt;-</span> data<span class="sc">$</span>educ<span class="sc">-</span><span class="fu">mean</span>(data<span class="sc">$</span>educ)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>dif_m_ing <span class="ot">&lt;-</span> data<span class="sc">$</span>ing<span class="sc">-</span><span class="fu">mean</span>(data<span class="sc">$</span>ing)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>dif_xy <span class="ot">&lt;-</span>  data<span class="sc">$</span>dif_m_educ<span class="sc">*</span>data<span class="sc">$</span>dif_m_ing</span>
@@ -431,7 +423,7 @@ Correlación=r &amp;= \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})} {(n-1)
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>dif_m_ing2 <span class="ot">&lt;-</span> (data<span class="sc">$</span>dif_m_ing)<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>En nuestra base de datos:</p>
-<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-3_a0787e2684b1058d457ba7a8741fdda4">
+<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-4_3228587cc97e0961f640c016f841ad67">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>kableExtra<span class="sc">::</span><span class="fu">kbl</span>(data, <span class="at">digits =</span> <span class="dv">3</span>,<span class="at">full_width =</span> F)  <span class="sc">%&gt;%</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">kable_paper</span>(<span class="st">"hover"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -536,7 +528,7 @@ Correlación=r &amp;= \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})} {(n-1)
 </div>
 </div>
 <p>Y obtenemos la suma de cada una de las tres últimas columnas, que es lo que se necesita para reemplazar en la fórmula de la correlación:</p>
-<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-4_36fbba97e27e9828f8d932b97c6d1fbb">
+<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-5_8b1d18add298e15103145e3b1cd52be6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(data<span class="sc">$</span>dif_xy); <span class="fu">sum</span>(data<span class="sc">$</span>dif_m_educ2);<span class="fu">sum</span>(data<span class="sc">$</span>dif_m_ing2)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 51.625</code></pre>
@@ -565,25 +557,39 @@ r &amp;= \frac{\sum(x-\bar{x})(y-\bar{y})}{\sqrt{\sum(x-\bar{x})^{2} \sum(y-\bar
 <p>Como vimos en clases, el valor de la correlación va entre -1 y 1, donde el valor 0 significa que las dos variables no se encuentran correlacionadas, y el valor -1 y 1 significa que se encuentran completamente correlacionadas, positiva y negativamente, respectivamente.</p>
 <p>En este caso, un valor de 0.95 es muy alto, y significa que las variables ingreso y educación, en nuestra base de datos simulada, se encuentran fuertemente correlacionadas.</p>
 </section>
-<section id="diagrama-de-dispersión-nube-de-puntos-o-scatterplot" class="level2">
-<h2 class="anchored" data-anchor-id="diagrama-de-dispersión-nube-de-puntos-o-scatterplot">Diagrama de dispersión (nube de puntos o scatterplot)</h2>
+<section id="diagrama-de-dispersión-nube-de-puntos-o-scatterplot" class="level3">
+<h3 class="anchored" data-anchor-id="diagrama-de-dispersión-nube-de-puntos-o-scatterplot">2.2. Diagrama de dispersión (nube de puntos o scatterplot)</h3>
 <p>Siempre es recomendable acompañar el valor de la correlación con una exploración gráfica de la distribución bivariada de los datos. El gráfico o diagrama de dispersión es una buena herramienta, ya que muestra la forma, la dirección y la fuerza de la relación entre dos variables cuantitativas.</p>
 <p>Este tipo de gráfico lo podemos realizar usando la librería <code>ggplot2</code>.</p>
-<div class="cell" data-hash="05-practico_cache/html/ex1_plot1_6cfbe18cf0429de7037d11b42ee78785">
+<div class="cell" data-layout-align="center" data-hash="05-practico_cache/html/ex1_plot1_4b0c508fce2de6d2c722da1c2f4acc9d">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(ggplot2)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data, </span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                <span class="fu">aes</span>(<span class="at">x=</span>educ, <span class="at">y=</span>ing)) <span class="sc">+</span> </span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                <span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">"red"</span>, </span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">size =</span> <span class="dv">5</span>)</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>plot1</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data, </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                <span class="fu">aes</span>(<span class="at">x=</span>educ, <span class="at">y=</span>ing)) <span class="sc">+</span> </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Educación"</span>, <span class="at">y =</span> <span class="st">"Ingresos"</span>, <span class="at">title =</span> <span class="st">"Relación entre Educación e Ingresos"</span>) <span class="sc">+</span>  </span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>, <span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>), </span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">16</span>),    </span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">16</span>),     </span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>),      </span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>)       </span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>plot1</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="05-practico_files/figure-html/ex1_plot1-1.png" class="img-fluid" width="960"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="05-practico_files/figure-html/ex1_plot1-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>En el gráfico podemos ver como se crea una nube de puntos en las intersecciones de los valores para ambas variables de cada caso.</p>
 </section>
-<section id="el-cuarteto-de-anscombe-y-las-limitaciones-de-la-correlación-lineal" class="level2">
-<h2 class="anchored" data-anchor-id="el-cuarteto-de-anscombe-y-las-limitaciones-de-la-correlación-lineal">El cuarteto de Anscombe y las limitaciones de la correlación lineal</h2>
+<section id="el-cuarteto-de-anscombe" class="level3">
+<h3 class="anchored" data-anchor-id="el-cuarteto-de-anscombe">2.3. El cuarteto de Anscombe</h3>
 <p>Ahora, revisaremos un muy buen ejemplo de la importancia de la exploración gráfica de los datos mediante un ejemplo de Anscombe (1973), que permite visualizar las limitaciones del coeficiente de correlación.</p>
 <p>Primero, crearemos la base de datos:</p>
 <div class="cell" data-hash="05-practico_cache/html/ex2_data_a9d76b3d13a3e653d557e9de680e946d">
@@ -598,92 +604,105 @@ r &amp;= \frac{\sum(x-\bar{x})(y-\bar{y})}{\sqrt{\sum(x-\bar{x})^{2} \sum(y-\bar
 <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">y4 =</span> <span class="fu">c</span>(<span class="fl">6.58</span>, <span class="fl">5.76</span>, <span class="fl">7.71</span>, <span class="fl">8.84</span>, <span class="fl">8.47</span>, <span class="fl">7.04</span>, <span class="fl">5.25</span>, <span class="fl">12.50</span>, <span class="fl">5.56</span>, <span class="fl">7.91</span>, <span class="fl">6.89</span>)</span>
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Calculamos la correlación pares de datos</p>
-<div class="cell" data-hash="05-practico_cache/html/ex2_cor_976399ef25cf13ab3faa54464ee1d3a4">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(anscombe<span class="sc">$</span>x1, anscombe<span class="sc">$</span>y1)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Calculamos la correlación para cada par de datos:</p>
+<div class="cell" data-hash="05-practico_cache/html/ex2_cor_09bf085db1b7351db73c6493f0ea8634">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(anscombe<span class="sc">$</span>x1, anscombe<span class="sc">$</span>y1); <span class="fu">cor</span>(anscombe<span class="sc">$</span>x2, anscombe<span class="sc">$</span>y2); <span class="fu">cor</span>(anscombe<span class="sc">$</span>x3, anscombe<span class="sc">$</span>y3); <span class="fu">cor</span>(anscombe<span class="sc">$</span>x4, anscombe<span class="sc">$</span>y4)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.8164205</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(anscombe<span class="sc">$</span>x2, anscombe<span class="sc">$</span>y2)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.8162365</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(anscombe<span class="sc">$</span>x3, anscombe<span class="sc">$</span>y3)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.8162867</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(anscombe<span class="sc">$</span>x4, anscombe<span class="sc">$</span>y4)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.8165214</code></pre>
 </div>
 </div>
 <p>Podemos observar que los valores de las correlaciones son equivalentes, por lo tanto podríamos pensar que todos los pares de columnas se encuentran correlacionados de manera similar.</p>
 <p>Pero, ¿será suficiente con esa información? Pasemos a revisar los gráficos de dispersión de cada par de variables.</p>
-<div class="cell" data-hash="05-practico_cache/html/ex2_plot_48c6322d1a084e3608b2b856bc293854">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(anscombe, <span class="fu">aes</span>(<span class="at">x =</span> x1, <span class="at">y =</span> y1)) <span class="sc">+</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">"red"</span>, </span>
+<div class="cell" data-layout-align="center" data-hash="05-practico_cache/html/ex2_plot_81ce32992390e211ee03c0b5d8bf5cbf">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(anscombe, <span class="fu">aes</span>(<span class="at">x =</span> x1, <span class="at">y =</span> y1)) <span class="sc">+</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">"red"</span>, </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color=</span><span class="st">"blue"</span>, <span class="at">size=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Caso I"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="05-practico_files/figure-html/ex2_plot-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(anscombe, <span class="fu">aes</span>(<span class="at">x =</span> x2, <span class="at">y =</span> y2)) <span class="sc">+</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">"green"</span>, </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color=</span><span class="st">"blue"</span>, <span class="at">size=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Caso II"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="05-practico_files/figure-html/ex2_plot-2.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(anscombe, <span class="fu">aes</span>(<span class="at">x =</span> x3, <span class="at">y =</span> y3)) <span class="sc">+</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">"yellow"</span>, </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color=</span><span class="st">"blue"</span>, <span class="at">size=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Caso III"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="05-practico_files/figure-html/ex2_plot-3.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(anscombe, <span class="fu">aes</span>(<span class="at">x =</span> x4, <span class="at">y =</span> y4)) <span class="sc">+</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">"orange"</span>, </span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color=</span><span class="st">"blue"</span>, <span class="at">size=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Caso I"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Caso IV"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="05-practico_files/figure-html/ex2_plot-1.png" class="img-fluid" width="960"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="05-practico_files/figure-html/ex2_plot-4.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
 </div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(anscombe, <span class="fu">aes</span>(<span class="at">x =</span> x2, <span class="at">y =</span> y2)) <span class="sc">+</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">"green"</span>, </span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color=</span><span class="st">"blue"</span>, <span class="at">size=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Caso II"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="05-practico_files/figure-html/ex2_plot-2.png" class="img-fluid" width="960"></p>
-</div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(anscombe, <span class="fu">aes</span>(<span class="at">x =</span> x3, <span class="at">y =</span> y3)) <span class="sc">+</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">"yellow"</span>, </span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color=</span><span class="st">"blue"</span>, <span class="at">size=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Caso III"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="05-practico_files/figure-html/ex2_plot-3.png" class="img-fluid" width="960"></p>
-</div>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(anscombe, <span class="fu">aes</span>(<span class="at">x =</span> x4, <span class="at">y =</span> y4)) <span class="sc">+</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">"orange"</span>, </span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color=</span><span class="st">"blue"</span>, <span class="at">size=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Caso IV"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="05-practico_files/figure-html/ex2_plot-4.png" class="img-fluid" width="960"></p>
 </div>
 </div>
 <p>Como vemos, con distintas distribuciones las correlaciones pueden ser las mismas, principalmente porque Pearson es una medida que solo captura relaciones lineales (rectas), además de verse influido fuertemente por valores extremos. Por lo mismo, es relevante siempre una buena visualización de la distribución bivariada de los datos como complemento al cálculo del coeficiente de correlación.</p>
 </section>
-<section id="aplicación-práctica" class="level2">
-<h2 class="anchored" data-anchor-id="aplicación-práctica">Aplicación práctica</h2>
+<section id="aplicación-práctica" class="level3">
+<h3 class="anchored" data-anchor-id="aplicación-práctica">2.4. Aplicación práctica</h3>
 <p>En esta práctica trabajaremos con un subconjunto de datos previamente procesados del Estudio Longitudinal Social de Chile (ELSOC) del año 2016, elaborado por <a href="https://coes.cl/encuesta-panel/">COES</a>. Para este ejercicio, obtendremos directamente esta base desde internet. No obstante, también tienes la opción de acceder a la misma información a través del siguiente enlace: <a href="https://multivariada.netlify.app/assignment/data/proc/ELSOC_ess_merit2016.RData"><i class="fa-solid fa-table" aria-hidden="true"></i> <code>ELSOC 2016</code></a>. Desde allí, podrás descargar el archivo que contiene el subconjunto procesado de la base de datos ELSOC 2016.</p>
-<section id="preparación-datos" class="level3">
-<h3 class="anchored" data-anchor-id="preparación-datos">Preparación datos</h3>
+<section id="preparación-datos" class="level4">
+<h4 class="anchored" data-anchor-id="preparación-datos">Preparación datos</h4>
 <p>Comencemos por preparar nuestros datos. Iniciamos cargando las librerías necesarias.</p>
 <div class="cell" data-hash="05-practico_cache/html/librerias_b37366cbabae9817cd7f2492fc80ca40">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, <span class="co"># Manipulacion datos</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>               sjmisc, <span class="co"># Descriptivos</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>               sjPlot, <span class="co"># Tablas</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>               kableExtra, <span class="co">#Tablas</span></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>               GGally, <span class="co"># Correlaciones</span></span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>               corrplot) <span class="co"># Correlaciones</span></span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>) <span class="co"># para desactivar notacion cientifica</span></span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># para limpiar el entorno de trabajo</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, <span class="co"># Manipulacion datos</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>               sjmisc, <span class="co"># Descriptivos</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>               sjPlot, <span class="co"># Tablas</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>               kableExtra, <span class="co">#Tablas</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>               GGally, <span class="co"># Correlaciones</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>               corrplot) <span class="co"># Correlaciones</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>) <span class="co"># para desactivar notacion cientifica</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># para limpiar el entorno de trabajo</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Cargamos los datos directamente desde internet (por esta vez).</p>
 <div class="cell" data-hash="05-practico_cache/html/datos_021f47baa488f520f00630e53b13bd2f">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">"https://multivariada.netlify.app/assignment/data/proc/ELSOC_ess_merit2016.RData"</span>)) </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">"https://multivariada.netlify.app/assignment/data/proc/ELSOC_ess_merit2016.RData"</span>)) </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>A continuación, exploramos la base de datos <strong>proc_elsoc</strong>.</p>
 <div class="cell" data-hash="05-practico_cache/html/exploracion_47127237f52da55e35ec8ebf8b7f4048">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(proc_elsoc) <span class="co"># Nombre de columnas</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(proc_elsoc) <span class="co"># Nombre de columnas</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "mesfuerzo" "mtalento"  "ess"       "edcine"    "sexo"      "edad"     
 [7] "pmerit"   </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(proc_elsoc) <span class="co"># Dimensiones</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(proc_elsoc) <span class="co"># Dimensiones</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2927    7</code></pre>
 </div>
@@ -691,9 +710,9 @@ r &amp;= \frac{\sum(x-\bar{x})(y-\bar{y})}{\sqrt{\sum(x-\bar{x})^{2} \sum(y-\bar
 <p>Contamos con 7 variables (columnas) y 2927 observaciones (filas).</p>
 <p>Ahora, profundicemos un poco más y observemos algunos estadísticos descriptivos de resumen de nuestra base de datos. Utilizaremos la función <code>descr</code> del paquete <code>sjmisc</code>.</p>
 <div class="cell" data-hash="05-practico_cache/html/descripcion_5859116fef389239662f7e841a4857f0">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">descr</span>(proc_elsoc,</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">show =</span> <span class="fu">c</span>(<span class="st">"label"</span>,<span class="st">"range"</span>, <span class="st">"mean"</span>, <span class="st">"sd"</span>, <span class="st">"NA.prc"</span>, <span class="st">"n"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>      <span class="fu">kable</span>(.,<span class="st">"markdown"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">descr</span>(proc_elsoc,</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">show =</span> <span class="fu">c</span>(<span class="st">"label"</span>,<span class="st">"range"</span>, <span class="st">"mean"</span>, <span class="st">"sd"</span>, <span class="st">"NA.prc"</span>, <span class="st">"n"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>      <span class="fu">kable</span>(.,<span class="st">"markdown"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">
 <colgroup>
@@ -793,12 +812,12 @@ r &amp;= \frac{\sum(x-\bar{x})(y-\bar{y})}{\sqrt{\sum(x-\bar{x})^{2} \sum(y-\bar
 </table>
 </div>
 </div>
-<p><strong>¡ALTO!</strong> Tenemos algunos valores o casos perdidos en ciertas variables. ¿Cómo lidiar con los casos perdidos?</p>
+<p>Tenemos algunos valores o casos perdidos en ciertas variables. ¿Cómo lidiar con los casos perdidos?</p>
 </section>
-<section id="tratamiento-de-casos-perdidos" class="level3">
-<h3 class="anchored" data-anchor-id="tratamiento-de-casos-perdidos">Tratamiento de casos perdidos</h3>
+<section id="tratamiento-de-casos-perdidos" class="level4">
+<h4 class="anchored" data-anchor-id="tratamiento-de-casos-perdidos">Tratamiento de casos perdidos</h4>
 <p>Trabajar con datos a menudo implica enfrentar valores perdidos (<code>NA</code>), lo que puede ser un gran desafío. Estos valores <em>indican la ausencia de un valor en una base de datos</em>. Los valores perdidos pueden originarse por diversas razones, como el sesgo de no respuesta en encuestas, errores en la entrada de datos o simplemente la falta de información para ciertas variables.</p>
-<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-5_8036c9c5590340d4b6494cebb3a6897b">
+<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-6_0a22e624ef901ad495b06aa8638c5785">
 <div class="cell-output-display">
 <div class="table-responsive">
 <table class="table table-striped table-hover table-condensed table-sm small" data-quarto-postprocess="true">
@@ -854,56 +873,67 @@ r &amp;= \frac{\sum(x-\bar{x})(y-\bar{y})}{\sqrt{\sum(x-\bar{x})^{2} \sum(y-\bar
 <li><p>trabajar exclusivamente con casos completos (listwise) o</p></li>
 <li><p>retener los casos con valores perdidos, pero excluyéndolos al calcular estadísticas (pairwise).</p></li>
 </ul>
+</section>
 <section id="a-analísis-con-casos-completos-listwise-deletion" class="level4">
 <h4 class="anchored" data-anchor-id="a-analísis-con-casos-completos-listwise-deletion">a) Analísis con casos completos: listwise deletion</h4>
 <p>Este enfoque es uno de los más conocidos: implica remover completamente las observaciones que tienen valores perdidos en cualquier variable de interés. En otras palabras, si una fila/caso en un conjunto de datos tiene al menos un valor faltante en alguna de las variables que estás considerando, se eliminará por completo.</p>
 <p>En R, esto podemos hacerlo con la función <code>na.omit</code>. Para hacer esto, sigamos estos pasos:</p>
 <ul>
-<li>respaldar la base de datos original en el espacio de trabajo (por si queremos en adelante realizar algún análisis referido a casos perdidos)-</li>
+<li>respaldar la base de datos original en el espacio de trabajo (por si queremos en adelante realizar algún análisis referido a casos perdidos)</li>
 <li>contamos el número de casos con el comando <code>dim</code>.</li>
-<li>contamos cuántos y en dónde tenemos casos perdidos.</li>
+<li>contamos cuántos y dónde tenemos casos perdidos.</li>
 <li>borramos los casos perdidos con <code>na.omit</code>.</li>
 <li>contamos nuevamente con <code>dim</code> para asegurarnos que se borraron.</li>
 </ul>
-<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-6_59e9462df2ef1762a78f2492722b9c58">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>proc_elsoc_original <span class="ot">&lt;-</span> proc_elsoc</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(proc_elsoc)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-7_6d6d7fd44042dcaee3b04a7a0846c8f9">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>proc_elsoc_original <span class="ot">&lt;-</span> proc_elsoc</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(proc_elsoc)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2927    7</code></pre>
 </div>
 </div>
-<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-7_99c16f19e4fc0ca99c6b65e8352acece">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(proc_elsoc))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-8_e07161d121a2fad667e84d7bade63bf0">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(proc_elsoc))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 81</code></pre>
 </div>
 </div>
-<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-8_c20cbda15546e04031490216d56ab29c">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(proc_elsoc))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-9_b322e917d96775e1a966f7e87807f7a2">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(proc_elsoc))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>mesfuerzo  mtalento       ess    edcine      sexo      edad    pmerit 
        18        20        12         2         0         0        29 </code></pre>
 </div>
 </div>
-<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-9_d7fd65893e2e52de8f820ab2c0f7e8dd">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>proc_elsoc <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(proc_elsoc)</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(proc_elsoc)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-10_f1ea71f88f823efec94ee907fac5ee6c">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>proc_elsoc <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(proc_elsoc)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(proc_elsoc)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2887    7</code></pre>
 </div>
 </div>
 <p>Ahora nos quedamos con 2887 observaciones sin casos perdidos.</p>
 <p>Aunque simple de implementar, con este enfoque podemos perder información importante, especialmente si los valores perdidos no se distribuyen aleatoriamente.</p>
-<div class="callout-box">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Siempre hay que intentar rescatar la mayor cantidad de casos posibles. Por lo tanto, si un listwise genera más de un 10% de casos perdidos se debe detectar qué variables esta produciendo esta pérdida e intentar recuperar datos. Puedes revisar un ejemplo <a href="https://multivariada.netlify.app/assignment/11-code/#recuperar-casos-perdidos-ejemplo-variable-ingresos">aquí.</a></p>
+</div>
 </div>
 </section>
 <section id="b-retener-pero-excluir-pairwise-deletion" class="level4">
 <h4 class="anchored" data-anchor-id="b-retener-pero-excluir-pairwise-deletion">b) Retener pero excluir: pairwise deletion</h4>
 <p>A diferencia del anterior, este es un enfoque en el que las observaciones se utilizan para el análisis siempre que tengan datos disponibles para las variables específicas que se están analizando. En lugar de eliminar toda una fila si falta un valor, se eliminan solo los valores faltantes en las variables que se están analizando en ese momento.</p>
 <p>Para hacer esto en R debemos siempre verificar e indicar en nuestro código si queremos (o no) remover los <code>NA</code> para realizar los análisis.</p>
-<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-10_323d93497e2ca100d972996e2bf4da16">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(proc_elsoc_original<span class="sc">$</span>pmerit); <span class="fu">mean</span>(proc_elsoc<span class="sc">$</span>edad); <span class="fu">mean</span>(proc_elsoc<span class="sc">$</span>ess)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-11_a7eef85255ad38703489ae2251a84288">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(proc_elsoc_original<span class="sc">$</span>pmerit); <span class="fu">mean</span>(proc_elsoc<span class="sc">$</span>edad); <span class="fu">mean</span>(proc_elsoc<span class="sc">$</span>ess)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NA</code></pre>
 </div>
@@ -913,7 +943,7 @@ r &amp;= \frac{\sum(x-\bar{x})(y-\bar{y})}{\sqrt{\sum(x-\bar{x})^{2} \sum(y-\bar
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4.333564</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(proc_elsoc_original<span class="sc">$</span>pmerit, <span class="at">na.rm =</span> <span class="cn">TRUE</span>); <span class="fu">mean</span>(proc_elsoc<span class="sc">$</span>edad, <span class="at">na.rm =</span> <span class="cn">TRUE</span>); <span class="fu">mean</span>(proc_elsoc<span class="sc">$</span>ess, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(proc_elsoc_original<span class="sc">$</span>pmerit, <span class="at">na.rm =</span> <span class="cn">TRUE</span>); <span class="fu">mean</span>(proc_elsoc<span class="sc">$</span>edad, <span class="at">na.rm =</span> <span class="cn">TRUE</span>); <span class="fu">mean</span>(proc_elsoc<span class="sc">$</span>ess, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.653899</code></pre>
 </div>
@@ -929,12 +959,12 @@ r &amp;= \frac{\sum(x-\bar{x})(y-\bar{y})}{\sqrt{\sum(x-\bar{x})^{2} \sum(y-\bar
 </section>
 </section>
 <section id="matrices-de-correlación" class="level2">
-<h2 class="anchored" data-anchor-id="matrices-de-correlación">Matrices de correlación</h2>
+<h2 class="anchored" data-anchor-id="matrices-de-correlación">3. Matrices de correlación</h2>
 <p>La correlación es una estimación de asociación de dos variables. Sin embargo, en los análisis de bases de datos usualmente se exploran asociaciones entre múltiples pares de variables, lo que genera una matriz de correlación. En una matriz, las variables se presentan en las filas y las columnas, y en las celdas donde se cruzan los pares de variables se muestra su coeficiente de correlación.</p>
 <p>En su forma simple en R se aplica la función <code>cor</code> a la base de datos, y la guardamos en un objeto que le damos el nombre M para futuras operaciones:</p>
 <div class="cell" data-hash="05-practico_cache/html/cor1_c53c8650bab246f189af07ccd79d08f4">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="fu">cor</span>(proc_elsoc_original, <span class="at">use =</span> <span class="st">"complete.obs"</span>) </span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>M</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="fu">cor</span>(proc_elsoc_original, <span class="at">use =</span> <span class="st">"complete.obs"</span>) </span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>M</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             mesfuerzo    mtalento          ess      edcine        sexo
 mesfuerzo  1.000000000  0.69768811 -0.004312135 -0.12167659 -0.04480502
@@ -956,8 +986,8 @@ pmerit     0.09236979  1.000000000</code></pre>
 </div>
 <p>Este es el reporte simple, pero no muy amigable a la vista. Para una versión más reportable, utilizamos la funcion <code>tab_corr</code>.</p>
 <div class="cell" data-hash="05-practico_cache/html/cor2_c359c785432946e20bfffc236a56e2cb">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">tab_corr</span>(proc_elsoc_original, </span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">triangle =</span> <span class="st">"lower"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">tab_corr</span>(proc_elsoc_original, </span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">triangle =</span> <span class="st">"lower"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <tbody>
@@ -1051,9 +1081,9 @@ pmerit     0.09236979  1.000000000</code></pre>
 <p>La <strong>distinción</strong> entre <strong>listwise y pairwise es relevante al momento de estimar matricies de correlación</strong>, donde esta decisión debe estar claramente explicitada y fundamentada. En ejemplo de tabla anterior usamos <em>listwise</em> que es el argumento por defecto (y nos lo indica al final de la tabla).</p>
 <p>Veamos como hacerlo con <em>pairwise</em>:</p>
 <div class="cell" data-hash="05-practico_cache/html/cor2_1_e6de1e771e6cd98455bf18adb68423e3">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">tab_corr</span>(proc_elsoc_original, </span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">na.deletion =</span> <span class="st">"pairwise"</span>, <span class="co"># espeficicamos tratamiento NA</span></span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">triangle =</span> <span class="st">"lower"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">tab_corr</span>(proc_elsoc_original, </span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">na.deletion =</span> <span class="st">"pairwise"</span>, <span class="co"># espeficicamos tratamiento NA</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">triangle =</span> <span class="st">"lower"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table data-quarto-postprocess="true" class="table table-sm table-striped small">
 <tbody>
@@ -1152,25 +1182,33 @@ pmerit     0.09236979  1.000000000</code></pre>
 <li>En la diagonal corresponde que todos los coeficientes sean 1, ya que la correlación de una variable consigo misma es perfectamente positiva.</li>
 </ul>
 <p>Otra manera de presentar matrices de correlación es mediante gráficos. Veamos un ejemplo con la función <code>corrplot.mixed</code> de la librería <code>corrplot</code> sobre nuestra matriz <code>M</code> ya creada.</p>
-<div class="cell" data-hash="05-practico_cache/html/cor3_e844399e2860b7e65c2ca2d033a9cd0a">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot.mixed</span>(M)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="05-practico_cache/html/cor3_15a79747fb11f2def2d0e35d3c98fdba">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot.mixed</span>(M)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="05-practico_files/figure-html/cor3-1.png" class="img-fluid" width="960"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="05-practico_files/figure-html/cor3-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Este gráfico/matriz representa el grado de asociación entre variables mediante el tamaño de los círculos e intensidad de colores, y el signo de la asociación se representa con una gradiente de colores que va del azul (positivo) al rojo (negativo).</p>
 <p>Otra manera de graficar la matriz es con la función <code>ggpairs</code> del paquete <code>GGally</code>, que nos entrega no solo el valor del coeficiente y su significancia (***), si no que también un <em>scatter</em> del cruce entre variables.</p>
-<div class="cell" data-hash="05-practico_cache/html/cor5_3cb92eea704dc78079edf26d761e4161">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggpairs</span>(proc_elsoc) </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="05-practico_cache/html/cor5_bd6a5238278dda48d9be794d2fa44ca3">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggpairs</span>(proc_elsoc) </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="05-practico_files/figure-html/cor5-1.png" class="img-fluid" width="960"></p>
 </div>
 </div>
 <p>Finalmente, también se puede representar la correlación entre dos variables en un gráfico de nube de puntos o <em>scatterplot</em>.</p>
-<div class="cell" data-hash="05-practico_cache/html/cor6_a8a417890ea8814b75aef075883adecb">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">plot_scatter</span>(proc_elsoc, edad, ess)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-hash="05-practico_cache/html/cor6_8d3b19ee9e6ab898d92dd742fec08ef5">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">plot_scatter</span>(proc_elsoc, edad, ess)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="05-practico_files/figure-html/cor6-1.png" class="img-fluid" width="960"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="05-practico_files/figure-html/cor6-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Donde:</p>
@@ -1182,7 +1220,7 @@ pmerit     0.09236979  1.000000000</code></pre>
 <p>En el caso de nuestra nube de puntos entre edad y estatus social subjetivo, observamos que no hay asociación (lo que ya era indicado por su correlación de -0.07 observada en la matriz de correlaciones).</p>
 </section>
 <section id="tamaños-de-efecto" class="level2">
-<h2 class="anchored" data-anchor-id="tamaños-de-efecto">Tamaños de efecto</h2>
+<h2 class="anchored" data-anchor-id="tamaños-de-efecto">4. Tamaños de efecto</h2>
 <p>¿Y cómo puedo saber si el valor de la correlación es alto, medio o bajo? Si bien la correlación no nos indica causalidad, si nos permite conocer la dirección y fuerza de asociación entre dos variables. Un estándar para determinar qué tan fuerte es dicha asociación en las ciencias sociales es el propuesto por Cohen (1998).</p>
 
 <style>
@@ -1267,8 +1305,8 @@ Grande
 </div>
 </div>
 </section>
-<section id="otros-tipos-de-correlación-spearman" class="level1">
-<h1>Otros tipos de correlación: Spearman</h1>
+<section id="correlación-spearman" class="level2">
+<h2 class="anchored" data-anchor-id="correlación-spearman">5. Correlación Spearman</h2>
 <p>Cuando queremos conocer la asociación entre variables que son ordinales y/o cuando nuestras variables no cumplen con los supuestos de distribución normal, podemos utilizar la <strong>correlación de Spearman</strong>.</p>
 <ul>
 <li>El coeficiente de correlación de Spearman es una medida estadística que evalúa la relación entre variables al considerar no solo la relación lineal entre ellas, sino también su relación de orden.</li>
@@ -1278,8 +1316,8 @@ Grande
 </ul>
 <p>En R calcularlo es sencillo, pero <em>debemos tener en cuenta que las variables que relacionemos tengan un orden de rango similar</em>: por ejemplo, que el valor más bajo sea el rango más bajo y que el valor más alto sea el rango más alto.</p>
 <p>Tomemos por ejemplo las variables <code>mesfuerzo</code> y <code>mtalento</code>.</p>
-<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-11_010fdc17b9e10d0a1239d55c6c45dbf6">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">frq</span>(proc_elsoc<span class="sc">$</span>mesfuerzo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-12_020399e619e170a4548e53ebfdf20a48">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">frq</span>(proc_elsoc<span class="sc">$</span>mesfuerzo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>x &lt;numeric&gt; 
 # total N=2887 valid N=2887 mean=2.57 sd=1.05
@@ -1293,7 +1331,7 @@ Value |    N | Raw % | Valid % | Cum. %
     5 |   78 |  2.70 |    2.70 | 100.00
  &lt;NA&gt; |    0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">frq</span>(proc_elsoc<span class="sc">$</span>mtalento)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">frq</span>(proc_elsoc<span class="sc">$</span>mtalento)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>x &lt;numeric&gt; 
 # total N=2887 valid N=2887 mean=2.74 sd=1.06
@@ -1309,14 +1347,14 @@ Value |    N | Raw % | Valid % | Cum. %
 </div>
 </div>
 <p>Ahora, calculemos el coeficiente de correlación de Spearman con <code>cor.test</code>.</p>
-<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-12_5f56f3d07de1b218024441cc7ebd8287">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(proc_elsoc<span class="sc">$</span>mesfuerzo, proc_elsoc<span class="sc">$</span>mtalento, <span class="at">method =</span> <span class="st">"spearman"</span>) <span class="co">#especificamos metodo spearman</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-13_c22937bb07f7be0aa63c9ee48eb25c39">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(proc_elsoc<span class="sc">$</span>mesfuerzo, proc_elsoc<span class="sc">$</span>mtalento, <span class="at">method =</span> <span class="st">"spearman"</span>) <span class="co">#especificamos metodo spearman</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Spearman's rank correlation rho
 
 data:  proc_elsoc$mesfuerzo and proc_elsoc$mtalento
-S = 1200288294, p-value &lt; 0.00000000000000022
+S = 1200288294, p-value &lt; 2.2e-16
 alternative hypothesis: true rho is not equal to 0
 sample estimates:
      rho 
@@ -1324,8 +1362,9 @@ sample estimates:
 </div>
 </div>
 <p>Ahora conocemos el valor del coeficiente mediante al argumento <code>rho</code>, que es igual a 0.7, siendo positivo y grande según los criterios de Cohen (1988).</p>
+</section>
 <section id="coeficiente-de-determinación" class="level2">
-<h2 class="anchored" data-anchor-id="coeficiente-de-determinación">Coeficiente de determinación</h2>
+<h2 class="anchored" data-anchor-id="coeficiente-de-determinación">6. Coeficiente de determinación</h2>
 <p>El coeficiente de determinación <span class="math inline">\(R^2\)</span> es una medida estadística que indica la proporción de la varianza total de una variable que es explicada por otra(s) variable(s). En pocas palabras,</p>
 <ul>
 <li>se utiliza para evaluar cuánta de la variabilidad de una variable se debe a otra variable.</li>
@@ -1333,17 +1372,17 @@ sample estimates:
 </ul>
 <p>En el contexto de la correlación entre <strong>solo dos variables</strong>, el <span class="math inline">\(R^2\)</span> es igual a elevar al cuadrado el coeficiente de correlación = <code>(r)^2</code>. Esto nos permite conocer qué tanto la variabilidad de una variable X estaría asociado a la variabilidad de otra variable Y.</p>
 <p>En nuestro ejemplo anterior entre estatus social subjetivo y años de educación, teníamos que su coeficiente de correlación era <em>r = 0.3</em>.</p>
-<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-13_6a126b066fb8e28f7e85323c2fd8af62">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>coef_r <span class="ot">&lt;-</span> M[<span class="dv">4</span>,<span class="dv">3</span>] <span class="co"># seleccionamos el coef de nuestra matriz</span></span>
-<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>coef_r</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-14_95552a3818e2d65417cd809e0c645e3e">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>coef_r <span class="ot">&lt;-</span> M[<span class="dv">4</span>,<span class="dv">3</span>] <span class="co"># seleccionamos el coef de nuestra matriz</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>coef_r</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2895925</code></pre>
 </div>
 </div>
 <p>Calculemos el <span class="math inline">\(R^2\)</span> de esta asociación.</p>
-<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-14_6edd69019887e934de3ae70e3f71b17c">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>coef_r<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-15_d951f5dd102a7130b5b580ee9b1ed8c6">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>coef_r<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.0838638</code></pre>
 </div>
@@ -1351,7 +1390,6 @@ sample estimates:
 <p>Con esto, podemos decir que el 9% de la variabilidad del estatus social subjetivo es compartido con la variabilidad en los años de educación.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
