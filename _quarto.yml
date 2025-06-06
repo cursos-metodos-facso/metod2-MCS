@@ -69,9 +69,9 @@ website:
             # - text: "Sesión 5"
             #   file: content/06-content.qmd
             # - text: "Sesión 6"
-            #   file: content/07-content.qmd
-             # - text: "Regresión lineal I"
-             #   file: content/08-content.qmd
+            #  file: content/07-content.qmd
+            - text: "Regresión lineal I"
+              file: content/07-content.qmd
              # - text: "Regresión lineal II"
              #   file: content/09-content.qmd
              # - text: "Regresión logística I"
@@ -101,8 +101,8 @@ website:
               file: assignment/05-practico.qmd
             - text: "Práctico 06: Correlación categóricas"
               file: assignment/06-practico.qmd
-        # - text: "Práctica 6"
-        #   file: resource/07-resource.qmd
+            - text: "Práctico 07: Regresión lineal I"
+              file: assignment/07-practico.qmd
         # - text: "7: Supuestos de regresión"
         #   file: resource/08-resource.qmd
 

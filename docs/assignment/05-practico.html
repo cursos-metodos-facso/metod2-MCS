@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Metodología Cuantitativa Avanzada - MCS - Práctico 05. Correlación</title>
+<title>Práctico 05. Correlación – Metodología Cuantitativa Avanzada - MCS</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -81,7 +81,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "Sin resultados",
     "search-matching-documents-text": "documentos encontrados",
@@ -90,22 +96,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "resultado adicional en este documento",
     "search-more-matches-text": "resultados adicionales en este documento",
     "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancelar",
     "search-submit-button-title": "Enviar",
     "search-label": "Buscar"
   }
 }</script>
-
 <script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
+
 <link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="Metodología Cuantitativa Avanzada - MCS - Práctico 05. Correlación">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Práctico 05. Correlación – Metodología Cuantitativa Avanzada - MCS">
 <meta property="og:description" content="Metodología Cuantitativa Avanzada - Magíster en Ciencias Sociales">
 <meta property="og:image" content="https://metod2-mcs.netlify.app/files/social-image-f22.png">
-<meta property="og:site-name" content="Metodología Cuantitativa Avanzada - MCS">
+<meta property="og:site_name" content="Metodología Cuantitativa Avanzada - MCS">
 <meta property="og:locale" content="en_US">
 <meta property="og:image:height" content="500">
 <meta property="og:image:width" content="500">
@@ -115,67 +150,67 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Metodología Cuantitativa Avanzada - MCS</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Buscar"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../syllabus.html" rel="" target="">
- <span class="menu-text">Programa</span></a>
+    <a class="nav-link" href="../syllabus.html"> 
+<span class="menu-text">Programa</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../schedule.html" rel="" target="">
- <span class="menu-text">Planificación</span></a>
+    <a class="nav-link" href="../schedule.html"> 
+<span class="menu-text">Planificación</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/index.html" rel="" target="">
- <span class="menu-text">Clases</span></a>
+    <a class="nav-link" href="../content/index.html"> 
+<span class="menu-text">Clases</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../assignment/index.html" rel="" target="" aria-current="page">
- <span class="menu-text">Prácticos</span></a>
+    <a class="nav-link active" href="../assignment/index.html" aria-current="page"> 
+<span class="menu-text">Prácticos</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../trabajos.html" rel="" target="">
- <span class="menu-text">Evaluación</span></a>
+    <a class="nav-link" href="../trabajos.html"> 
+<span class="menu-text">Evaluación</span></a>
   </li>  
 </ul>
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../assignment/01-practico.html">Sesiones</a></li><li class="breadcrumb-item"><a href="../assignment/05-practico.html">Práctico 05: Correlación</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../assignment/01-practico.html">Sesiones</a></li><li class="breadcrumb-item"><a href="../assignment/05-practico.html">Práctico 05: Correlación</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
     </div>
   </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Información general prácticos</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -190,9 +225,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Sesiones</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -233,12 +268,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Práctico 06: Correlación categóricas</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignment/07-practico.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctico 07: Regresión lineal I</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -264,7 +305,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../assignment/01-practico.html">Sesiones</a></li><li class="breadcrumb-item"><a href="../assignment/05-practico.html">Práctico 05: Correlación</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Práctico 05. Correlación</h1>
 <p class="subtitle lead">Metodología Cuantitativa Avanzada - Magíster en Ciencias Sociales</p>
@@ -286,7 +327,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <section id="objetivo-de-la-práctica" class="level2">
 <h2 class="anchored" data-anchor-id="objetivo-de-la-práctica">Objetivo de la práctica</h2>
@@ -324,17 +367,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>con 8 niveles de educación (ej: desde basica incompleta = 1, hasta postgrado = 8), y</li>
 <li>12 niveles de rangos de ingreso (ej: desde menos de 100.000 = 1 hasta más de 10.000.000 = 12)</li>
 </ul>
-<div class="cell" data-hash="05-practico_cache/html/ex1_data_5db6c850feee4d7eed6f619250e47b8c">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>id <span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">8</span>) <span class="co"># identificador de cada caso</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>educ <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">8</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>ing  <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">11</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(id,educ,ing)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-1_7c05b7b45bcbfb771dd3baee7b7fbd98">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>kableExtra<span class="sc">::</span><span class="fu">kbl</span>(data, <span class="at">escape=</span>F, <span class="at">full_width =</span> F)  <span class="sc">%&gt;%</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">kable_paper</span>(<span class="st">"hover"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="lightable-paper lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="lightable-paper lightable-hover caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: right;" data-quarto-table-cell-role="th">id</th>
@@ -397,7 +440,7 @@ Correlación=r &amp;= \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})} {(n-1)
 &amp;= \frac{\sum(x-\bar{x})(y-\bar{y})}{\sqrt{\sum(x-\bar{x})^{2} \sum(y-\bar{y})^{2}}}
 \end{align*}\]</span></p>
 <p>Para obtener el coeficiente de correlación directamente en R se utiliza la función <code>cor()</code> :</p>
-<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-2_2a0c3851f16db0147cd9dda9b460a676">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(data<span class="sc">$</span>educ, data<span class="sc">$</span>ing)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.9512367</code></pre>
@@ -421,7 +464,7 @@ Correlación=r &amp;= \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})} {(n-1)
 <li><span class="math inline">\((x_i - \bar{x})²\)</span> : dif_m_educ2</li>
 <li><span class="math inline">\((y_i - \bar{y})²\)</span> : dif_m_ing2</li>
 </ul>
-<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-3_f0f3b64179372447d44dccf5a6cec339">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>dif_m_educ <span class="ot">&lt;-</span> data<span class="sc">$</span>educ<span class="sc">-</span><span class="fu">mean</span>(data<span class="sc">$</span>educ)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>dif_m_ing <span class="ot">&lt;-</span> data<span class="sc">$</span>ing<span class="sc">-</span><span class="fu">mean</span>(data<span class="sc">$</span>ing)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>dif_xy <span class="ot">&lt;-</span>  data<span class="sc">$</span>dif_m_educ<span class="sc">*</span>data<span class="sc">$</span>dif_m_ing</span>
@@ -429,11 +472,11 @@ Correlación=r &amp;= \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})} {(n-1)
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>dif_m_ing2 <span class="ot">&lt;-</span> (data<span class="sc">$</span>dif_m_ing)<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>En nuestra base de datos:</p>
-<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-4_3228587cc97e0961f640c016f841ad67">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>kableExtra<span class="sc">::</span><span class="fu">kbl</span>(data, <span class="at">digits =</span> <span class="dv">3</span>,<span class="at">full_width =</span> F)  <span class="sc">%&gt;%</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">kable_paper</span>(<span class="st">"hover"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="lightable-paper lightable-hover table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="lightable-paper lightable-hover caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th style="text-align: right;" data-quarto-table-cell-role="th">id</th>
@@ -534,7 +577,7 @@ Correlación=r &amp;= \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})} {(n-1)
 </div>
 </div>
 <p>Y obtenemos la suma de cada una de las tres últimas columnas, que es lo que se necesita para reemplazar en la fórmula de la correlación:</p>
-<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-5_8b1d18add298e15103145e3b1cd52be6">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(data<span class="sc">$</span>dif_xy); <span class="fu">sum</span>(data<span class="sc">$</span>dif_m_educ2);<span class="fu">sum</span>(data<span class="sc">$</span>dif_m_ing2)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 51.625</code></pre>
@@ -554,7 +597,7 @@ r &amp;= \frac{\sum(x-\bar{x})(y-\bar{y})}{\sqrt{\sum(x-\bar{x})^{2} \sum(y-\bar
 &amp;= 0.951
 \end{align*}\]</span></p>
 <p>Y comprobamos con la función <code>cor()</code> de R, que nos entrega la correlación de Pearson:</p>
-<div class="cell" data-hash="05-practico_cache/html/ex1_cor_905ad3494309096f0c667481ec0f8091">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(data<span class="sc">$</span>educ, data<span class="sc">$</span>ing)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.9512367</code></pre>
@@ -567,7 +610,7 @@ r &amp;= \frac{\sum(x-\bar{x})(y-\bar{y})}{\sqrt{\sum(x-\bar{x})^{2} \sum(y-\bar
 <h3 class="anchored" data-anchor-id="diagrama-de-dispersión-nube-de-puntos-o-scatterplot">2.2. Diagrama de dispersión (nube de puntos o scatterplot)</h3>
 <p>Siempre es recomendable acompañar el valor de la correlación con una exploración gráfica de la distribución bivariada de los datos. El gráfico o diagrama de dispersión es una buena herramienta, ya que muestra la forma, la dirección y la fuerza de la relación entre dos variables cuantitativas.</p>
 <p>Este tipo de gráfico lo podemos realizar usando la librería <code>ggplot2</code>.</p>
-<div class="cell" data-layout-align="center" data-hash="05-practico_cache/html/ex1_plot1_4b0c508fce2de6d2c722da1c2f4acc9d">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(ggplot2)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data, </span>
@@ -587,7 +630,7 @@ r &amp;= \frac{\sum(x-\bar{x})(y-\bar{y})}{\sqrt{\sum(x-\bar{x})^{2} \sum(y-\bar
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="05-practico_files/figure-html/ex1_plot1-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p><img src="05-practico_files/figure-html/ex1_plot1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -598,7 +641,7 @@ r &amp;= \frac{\sum(x-\bar{x})(y-\bar{y})}{\sqrt{\sum(x-\bar{x})^{2} \sum(y-\bar
 <h3 class="anchored" data-anchor-id="el-cuarteto-de-anscombe">2.3. El cuarteto de Anscombe</h3>
 <p>Ahora, revisaremos un muy buen ejemplo de la importancia de la exploración gráfica de los datos mediante un ejemplo de Anscombe (1973), que permite visualizar las limitaciones del coeficiente de correlación.</p>
 <p>Primero, crearemos la base de datos:</p>
-<div class="cell" data-hash="05-practico_cache/html/ex2_data_a9d76b3d13a3e653d557e9de680e946d">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>anscombe <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x1 =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">13</span>, <span class="dv">9</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">7</span>, <span class="dv">5</span>),</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y1 =</span> <span class="fu">c</span>(<span class="fl">8.04</span>, <span class="fl">6.95</span>, <span class="fl">7.58</span>, <span class="fl">8.81</span>, <span class="fl">8.33</span>, <span class="fl">9.96</span>, <span class="fl">7.24</span>, <span class="fl">4.26</span>, <span class="fl">10.84</span>, <span class="fl">4.82</span>, <span class="fl">5.68</span>),</span>
@@ -611,7 +654,7 @@ r &amp;= \frac{\sum(x-\bar{x})(y-\bar{y})}{\sqrt{\sum(x-\bar{x})^{2} \sum(y-\bar
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Calculamos la correlación para cada par de datos:</p>
-<div class="cell" data-hash="05-practico_cache/html/ex2_cor_09bf085db1b7351db73c6493f0ea8634">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(anscombe<span class="sc">$</span>x1, anscombe<span class="sc">$</span>y1); <span class="fu">cor</span>(anscombe<span class="sc">$</span>x2, anscombe<span class="sc">$</span>y2); <span class="fu">cor</span>(anscombe<span class="sc">$</span>x3, anscombe<span class="sc">$</span>y3); <span class="fu">cor</span>(anscombe<span class="sc">$</span>x4, anscombe<span class="sc">$</span>y4)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.8164205</code></pre>
@@ -628,7 +671,7 @@ r &amp;= \frac{\sum(x-\bar{x})(y-\bar{y})}{\sqrt{\sum(x-\bar{x})^{2} \sum(y-\bar
 </div>
 <p>Podemos observar que los valores de las correlaciones son equivalentes, por lo tanto podríamos pensar que todos los pares de columnas se encuentran correlacionados de manera similar.</p>
 <p>Pero, ¿será suficiente con esa información? Pasemos a revisar los gráficos de dispersión de cada par de variables.</p>
-<div class="cell" data-layout-align="center" data-hash="05-practico_cache/html/ex2_plot_81ce32992390e211ee03c0b5d8bf5cbf">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(anscombe, <span class="fu">aes</span>(<span class="at">x =</span> x1, <span class="at">y =</span> y1)) <span class="sc">+</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">"red"</span>, </span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
@@ -637,7 +680,7 @@ r &amp;= \frac{\sum(x-\bar{x})(y-\bar{y})}{\sqrt{\sum(x-\bar{x})^{2} \sum(y-\bar
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="05-practico_files/figure-html/ex2_plot-1.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p><img src="05-practico_files/figure-html/ex2_plot-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -649,7 +692,7 @@ r &amp;= \frac{\sum(x-\bar{x})(y-\bar{y})}{\sqrt{\sum(x-\bar{x})^{2} \sum(y-\bar
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="05-practico_files/figure-html/ex2_plot-2.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p><img src="05-practico_files/figure-html/ex2_plot-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -661,7 +704,7 @@ r &amp;= \frac{\sum(x-\bar{x})(y-\bar{y})}{\sqrt{\sum(x-\bar{x})^{2} \sum(y-\bar
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="05-practico_files/figure-html/ex2_plot-3.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p><img src="05-practico_files/figure-html/ex2_plot-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -673,7 +716,7 @@ r &amp;= \frac{\sum(x-\bar{x})(y-\bar{y})}{\sqrt{\sum(x-\bar{x})^{2} \sum(y-\bar
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="05-practico_files/figure-html/ex2_plot-4.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p><img src="05-practico_files/figure-html/ex2_plot-4.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -686,7 +729,7 @@ r &amp;= \frac{\sum(x-\bar{x})(y-\bar{y})}{\sqrt{\sum(x-\bar{x})^{2} \sum(y-\bar
 <section id="preparación-datos" class="level4">
 <h4 class="anchored" data-anchor-id="preparación-datos">Preparación datos</h4>
 <p>Comencemos por preparar nuestros datos. Iniciamos cargando las librerías necesarias.</p>
-<div class="cell" data-hash="05-practico_cache/html/librerias_b37366cbabae9817cd7f2492fc80ca40">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, <span class="co"># Manipulacion datos</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>               sjmisc, <span class="co"># Descriptivos</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>               sjPlot, <span class="co"># Tablas</span></span>
@@ -698,11 +741,11 @@ r &amp;= \frac{\sum(x-\bar{x})(y-\bar{y})}{\sqrt{\sum(x-\bar{x})^{2} \sum(y-\bar
 <span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># para limpiar el entorno de trabajo</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Cargamos los datos directamente desde internet (por esta vez).</p>
-<div class="cell" data-hash="05-practico_cache/html/datos_021f47baa488f520f00630e53b13bd2f">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">"https://multivariada.netlify.app/assignment/data/proc/ELSOC_ess_merit2016.RData"</span>)) </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>A continuación, exploramos la base de datos <strong>proc_elsoc</strong>.</p>
-<div class="cell" data-hash="05-practico_cache/html/exploracion_47127237f52da55e35ec8ebf8b7f4048">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(proc_elsoc) <span class="co"># Nombre de columnas</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "mesfuerzo" "mtalento"  "ess"       "edcine"    "sexo"      "edad"     
@@ -715,12 +758,12 @@ r &amp;= \frac{\sum(x-\bar{x})(y-\bar{y})}{\sqrt{\sum(x-\bar{x})^{2} \sum(y-\bar
 </div>
 <p>Contamos con 7 variables (columnas) y 2927 observaciones (filas).</p>
 <p>Ahora, profundicemos un poco más y observemos algunos estadísticos descriptivos de resumen de nuestra base de datos. Utilizaremos la función <code>descr</code> del paquete <code>sjmisc</code>.</p>
-<div class="cell" data-hash="05-practico_cache/html/descripcion_5859116fef389239662f7e841a4857f0">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">descr</span>(proc_elsoc,</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">show =</span> <span class="fu">c</span>(<span class="st">"label"</span>,<span class="st">"range"</span>, <span class="st">"mean"</span>, <span class="st">"sd"</span>, <span class="st">"NA.prc"</span>, <span class="st">"n"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>      <span class="fu">kable</span>(.,<span class="st">"markdown"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <colgroup>
 <col style="width: 3%">
 <col style="width: 11%">
@@ -823,10 +866,10 @@ r &amp;= \frac{\sum(x-\bar{x})(y-\bar{y})}{\sqrt{\sum(x-\bar{x})^{2} \sum(y-\bar
 <section id="tratamiento-de-casos-perdidos" class="level4">
 <h4 class="anchored" data-anchor-id="tratamiento-de-casos-perdidos">Tratamiento de casos perdidos</h4>
 <p>Trabajar con datos a menudo implica enfrentar valores perdidos (<code>NA</code>), lo que puede ser un gran desafío. Estos valores <em>indican la ausencia de un valor en una base de datos</em>. Los valores perdidos pueden originarse por diversas razones, como el sesgo de no respuesta en encuestas, errores en la entrada de datos o simplemente la falta de información para ciertas variables.</p>
-<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-6_0a22e624ef901ad495b06aa8638c5785">
+<div class="cell">
 <div class="cell-output-display">
 <div class="table-responsive">
-<table class="table table-striped table-hover table-condensed table-sm small" data-quarto-postprocess="true">
+<table class="table table-striped table-hover table-condensed caption-top table-sm small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th" style="text-align: right; font-weight: bold; color: white !important; background-color: rgba(255, 51, 49, 255) !important;">X1</th>
@@ -891,27 +934,27 @@ r &amp;= \frac{\sum(x-\bar{x})(y-\bar{y})}{\sqrt{\sum(x-\bar{x})^{2} \sum(y-\bar
 <li>borramos los casos perdidos con <code>na.omit</code>.</li>
 <li>contamos nuevamente con <code>dim</code> para asegurarnos que se borraron.</li>
 </ul>
-<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-7_6d6d7fd44042dcaee3b04a7a0846c8f9">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>proc_elsoc_original <span class="ot">&lt;-</span> proc_elsoc</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(proc_elsoc)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2927    7</code></pre>
 </div>
 </div>
-<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-8_e07161d121a2fad667e84d7bade63bf0">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(proc_elsoc))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 81</code></pre>
 </div>
 </div>
-<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-9_b322e917d96775e1a966f7e87807f7a2">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(proc_elsoc))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>mesfuerzo  mtalento       ess    edcine      sexo      edad    pmerit 
        18        20        12         2         0         0        29 </code></pre>
 </div>
 </div>
-<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-10_f1ea71f88f823efec94ee907fac5ee6c">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>proc_elsoc <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(proc_elsoc)</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(proc_elsoc)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -938,7 +981,7 @@ Nota
 <h4 class="anchored" data-anchor-id="b-retener-pero-excluir-pairwise-deletion">b) Retener pero excluir: pairwise deletion</h4>
 <p>A diferencia del anterior, este es un enfoque en el que las observaciones se utilizan para el análisis siempre que tengan datos disponibles para las variables específicas que se están analizando. En lugar de eliminar toda una fila si falta un valor, se eliminan solo los valores faltantes en las variables que se están analizando en ese momento.</p>
 <p>Para hacer esto en R debemos siempre verificar e indicar en nuestro código si queremos (o no) remover los <code>NA</code> para realizar los análisis.</p>
-<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-11_a7eef85255ad38703489ae2251a84288">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(proc_elsoc_original<span class="sc">$</span>pmerit); <span class="fu">mean</span>(proc_elsoc<span class="sc">$</span>edad); <span class="fu">mean</span>(proc_elsoc<span class="sc">$</span>ess)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NA</code></pre>
@@ -968,7 +1011,7 @@ Nota
 <h2 class="anchored" data-anchor-id="matrices-de-correlación">3. Matrices de correlación</h2>
 <p>La correlación es una estimación de asociación de dos variables. Sin embargo, en los análisis de bases de datos usualmente se exploran asociaciones entre múltiples pares de variables, lo que genera una matriz de correlación. En una matriz, las variables se presentan en las filas y las columnas, y en las celdas donde se cruzan los pares de variables se muestra su coeficiente de correlación.</p>
 <p>En su forma simple en R se aplica la función <code>cor</code> a la base de datos, y la guardamos en un objeto que le damos el nombre M para futuras operaciones:</p>
-<div class="cell" data-hash="05-practico_cache/html/cor1_c53c8650bab246f189af07ccd79d08f4">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="fu">cor</span>(proc_elsoc_original, <span class="at">use =</span> <span class="st">"complete.obs"</span>) </span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>M</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -991,11 +1034,11 @@ pmerit     0.09236979  1.000000000</code></pre>
 </div>
 </div>
 <p>Este es el reporte simple, pero no muy amigable a la vista. Para una versión más reportable, utilizamos la funcion <code>tab_corr</code>.</p>
-<div class="cell" data-hash="05-practico_cache/html/cor2_c359c785432946e20bfffc236a56e2cb">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">tab_corr</span>(proc_elsoc_original, </span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">triangle =</span> <span class="st">"lower"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">&nbsp;</td>
@@ -1086,12 +1129,12 @@ pmerit     0.09236979  1.000000000</code></pre>
 </div>
 <p>La <strong>distinción</strong> entre <strong>listwise y pairwise es relevante al momento de estimar matricies de correlación</strong>, donde esta decisión debe estar claramente explicitada y fundamentada. En ejemplo de tabla anterior usamos <em>listwise</em> que es el argumento por defecto (y nos lo indica al final de la tabla).</p>
 <p>Veamos como hacerlo con <em>pairwise</em>:</p>
-<div class="cell" data-hash="05-practico_cache/html/cor2_1_e6de1e771e6cd98455bf18adb68423e3">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">tab_corr</span>(proc_elsoc_original, </span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">na.deletion =</span> <span class="st">"pairwise"</span>, <span class="co"># espeficicamos tratamiento NA</span></span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">triangle =</span> <span class="st">"lower"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th" style="font-style: italic; font-weight: normal; border-top: double black; border-bottom: 1px solid black; padding: 0.2cm">&nbsp;</td>
@@ -1188,31 +1231,35 @@ pmerit     0.09236979  1.000000000</code></pre>
 <li>En la diagonal corresponde que todos los coeficientes sean 1, ya que la correlación de una variable consigo misma es perfectamente positiva.</li>
 </ul>
 <p>Otra manera de presentar matrices de correlación es mediante gráficos. Veamos un ejemplo con la función <code>corrplot.mixed</code> de la librería <code>corrplot</code> sobre nuestra matriz <code>M</code> ya creada.</p>
-<div class="cell" data-layout-align="center" data-hash="05-practico_cache/html/cor3_15a79747fb11f2def2d0e35d3c98fdba">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot.mixed</span>(M)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="05-practico_files/figure-html/cor3-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="05-practico_files/figure-html/cor3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Este gráfico/matriz representa el grado de asociación entre variables mediante el tamaño de los círculos e intensidad de colores, y el signo de la asociación se representa con una gradiente de colores que va del azul (positivo) al rojo (negativo).</p>
 <p>Otra manera de graficar la matriz es con la función <code>ggpairs</code> del paquete <code>GGally</code>, que nos entrega no solo el valor del coeficiente y su significancia (***), si no que también un <em>scatter</em> del cruce entre variables.</p>
-<div class="cell" data-hash="05-practico_cache/html/cor5_bd6a5238278dda48d9be794d2fa44ca3">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggpairs</span>(proc_elsoc) </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="05-practico_files/figure-html/cor5-1.png" class="img-fluid" width="960"></p>
+<div>
+<figure class="figure">
+<p><img src="05-practico_files/figure-html/cor5-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Finalmente, también se puede representar la correlación entre dos variables en un gráfico de nube de puntos o <em>scatterplot</em>.</p>
-<div class="cell" data-layout-align="center" data-hash="05-practico_cache/html/cor6_8d3b19ee9e6ab898d92dd742fec08ef5">
+<div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">plot_scatter</span>(proc_elsoc, edad, ess)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="05-practico_files/figure-html/cor6-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="05-practico_files/figure-html/cor6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
@@ -1228,7 +1275,6 @@ pmerit     0.09236979  1.000000000</code></pre>
 <section id="tamaños-de-efecto" class="level2">
 <h2 class="anchored" data-anchor-id="tamaños-de-efecto">4. Tamaños de efecto</h2>
 <p>¿Y cómo puedo saber si el valor de la correlación es alto, medio o bajo? Si bien la correlación no nos indica causalidad, si nos permite conocer la dirección y fuerza de asociación entre dos variables. Un estándar para determinar qué tan fuerte es dicha asociación en las ciencias sociales es el propuesto por Cohen (1998).</p>
-
 <style>
   table {
     margin-left: auto; /* Ajustamos el margen izquierdo a automático */
@@ -1285,14 +1331,13 @@ Moderado
 Grande
 </td>
 </tr>
-
 </tbody></table>
 <p>Con estos criterios podemos interpretar de mejor manera nuestros resultados de correlación. Como se observa, mientras más alto (sea en + o -) el coeficiente, más juntos estarán los datos (puntos), mostrando un patrón.</p>
-<div class="cell" data-layout-align="center" data-hash="05-practico_cache/html/correlation-grid_b943e18ea785b0bfc8f22690b0776e00">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="05-practico_files/figure-html/correlation-grid-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="05-practico_files/figure-html/correlation-grid-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
@@ -1322,7 +1367,7 @@ Grande
 </ul>
 <p>En R calcularlo es sencillo, pero <em>debemos tener en cuenta que las variables que relacionemos tengan un orden de rango similar</em>: por ejemplo, que el valor más bajo sea el rango más bajo y que el valor más alto sea el rango más alto.</p>
 <p>Tomemos por ejemplo las variables <code>mesfuerzo</code> y <code>mtalento</code>.</p>
-<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-12_020399e619e170a4548e53ebfdf20a48">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>sjmisc<span class="sc">::</span><span class="fu">frq</span>(proc_elsoc<span class="sc">$</span>mesfuerzo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>x &lt;numeric&gt; 
@@ -1353,14 +1398,14 @@ Value |    N | Raw % | Valid % | Cum. %
 </div>
 </div>
 <p>Ahora, calculemos el coeficiente de correlación de Spearman con <code>cor.test</code>.</p>
-<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-13_c22937bb07f7be0aa63c9ee48eb25c39">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(proc_elsoc<span class="sc">$</span>mesfuerzo, proc_elsoc<span class="sc">$</span>mtalento, <span class="at">method =</span> <span class="st">"spearman"</span>) <span class="co">#especificamos metodo spearman</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Spearman's rank correlation rho
 
 data:  proc_elsoc$mesfuerzo and proc_elsoc$mtalento
-S = 1200288294, p-value &lt; 2.2e-16
+S = 1200288294, p-value &lt; 0.00000000000000022
 alternative hypothesis: true rho is not equal to 0
 sample estimates:
      rho 
@@ -1378,7 +1423,7 @@ sample estimates:
 </ul>
 <p>En el contexto de la correlación entre <strong>solo dos variables</strong>, el <span class="math inline">\(R^2\)</span> es igual a elevar al cuadrado el coeficiente de correlación = <code>(r)^2</code>. Esto nos permite conocer qué tanto la variabilidad de una variable X estaría asociado a la variabilidad de otra variable Y.</p>
 <p>En nuestro ejemplo anterior entre estatus social subjetivo y años de educación, teníamos que su coeficiente de correlación era <em>r = 0.3</em>.</p>
-<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-14_95552a3818e2d65417cd809e0c645e3e">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>coef_r <span class="ot">&lt;-</span> M[<span class="dv">4</span>,<span class="dv">3</span>] <span class="co"># seleccionamos el coef de nuestra matriz</span></span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>coef_r</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1387,7 +1432,7 @@ sample estimates:
 </div>
 </div>
 <p>Calculemos el <span class="math inline">\(R^2\)</span> de esta asociación.</p>
-<div class="cell" data-hash="05-practico_cache/html/unnamed-chunk-15_d951f5dd102a7130b5b580ee9b1ed8c6">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>coef_r<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.0838638</code></pre>
@@ -1434,18 +1479,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1477,11 +1511,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/metod2-mcs\.netlify\.app");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1491,8 +1564,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1504,7 +1586,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1548,6 +1753,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1573,6 +1779,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1635,13 +1867,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">Content <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> 2025 by <a href="https://coes.cl/integrantes/daniela-olivares-collio/">Daniela Olivares Collío</a> &amp; <a href="https://coes.cl/integrantes/kevin-carrasco-quintanilla/">Kevin Carrasco Quintanilla</a> <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-by" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-nc" aria-hidden="true"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></div>   
+    <div class="nav-footer-left">
+<p>Content <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> 2025 by <a href="https://coes.cl/integrantes/daniela-olivares-collio/">Daniela Olivares Collío</a> &amp; <a href="https://coes.cl/integrantes/kevin-carrasco-quintanilla/">Kevin Carrasco Quintanilla</a> <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-by" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-nc" aria-hidden="true"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
-    <div class="nav-footer-right">Made with <i class="fa-brands fa-r-project" aria-hidden="true"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://github.com/DaniOlivaresCollio/metod2-MCS">View the source at <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a></div>
+    <div class="nav-footer-right">
+<p>Made with <i class="fa-brands fa-r-project" aria-hidden="true"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://github.com/DaniOlivaresCollio/metod2-MCS">View the source at <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a></p>
+</div>
   </div>
 </footer>
+
 
 
 

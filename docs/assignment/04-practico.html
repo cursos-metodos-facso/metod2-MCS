@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Metodología Cuantitativa Avanzada - MCS - Práctico 4. Inferencia</title>
+<title>Práctico 4. Inferencia – Metodología Cuantitativa Avanzada - MCS</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -81,7 +81,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "Sin resultados",
     "search-matching-documents-text": "documentos encontrados",
@@ -90,21 +96,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "resultado adicional en este documento",
     "search-more-matches-text": "resultados adicionales en este documento",
     "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancelar",
     "search-submit-button-title": "Enviar",
     "search-label": "Buscar"
   }
 }</script>
 <link href="../site_libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
+
 <script src="../site_libs/tabwid-1.1.3/tabwid.js"></script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="Metodología Cuantitativa Avanzada - MCS - Práctico 4. Inferencia">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Práctico 4. Inferencia – Metodología Cuantitativa Avanzada - MCS">
 <meta property="og:description" content="Metodología Cuantitativa Avanzada - Magíster en Ciencias Sociales">
 <meta property="og:image" content="https://metod2-mcs.netlify.app/files/social-image-f22.png">
-<meta property="og:site-name" content="Metodología Cuantitativa Avanzada - MCS">
+<meta property="og:site_name" content="Metodología Cuantitativa Avanzada - MCS">
 <meta property="og:locale" content="en_US">
 <meta property="og:image:height" content="500">
 <meta property="og:image:width" content="500">
@@ -114,67 +150,67 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Metodología Cuantitativa Avanzada - MCS</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Buscar"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../syllabus.html" rel="" target="">
- <span class="menu-text">Programa</span></a>
+    <a class="nav-link" href="../syllabus.html"> 
+<span class="menu-text">Programa</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../schedule.html" rel="" target="">
- <span class="menu-text">Planificación</span></a>
+    <a class="nav-link" href="../schedule.html"> 
+<span class="menu-text">Planificación</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../content/index.html" rel="" target="">
- <span class="menu-text">Clases</span></a>
+    <a class="nav-link" href="../content/index.html"> 
+<span class="menu-text">Clases</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../assignment/index.html" rel="" target="" aria-current="page">
- <span class="menu-text">Prácticos</span></a>
+    <a class="nav-link active" href="../assignment/index.html" aria-current="page"> 
+<span class="menu-text">Prácticos</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../trabajos.html" rel="" target="">
- <span class="menu-text">Evaluación</span></a>
+    <a class="nav-link" href="../trabajos.html"> 
+<span class="menu-text">Evaluación</span></a>
   </li>  
 </ul>
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../assignment/01-practico.html">Sesiones</a></li><li class="breadcrumb-item"><a href="../assignment/04-practico.html">Práctico 04. Inferencia</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../assignment/01-practico.html">Sesiones</a></li><li class="breadcrumb-item"><a href="../assignment/04-practico.html">Práctico 04. Inferencia</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
     </div>
   </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Información general prácticos</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -189,9 +225,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Sesiones</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -232,12 +268,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Práctico 06: Correlación categóricas</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignment/07-practico.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctico 07: Regresión lineal I</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -271,7 +313,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../assignment/01-practico.html">Sesiones</a></li><li class="breadcrumb-item"><a href="../assignment/04-practico.html">Práctico 04. Inferencia</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Práctico 4. Inferencia</h1>
 <p class="subtitle lead">Metodología Cuantitativa Avanzada - Magíster en Ciencias Sociales</p>
@@ -293,7 +335,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <section id="objetivo-de-la-práctica" class="level2">
 <h2 class="anchored" data-anchor-id="objetivo-de-la-práctica">Objetivo de la práctica</h2>
@@ -350,7 +394,11 @@ Distribución de una variable
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>y.values <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x.values)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x.values, y.values, <span class="at">type=</span><span class="st">"l"</span>, <span class="at">xlab=</span><span class="st">"Z value"</span>, <span class="at">ylab=</span><span class="st">"Probability"</span>, <span class="at">main=</span><span class="st">"Normal Distribution"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="04-practico_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="04-practico_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>¿Qué estamos haciendo en cada una de las 3 líneas de código? ¿Qué variables se crearon y cómo nos aseguramos de que los datos generados siguieran una distribución normal? Pensemos un poco…</p>
@@ -383,7 +431,11 @@ Distribución de una variable
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x.values, y.values, <span class="at">type=</span><span class="st">"l"</span>, <span class="at">lty=</span><span class="dv">1</span>, <span class="at">xlab=</span><span class="st">"Z value"</span>, <span class="at">ylab=</span><span class="st">"Probability"</span>, <span class="at">main=</span><span class="st">"Normal Distribution"</span>) <span class="sc">+</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fl">1.96</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="04-practico_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="04-practico_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>integer(0)</code></pre>
@@ -401,7 +453,11 @@ Distribución de una variable
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x.values, y.values, <span class="at">type=</span><span class="st">"l"</span>, <span class="at">lty=</span><span class="dv">1</span>, <span class="at">xlab=</span><span class="st">"Z value"</span>, <span class="at">ylab=</span><span class="st">"Probability"</span>, <span class="at">main=</span><span class="st">"Normal Distribution"</span>) <span class="sc">+</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="sc">-</span><span class="fl">1.96</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="04-practico_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="04-practico_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>integer(0)</code></pre>
@@ -419,7 +475,11 @@ Distribución de una variable
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="sc">-</span><span class="dv">3</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="04-practico_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="04-practico_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>integer(0)</code></pre>
@@ -449,7 +509,11 @@ Distribución de una variable
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>y.values <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x.values, <span class="at">mean =</span> <span class="dv">20</span>, <span class="at">sd =</span> <span class="fl">1.65</span>) <span class="co"># indico media y sd</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x.values, y.values, <span class="at">type=</span><span class="st">"l"</span>, <span class="at">lty=</span><span class="dv">1</span>, <span class="at">xlab=</span><span class="st">"Z value"</span>, <span class="at">ylab=</span><span class="st">"Probability"</span>, <span class="at">main=</span><span class="st">"Normal Distribution"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="04-practico_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="04-practico_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Ahora, identifique el valor en el que el 97,5% de la distribución cae por debajo de este valor. Esto lo hicimos antes con <code>qnorm</code>.</p>
@@ -479,11 +543,19 @@ Distribución de una variable
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(mdims<span class="sc">$</span>hgt, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">150</span>,<span class="dv">200</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="04-practico_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="04-practico_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(fdims<span class="sc">$</span>hgt, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">140</span>,<span class="dv">190</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="04-practico_files/figure-html/unnamed-chunk-14-2.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="04-practico_files/figure-html/unnamed-chunk-14-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -493,11 +565,19 @@ Distribución de una variable
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">scale</span>(mdims<span class="sc">$</span>hgt))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="04-practico_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="04-practico_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">scale</span>(fdims<span class="sc">$</span>hgt))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="04-practico_files/figure-html/unnamed-chunk-15-2.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="04-practico_files/figure-html/unnamed-chunk-15-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -518,7 +598,11 @@ Distribución de una variable
 <span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(<span class="at">x =</span> x, <span class="at">mean =</span> fhgtmean, <span class="at">sd =</span> fhgtsd)</span>
 <span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">col =</span> <span class="st">"blue"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="04-practico_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="04-practico_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Según este gráfico, ¿parece que los datos siguen una distribución casi normal? Haz lo mismo con las estaturas masculinas.</p>
@@ -530,7 +614,11 @@ Distribución de una variable
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(fdims<span class="sc">$</span>hgt)</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(fdims<span class="sc">$</span>hgt)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="04-practico_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="04-practico_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Un QQ plot nos muestra en el eje x los cuantiles teóricos de la distribución en términos de desviaciones estandar, y en el eje y los valores de la variable. <strong>La distribución de los puntos en una línea recta es una indicación de que los datos se distribuyen normalmente</strong>.</p>
@@ -538,12 +626,20 @@ Distribución de una variable
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(fdims<span class="sc">$</span>che.de)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="04-practico_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="04-practico_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(fdims<span class="sc">$</span>che.de)</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(fdims<span class="sc">$</span>che.de)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="04-practico_files/figure-html/unnamed-chunk-18-2.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="04-practico_files/figure-html/unnamed-chunk-18-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Una vez que decidimos que una variable se distribuyte de forma normal, podemos responder todo tipo de preguntas sobre esa variable relacionadas con la probabilidad. Tomemos, por ejemplo, la pregunta: “¿Cuál es la probabilidad de que una mujer adulta joven elegida al azar mida más 182 cm?”</p>
@@ -854,7 +950,7 @@ Value |     N | Raw % | Valid % | Cum. %
 <section id="test-de-hipótesis-para-diferencia-de-medias" class="level2">
 <h2 class="anchored" data-anchor-id="test-de-hipótesis-para-diferencia-de-medias">7. Test de hipótesis para diferencia de medias</h2>
 <p>Primero, carguemos las librerías necesarias:</p>
-<div class="cell" data-hash="04-practico_cache/html/unnamed-chunk-35_aaae332be7653c5c6210a966f96f0af0">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pacman)</span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse,  <span class="co"># colección de paquetes para manipulación de datos</span></span>
 <span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>               car,        <span class="co"># para recodificar</span></span>
@@ -876,7 +972,7 @@ Value |     N | Raw % | Valid % | Cum. %
 <li><span class="math inline">\(H_0\)</span>: no existen diferencias de edad entre hombres y mujeres</li>
 </ul>
 <p>Generación de datos (muestra_3) y descriptivos:</p>
-<div class="cell" data-hash="04-practico_cache/html/unnamed-chunk-36_80a8dd0edb98d44c1ab9cb73264268b7">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>muestra_3 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">edad=</span><span class="fu">c</span>(<span class="dv">33</span>,<span class="dv">35</span>,<span class="dv">23</span>,<span class="dv">32</span>,<span class="dv">24</span>,<span class="dv">25</span>,<span class="dv">29</span>,<span class="dv">31</span>,<span class="dv">32</span>,<span class="dv">31</span>),</span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">sexo=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
 <span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -898,7 +994,7 @@ Value |     N | Raw % | Valid % | Cum. %
 </div>
 </div>
 <p>Gráfico descriptivo:</p>
-<div class="cell" data-hash="04-practico_cache/html/unnamed-chunk-37_a45970a17aa29dd83a2e9a23cb3f39a4">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>muestra_3 <span class="sc">%&gt;%</span> </span>
 <span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sexo) <span class="sc">%&gt;%</span> </span>
 <span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">media=</span><span class="fu">mean</span>(edad)) <span class="sc">%&gt;%</span> </span>
@@ -909,11 +1005,15 @@ Value |     N | Raw % | Valid % | Cum. %
 <span id="cb67-8"><a href="#cb67-8" aria-hidden="true" tabindex="-1"></a>                   <span class="at">x =</span> <span class="st">"Sexo"</span>,</span>
 <span id="cb67-9"><a href="#cb67-9" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y =</span> <span class="st">"Media edad"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="04-practico_files/figure-html/unnamed-chunk-37-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="04-practico_files/figure-html/unnamed-chunk-37-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Prueba t de diferencia de medias:</p>
-<div class="cell" data-hash="04-practico_cache/html/unnamed-chunk-38_55bad5a8958b8ae3d485246dc61862f6">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(edad <span class="sc">~</span> sexo,<span class="at">data=</span>muestra_3)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -945,13 +1045,13 @@ mean in group 1 mean in group 2
 <li>Si nuestro t es superior al valor crítico, se rechaza <span class="math inline">\(H_0\)</span></li>
 </ol>
 <p><strong>Paso 1</strong>: Calculamos la diferencia de medias <span class="math inline">\((\bar{x}_1-\bar{x}_2)\)</span></p>
-<div class="cell" data-hash="04-practico_cache/html/unnamed-chunk-39_e31cec183d2a963ceb5ff398c57a3bef">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>muestra_3 <span class="sc">%&gt;%</span></span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>   dplyr<span class="sc">::</span><span class="fu">group_by</span>(<span class="at">sexo=</span>sjlabelled<span class="sc">::</span><span class="fu">as_label</span>(sexo)) <span class="sc">%&gt;%</span> <span class="co"># se agrupan por la variable categórica y se usan sus etiquetas con as_label</span></span>
 <span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">Obs.=</span><span class="fu">n</span>(),<span class="at">Promedio=</span><span class="fu">mean</span>(edad, <span class="at">na.rm=</span><span class="cn">TRUE</span>),<span class="at">SD=</span><span class="fu">sd</span>(edad, <span class="at">na.rm=</span><span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> <span class="co"># se agregan las operaciones a presentar en la tabla</span></span>
 <span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">format =</span> <span class="st">"markdown"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="table table-sm table-striped small">
+<table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">sexo</th>
@@ -983,7 +1083,7 @@ mean in group 1 mean in group 2
 </div>
 </div>
 <p><strong>Paso 2</strong>: Calculamos el error estándar de la diferencia de medias: <span class="math inline">\(\sqrt{\frac{s_1²}{\sqrt{n_1}}+\frac{s_2²}{\sqrt{n_2}}}\)</span></p>
-<div class="cell" data-hash="04-practico_cache/html/unnamed-chunk-40_a739f58b3ff707a17d2e00eea1e4eb63">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>muestra_3h <span class="ot">&lt;-</span> muestra_3 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(sexo<span class="sc">==</span><span class="dv">1</span>)</span>
 <span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>muestra_3m <span class="ot">&lt;-</span> muestra_3 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(sexo<span class="sc">==</span><span class="dv">2</span>)</span>
 <span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>  </span>
@@ -999,7 +1099,7 @@ mean in group 1 mean in group 2
 </div>
 </div>
 <p><strong>Paso 3</strong>: Cálculo del valor t</p>
-<div class="cell" data-hash="04-practico_cache/html/unnamed-chunk-41_d9a6c51bef4b849d695db8cbd20bc19e">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>te <span class="ot">&lt;-</span> dif_medias<span class="sc">/</span>ee</span>
 <span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>te</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1007,7 +1107,7 @@ mean in group 1 mean in group 2
 </div>
 </div>
 <p><strong>Paso 4</strong>: Fijamos un <span class="math inline">\(\alpha\)</span> y se busca el valor crítico de t asociado al <span class="math inline">\(\alpha\)</span>. En este caso utilizaremos el valor usual de <span class="math inline">\(\alpha = 0.05\)</span>.</p>
-<div class="cell" data-hash="04-practico_cache/html/unnamed-chunk-42_0f817129ab198760199889dcf5c44650">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>tt <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fl">0.05</span><span class="sc">/</span><span class="dv">2</span>,<span class="at">df=</span><span class="dv">9</span>,<span class="at">lower.tail =</span> F)</span>
 <span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>tt</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1024,7 +1124,6 @@ mean in group 1 mean in group 2
 <section id="cinco-pasos-para-la-inferencia-estadística" class="level3">
 <h3 class="anchored" data-anchor-id="cinco-pasos-para-la-inferencia-estadística">Cinco pasos para la inferencia estadística</h3>
 <p>En inferencia, las pruebas de hipótesis nos ayudan a determinar si el resultado que obtenemos en nuestra muestra es un efecto real/extensible a la población o un error de muestreo. Aquí recomendamos una lista de cinco pasos lógicos para enfrentarnos a la inferencia estadística:</p>
-
 <style>
   table {
     margin-left: auto; /* Ajustamos el margen izquierdo a automático */
@@ -1089,13 +1188,12 @@ Especifica el valor crítico de la prueba
 Contrasta el valor estimado con el valor crítico e intrepreta los resultados
 </td>
 </tr>
-
 </tbody></table>
 <p>Además de estos 5 pasos también existe la posibilidad de calcular un intervalo de confianza, que acompañe la precisión de nuestra estimación.</p>
 <section id="preparación-datos" class="level4">
 <h4 class="anchored" data-anchor-id="preparación-datos">Preparación datos</h4>
 <p>Comencemos por preparar nuestros datos. Iniciamos cargando las librerías necesarias.</p>
-<div class="cell" data-hash="04-practico_cache/html/unnamed-chunk-44_4c966c71da73721868e7a885e2757559">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse, <span class="co"># Manipulacion datos</span></span>
 <span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>               sjPlot, <span class="co">#tablas</span></span>
 <span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a>               confintr, <span class="co"># IC</span></span>
@@ -1107,11 +1205,11 @@ Contrasta el valor estimado con el valor crítico e intrepreta los resultados
 <span id="cb79-9"><a href="#cb79-9" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># para limpiar el entorno de trabajo</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Cargamos los datos directamente desde internet.</p>
-<div class="cell" data-hash="04-practico_cache/html/datos_1f77b371cde4c4631db26f62f45add9e">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">"https://github.com/cursos-metodos-facso/datos-ejemplos/raw/main/proc_casen.RData"</span>)) <span class="co">#Cargar base de datos</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>A continuación, exploramos la base de datos <strong>proc_casen</strong>.</p>
-<div class="cell" data-hash="04-practico_cache/html/exploracion_806f875deb98581420d2e5527bbbee28">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(proc_casen) <span class="co"># Nombre de columnas</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "id_vivienda"      "folio"            "id_persona"       "hogar"           
@@ -1129,11 +1227,11 @@ Contrasta el valor estimado con el valor crítico e intrepreta los resultados
 </div>
 </div>
 <p>Contamos con 24 variables (columnas) y 202.111 observaciones (filas).</p>
-<div class="cell" data-layout-align="center" data-hash="04-practico_cache/html/unnamed-chunk-45_bac7d49a4dfa4036a72e6d8b0dea3ab4">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../files/stop.gif" class="img-fluid figure-img" style="width:70.0%"></p>
+<p><img src="../files/stop.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -1166,7 +1264,7 @@ Prueba de dos colas
 <ol start="2" type="1">
 <li>Calcula el error estándar (SE) para diferencia de medias:</li>
 </ol>
-<div class="cell" data-hash="04-practico_cache/html/unnamed-chunk-46_0ff1d7ecc95d52fd77d196336241eab1">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>ocupados <span class="ot">&lt;-</span> proc_casen <span class="sc">%&gt;%</span></span>
 <span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ocupado <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>() <span class="co">#  subset de datos solo con personas ocupadas</span></span>
@@ -1187,7 +1285,7 @@ Prueba de dos colas
 </div>
 </div>
 <p>Obtenemos la diferencia de medias (<span class="math inline">\(\bar{x_1}\)</span> - <span class="math inline">\(\bar{x_2}\)</span>)</p>
-<div class="cell" data-hash="04-practico_cache/html/unnamed-chunk-47_8052ebe7d86fd031b6f0b8e0675a26b9">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>dif_medias <span class="ot">&lt;-</span> <span class="fl">817688.2</span> <span class="sc">-</span> <span class="fl">674428.3</span></span>
 <span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>dif_medias</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1195,7 +1293,7 @@ Prueba de dos colas
 </div>
 </div>
 <p>Ahora, calculamos el error estándar.</p>
-<div class="cell" data-hash="04-practico_cache/html/unnamed-chunk-48_3cae30a331e5fb09e3eca3c618559522">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>s_h <span class="ot">&lt;-</span> <span class="fl">837710.9</span> </span>
 <span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>s_m <span class="ot">&lt;-</span> <span class="fl">638044.1</span></span>
 <span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1211,7 +1309,7 @@ Prueba de dos colas
 <ol start="3" type="1">
 <li>Calcula el valor estimado de la prueba (t para diferencia de medias):</li>
 </ol>
-<div class="cell" data-hash="04-practico_cache/html/unnamed-chunk-49_15d4a2e71fa8b0d111a164b55c736174">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>t_stat <span class="ot">&lt;-</span> dif_medias<span class="sc">/</span>se_dif</span>
 <span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>t_stat</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1221,7 +1319,7 @@ Prueba de dos colas
 <ol start="4" type="1">
 <li>Especifica el valor crítico:</li>
 </ol>
-<div class="cell" data-hash="04-practico_cache/html/unnamed-chunk-50_26e19c9a83f55f0d7da9edcf4232b2d3">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> n_h <span class="sc">+</span> n_m <span class="sc">-</span> <span class="dv">2</span> <span class="co"># definimos grados de libertad</span></span>
 <span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a>t_critico <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="at">p =</span> <span class="fl">0.05</span><span class="sc">/</span><span class="dv">2</span>, df, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
@@ -1233,7 +1331,7 @@ Prueba de dos colas
 <ol start="5" type="1">
 <li>Contrasta el valor estimado con el crítico e interpreta los resultados:</li>
 </ol>
-<div class="cell" data-hash="04-practico_cache/html/unnamed-chunk-51_90090557129a4d9dd65539a40c58ad8e">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>t_stat <span class="sc">&gt;</span> t_critico</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
@@ -1246,7 +1344,7 @@ Prueba de dos colas
 <ol start="6" type="1">
 <li>Y el cálculo directo en R:</li>
 </ol>
-<div class="cell" data-hash="04-practico_cache/html/unnamed-chunk-52_44d86f2efdd807b6dfef951912ea4467">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>t_results <span class="ot">&lt;-</span> <span class="fu">t.test</span>(ocupados<span class="sc">$</span>ytrabajocor <span class="sc">~</span> ocupados<span class="sc">$</span>sexo, </span>
 <span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">alternative =</span> <span class="st">"two.sided"</span>)</span>
@@ -1254,15 +1352,18 @@ Prueba de dos colas
 <span id="cb97-5"><a href="#cb97-5" aria-hidden="true" tabindex="-1"></a>stats.table <span class="ot">&lt;-</span> <span class="fu">tidy</span>(t_results, <span class="at">conf_int =</span> T)</span>
 <span id="cb97-6"><a href="#cb97-6" aria-hidden="true" tabindex="-1"></a><span class="fu">nice_table</span>(stats.table, <span class="at">broom =</span> <span class="st">"t.test"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
-<div class="tabwid"><style>.cl-2ba45e44{table-layout:auto;}.cl-2b9c844e{font-family:'Times New Roman';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-2b9c8458{font-family:'Times New Roman';font-size:12pt;font-weight:normal;font-style:italic;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-2b9c8459{font-family:'Times New Roman';font-size:7.2pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;position: relative;top:3.6pt;}.cl-2b9f85cc{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-2b9f85e0{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-2b9f9e22{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0.5pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2b9f9e2c{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2b9f9e36{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-2ba45e44"><thead><tr style="overflow-wrap:break-word;"><th class="cl-2b9f9e22"><p class="cl-2b9f85cc"><span class="cl-2b9c844e">Method</span></p></th><th class="cl-2b9f9e22"><p class="cl-2b9f85cc"><span class="cl-2b9c844e">Alternative</span></p></th><th class="cl-2b9f9e22"><p class="cl-2b9f85cc"><span class="cl-2b9c844e">Mean 1</span></p></th><th class="cl-2b9f9e22"><p class="cl-2b9f85cc"><span class="cl-2b9c844e">Mean 2</span></p></th><th class="cl-2b9f9e22"><p class="cl-2b9f85cc"><span class="cl-2b9c8458">M</span><span class="cl-2b9c8459">1</span><span class="cl-2b9c844e"> - </span><span class="cl-2b9c8458">M</span><span class="cl-2b9c8459">2</span></p></th><th class="cl-2b9f9e22"><p class="cl-2b9f85cc"><span class="cl-2b9c8458">t</span></p></th><th class="cl-2b9f9e22"><p class="cl-2b9f85cc"><span class="cl-2b9c8458">df</span></p></th><th class="cl-2b9f9e22"><p class="cl-2b9f85cc"><span class="cl-2b9c8458">p</span></p></th><th class="cl-2b9f9e22"><p class="cl-2b9f85cc"><span class="cl-2b9c844e">95% CI</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-2b9f9e2c"><p class="cl-2b9f85e0"><span class="cl-2b9c844e">Welch Two Sample t-test</span></p></td><td class="cl-2b9f9e36"><p class="cl-2b9f85cc"><span class="cl-2b9c844e">two.sided</span></p></td><td class="cl-2b9f9e36"><p class="cl-2b9f85cc"><span class="cl-2b9c844e">578,106.61</span></p></td><td class="cl-2b9f9e36"><p class="cl-2b9f85cc"><span class="cl-2b9c844e">516,234.71</span></p></td><td class="cl-2b9f9e36"><p class="cl-2b9f85cc"><span class="cl-2b9c844e">61,871.90</span></p></td><td class="cl-2b9f9e36"><p class="cl-2b9f85cc"><span class="cl-2b9c844e">1.00</span></p></td><td class="cl-2b9f9e36"><p class="cl-2b9f85cc"><span class="cl-2b9c844e">136.73</span></p></td><td class="cl-2b9f9e36"><p class="cl-2b9f85cc"><span class="cl-2b9c844e">.321</span></p></td><td class="cl-2b9f9e36"><p class="cl-2b9f85cc"><span class="cl-2b9c844e">[-61042.85, 184786.65]</span></p></td></tr></tbody></table></div>
+<div class="tabwid"><style>.cl-c91928a0{table-layout:auto;}.cl-c90da534{font-family:'Times New Roman';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-c90da566{font-family:'Times New Roman';font-size:12pt;font-weight:normal;font-style:italic;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-c90da570{font-family:'Times New Roman';font-size:7.2pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;position: relative;top:3.6pt;}.cl-c912aa84{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-c912aa98{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-c912d360{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0.5pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c912d36a{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c912d374{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-c91928a0"><thead><tr style="overflow-wrap:break-word;"><th class="cl-c912d360"><p class="cl-c912aa84"><span class="cl-c90da534">Method</span></p></th><th class="cl-c912d360"><p class="cl-c912aa84"><span class="cl-c90da534">Alternative</span></p></th><th class="cl-c912d360"><p class="cl-c912aa84"><span class="cl-c90da534">Mean 1</span></p></th><th class="cl-c912d360"><p class="cl-c912aa84"><span class="cl-c90da534">Mean 2</span></p></th><th class="cl-c912d360"><p class="cl-c912aa84"><span class="cl-c90da566">M</span><span class="cl-c90da570">1</span><span class="cl-c90da534"> - </span><span class="cl-c90da566">M</span><span class="cl-c90da570">2</span></p></th><th class="cl-c912d360"><p class="cl-c912aa84"><span class="cl-c90da566">t</span></p></th><th class="cl-c912d360"><p class="cl-c912aa84"><span class="cl-c90da566">df</span></p></th><th class="cl-c912d360"><p class="cl-c912aa84"><span class="cl-c90da566">p</span></p></th><th class="cl-c912d360"><p class="cl-c912aa84"><span class="cl-c90da534">95% CI</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-c912d36a"><p class="cl-c912aa98"><span class="cl-c90da534">Welch Two Sample t-test</span></p></td><td class="cl-c912d374"><p class="cl-c912aa84"><span class="cl-c90da534">two.sided</span></p></td><td class="cl-c912d374"><p class="cl-c912aa84"><span class="cl-c90da534">578,106.61</span></p></td><td class="cl-c912d374"><p class="cl-c912aa84"><span class="cl-c90da534">516,234.71</span></p></td><td class="cl-c912d374"><p class="cl-c912aa84"><span class="cl-c90da534">61,871.90</span></p></td><td class="cl-c912d374"><p class="cl-c912aa84"><span class="cl-c90da534">1.00</span></p></td><td class="cl-c912d374"><p class="cl-c912aa84"><span class="cl-c90da534">136.73</span></p></td><td class="cl-c912d374"><p class="cl-c912aa84"><span class="cl-c90da534">.321</span></p></td><td class="cl-c912d374"><p class="cl-c912aa84"><span class="cl-c90da534">[-61042.85, 184786.65]</span></p></td></tr></tbody></table></div>
 </div>
 </div>
 <p>Visualicemos la distribución de esta prueba y su zona de rechazo.</p>
-<div class="cell" data-hash="04-practico_cache/html/unnamed-chunk-53_950f54ab3c8155e7bd95e04cba0acbaf">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggttest</span>(t_results)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="04-practico_files/figure-html/unnamed-chunk-53-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="04-practico_files/figure-html/unnamed-chunk-53-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Además, podemos calcular un intervalo de confianza que acompaña nuestra estimación. En este caso, vemos que el IC para la diferencia de medias oscila entre [131.275 - 155.245] y <strong>no contiene el cero</strong>, por lo que podemos rechazar la hipótesis nula.</p>
@@ -1299,7 +1400,7 @@ Prueba de una cola
 <ol start="2" type="1">
 <li>Calcula el error estándar (SE) para diferencia de medias:</li>
 </ol>
-<div class="cell" data-hash="04-practico_cache/html/unnamed-chunk-54_43c62964882e2b2d1f37a1920d9bb745">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>goldin_data <span class="ot">&lt;-</span> proc_casen <span class="sc">%&gt;%</span> </span>
 <span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ocupado <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> sexo <span class="sc">==</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>()<span class="co"># creamos subset con solo mujeres ocupadas</span></span>
@@ -1320,7 +1421,7 @@ Prueba de una cola
 </div>
 </div>
 <p>En este caso, obtenemos la diferencia de medias (<span class="math inline">\(\bar{x}_0 - \bar{x}_1\)</span> ).</p>
-<div class="cell" data-hash="04-practico_cache/html/unnamed-chunk-55_0a89e6aa25537ee10d4756e57e58addc">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a>dif_medias <span class="ot">&lt;-</span> <span class="fl">729850.1</span> <span class="sc">-</span> <span class="fl">655087.8</span></span>
 <span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a>dif_medias</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1328,7 +1429,7 @@ Prueba de una cola
 </div>
 </div>
 <p>Y luego su error estándar.</p>
-<div class="cell" data-hash="04-practico_cache/html/unnamed-chunk-56_03f52cd0d913628c729fee26d4a081c2">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a>s_0 <span class="ot">&lt;-</span> <span class="fl">659400.5</span> </span>
 <span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a>s_1 <span class="ot">&lt;-</span> <span class="fl">629290.5</span></span>
 <span id="cb103-3"><a href="#cb103-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1344,7 +1445,7 @@ Prueba de una cola
 <ol start="3" type="1">
 <li>Calcula el valor estimado de la prueba (t para diferencia de medias):</li>
 </ol>
-<div class="cell" data-hash="04-practico_cache/html/unnamed-chunk-57_957c06a90d2ef09dd9fe9abd1682b9cd">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a>t_stat <span class="ot">&lt;-</span> dif_medias <span class="sc">/</span> se_dif</span>
 <span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb105-3"><a href="#cb105-3" aria-hidden="true" tabindex="-1"></a>t_stat</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1355,7 +1456,7 @@ Prueba de una cola
 <ol start="4" type="1">
 <li>Especifica el valor crítico:</li>
 </ol>
-<div class="cell" data-hash="04-practico_cache/html/unnamed-chunk-58_69b032bb021c21822d8fdcde579f7425">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb107"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> n_0 <span class="sc">+</span> n_1 <span class="sc">-</span> <span class="dv">2</span> <span class="co"># definimos grados de libertad</span></span>
 <span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a>t_critico <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="at">p =</span> <span class="fl">0.05</span>, df, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
@@ -1368,7 +1469,7 @@ Prueba de una cola
 <ol start="5" type="1">
 <li>Contrasta el valor estimado con el crítico e interpreta los resultados:</li>
 </ol>
-<div class="cell" data-hash="04-practico_cache/html/unnamed-chunk-59_5d54f932e06b6a9a1f7a6f90d1e7e553">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a>t_stat <span class="sc">&gt;</span> t_critico</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
@@ -1380,22 +1481,25 @@ Prueba de una cola
 <ol start="6" type="1">
 <li>Y el cálculo en R.</li>
 </ol>
-<div class="cell" data-hash="04-practico_cache/html/unnamed-chunk-60_c6fcd578dc2d78f05293c5d9c8681522">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a>t_results_goldin <span class="ot">&lt;-</span> <span class="fu">t.test</span>(goldin_data<span class="sc">$</span>ytrabajocor <span class="sc">~</span> goldin_data<span class="sc">$</span>hijo, </span>
 <span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">alternative =</span> <span class="st">"greater"</span>) <span class="co"># indicamos la direccion de la prueba</span></span>
 <span id="cb111-3"><a href="#cb111-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb111-4"><a href="#cb111-4" aria-hidden="true" tabindex="-1"></a>stats.table <span class="ot">&lt;-</span> <span class="fu">tidy</span>(t_results_goldin, <span class="at">conf.int =</span> T)</span>
 <span id="cb111-5"><a href="#cb111-5" aria-hidden="true" tabindex="-1"></a><span class="fu">nice_table</span>(stats.table, <span class="at">broom =</span> <span class="st">"t.test"</span>) </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
-<div class="tabwid"><style>.cl-2c31ad9e{table-layout:auto;}.cl-2c2a4c70{font-family:'Times New Roman';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-2c2a4c7a{font-family:'Times New Roman';font-size:12pt;font-weight:normal;font-style:italic;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-2c2a4c84{font-family:'Times New Roman';font-size:7.2pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;position: relative;top:3.6pt;}.cl-2c2d0708{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-2c2d0712{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-2c2d1b12{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0.5pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2c2d1b1c{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2c2d1b26{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-2c31ad9e"><thead><tr style="overflow-wrap:break-word;"><th class="cl-2c2d1b12"><p class="cl-2c2d0708"><span class="cl-2c2a4c70">Method</span></p></th><th class="cl-2c2d1b12"><p class="cl-2c2d0708"><span class="cl-2c2a4c70">Alternative</span></p></th><th class="cl-2c2d1b12"><p class="cl-2c2d0708"><span class="cl-2c2a4c70">Mean 1</span></p></th><th class="cl-2c2d1b12"><p class="cl-2c2d0708"><span class="cl-2c2a4c70">Mean 2</span></p></th><th class="cl-2c2d1b12"><p class="cl-2c2d0708"><span class="cl-2c2a4c7a">M</span><span class="cl-2c2a4c84">1</span><span class="cl-2c2a4c70"> - </span><span class="cl-2c2a4c7a">M</span><span class="cl-2c2a4c84">2</span></p></th><th class="cl-2c2d1b12"><p class="cl-2c2d0708"><span class="cl-2c2a4c7a">t</span></p></th><th class="cl-2c2d1b12"><p class="cl-2c2d0708"><span class="cl-2c2a4c7a">df</span></p></th><th class="cl-2c2d1b12"><p class="cl-2c2d0708"><span class="cl-2c2a4c7a">p</span></p></th><th class="cl-2c2d1b12"><p class="cl-2c2d0708"><span class="cl-2c2a4c70">95% CI</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-2c2d1b1c"><p class="cl-2c2d0712"><span class="cl-2c2a4c70">Welch Two Sample t-test</span></p></td><td class="cl-2c2d1b26"><p class="cl-2c2d0708"><span class="cl-2c2a4c70">greater</span></p></td><td class="cl-2c2d1b26"><p class="cl-2c2d0708"><span class="cl-2c2a4c70">586,740.67</span></p></td><td class="cl-2c2d1b26"><p class="cl-2c2d0708"><span class="cl-2c2a4c70">509,889.17</span></p></td><td class="cl-2c2d1b26"><p class="cl-2c2d0708"><span class="cl-2c2a4c70">76,851.50</span></p></td><td class="cl-2c2d1b26"><p class="cl-2c2d0708"><span class="cl-2c2a4c70">0.50</span></p></td><td class="cl-2c2d1b26"><p class="cl-2c2d0708"><span class="cl-2c2a4c70">9.24</span></p></td><td class="cl-2c2d1b26"><p class="cl-2c2d0708"><span class="cl-2c2a4c70">.313</span></p></td><td class="cl-2c2d1b26"><p class="cl-2c2d0708"><span class="cl-2c2a4c70">[-202331.58, Inf]</span></p></td></tr></tbody></table></div>
+<div class="tabwid"><style>.cl-c9f3b6a0{table-layout:auto;}.cl-c9e90d9a{font-family:'Times New Roman';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-c9e90da4{font-family:'Times New Roman';font-size:12pt;font-weight:normal;font-style:italic;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-c9e90dae{font-family:'Times New Roman';font-size:7.2pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;position: relative;top:3.6pt;}.cl-c9ecac48{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-c9ecac7a{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-c9ecd650{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0.5pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c9ecd66e{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c9ecd678{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-c9f3b6a0"><thead><tr style="overflow-wrap:break-word;"><th class="cl-c9ecd650"><p class="cl-c9ecac48"><span class="cl-c9e90d9a">Method</span></p></th><th class="cl-c9ecd650"><p class="cl-c9ecac48"><span class="cl-c9e90d9a">Alternative</span></p></th><th class="cl-c9ecd650"><p class="cl-c9ecac48"><span class="cl-c9e90d9a">Mean 1</span></p></th><th class="cl-c9ecd650"><p class="cl-c9ecac48"><span class="cl-c9e90d9a">Mean 2</span></p></th><th class="cl-c9ecd650"><p class="cl-c9ecac48"><span class="cl-c9e90da4">M</span><span class="cl-c9e90dae">1</span><span class="cl-c9e90d9a"> - </span><span class="cl-c9e90da4">M</span><span class="cl-c9e90dae">2</span></p></th><th class="cl-c9ecd650"><p class="cl-c9ecac48"><span class="cl-c9e90da4">t</span></p></th><th class="cl-c9ecd650"><p class="cl-c9ecac48"><span class="cl-c9e90da4">df</span></p></th><th class="cl-c9ecd650"><p class="cl-c9ecac48"><span class="cl-c9e90da4">p</span></p></th><th class="cl-c9ecd650"><p class="cl-c9ecac48"><span class="cl-c9e90d9a">95% CI</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-c9ecd66e"><p class="cl-c9ecac7a"><span class="cl-c9e90d9a">Welch Two Sample t-test</span></p></td><td class="cl-c9ecd678"><p class="cl-c9ecac48"><span class="cl-c9e90d9a">greater</span></p></td><td class="cl-c9ecd678"><p class="cl-c9ecac48"><span class="cl-c9e90d9a">586,740.67</span></p></td><td class="cl-c9ecd678"><p class="cl-c9ecac48"><span class="cl-c9e90d9a">509,889.17</span></p></td><td class="cl-c9ecd678"><p class="cl-c9ecac48"><span class="cl-c9e90d9a">76,851.50</span></p></td><td class="cl-c9ecd678"><p class="cl-c9ecac48"><span class="cl-c9e90d9a">0.50</span></p></td><td class="cl-c9ecd678"><p class="cl-c9ecac48"><span class="cl-c9e90d9a">9.24</span></p></td><td class="cl-c9ecd678"><p class="cl-c9ecac48"><span class="cl-c9e90d9a">.313</span></p></td><td class="cl-c9ecd678"><p class="cl-c9ecac48"><span class="cl-c9e90d9a">[-202331.58, Inf]</span></p></td></tr></tbody></table></div>
 </div>
 </div>
 <p>Visualicemos la distribución de esta prueba y su zona de rechazo.</p>
-<div class="cell" data-hash="04-practico_cache/html/t_goldin_graf_5a384850cc0a1174328ee08b14e8a782">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggttest</span>(t_results_goldin)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="04-practico_files/figure-html/t_goldin_graf-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="04-practico_files/figure-html/t_goldin_graf-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>En este caso, el IC del 95% es (59.670, Inf), donde “Inf” representa infinito. Esto significa que podemos estar 95% seguros de que <strong>la diferencia real entre las medias está por encima de 59.670</strong>. En otras palabras, con alta confianza, podemos afirmar que la media del “grupo 0” es significativamente mayor que la del “grupo 1”.</p>
@@ -1405,12 +1509,11 @@ Prueba de una cola
 <p>Cuando queremos realizar inferencia para variables categóricas, generlamente utilizamos pruebas que comparan <strong>proporciones de una variable de interés</strong> entre grupos.</p>
 <p>El <em>test de proporciones</em> es una prueba estadística utilizada para <strong>determinar si hay una diferencia significativa entre dos proporciones (tasas) en dos grupos</strong>. Se basa en datos categóricos, en donde <strong>se cuentan los eventos “exitosos”</strong> o “positivos” en cada grupo de comparación, por sobre el total de eventos.</p>
 <p>Evaluamos si existen diferencias entre hombres y mujeres en la proporción de encontrarse en situación de pobreza multidimensional.</p>
-<div class="cell" data-hash="04-practico_cache/html/unnamed-chunk-61_8b7f33a655d006902d2cd334e6c83785">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb113"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a>pobreza <span class="ot">&lt;-</span> proc_casen[<span class="dv">1</span><span class="sc">:</span><span class="dv">300</span>,] <span class="co"># creamos un subsample solo como ejemplo</span></span>
 <span id="cb113-2"><a href="#cb113-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb113-3"><a href="#cb113-3" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">sjt.xtab</span>(pobreza<span class="sc">$</span>pobreza_multi_5d, pobreza<span class="sc">$</span>sexo, <span class="at">show.col.prc =</span> T)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
 <table style="border-collapse:collapse; border:none;">
  <tbody><tr>
  <th style="border-top:double; text-align:center; font-style:italic; font-weight:normal; border-bottom:1px solid;" rowspan="2">situación de pobreza<br>multidimensional con<br>entorno y redes (5<br>dimensiones)</th>
@@ -1455,7 +1558,7 @@ Prueba de una cola
 <li><p><span class="math inline">\(H_A\)</span>: <span class="math inline">\(p_{hombres}\)</span> <span class="math inline">\(\neq\)</span> <span class="math inline">\(p_{mujeres}\)</span></p></li>
 </ul>
 <p>Ahora, creemos un objeto llamado <code>xtab</code> que contendrá la frecuencia de casos exitosos (“pobreza”) sobre el total de casos para cada grupo.</p>
-<div class="cell" data-hash="04-practico_cache/html/xtab_b465d39bc22da51b334b6332b5fff4dc">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a>xtab <span class="ot">&lt;-</span> <span class="fu">as.table</span>(<span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">43</span>, <span class="dv">47</span>),<span class="fu">c</span>(<span class="dv">91</span>, <span class="dv">115</span>)))</span>
 <span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb114-3"><a href="#cb114-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(xtab) <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
@@ -1464,14 +1567,13 @@ Prueba de una cola
 <span id="cb114-6"><a href="#cb114-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Luego, aplicamos la función <code>prop.test()</code> para evaluar nuestra hipótesis.</p>
-<div class="cell" data-hash="04-practico_cache/html/unnamed-chunk-62_a8615146373e2702801dbabf7d18c599">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb115"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a>prop_results <span class="ot">&lt;-</span> <span class="fu">prop.test</span>(xtab, <span class="at">alternative =</span> <span class="st">"two.sided"</span>)</span>
 <span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb115-3"><a href="#cb115-3" aria-hidden="true" tabindex="-1"></a>stats.table <span class="ot">&lt;-</span> <span class="fu">tidy</span>(prop_results, <span class="at">conf.int =</span> T)</span>
 <span id="cb115-4"><a href="#cb115-4" aria-hidden="true" tabindex="-1"></a><span class="fu">nice_table</span>(stats.table, <span class="at">broom =</span> <span class="st">"prop.test"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
-<div class="tabwid"><style>.cl-2c5ec798{table-layout:auto;}.cl-2c57b8e0{font-family:'Times New Roman';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-2c57b8ea{font-family:'Times New Roman';font-size:12pt;font-weight:normal;font-style:italic;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-2c5a5316{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-2c5a5317{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-2c5a6a36{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0.5pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2c5a6a40{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2c5a6a41{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-2c5ec798"><thead><tr style="overflow-wrap:break-word;"><th class="cl-2c5a6a36"><p class="cl-2c5a5316"><span class="cl-2c57b8e0">estimate1</span></p></th><th class="cl-2c5a6a36"><p class="cl-2c5a5316"><span class="cl-2c57b8e0">estimate2</span></p></th><th class="cl-2c5a6a36"><p class="cl-2c5a5316"><span class="cl-2c57b8ea">t</span></p></th><th class="cl-2c5a6a36"><p class="cl-2c5a5316"><span class="cl-2c57b8ea">p</span></p></th><th class="cl-2c5a6a36"><p class="cl-2c5a5316"><span class="cl-2c57b8ea">df</span></p></th><th class="cl-2c5a6a36"><p class="cl-2c5a5316"><span class="cl-2c57b8e0">Method</span></p></th><th class="cl-2c5a6a36"><p class="cl-2c5a5316"><span class="cl-2c57b8e0">Alternative</span></p></th><th class="cl-2c5a6a36"><p class="cl-2c5a5316"><span class="cl-2c57b8e0">95% CI</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-2c5a6a40"><p class="cl-2c5a5317"><span class="cl-2c57b8e0">0.48</span></p></td><td class="cl-2c5a6a41"><p class="cl-2c5a5316"><span class="cl-2c57b8e0">0.44</span></p></td><td class="cl-2c5a6a41"><p class="cl-2c5a5316"><span class="cl-2c57b8e0">0.20</span></p></td><td class="cl-2c5a6a41"><p class="cl-2c5a5316"><span class="cl-2c57b8e0">.656</span></p></td><td class="cl-2c5a6a41"><p class="cl-2c5a5316"><span class="cl-2c57b8e0">1</span></p></td><td class="cl-2c5a6a41"><p class="cl-2c5a5316"><span class="cl-2c57b8e0">2-sample test for equality of proportions with continuity correction</span></p></td><td class="cl-2c5a6a41"><p class="cl-2c5a5316"><span class="cl-2c57b8e0">two.sided</span></p></td><td class="cl-2c5a6a41"><p class="cl-2c5a5316"><span class="cl-2c57b8e0">[-0.10, 0.17]</span></p></td></tr></tbody></table></div>
+<div class="tabwid"><style>.cl-cadabcf8{table-layout:auto;}.cl-cad18958{font-family:'Times New Roman';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-cad1896c{font-family:'Times New Roman';font-size:12pt;font-weight:normal;font-style:italic;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-cad56d3e{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-cad56d48{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-cad5851c{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0.5pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-cad58526{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-cad58530{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-cadabcf8"><thead><tr style="overflow-wrap:break-word;"><th class="cl-cad5851c"><p class="cl-cad56d3e"><span class="cl-cad18958">estimate1</span></p></th><th class="cl-cad5851c"><p class="cl-cad56d3e"><span class="cl-cad18958">estimate2</span></p></th><th class="cl-cad5851c"><p class="cl-cad56d3e"><span class="cl-cad1896c">t</span></p></th><th class="cl-cad5851c"><p class="cl-cad56d3e"><span class="cl-cad1896c">p</span></p></th><th class="cl-cad5851c"><p class="cl-cad56d3e"><span class="cl-cad1896c">df</span></p></th><th class="cl-cad5851c"><p class="cl-cad56d3e"><span class="cl-cad18958">Method</span></p></th><th class="cl-cad5851c"><p class="cl-cad56d3e"><span class="cl-cad18958">Alternative</span></p></th><th class="cl-cad5851c"><p class="cl-cad56d3e"><span class="cl-cad18958">95% CI</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-cad58526"><p class="cl-cad56d48"><span class="cl-cad18958">0.48</span></p></td><td class="cl-cad58530"><p class="cl-cad56d3e"><span class="cl-cad18958">0.44</span></p></td><td class="cl-cad58530"><p class="cl-cad56d3e"><span class="cl-cad18958">0.20</span></p></td><td class="cl-cad58530"><p class="cl-cad56d3e"><span class="cl-cad18958">.656</span></p></td><td class="cl-cad58530"><p class="cl-cad56d3e"><span class="cl-cad18958">1</span></p></td><td class="cl-cad58530"><p class="cl-cad56d3e"><span class="cl-cad18958">2-sample test for equality of proportions with continuity correction</span></p></td><td class="cl-cad58530"><p class="cl-cad56d3e"><span class="cl-cad18958">two.sided</span></p></td><td class="cl-cad58530"><p class="cl-cad56d3e"><span class="cl-cad18958">[-0.10, 0.17]</span></p></td></tr></tbody></table></div>
 </div>
 </div>
 <p>¿Y cómo reportamos esto?:</p>
@@ -1506,7 +1608,7 @@ Hipótesis en correlación
 <li><p><span class="math inline">\(H_{A}\)</span>: <span class="math inline">\(cor(educ,ingreso)\)</span> <span class="math inline">\(\neq\)</span> <span class="math inline">\(0\)</span></p></li>
 </ul>
 <p>Obtengamos el coeficiente de correlación <span class="math inline">\(r\)</span> de Pearson entre el nivel educacional alcanzado y los ingresos de las personas en Chile en 2022. Para esto usaremos solamente observaciones completas (<em>listwise</em>).</p>
-<div class="cell" data-hash="04-practico_cache/html/unnamed-chunk-63_2d13876085d2fc068dd82b2e108f025f">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb116"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a>cor_results <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(proc_casen<span class="sc">$</span>educ, proc_casen<span class="sc">$</span>ytrabajocor, </span>
 <span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">method =</span> <span class="st">"pearson"</span>, </span>
 <span id="cb116-3"><a href="#cb116-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span>
@@ -1514,8 +1616,7 @@ Hipótesis en correlación
 <span id="cb116-5"><a href="#cb116-5" aria-hidden="true" tabindex="-1"></a>stats.table <span class="ot">&lt;-</span> <span class="fu">tidy</span>(cor_results)</span>
 <span id="cb116-6"><a href="#cb116-6" aria-hidden="true" tabindex="-1"></a><span class="fu">nice_table</span>(stats.table, <span class="at">broom =</span> <span class="st">"cor"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
-<div class="tabwid"><style>.cl-2c7b82c0{table-layout:auto;}.cl-2c73f00a{font-family:'Times New Roman';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-2c73f014{font-family:'Times New Roman';font-size:12pt;font-weight:normal;font-style:italic;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-2c76834c{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-2c768356{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-2c7699c2{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0.5pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2c7699c3{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2c7699cc{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-2c7b82c0"><thead><tr style="overflow-wrap:break-word;"><th class="cl-2c7699c2"><p class="cl-2c76834c"><span class="cl-2c73f00a">estimate</span></p></th><th class="cl-2c7699c2"><p class="cl-2c76834c"><span class="cl-2c73f014">t</span></p></th><th class="cl-2c7699c2"><p class="cl-2c76834c"><span class="cl-2c73f014">p</span></p></th><th class="cl-2c7699c2"><p class="cl-2c76834c"><span class="cl-2c73f014">df</span></p></th><th class="cl-2c7699c2"><p class="cl-2c76834c"><span class="cl-2c73f00a">Method</span></p></th><th class="cl-2c7699c2"><p class="cl-2c76834c"><span class="cl-2c73f00a">Alternative</span></p></th><th class="cl-2c7699c2"><p class="cl-2c76834c"><span class="cl-2c73f00a">95% CI</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-2c7699c3"><p class="cl-2c768356"><span class="cl-2c73f00a">0.38</span></p></td><td class="cl-2c7699cc"><p class="cl-2c76834c"><span class="cl-2c73f00a">123.36</span></p></td><td class="cl-2c7699cc"><p class="cl-2c76834c"><span class="cl-2c73f00a">&lt; .001***</span></p></td><td class="cl-2c7699cc"><p class="cl-2c76834c"><span class="cl-2c73f00a">88,290</span></p></td><td class="cl-2c7699cc"><p class="cl-2c76834c"><span class="cl-2c73f00a">Pearson's product-moment correlation</span></p></td><td class="cl-2c7699cc"><p class="cl-2c76834c"><span class="cl-2c73f00a">two.sided</span></p></td><td class="cl-2c7699cc"><p class="cl-2c76834c"><span class="cl-2c73f00a">[0.38, 0.39]</span></p></td></tr></tbody></table></div>
+<div class="tabwid"><style>.cl-cb06618c{table-layout:auto;}.cl-cafb914e{font-family:'Times New Roman';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-cafb9158{font-family:'Times New Roman';font-size:12pt;font-weight:normal;font-style:italic;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-caff89e8{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-caff89f2{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 2;background-color:transparent;}.cl-caffc1f6{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0.5pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-caffc20a{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-caffc20b{background-color:transparent;vertical-align: middle;border-bottom: 0.5pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-cb06618c"><thead><tr style="overflow-wrap:break-word;"><th class="cl-caffc1f6"><p class="cl-caff89e8"><span class="cl-cafb914e">estimate</span></p></th><th class="cl-caffc1f6"><p class="cl-caff89e8"><span class="cl-cafb9158">t</span></p></th><th class="cl-caffc1f6"><p class="cl-caff89e8"><span class="cl-cafb9158">p</span></p></th><th class="cl-caffc1f6"><p class="cl-caff89e8"><span class="cl-cafb9158">df</span></p></th><th class="cl-caffc1f6"><p class="cl-caff89e8"><span class="cl-cafb914e">Method</span></p></th><th class="cl-caffc1f6"><p class="cl-caff89e8"><span class="cl-cafb914e">Alternative</span></p></th><th class="cl-caffc1f6"><p class="cl-caff89e8"><span class="cl-cafb914e">95% CI</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-caffc20a"><p class="cl-caff89f2"><span class="cl-cafb914e">0.38</span></p></td><td class="cl-caffc20b"><p class="cl-caff89e8"><span class="cl-cafb914e">123.36</span></p></td><td class="cl-caffc20b"><p class="cl-caff89e8"><span class="cl-cafb914e">&lt; .001***</span></p></td><td class="cl-caffc20b"><p class="cl-caff89e8"><span class="cl-cafb914e">88,290</span></p></td><td class="cl-caffc20b"><p class="cl-caff89e8"><span class="cl-cafb914e">Pearson's product-moment correlation</span></p></td><td class="cl-caffc20b"><p class="cl-caff89e8"><span class="cl-cafb914e">two.sided</span></p></td><td class="cl-caffc20b"><p class="cl-caff89e8"><span class="cl-cafb914e">[0.38, 0.39]</span></p></td></tr></tbody></table></div>
 </div>
 </div>
 <blockquote class="blockquote">
@@ -1561,18 +1662,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1604,11 +1694,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/metod2-mcs\.netlify\.app");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1618,8 +1747,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1631,7 +1769,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1675,6 +1936,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1700,6 +1962,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1762,13 +2050,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">Content <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> 2025 by <a href="https://coes.cl/integrantes/daniela-olivares-collio/">Daniela Olivares Collío</a> &amp; <a href="https://coes.cl/integrantes/kevin-carrasco-quintanilla/">Kevin Carrasco Quintanilla</a> <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-by" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-nc" aria-hidden="true"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></div>   
+    <div class="nav-footer-left">
+<p>Content <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> 2025 by <a href="https://coes.cl/integrantes/daniela-olivares-collio/">Daniela Olivares Collío</a> &amp; <a href="https://coes.cl/integrantes/kevin-carrasco-quintanilla/">Kevin Carrasco Quintanilla</a> <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-by" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-nc" aria-hidden="true"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
-    <div class="nav-footer-right">Made with <i class="fa-brands fa-r-project" aria-hidden="true"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://github.com/DaniOlivaresCollio/metod2-MCS">View the source at <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a></div>
+    <div class="nav-footer-right">
+<p>Made with <i class="fa-brands fa-r-project" aria-hidden="true"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://github.com/DaniOlivaresCollio/metod2-MCS">View the source at <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a></p>
+</div>
   </div>
 </footer>
+
 
 
 
