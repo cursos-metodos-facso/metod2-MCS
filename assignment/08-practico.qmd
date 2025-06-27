@@ -316,7 +316,9 @@ sjPlot::tab_model(fit07,fit08, show.ci = FALSE, pred.labels=c("Intercepto",
 En comparación con las personas de Derecha, el efecto negativo de la edad no es tan pronunciado en personas de Centro, Izquierda o independientes.
 
 ```{r}
-sjPlot::plot_model(fit08, type="int")
+sjPlot::plot_model(fit08, type = "int") +
+  theme_bw() +
+  theme(legend.position = "bottom")
 ```
 
 En el fondo lo que muestra el gráfico es que el efecto negativo de la edad es mucho mayor en personas de derecha. O el efecto negativo de la edad es más tenue en personas de centro, izquierda o independientes. U otra opción aún: los jóvenes de derecha son los que más participan. ¿Decepción post estallido en los demás?
