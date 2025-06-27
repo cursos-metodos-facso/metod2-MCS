@@ -72,8 +72,8 @@ website:
             #  file: content/07-content.qmd
             - text: "Regresión lineal I"
               file: content/07-content.qmd
-             # - text: "Regresión lineal II"
-             #   file: content/09-content.qmd
+            - text: "Regresión lineal II"
+              file: content/08-content.qmd
              # - text: "Regresión logística I"
              #   file: content/10-content.qmd
              # - text: "Regresión logística II"
@@ -103,8 +103,8 @@ website:
               file: assignment/06-practico.qmd
             - text: "Práctico 07: Regresión lineal I"
               file: assignment/07-practico.qmd
-        # - text: "7: Supuestos de regresión"
-        #   file: resource/08-resource.qmd
+            - text: "Práctico 08: Regresión lineal II"
+              file: assignment/08-practico.qmd
 
 
   page-footer:
