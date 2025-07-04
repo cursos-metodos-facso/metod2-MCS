@@ -1,18 +1,19 @@
 ---
 title: "Presentación"
-date: "2023-06-09"
+date: "2025-07-04"
 lang: es
 ---
 
 ## Documento de presentación
 
 
-<iframe src=/slides/08-clase8/Semana2.pdf height="550" width=100% allowfullscreen="true">
+<iframe src=/slides/09-clase9/09-clase9.html height="550" width=100% allowfullscreen="true">
 </iframe> 
-
-
 
 
 ## Lecturas
 
 
+Camarero et al (2017) Regresión logística: Fundamentos y aplicación a la investigación sociológica (p.30-52)
+
+Cerda, Vera y Rada (2017) Odds ratio: aspectos teóricos y prácticos.
